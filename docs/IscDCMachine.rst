@@ -27,7 +27,7 @@ Field Values
      - Status
      - Status:
 
-        - 0 = Switched in
+        - 0  = Switched in
         - -1 = Switched out
    * - Float
      - BusVoltagePU

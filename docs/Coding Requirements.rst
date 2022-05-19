@@ -5,7 +5,7 @@ Coding Requirements
 Importing IPSA
 ===============
 
-All IPSA scripts should import the IPSA interface (``IscInterface``) using the import command near the start of the script. It is also recommended to import the print module which enables scripts to print directly to the IPSA progress window.
+All IPSA scripts should import the IPSA interface (``IscInterface``) using the import command near the start of the script.
 
 Starting from IPSA 2.3.2 there are two ways of launching IPSA 2, either from within IPSA 2 itself or from a separate Python process. The following code demonstrates how scripts should be written when launched from within IPSA 2. Refer to section 2.2.2 for details of running IPSA 2 from a separate Python process.
 
