@@ -11260,6 +11260,19 @@ class IscNetwork:
         """
         pass
 
+    def DoFlatStart(self, bSetBuses: bool, bSetTransformerTaps: bool, bSetIMSlips: bool) -> None:
+        """
+        Runs a flatstart preparation for load flow depending on whether the user wants to flat start the busbar voltages, transformer tap positions, induction machine rotor slips or a combination of all 3.
+
+        :param bSetBuses: Enabling flat start for the busbar voltages.
+        :type bSetBuses: bool
+        :param bSetTransformerTaps: Enabling flat start for the transformer tap positions.
+        :type bSetTransformerTaps: bool
+        :param bSetIMSlips: Enabling flat start for the induction machine rotor slips.
+        :type bSetIMSlips: bool
+        """
+        pass
+
     def GetAnalysisFL(self):
         """
         Returns an IscAnlaysisFL object which can be used to get and set the fault level analysis parameters.
@@ -11694,6 +11707,15 @@ class IscNetwork:
         """
         pass
 
+    def GetAnalysisAF(self):
+        """
+        Returns an IscAnalysisAF object which can be used to get and set the ArcFlash analysis parameters.
+
+        :return: IscAnlaysisAF object.
+        :rtype: IscAnlaysisAF
+        """
+        pass
+
     def SetBusbarOverloadLimits(self, dBusVoltHighPU: float, dBusVoltlowPU: float) -> None:
         """
         Sets the network global high and low limits for busbar overloads.
@@ -11715,28 +11737,6 @@ class IscNetwork:
         :type dBranchRatingLowPC: float
         :param nRatingIndex: The given rating index.
         :type nRatingIndex: int
-        """
-        pass
-
-    def GetAnalysisAF(self):
-        """
-        Returns an IscAnalysisAF object which can be used to get and set the AirFlash analysis parameters.
-
-        :return: IscAnlaysisAF object.
-        :rtype: IscAnlaysisAF
-        """
-        pass
-
-    def DoFlatStart(self, bSetBuses: bool, bSetTransformerTaps: bool, bSetIMSlips: bool) -> None:
-        """
-        Runs a flatstart preparation for load flow depending on whether the user wants to flat start the busbar voltages, transformer tap positions, induction machine rotor slips or a combination of all 3.
-
-        :param bSetBuses: Enabling flat start for the busbar voltages.
-        :type bSetBuses: bool
-        :param bSetTransformerTaps: Enabling flat start for the transformer tap positions.
-        :type bSetTransformerTaps: bool
-        :param bSetIMSlips: Enabling flat start for the induction machine rotor slips.
-        :type bSetIMSlips: bool
         """
         pass
 
