@@ -9801,6 +9801,237 @@ class IscNetwork:
         pass
 
     @overload
+    def CreateMechSwCapacitor(self, nAtBusbarUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created mechanically switched capacitor.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param strName: The capacitor name string if required.
+        :type strName: str
+        :return: The UID for the newly created mechanically switched capacitor, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateMechSwCapacitor(self, pAtBusbar, strName: str):
+        """
+        Returns an IscMechSwCapacitor object for the newly created mechanically switched capacitor.
+
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The capacitor name string if required.
+        :type strName: str
+        :return: The IscMechSwCapacitor object for the newly created mechanically switched capacitor.
+        :rtype: IscMechSwCapacitor
+        """
+        pass
+
+    def CreateMechSwCapacitor(self, pAtBusbar, strName: str):
+        """
+        Returns the UID or an IscMechSwCapacitor object for the newly created mechanically switched capacitor.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The capacitor name string if required.
+        :type strName: str
+        :return: The UID for the newly created mechanically switched capacitor, 0 on failure.
+        :rtype: int
+        :return: The IscMechSwCapacitor object for the newly created mechanically switched capacitor.
+        :rtype: IscMechSwCapacitor
+        """
+        pass
+
+    @overload
+    def CreateCircuitBreaker(self, nBranchOrTxUID: int, bAtFromEnd: bool, strName: str) -> int:
+        """
+        Returns the UID for the newly created circuit breaker. In order to draw this component, the function IscDiagram.DrawUndrawnItemsAttachedToBusbar needs to be called before IscDiagram.DrawLine.
+
+        :param nBranchOrTxUID: The UID of the busbar or the transformer where the circuit breaker is located.
+        :type nBranchOrTxUID: int
+        :param bAtFromEnd: Adds the circuit breaker to the “From” end of the component, if True.
+        :type bAtFromEnd: bool
+        :param strName: The circuit breaker name string if required.
+        :type strName: str
+        :return: The UID for the newly created circuit breaker, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateCircuitBreaker(self, pBranchOrTx, bAtFromEnd: bool, strName: str):
+        """
+        Returns an IscCircuitBreaker object for the newly created circuit breaker. In order to draw this component, the function IscDiagram.DrawUndrawnItemsAttachedToBusbar needs to be called before IscDiagram.DrawLine.
+
+        :param pBranchOrTx: The IscBranch or IscTransformer object of the branch or transformer where the circuit breaker is located.
+        :type pBranchOrTx: IscBranch or IscTransformer
+        :param bAtFromEnd: Adds the circuit breaker to the “From” end of the component, if True.
+        :type bAtFromEnd: bool
+        :param strName: The circuit breaker name string if required.
+        :type strName: str
+        :return: The IscCircuitBreaker object for the newly created circuit breaker.
+        :rtype: IscCircuitBreaker
+        """
+        pass
+
+    def CreateCircuitBreaker(self, pBranchOrTx, bAtFromEnd: bool, strName: str):
+        """
+        Returns the UID or an IscCircuitBreaker object for the newly created circuit breaker. In order to draw this component, the function IscDiagram.DrawUndrawnItemsAttachedToBusbar needs to be called before IscDiagram.DrawLine.
+
+        :param nBranchOrTxUID: The UID of the busbar or the transformer where the circuit breaker is located.
+        :type nBranchOrTxUID: int
+        :param pBranchOrTx: The IscBranch or IscTransformer object of the branch or transformer where the circuit breaker is located.
+        :type pBranchOrTx: IscBranch or IscTransformer
+        :param bAtFromEnd: Adds the circuit breaker to the “From” end of the component, if True.
+        :type bAtFromEnd: bool
+        :param strName: The circuit breaker name string if required.
+        :type strName: str
+        :return: The UID for the newly created circuit breaker, 0 on failure.
+        :rtype: int
+        :return: The IscCircuitBreaker object for the newly created circuit breaker.
+        :rtype: IscCircuitBreaker
+        """
+        pass
+
+    @overload
+    def CreateStaticVC(self, nAtBusbarUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created static VAr compensator.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param strName: The static VAr compensator name string if required.
+        :type strName: str
+        :return: The UID for the newly created static VAr compensator, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateStaticVC(self, pAtBusbar, strName: str):
+        """
+        Returns an IscStaticVC object for the newly created static VAr compensator.
+
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The static VAr compensator name string if required.
+        :type strName: str
+        :return: The IscStaticVC object for the newly created static VAr compensator.
+        :rtype: IscStaticVC
+        """
+        pass
+
+    def CreateStaticVC(self, pAtBusbar, strName: str):
+        """
+        Returns the UID or an IscStaticVC object for the newly created static VAr compensator.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The static VAr compensator name string if required.
+        :type strName: str
+        :return: The UID for the newly created static VAr compensator, 0 on failure.
+        :rtype: int
+        :return: The IscStaticVC object for the newly created static VAr compensator.
+        :rtype: IscStaticVC
+        """
+        pass
+
+    @overload
+    def CreateUMachine(self, nAtBusbarUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created universal machine.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param strName: The universal machine name string if required.
+        :type strName: str
+        :return: The UID for the newly created universal machine, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateUMachine(self, pAtBusbar, strName: str):
+        """
+        Returns an IscUMachine object for the newly created universal machine.
+
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The universal machine name string if required.
+        :type strName: str
+        :return: The IscUMachine object for the newly created universal machine.
+        :rtype: IscUMachine
+        """
+        pass
+
+    def CreateUMachine(self, pAtBusbar, strName: str):
+        """
+        Returns the UID or an IscUMachine object for the newly created universal machine.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The universal machine name string if required.
+        :type strName: str
+        :return: The UID for the newly created universal machine, 0 on failure.
+        :rtype: int
+        :return: The IscUMachine object for the newly created universal machine.
+        :rtype: IscUMachine
+        """
+        pass
+
+    @overload
+    def CreateBattery(self, nAtBusbarUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created battery.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param strName: The battery name string if required.
+        :type strName: str
+        :return: The UID for the newly created battery, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateBattery(self, pAtBusbar, strName: str):
+        """
+        Returns an IscBattery object for the newly created battery.
+
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The battery name string if required.
+        :type strName: str
+        :return: The IscBattery object for the newly created battery.
+        :rtype: IscBattery
+        """
+        pass
+
+    def CreateBattery(self, pAtBusbar, strName: str):
+        """
+        Returns the UID or an IscBattery object for the newly created battery.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The battery name string if required.
+        :type strName: str
+        :return: The UID for the newly created battery, 0 on failure.
+        :rtype: int
+        :return: The IscBattery object for the newly created battery.
+        :rtype: IscBattery
+        """
+        pass
+
+    @overload
     def CreateDCMachine(self, nAtBusbarUID: int, strName: str) -> int:
         """
         Returns the UID for the newly created DC machine.
