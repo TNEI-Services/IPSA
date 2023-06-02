@@ -38,7 +38,7 @@ Field Values
         - 3 = Pole Mounted
         - 7 = Secondary Distribution
    * - Integer
-     - Winding
+     - Winding/VectorGroup
      - Transformer winding type connection as follows:
 
         - 1 = XX

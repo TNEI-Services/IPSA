@@ -41,6 +41,24 @@ Field Values
    * - Integer
      - PluginID
      - Gets and sets the ID of the plugin applied to the universal machine. Set to 0 to not use any profiles.
+   * - Float
+     - CDPKFactor
+     - The K factor co-efficient that determines the strength of the current injection contributions (only valid between 0 and 10).
+   * - Float
+     - CDPMaxISync
+     - Maximum synchronous value for the current injected given the time domains.
+   * - Float
+     - CDPMaxITrans
+     - Maximum transient value for the current injected given the time domains.
+   * - Float
+     - CDPMaxISubTrans
+     - Maximum subtransient value for the current injected given the time domains.
+   * - Float
+     - CDPTimeConstantTransientMs
+     - Time constant value in ms for the transient window duration.
+   * - Float
+     - CDPTimeConstantSubTransientMs
+     - Time constant value in ms for the subtransient window duration.
 
 IscUMachine Class
 ------------------

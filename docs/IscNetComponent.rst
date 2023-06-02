@@ -28,10 +28,10 @@ Field Values
      - Busbar
      - Load
      - Generator
-     - Induction Machine
+     - InductionMachine
      - Harmonic Data
    * - Harmonic Filter
-     - Mechanical Switched Capacitor
+     - MechanicalSwitchedCapacitor
      - Static Var Compensator
      - Battery
      - DC Machine
@@ -40,15 +40,16 @@ Field Values
      - Line
      - Transformer
      - ThreeWTransformer
-     - AC – DC Converter
+     - ACDCConverter
+     - DCDCConverter
      - Motor Generator Set
    * - AVR
      - Governor
-     - DC Converter Controller
-     - AC Converter Controller
-     - DC Machine Controller
-     - Plugin Model
-   * - Circuit Breaker
+     - DCConverterController
+     - ACConverterController
+     - DCMachineController
+     - PluginModel
+   * - CircuitBreaker
      - Series Voltage Regulator
      - Protection Container
      - Annotation

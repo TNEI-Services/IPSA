@@ -24,6 +24,7 @@ The following actions are possible:
    :caption: Contents
    :hidden:
 
+   Changes from IPSA 2.10.0
    Changes from IPSA 2.9.0
    IPSA and Python
    Coding Requirements
@@ -49,6 +50,7 @@ The following actions are possible:
    IscBattery
    IscDCMachine
    IscConverter
+   IscChopper
    IscMGSet
    IscMechSwCapacitor
    IscGroup

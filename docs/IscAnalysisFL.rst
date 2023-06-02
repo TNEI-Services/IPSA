@@ -96,6 +96,19 @@ Field Values
    * - Float
      - DistanceAlongBranch
      - Distance along branch to apply fault on. This is a per unit value with zero representing the “From” end of the branch and 1.0 representing the “To” end of the branch.
+   * - Boolean
+     - FaultUseCDPs
+     - Switch to decide whether the fault engine will include the impact of converter driven plants.
+   * - Integer
+     - FaultMethodType
+     - The calculation method for CDPs. Currently only the simple method (0) works for PyIPSA. To input the data for the advanced method (1) you would need to open the IPSA UI.
+   * - Integer
+     - CDPInterpolation
+     - Chooses the interpolation method for the universal machines that represent the CDPs (in the advanced method):
+
+        - 0 = Machine specific settings
+        - 1 = Globally use linear interpolation
+        - 2 = Globally use cubic interpolation
    * - Float
      - IEC909DefaultPhaseAngle
      - Specifies the default synchronous machine power factor. ``IEC909UseDefaultPF`` should be set to ``True`` to use this value.

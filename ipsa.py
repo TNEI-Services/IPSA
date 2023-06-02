@@ -414,6 +414,104 @@ class Isc3WTransformer:
         """
         pass
 
+    def GetDCLFLargestPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the highest 3-winding transformer end power in MVA.
+
+        :return: The highest 3-winding transformer end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestPowerMagnitudekVA(self) -> float:
+        """
+        Returns the highest 3-winding transformer end power in kVA.
+
+        :return: The highest 3-winding transformer end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestRealPowerMW(self) -> float:
+        """
+        Returns the highest 3-winding transformer end power in MW.
+
+        :return: The highest 3-winding transformer end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestRealPowerkW(self) -> float:
+        """
+        Returns the highest 3-winding transformer end power in kW.
+
+        :return: The highest 3-winding transformer end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLossesMW(self) -> float:
+        """
+        Returns the 3-winding transformer losses in MW.
+
+        :return: The 3-winding transformer losses in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLosseskW(self) -> float:
+        """
+        Returns the 3-winding transformer losses in kW.
+
+        :return: The 3-winding transformer losses in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFWindingPowerMagnitudeMVA(self, nWinding: int) -> float:
+        """
+        Returns the MVA power flow in winding for the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The MVA power flow in winding for the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFWindingPowerMagnitudekVA(self, nWinding: int) -> float:
+        """
+        Returns the kVA power flow in winding for the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The kVA power flow in winding for the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFWindingRealPowerMW(self, nWinding: int) -> float:
+        """
+        Returns the MW power flow in winding for the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The MW power flow in winding for the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFWindingRealPowerkW(self, nWinding: int) -> float:
+        """
+        Returns the kW power flow in winding for the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The kW power flow in winding for the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
 class IscAnalysisAF:
     """
     Analysis class for the ArcFlash analysis.
@@ -1902,6 +2000,15 @@ class IscBranch:
         """
         pass
 
+    def PopulateByDBEntry(self, strLineDataName: str, dLength: float, nParallel: int) -> bool:
+        """
+        Populates the object data with database information from the first database that was loaded.
+
+        :return: Returns True if successful.
+        :rtype: bool
+        """
+        pass
+
     def GetSendPowerMagnitudeMVA(self) -> float:
         """
         Returns the branch sending end power in MVA.
@@ -2386,6 +2493,132 @@ class IscBranch:
 
         :return: The maximum category index.
         :rtype: int
+        """
+        pass
+
+    def GetDCLFSendPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the branch sending end power in MVA.
+
+        :return: The branch sending end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFSendPowerMagnitudekVA(self) -> float:
+        """
+        Returns the branch sending end power in kVA.
+
+        :return: The branch sending end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFSendRealPowerMW(self) -> float:
+        """
+        Returns the branch sending end power in MW.
+
+        :return: The branch sending end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFSendRealPowerkW(self) -> float:
+        """
+        Returns the branch sending end power in kW.
+
+        :return: The branch sending end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceivePowerMagnitudeMVA(self) -> float:
+        """
+        Returns the branch receiving end power in MVA.
+
+        :return: The branch receiving end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceivePowerMagnitudekVA(self) -> float:
+        """
+        Returns the branch receiving end power in kVA.
+
+        :return: The branch receiving end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceiveRealPowerMW(self) -> float:
+        """
+        Returns the branch receiving end power in MW.
+
+        :return: The branch receiving end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceiveRealPowerkW(self) -> float:
+        """
+        Returns the branch receiving end power in kW.
+
+        :return: The branch receiving end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the highest branch power in MVA.
+
+        :return: The highest branch power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestPowerMagnitudekVA(self) -> float:
+        """
+        Returns the highest branch power in kVA.
+
+        :return: The highest branch power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestRealPowerMW(self) -> float:
+        """
+        Returns the highest branch power in MW.
+
+        :return: The highest branch power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestRealPowerkW(self) -> float:
+        """
+        Returns the highest branch power in kW.
+
+        :return: The highest branch power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLossesMW(self) -> float:
+        """
+        Returns the branch losses in MW.
+
+        :return: The branch losses in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLosseskW(self) -> float:
+        """
+        Returns the branch losses in kW.
+
+        :return: The branch losses in kW.
+        :rtype: float
         """
         pass
 
@@ -3393,6 +3626,426 @@ class IscBusbar:
         """
         pass
 
+    def GetDCLFVoltageAngleDeg(self) -> float:
+        """
+        Returns the voltage angle in degrees.
+
+        :return: The voltage angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFVoltageAngleRad(self) -> float:
+        """
+        Returns the voltage angle in radians.
+
+        :return: The voltage angle in radians.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealGenerationMW(self) -> float:
+        """
+        Returns the total MW of generation at a busbar.
+
+        :return: The total MW of generation at a busbar.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealGenerationkW(self) -> float:
+        """
+        Returns the total kW of generation at a busbar.
+
+        :return: The total kW of generation at a busbar.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealLoadMW(self) -> float:
+        """
+        Returns the total MW of static load at a busbar.
+
+        :return: The total MW of static load at a busbar.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealLoadkW(self) -> float:
+        """
+        Returns the total kW of static load at a busbar.
+
+        :return: The total kW of static load at a busbar.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFTransLF(self) -> float:
+        """
+        Returns transmission losses factor for the busbar.
+
+        :return: Transmission losses factor for the busbar.
+        :rtype: float
+        """
+        pass
+
+class IscChopper:
+    """
+    Provides access to a DC/DC Converter.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a double value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The boolean value.
+        :rtype: bool
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from an integer.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The given integer value.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the value for the enumerated field from a double.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The given double value.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from a string.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The given string value.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets the value for the enumerated field from boolean.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given boolean value.
+        :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetLineIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the line associated with this chopper.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The line associated with this chopper.
+        :rtype: int
+        """
+        pass
+
+    def GetLineDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a float value for the line associated with this chopper.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The line associated with this chopper.
+        :rtype: float
+        """
+        pass
+
+    def GetLineSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the line associated with this chopper.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The line associated with this chopper.
+        :rtype: str
+        """
+        pass
+
+    def SetLineIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets an integer value for the line associated with this chopper.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The integer value for the line.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetLineDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets a float value for the line associated with this chopper.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The float value for the line.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetLineSValue(self, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Sets a string value for the line associated with this chopper.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The string value for the line.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetRatingskA(self, nRatingIndex: int, dSendRatingkA: float, dRecieveRatingkA: float) -> None:
+        """
+        Sets the sending and receiving end current ratings in kA for the chopper.
+
+        :param nRatingIndex: Specifies which rating set the data is applied to.
+        :type nRatingIndex: int
+        :param dSendRatingkA: The sending end current ratings in kA.
+        :type dSendRatingkA: float
+        :param dRecieveRatingkA: The receiving end current ratings in kA.
+        :type dRecieveRatingkA: float
+        """
+        pass
+
+    def SetRatingMVA(self, nRatingIndex: int, dRatingMVA: float) -> None:
+        """
+        Sets the MVA rating for the chopper.
+
+        :param nRatingIndex: Specifies which rating set the data is applied to.
+        :type nRatingIndex: int
+        :param dRatingMVA: The MVA rating.
+        :type dRatingMVA: float
+        """
+        pass
+
+    def GetRatingSendkA(self, nRatingIndex: int) -> float:
+        """
+        Returns the sending end current ratings in kA for the chopper.
+
+        :param nRatingIndex: Specifies which rating set the data is applied to.
+        :type nRatingIndex: int
+        :return: The sending end current ratings in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetRatingReceivekA(self, nRatingIndex: int) -> float:
+        """
+        Returns the receiving end current ratings in kA for the chopper.
+
+        :param nRatingIndex: Specifies which rating set the data is applied to.
+        :type nRatingIndex: int
+        :return: The receiving end current ratings in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetRatingMVA(self, nRatingIndex: int) -> float:
+        """
+        Returns the MVA rating for the chopper.
+
+        :param nRatingIndex: Specifies which rating set the data is applied to.
+        :type nRatingIndex: int
+        :return: The MVA rating.
+        :rtype: float
+        """
+        pass
+
+    def GetSendRealPowerMW(self) -> float:
+        """
+        Returns the chopper sending end power in MW.
+
+        :return: The chopper sending end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetSendRealPowerkW(self) -> float:
+        """
+        Returns the chopper sending end power in kW.
+
+        :return: The chopper sending end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetSendRealCurrentkA(self) -> float:
+        """
+        Returns the chopper sending end power in kA.
+
+        :return: The chopper sending end power in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveRealPowerMW(self) -> float:
+        """
+        Returns the chopper receiving end power in MW.
+
+        :return: The chopper receiving end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveRealPowerkW(self) -> float:
+        """
+        Returns the chopper receiving end power in kW.
+
+        :return: The chopper receiving end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveRealCurrentkA(self) -> float:
+        """
+        Returns the chopper receiving end power in kA.
+
+        :return: The chopper receiving end power in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestRealPowerMW(self) -> float:
+        """
+        Returns the highest chopper end power in MW.
+
+        :return: The highest chopper end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestRealPowerkW(self) -> float:
+        """
+        Returns the highest chopper end power in kW.
+
+        :return: The highest chopper end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveRealCurrentkA(self) -> float:
+        """
+        Returns the highest chopper end power in kA.
+
+        :return: The highest chopper end power in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetLossesMW(self) -> float:
+        """
+        Returns the chopper losses in MW.
+
+        :return: The chopper losses in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetLosseskW(self) -> float:
+        """
+        Returns the chopper losses in kW.
+
+        :return: The chopper losses in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetChopperEfficiency(self) -> float:
+        """
+        Returns the efficiency of the chopper in percent.
+
+        :return: The efficiency of the chopper in percent.
+        :rtype: float
+        """
+        pass
+
+    def GetLoadRatio(self) -> float:
+        """
+        Returns the ratio of the internal resistance to the load of the chopper for clearer visualization of buck-boost losses (fractional value).
+
+        :return: The ratio of the internal resistance to the load of the chopper.
+        :rtype: float
+        """
+        pass
+
 class IscCircuitBreaker:
     """
     Provides access to an IPSA circuit breaker.
@@ -3518,6 +4171,17 @@ class IscCircuitBreaker:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def PopulateByDBEntry(self, strBreakerDataName: str) -> bool:
+        """
+        Populates the object data with database information from the first database that was loaded.
+
+        :param strBreakerDataName: The break data name.
+        :type strBreakerDataName: str
         :return: True if successful.
         :rtype: bool
         """
@@ -4205,6 +4869,38 @@ class IscDiagram:
         """
         pass
 
+    def CreateBreaker(self, strName: str, dX: float, dY: float) -> int:
+        """
+        Creates a new circuit breaker on the diagram.
+        Note branch has to have already been drawn.
+
+        :param strName: The breaker name.
+        :type strName: str
+        :param dX: The x coordinate of the circuit breaker.
+        :type dX: float
+        :param dY: The y coordinate of the circuit breaker.
+        :type dY: float
+        :return: The unique positive ID of the new circuit breaker.
+            If the breaker cannot be drawn, the return value is 0.
+        :rtype: int
+        """
+        pass
+
+    def DrawBreaker(self, nBreakerUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the symbol for the breaker identified by the unique ID nBreakerUID at the location dX,dY.
+
+        :param nBreakerUID: The breaker UID.
+        :type nBreakerUID: int
+        :param dX: The x coordinate of the circuit breaker.
+        :type dX: float
+        :param dY: The y coordinate of the circuit breaker.
+        :type dY: float
+        :return: The function returns True if the breaker was drawn
+        :rtype: bool
+        """
+        pass
+
     def CreateTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
         Creates a new transformer component on the diagram.
@@ -4769,6 +5465,24 @@ class IscFilter:
         """
         pass
 
+    def GetDCLFRealPowerMW(self) -> float:
+        """
+        Returns the generator output in MW.
+
+        :return: The generator output in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerkW(self) -> float:
+        """
+        Returns the generator output in kW.
+
+        :return: The generator output in kW.
+        :rtype: float
+        """
+        pass
+
 class IscGridInfeed:
     """
     Provides access to an IPSA grid infeed.
@@ -5029,6 +5743,24 @@ class IscGridInfeed:
         Returns the zero sequence component of fault level in MVA.
 
         :return: The zero sequence component of fault level in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerMW(self) -> float:
+        """
+        Returns the generator output in MW.
+
+        :return: The generator output in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerkW(self) -> float:
+        """
+        Returns the generator output in kW.
+
+        :return: The generator output in kW.
         :rtype: float
         """
         pass
@@ -5475,6 +6207,15 @@ class IscIndMachine:
         """
         pass
 
+    def PopulateByDBEntry(self, strIMachineDataName: str, nParallel: int) -> bool:
+        """
+        Populates the object data with database information from the first database that was loaded.
+
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
     def GetStatorPowerMagnitudeMVA(self) -> float:
         """
         Returns stator power in MVA.
@@ -5745,6 +6486,69 @@ class IscIndMachine:
         :param dOrder: The harmonic order.
         :type dOrder: float
         :return: The current angle in radians.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFStatorPowerMagnitudeMVA(self) -> float:
+        """
+        Returns stator power in MVA.
+
+        :return: The stator power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFStatorPowerMagnitudekVA(self) -> float:
+        """
+        Returns stator power in kVA.
+
+        :return: The stator power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFStatorRealPowerMW(self) -> float:
+        """
+        Returns stator power in MW.
+
+        :return: The stator power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFStatorRealPowerkW(self) -> float:
+        """
+        Returns stator power in kW.
+
+        :return: The stator power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFEfficiencyPC(self) -> float:
+        """
+        Returns the motor efficiency in percent.
+
+        :return: The motor efficiency in percent.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFCurrentkA(self) -> float:
+        """
+        Returns the total current in kA.
+
+        :return: The total current in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFCurrentA(self) -> float:
+        """
+        Returns the total current in Amps.
+
+        :return: The total current in Amps.
         :rtype: float
         """
         pass
@@ -6245,6 +7049,7 @@ class IscInterface:
             - ipsa.IscInterface.BatteryLF = DC battery load flow results
             - ipsa.IscInterface.DCMachineLF = DC machine load flow results
             - ipsa.IscInterface.ConverterLF = AC-DC converter load flow results
+            - ipsa.IscInterface.ChopperLF = DC-DC converter load flow results
             - ipsa.IscInterface.MGSetLF = motor- generator set load flow results
             - ipsa.IscInterface.BusbarFL = busbar fault level results
             - ipsa.IscInterface.GeneratorFL = generator fault level results
@@ -6321,6 +7126,101 @@ class IscInterface:
 
     def DbgStopLogging(self) -> None:
         """Stop logging of all analysis engine calls."""
+        pass
+
+    def OpenDBFromFile(self, strFilename: str) -> bool:
+        """
+        Opens the database from file.
+
+        :param strFilename: The path name of the file to be opened.
+        :type strFilename: str
+        :return: Returns True if the database is opened successfully.
+        :rtype: bool
+        """
+        pass
+
+    def CloseDBFromFile(self, strFilename: str) -> bool:
+        """
+        Closes the specified database file.
+
+        :param strFilename: The path name of the file to be closed.
+        :type strFilename: str
+        :return: Returns True if the database is closed successfully.
+        :rtype: bool
+        """
+        pass
+
+    def CloseAllDB(self) -> bool:
+        """
+        Close all the databases.
+
+        :return: Returns True if databases are closed.
+        :rtype: bool
+        """
+        pass
+
+    def GetDBNames(self) -> List[str]:
+        """
+        Returns all filenames of the databases that have been loaded.
+
+        :return: Returns list of the databases' filenames.
+        :rtype: list(str)
+        """
+        pass
+
+    def GetDBBranchNames(self, strFilename: str) -> List[str]:
+        """
+        Returns all branch names in a database.
+
+        :param strFilename: The path name of the database.
+        :type strFilename: str
+        :return: Returns list of the branch names.
+        :rtype: list(str)
+        """
+        pass
+
+    def GetDBTransformerNames(self, strFilename: str) -> List[str]:
+        """
+        Returns all transformer names in a database.
+
+        :param strFilename: The path name of the database.
+        :type strFilename: str
+        :return: Returns list of the transformer names.
+        :rtype: list(str)
+        """
+        pass
+
+    def GetDBGeneratorNames(self, strFilename: str) -> List[str]:
+        """
+        Returns all generator names in a database.
+
+        :param strFilename: The path name of the database.
+        :type strFilename: str
+        :return: Returns list of the generator names.
+        :rtype: list(str)
+        """
+        pass
+
+    def GetDBIndMachineNames(self, strFilename: str) -> List[str]:
+        """
+        Returns all induction machine names in a database.
+
+        :param strFilename: The path name of the database.
+        :type strFilename: str
+        :return: Returns list of the induction machine names.
+        :rtype: list(str)
+        """
+        pass
+
+    def GetDBCircuitBreakerNames(self, strFilename: str) -> List[str]:
+        """
+        Returns all circuit breaker names in a database.
+
+        :param strFilename: The path name of the database.
+        :type strFilename: str
+        :return: Returns list of the circuit breaker names.
+        :rtype: list(str)
+        """
         pass
 
 class IscLoad:
@@ -6506,6 +7406,42 @@ class IscLoad:
         :param dOrder: The harmonic order.
         :type dOrder: float
         :return: The current angle in radians.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the load in MVA.
+
+        :return: The load in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFPowerMagnitudekVA(self) -> float:
+        """
+        Returns the load in kVA.
+
+        :return: The load in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerMW(self) -> float:
+        """
+        Returns the load in MW.
+
+        :return: The load in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerkW(self) -> float:
+        """
+        Returns the load in kW.
+
+        :return: The load in kW.
         :rtype: float
         """
         pass
@@ -7709,6 +8645,18 @@ class IscNetwork:
         """
         pass
 
+    def GetChoppers(self, bFetchFromSystem: bool):
+        """
+        Returns a dictionary of IscChopper instances.
+        Keys (sPyName) are the Python names and the associated values are IscChopper instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps. If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of choppers.
+        :rtype: dict(str,IscChopper)
+        """
+        pass
+
     def GetMGSets(self, bFetchFromSystem: bool):
         """
         Returns a dictionary of IscMGSet instances.
@@ -8540,6 +9488,45 @@ class IscNetwork:
         pass
 
     @overload
+    def GetChopper(self, nUID: int):
+        """
+        Returns an IscChopper instance for the AC/DC convertor identified by the UID.
+
+        :param nUID: The selected AC/DC convertor UID.
+        :type nUID: int
+        :return: The AC/DC chopper instance or None if such is not found.
+        :rtype: IscChopper
+        """
+        pass
+
+    @overload
+    def GetChopper(self, strPythonName: str):
+        """
+        Returns an IscChopper instance for the AC/DC convertor identified by the Python name.
+
+        :param strPythonName: The selected AC/DC convertor name.
+        :type strPythonName: str
+        :return: The AC/DC chopper instance or None if such is not found.
+        :rtype: IscChopper
+        """
+        pass
+
+    def GetChopper(self, strPythonName: str):
+        """
+        Returns an IscChopper instance for the AC/DC convertor identified by the UID or the Python name.
+
+        You can use either nUID specifying the AC/DC convertor UID, or strPythonName specifying its name.
+
+        :param nUID: The selected AC/DC convertor UID.
+        :type nUID: int
+        :param strPythonName: The selected AC/DC convertor name.
+        :type strPythonName: str
+        :return: The AC/DC chopper instance or None if such is not found.
+        :rtype: IscChopper
+        """
+        pass
+
+    @overload
     def GetMGSet(self, nUID: int):
         """
         Returns an IscMGSet instance for the motor generator set identified by the UID.
@@ -9237,6 +10224,34 @@ class IscNetwork:
         :param nToID: The UID of the To busbar.
         :type nToID: int
         :return: List of converter UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    def GetChopperUID(self, nFromID: int, nToID: int, strName: str) -> int:
+        """
+        Returns the UID of a chopper with the given name between two busbars that are specified by their UIDs.
+
+        :param nFromID: The UID of the From busbar.
+        :type nFromID: int
+        :param nToID: The UID of the To busbar.
+        :type nToID: int
+        :param strName: The selected chopper name.
+        :type strName: str
+        :return: The chopper UID, 0 if no matches or -N if we have N matches.
+        :rtype: int
+        """
+        pass
+
+    def GetChopperUIDs(self, nFromID: int, nToID: int) -> List[int]:
+        """
+        Returns all choppers connected between two busbars that are specified by their UIDs.
+
+        :param nFromID: The UID of the From busbar.
+        :type nFromID: int
+        :param nToID: The UID of the To busbar.
+        :type nToID: int
+        :return: List of chopper UIDs.
         :rtype: list(int)
         """
         pass
@@ -10130,6 +11145,59 @@ class IscNetwork:
         pass
 
     @overload
+    def CreateChopper(self, nFromBusbarUID: int, nToBusbarUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created chopper.
+
+        :param nFromBusbarUID: The "From" busbar UID.
+        :type nFromBusbarUID: int
+        :param nToBusbarUID: The "To" busbar UID.
+        :type nToBusbarUID: int
+        :param strName: The DC/DC converter name string if required.
+        :type strName: str
+        :return: The UID for the newly created chopper, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateChopper(self, pFromBusbar, pToBusbar, strName: str):
+        """
+        Returns an IscChopper object for the newly created chopper.
+
+        :param pFromBusbar: The "From" busbar.
+        :type pFromBusbar: IscBusbar
+        :param pToBusbar: The "To" busbar.
+        :type pToBusbar: IscBusbar
+        :param strName: The DC/DC converter name string if required.
+        :type strName: str
+        :return: The IscChopper object for the newly created chopper.
+        :rtype: IscChopper
+        """
+        pass
+
+    def CreateChopper(self, pFromBusbar, pToBusbar, strName: str):
+        """
+        Returns the UID or an IscChopper object for the newly created chopper.
+
+        :param nFromBusbarUID: The "From" busbar UID.
+        :type nFromBusbarUID: int
+        :param nToBusbarUID: The "To" busbar UID.
+        :type nToBusbarUID: int
+        :param pFromBusbar: The "From" busbar.
+        :type pFromBusbar: IscBusbar
+        :param pToBusbar: The "To" busbar.
+        :type pToBusbar: IscBusbar
+        :param strName: The DC/DC converter name string if required.
+        :type strName: str
+        :return: The UID for the newly created chopper, 0 on failure.
+        :rtype: int
+        :return: The IscChopper object for the newly created chopper.
+        :rtype: IscChopper
+        """
+        pass
+
+    @overload
     def CreateMGSet(self, nFromBusbarUID: int, nToBusbarUID: int, strName: str) -> int:
         """
         Returns the UID for the newly created motor/generator set.
@@ -10628,6 +11696,17 @@ class IscNetwork:
 
         :param pConverter: The IscConverter object for deletion.
         :type pConverter: IscConverter
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteChopper(self, pChopper) -> bool:
+        """
+        Deletes a chopper by passing the IscChopper object for deletion.
+
+        :param pChopper: The IscChopper object for deletion.
+        :type pChopper: IscChopper
         :return: True if successful.
         :rtype: bool
         """
@@ -11178,6 +12257,15 @@ class IscNetwork:
         """
         Performs a load flow calculation without prompting the user to confirm analysis options.
         Identical to the DoLoadFlow(False, False) call with no user interaction.
+
+        :return: True if the load flow converges, False on a non-convergence.
+        :rtype: bool
+        """
+        pass
+
+    def DoDCLoadFlow(self):
+        """
+        Performs a DC load flow calculation while assuming you do not want to update the engines or results.
 
         :return: True if the load flow converges, False on a non-convergence.
         :rtype: bool
@@ -12641,6 +13729,15 @@ class IscSynMachine:
         """
         pass
 
+    def PopulateByDBEntry(self, strGeneratorDataName: str, nParallel: int) -> bool:
+        """
+        Populates the object data with database information from the first database that was loaded.
+
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
     def GetVoltageMagnitudePU(self) -> float:
         """
         Returns the generator voltage magnitude in per unit.
@@ -12805,6 +13902,24 @@ class IscSynMachine:
         :param dOrder: The harmonic order.
         :type dOrder: float
         :return: The impedance magnitude in per unit.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerMW(self) -> float:
+        """
+        Returns the generator output in MW.
+
+        :return: The generator output in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerkW(self) -> float:
+        """
+        Returns the generator output in kW.
+
+        :return: The generator output in kW.
         :rtype: float
         """
         pass
@@ -13055,6 +14170,15 @@ class IscTransformer:
 
         :return: The name of the busbar whose voltage is controlled by the transformer.
         :rtype: str
+        """
+        pass
+
+    def PopulateByDBEntry(self, strTransformerDataName: str, strLine1DataName: str, strLine2DataName: str, nParallel: int, nParallelFrom: int, nParallelTo: int, dlengthFrom: float, dLengthTo: float) -> bool:
+        """
+        Populates the object data with database information from the first database that was loaded.
+
+        :return: True if successful.
+        :rtype: bool
         """
         pass
 
@@ -13767,6 +14891,123 @@ class IscTransformer:
         :rtype: int
         """
 
+    def GetDCLFSendPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the transformer sending end power in MVA.
+
+        :return: The transformer sending end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFSendPowerMagnitudekVA(self) -> float:
+        """
+        Returns the transformer sending end power in kVA.
+
+        :return: The transformer sending end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFSendRealPowerMW(self) -> float:
+        """
+        Returns the transformer sending end power in MW.
+
+        :return: The transformer sending end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFSendRealPowerkW(self) -> float:
+        """
+        Returns the transformer sending end power in kW.
+
+        :return: The transformer sending end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceivePowerMagnitudeMVA(self) -> float:
+        """
+        Returns the transformer receiving end power in MVA.
+
+        :return: The transformer receiving end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceivePowerMagnitudekVA(self) -> float:
+        """
+        Returns the transformer receiving end power in kVA.
+
+        :return: The transformer receiving end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceiveRealPowerMW(self) -> float:
+        """
+        Returns the transformer receiving end power in MW.
+
+        :return: The transformer receiving end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceiveRealPowerkW(self) -> float:
+        """
+        Returns the transformer receiving end power in kW.
+
+        :return: The transformer receiving end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFReceiveReactivePowerkVAr(self) -> float:
+        """
+        Returns the transformer receiving end power in kVAr.
+
+        :return: The transformer receiving end power in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the highest transformer end power in MVA.
+
+        :return: The highest transformer end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestPowerMagnitudekVA(self) -> float:
+        """
+        Returns the highest transformer end power in kVA.
+
+        :return: The highest transformer end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestRealPowerMW(self) -> float:
+        """
+        Returns the highest transformer end power in MW.
+
+        :return: The highest transformer end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLargestRealPowerkW(self) -> float:
+        """
+        Returns the highest transformer end power in kW.
+
+        :return: The highest transformer end power in kW.
+        :rtype: float
+        """
+        pass
+
 class IscUMachine:
     """
     Provides access to an IPSA universal machine.
@@ -13942,6 +15183,51 @@ class IscUMachine:
         pass
 
     def GetCurrentkA(self) -> float:
+        """
+        Returns the universal machine injected current in kA.
+
+        :return: The universal machine injected current in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerMW(self) -> float:
+        """
+        Returns the universal machine output in MW.
+
+        :return: The universal machine output in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFRealPowerkW(self) -> float:
+        """
+        Returns the universal machine output in kW.
+
+        :return: The universal machine output in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFTotalPowerMVA(self) -> float:
+        """
+        Returns the universal machine produced total power in MVA.
+
+        :return: The universal machine produced total power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFTotalPowerkVA(self) -> float:
+        """
+        Returns the universal machine produced total power in kVA.
+
+        :return: The universal machine produced total power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFCurrentkA(self) -> float:
         """
         Returns the universal machine injected current in kA.
 

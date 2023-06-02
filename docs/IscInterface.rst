@@ -11,7 +11,7 @@ The ``IscInterface`` class is the main interface class used to access all other 
 
 The ``GetScriptInterface()`` returns an ``IscInterface`` instance which can then be used to access all other IPSA objects. The following sections provide the syntax for all other ``IscInterface`` functions.
 
-Alternatively the following code returns the ``IscInterface`` object when IPSA is running without a User Interface:
+Alternatively, the following code returns the ``IscInterface`` object when IPSA is running without a User Interface. In IPSA, the ``GetInterface()`` function should work as a conduit between both functions:
 
 ::
 
@@ -43,6 +43,11 @@ To aid the development of scripted applications a number of debugging functions 
     IlfGetGridInfeedResults: (1, -2.00026, -0.00263594)
     IlfGetUMachResults: (1, 2, 0)
     IlfGetLineResults: (1, -1.99973, 3.99892e-005, -1.99973, -0)
+
+Database Functionality
+------------------
+
+Starting with version 2.10.1, the database functionality is now accessible within PyIPSA. The user simply has to open a database and populate an item with a database entry using the string as a reference. There is even added functionality to support item names returned to the user as well.
 
 IscInterface Class
 -------------------

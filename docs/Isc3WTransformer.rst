@@ -46,8 +46,8 @@ Field Values
         - 0 = All windings switched in
         - -1 = All windings switched out
    * - Integer
-     - Winding
-     - Transformer winding type connection as follows:
+     - Winding/VectorGroup
+     - Transformer winding/VG type connection as follows:
 
         - 1 = none
         - 2 = xd1d1
