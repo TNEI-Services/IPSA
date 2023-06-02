@@ -42,31 +42,31 @@ Field Values
      - ThreeWTransformer
      - ACDCConverter
      - DCDCConverter
-     - Motor Generator Set
-   * - AVR
+   * - Motor Generator Set
+     - AVR
      - Governor
      - DCConverterController
      - ACConverterController
      - DCMachineController
-     - PluginModel
-   * - CircuitBreaker
+   * - PluginModel
+     - CircuitBreaker
      - Series Voltage Regulator
      - Protection Container
      - Annotation
      - Load Flow Analysis
-     - Fault Level Analysis
-   * - Motor Start Analysis
+   * - Fault Level Analysis
+     - Motor Start Analysis
      - Breaker Duty Analysis
      - Transient Stability Analysis
      - Harmonic Analysis
      - Protection Analysis
-     - Automation Analysis
-   * - Contingency Analysis
+   * - Automation Analysis
+     - Contingency Analysis
      - Contingency Study
      - Network
      - Results Display Type
      - Load Flow Results Display
-     - SQL Connection instance
+   * - SQL Connection instance
 
 IscNetComponent Class
 ----------------------
