@@ -2004,6 +2004,12 @@ class IscBranch:
         """
         Populates the object data with database information from the first database that was loaded.
 
+        :param strLineDataName: The name of the branch.
+        :type strLineDataName: str
+        :param dLength: The length of the branch.
+        :type dLength: float
+        :param nParallel: The number of parallel components.
+        :type nParallel: int
         :return: Returns True if successful.
         :rtype: bool
         """
@@ -6211,6 +6217,10 @@ class IscIndMachine:
         """
         Populates the object data with database information from the first database that was loaded.
 
+        :param strIMachineDataName: The name of the induction machine.
+        :type strIMachineDataName: str
+        :param nParallel: The number of parallel components.
+        :type nParallel: int
         :return: True if successful.
         :rtype: bool
         """
@@ -13733,6 +13743,10 @@ class IscSynMachine:
         """
         Populates the object data with database information from the first database that was loaded.
 
+        :param strGeneratorDataName: The name of the generator.
+        :type strGeneratorDataName: str
+        :param nParallel: The number of parallel components.
+        :type nParallel: int
         :return: True if successful.
         :rtype: bool
         """
@@ -14177,6 +14191,22 @@ class IscTransformer:
         """
         Populates the object data with database information from the first database that was loaded.
 
+        :param strTransformerDataName: The name of the transformer.
+        :type strTransformerDataName: str
+        :param strLine1DataName: The name of the From branch.
+        :type strLine1DataName: str
+        :param strLine2DataName: The name of the To branch.
+        :type strLine2DataName: str
+        :param nParallel: The number of parallel components.
+        :type nParallel: int
+        :param nParallelFrom: The number of parallel components for the From branch.
+        :type nParallelFrom: int
+        :param nParallelTo: The number of parallel components for the To branch.
+        :type nParallelTo: int
+        :param dlengthFrom: The length of the From branch.
+        :type dlengthFrom: float
+        :param dLengthTo: The length of the To branch.
+        :type dLengthTo: float
         :return: True if successful.
         :rtype: bool
         """
