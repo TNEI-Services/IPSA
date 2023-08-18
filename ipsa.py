@@ -3955,9 +3955,9 @@ class IscChopper:
 
     def GetSendRealCurrentkA(self) -> float:
         """
-        Returns the chopper sending end power in kA.
+        Returns the chopper sending end current in kA.
 
-        :return: The chopper sending end power in kA.
+        :return: The chopper sending end current in kA.
         :rtype: float
         """
         pass
@@ -3982,9 +3982,9 @@ class IscChopper:
 
     def GetReceiveRealCurrentkA(self) -> float:
         """
-        Returns the chopper receiving end power in kA.
+        Returns the chopper receiving end current in kA.
 
-        :return: The chopper receiving end power in kA.
+        :return: The chopper receiving end current in kA.
         :rtype: float
         """
         pass
@@ -4007,11 +4007,11 @@ class IscChopper:
         """
         pass
 
-    def GetReceiveRealCurrentkA(self) -> float:
+    def GetLargestRealCurrentkA(self) -> float:
         """
-        Returns the highest chopper end power in kA.
+        Returns the highest chopper end current in kA.
 
-        :return: The highest chopper end power in kA.
+        :return: The highest chopper end current in kA.
         :rtype: float
         """
         pass
