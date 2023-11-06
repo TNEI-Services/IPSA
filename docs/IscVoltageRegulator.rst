@@ -6,9 +6,10 @@ The ``IscVoltageRegulator`` class provides access to a series voltage regulator 
 Field Values
 -------------
 
+.. tabularcolumns:: |\Y{0.15}|\Y{0.25}|\Y{0.6}|
 .. list-table:: **IscVoltageRegulator Field Values**
    :widths: 2 5 15
-   :class: tight-table
+   :class: tight-table, longtable
    :header-rows: 1
 
    * - Type

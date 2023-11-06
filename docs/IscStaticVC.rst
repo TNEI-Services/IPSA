@@ -7,9 +7,10 @@ The ``IscStaticVC`` class provides access to an IPSA Static VAR Compensator (SVC
 Field Values
 -------------
 
+.. tabularcolumns:: |\Y{0.15}|\Y{0.25}|\Y{0.6}|
 .. list-table:: **IscStaticVC Field Values**
    :widths: 2 5 15
-   :class: tight-table
+   :class: tight-table, longtable
    :header-rows: 1
 
    * - Type

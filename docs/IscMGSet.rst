@@ -6,9 +6,10 @@ The ``IscMGSet`` class provides access to an IPSA motor-generator set, to set an
 Field Values
 -------------
 
+.. tabularcolumns:: |\Y{0.15}|\Y{0.25}|\Y{0.6}|
 .. list-table:: **IscMGSet Field Values**
    :widths: 2 5 15
-   :class: tight-table
+   :class: tight-table, longtable
    :header-rows: 1
 
    * - Type

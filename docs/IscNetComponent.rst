@@ -19,59 +19,102 @@ The field names for extended data fields **should not** contain spaces. Only alp
 
 Field Values
 -------------
+Below is a list of the field values for IscNetComponent which map each derived component object to a field value, sometimes used within the code.
 
+.. tabularcolumns:: |\Y{0.3}|\Y{0.5}|
 .. list-table:: **IscNetComponent Field Values - Types**
-   :widths: 2 2 2 2 2 2
-   :class: tight-table
+   :widths: 5, 5
+   :class: tight-table, longtable
+   :header-rows: 1
 
+   * - Field Name
+     - PyIPSA class
    * - Unknown
-     - Busbar
-     - Load
-     - Generator
-     - InductionMachine
-     - Harmonic Data
-   * - Harmonic Filter
-     - MechanicalSwitchedCapacitor
-     - Static Var Compensator
-     - Battery
-     - DC Machine
-     - Universal Machine
-   * - Grid Infeed
-     - Line
-     - Transformer
-     - ThreeWTransformer
-     - ACDCConverter
-     - DCDCConverter
-   * - Motor Generator Set
-     - AVR
-     - Governor
-     - DCConverterController
-     - ACConverterController
-     - DCMachineController
+     - An unknown IscNetComponent object
+   * - Busbar
+     - IscBusbar
+   * - Load
+     - IscLoad
+   * - Generator
+     - IscSynMachine
+   * - IndMachine
+     - IscIndMachine
+   * - Harmonic
+     - IscHarmonic
+   * - HarmonicFilter
+     - IscFilter
+   * - MechSwCapacitor
+     - IscMechSwCapacitor
+   * - StaticVArC
+     - IscStaticVC
+   * - Battery
+     - IscBattery
+   * - DCMachine
+     - IscDCmachine
+   * - UniMachine
+     - IscUMachine
+   * - GridInfeed
+     - IscGridInfeed
+   * - Line
+     - IscBranch
+   * - Transformer
+     - IscTransformer
+   * - ThreeWTransformer
+     - Isc3WTransformer
+   * - ACDCConverter
+     - IscConverter
+   * - DCDCConverter
+     - IscChopper
+   * - MGset
+     - IscMGset
+   * - AVR
+     - (Not mapped to PyIPSA)
+   * - Governor
+     - (Not mapped to PyIPSA)
+   * - DCConverterCtl
+     - (Not mapped to PyIPSA)
+   * - ACConverterCtl
+     - (Not mapped to PyIPSA)
+   * - DCMachineCtl
+     - (Not mapped to PyIPSA)
    * - PluginModel
-     - CircuitBreaker
-     - Series Voltage Regulator
-     - Protection Container
-     - Annotation
-     - Load Flow Analysis
-   * - Fault Level Analysis
-     - Motor Start Analysis
-     - Breaker Duty Analysis
-     - Transient Stability Analysis
-     - Harmonic Analysis
-     - Protection Analysis
-   * - Automation Analysis
-     - Contingency Analysis
-     - Contingency Study
-     - Network
-     - Results Display Type
-     - Load Flow Results Display
-   * - SQL Connection instance
-     -
-     -
-     -
-     -
-     -
+     - IscPlugin
+   * - CircuitBreaker
+     - IscCircuitBreaker
+   * - SeriesRegulator
+     - IscVoltageRegulator
+   * - ProtectionContainer
+     - (Not mapped to PyIPSA)
+   * - Annotation
+     - IscAnnotation
+   * - AnalysisLF
+     - IscAnalysisLF
+   * - AnalysisFL
+     - IscAnalysisFL
+   * - AnalysisMS
+     - (Not mapped to PyIPSA)
+   * - AnalysisBD
+     - (Not mapped to PyIPSA)
+   * - AnalysisTS
+     - (Not mapped to PyIPSA)
+   * - AnalysisHM
+     - IscAnalysisHM
+   * - AnalysisProt
+     - (Not mapped to PyIPSA)
+   * - Automation
+     - (Not mapped to PyIPSA)
+   * - Contingency
+     - (Not mapped to PyIPSA)
+   * - Study
+     - (Not mapped to PyIPSA)
+   * - Network
+     - IscNetwork
+   * - ResultsDisplayStyle
+     - (Not mapped to PyIPSA)
+   * - ResultsDisplayLF
+     - (Not mapped to PyIPSA)
+   * - SQL
+     - (Not mapped to PyIPSA)
 
 IscNetComponent Class
 ----------------------

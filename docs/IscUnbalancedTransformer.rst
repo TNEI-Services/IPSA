@@ -6,9 +6,10 @@ The ``IscUnbalancedTransformer`` class provides access to the three phase unbala
 Field Values
 -------------
 
+.. tabularcolumns:: |\Y{0.15}|\Y{0.25}|\Y{0.6}|
 .. list-table:: **IscUnbalancedTransformer Field Values**
    :widths: 2 5 15
-   :class: tight-table
+   :class: tight-table, longtable
    :header-rows: 1
 
    * - Type

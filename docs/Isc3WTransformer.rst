@@ -10,9 +10,10 @@ The ``Isc3WTransformer`` class provides access to an IPSA 3-winding transformer,
 Field Values
 -------------
 
+.. tabularcolumns:: |\Y{0.15}|\Y{0.25}|\Y{0.6}|
 .. list-table:: **Isc3WTransformer Field Values**
    :widths: 2 5 15
-   :class: tight-table
+   :class: tight-table, longtable
    :header-rows: 1
 
    * - Type

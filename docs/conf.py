@@ -49,4 +49,35 @@ html_logo = 'ipsa_wo_small.png'#'ipsa_circle_glow_small.png'
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
 
+# -- Options for pdf output
+latex_engine = 'xelatex'
+latex_elements = {
+     'papersize': 'a4paper',
+     'fontpkg': '',
+     'fncychap': '',
+     'maketitle': '',
+     'pointsize': '11',
+     'preamble': '',
+     'releasename': '',
+     'babel': '',
+     'printindex': '',
+     'fontenc': '',
+     'inputenc': '',
+     'classoptions': ',docversion='+version,
+     'utf8extra': '',
+     'sphinxsetup': 'VerbatimColor={white},TableRowColorHeader={HTML}{e3b5c7},TableRowColorOdd={white},'
+                    'TableRowColorEven={HTML}{e6e0eb}'
+}
+latex_docclass = {
+   'howto': 'ipsa',
+   'manual': 'ipsa',
+}
+latex_additional_files = ["_static/latex/ipsa.cls", "_static/latex/Noto_Sans/NotoSans-Bold.ttf",
+                          "_static/latex/Noto_Sans/NotoSans-BoldItalic.ttf",
+                          "_static/latex/Noto_Sans/NotoSans-Italic.ttf",
+                          "_static/latex/Noto_Sans/NotoSans-Regular.ttf",
+                          "_static/latex/IpsaBigLogo.png",
+                          "_static/latex/ipsalogo_dimmed.pdf"]
+
+
 autosummary_generate = True
