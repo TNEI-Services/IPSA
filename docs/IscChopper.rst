@@ -1,7 +1,7 @@
 IscChopper
 ============
 
-The ``IscChopper`` class provides access to a DC/DC Converter, to set and get data values and to retrieve load flow results.
+The ``IscChopper`` class provides access to a DC/DC Converter, to set and get data values and to retrieve load flow results. **Note that in IPSA, like the transformer, the chopper is modelled as a combination of a branch and a tap changer. Therefore some of the chopper data is stored in a branch instance and functions such as** ``GetLineDValue()`` **are used to access branch type data.**
 
 Field Values
 -------------

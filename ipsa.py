@@ -1456,7 +1456,7 @@ class IscBranch:
         Returns the number of sections in the branch. All branches have at least one section.
 
         :return: The number of sections in the branch.
-        :rtype: bool
+        :rtype: int
         """
         pass
 
@@ -4720,7 +4720,7 @@ class IscDiagram:
     def CreateBusbarCircular(self, strName: str, dX: float, dY: float) -> int:
         """
         Creates a new busbar component on the diagram.
-        A hexagonal busbar symbol is a circle.
+        A circular busbar symbol is a circle.
 
         :param strName: The busbar name.
         :type strName: str
@@ -5104,7 +5104,7 @@ class IscDiagram:
         The colour is set by the RGB parameters.
         All colour parameters should be between 0 and 255.
 
-        :param nUID: The diagraqm object UID.
+        :param nUID: The diagram object UID.
         :type nUID: int
         :param nRed: The red colour.
         :type nRed: int
@@ -5125,7 +5125,7 @@ class IscDiagram:
         The colour is set by the RGB parameters.
         All colour parameters should be between 0 and 255.
 
-        :param nUID: The diagraqm object UID.
+        :param nUID: The diagram object UID.
         :type nUID: int
         :param nRed: The red colour.
         :type nRed: int
@@ -8410,7 +8410,7 @@ class IscNetwork:
     def GetBusbarAttachedTransformers(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
         """
         Returns a tuple of transformer UIDs attached to the busbar specified by busbar UID.
-        Only transformers are returned, not branches.
+        Only transformers are returned, not branches or 3W transformers.
 
         :param nBusbarUID: The selected busbar UID.
         :type nBusbarUID: int
@@ -10875,7 +10875,7 @@ class IscNetwork:
         """
         Returns the UID for the newly created circuit breaker. In order to draw this component, the function IscDiagram.DrawUndrawnItemsAttachedToBusbar needs to be called before IscDiagram.DrawLine.
 
-        :param nBranchOrTxUID: The UID of the busbar or the transformer where the circuit breaker is located.
+        :param nBranchOrTxUID: The UID of the branch or the transformer where the circuit breaker is located.
         :type nBranchOrTxUID: int
         :param bAtFromEnd: Adds the circuit breaker to the “From” end of the component, if True.
         :type bAtFromEnd: bool
@@ -11261,14 +11261,12 @@ class IscNetwork:
         pass
 
     @overload
-    def CreateVoltageRegulator(self, nFromBusbarUID: int, nToBusbarUID: int, strName: str) -> int:
+    def CreateVoltageRegulator(self, nBranchUID: int, strName: str) -> int:
         """
         Returns the UID for the newly created voltage regulator.
 
-        :param nFromBusbarUID: The "From" busbar UID.
-        :type nFromBusbarUID: int
-        :param nToBusbarUID: The "To" busbar UID.
-        :type nToBusbarUID: int
+        :param nBranchUID: The branch the voltage regulator is upon
+        :type nBranchUID: int
         :param strName: The voltage regulator name string if required.
         :type strName: str
         :return: The UID for the newly created voltage regulator, 0 on failure.
@@ -11277,14 +11275,12 @@ class IscNetwork:
         pass
 
     @overload
-    def CreateVoltageRegulator(self, pFromBusbar, pToBusbar, strName: str):
+    def CreateVoltageRegulator(self, pBranch, strName: str):
         """
         Returns an IscVoltageRegulator object for the newly created voltage regulator.
 
-        :param pFromBusbar: The "From" busbar.
-        :type pFromBusbar: IscBusbar
-        :param pToBusbar: The "To" busbar.
-        :type pToBusbar: IscBusbar
+        :param pBranch: The branch the voltage regulator is upon
+        :type pBranch: IscBranch
         :param strName: The voltage regulator name string if required.
         :type strName: str
         :return: The IscVoltageRegulator object for the newly created voltage regulator.
@@ -11292,18 +11288,14 @@ class IscNetwork:
         """
         pass
 
-    def CreateVoltageRegulator(self, pFromBusbar, pToBusbar, strName: str):
+    def CreateVoltageRegulator(self, pBranch, strName: str):
         """
         Returns the UID or an IscVoltageRegulator object for the newly created voltage regulator.
 
-        :param nFromBusbarUID: The "From" busbar UID.
-        :type nFromBusbarUID: int
-        :param nToBusbarUID: The "To" busbar UID.
-        :type nToBusbarUID: int
-        :param pFromBusbar: The "From" busbar.
-        :type pFromBusbar: IscBusbar
-        :param pToBusbar: The "To" busbar.
-        :type pToBusbar: IscBusbar
+        :param nBranchUID: The branch the voltage regulator is upon
+        :type nBranchUID: int
+        :param pBranch: The branch the voltage regulator is upon
+        :type pBranch: IscBranch
         :param strName: The voltage regulator name string if required.
         :type strName: str
         :return: The UID for the newly created voltage regulator, 0 on failure.

@@ -35,7 +35,7 @@ Field Values
      - ToBusName
      - Gets the secondary winding busbar name.
    * - String
-     - ToBusName
+     - ThreeBusName
      - Gets the tertiary winding busbar name.
    * - String
      - Name
@@ -47,7 +47,7 @@ Field Values
         - 0 = All windings switched in
         - -1 = All windings switched out
    * - Integer
-     - Winding/VectorGroup
+     - Winding / VectorGroup
      - Transformer winding/VG type connection as follows:
 
         - 1 = none
@@ -248,6 +248,12 @@ Field Values
      - Harmonic polynomial constants RC0, RC12, RC1, RC2 and RC3 in:
 
        :math:`R_{h} = R[RC0 + RC12.h^{0.5} 0 + RC1.h + RC2.h^2 + RC3.h^3]`
+   * - Float
+     - FailureRateYr
+     - 3W transformer failure rate per annum.
+   * - Float
+     - RepairTimeHr
+     - 3W transformer repair time in hours.
 
 Isc3WTransformer Class
 -----------------------

@@ -43,6 +43,9 @@ Field Values
    * - Float
      - VmaxPU
      - Gets and sets the maximum voltage setting in per unit. This corresponds to the minimum reactive SVC output.
+   * - Boolean
+     - IsStatcom
+     - ``True`` if the SVC is a STATCOM.
 
 IscStaticVC Class
 ------------------

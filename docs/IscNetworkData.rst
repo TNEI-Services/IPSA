@@ -35,7 +35,7 @@ Field Values
      - Frequency
      - Gets or sets the system base frequency in hertz for the network.
 
-IscAnalysisHM Class
+IscNetworkData Class
 ====================
 
 .. autoclass:: ipsa.IscNetworkData
