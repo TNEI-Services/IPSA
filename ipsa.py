@@ -6703,11 +6703,26 @@ class IscInterface:
         """
         pass
 
+# Fixing gaps in documentation EL 11/2023
+    def WriteFile(self, strName: str) -> bool:
+        """
+        Saves the IscNetwork instance as a new Ipsa i2f network file with the file name strName.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i2f extension
+
+        :param strName: The name of the output file containing the i2f network.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
         Saves the area group nAreaUID as a new Ipsa i2f network file with the file name strName.
         The integer nAreaUID can be obtained using the IscGroup functions.
-        The file is saved in the current working directory. The file name should include the .i2f extension
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i2f extension
 
         :param nAreaUID: The area group UID.
         :type nAreaUID: int
