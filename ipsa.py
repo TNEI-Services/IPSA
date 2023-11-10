@@ -5174,10 +5174,38 @@ class IscDiagram:
         """
         pass
 
+    def GetUIDFromCoordinates(self, dX: float, dY: float) -> int:
+        """
+        Returns the UID of a component at coordinates  (dX, dY).
+        The screen coordinates are relative to the nominal centre point of the screen.
+
+        :param dX: The screen X coordinate.
+        :type dX: float
+        :param dY: The screen Y coordinate.
+        :type dY: float
+        :return: The UID of the component located.
+        Returns 0, if the component cannot be found,
+        :rtype: int
+        """
+
+    def GetBusbarUIDFromCoordinates(self, dX: float, dY: float) -> int:
+        """
+        Returns the UID of a busbar at coordinates (dX, dY).
+        The screen coordinates are relative to the nominal centre point of the screen.
+
+        :param dX: The screen X coordinate.
+        :type dX: float
+        :param dY: The screen Y coordinate.
+        :type dY: float
+        :return: The UID of the component located.
+        Returns 0, if the component cannot be found,
+        :rtype: int
+        """
+
     def GetItemX(self, nUID: int) -> float:
         """
         Returns the screen X coordinate of the busbar.
-        The screen co-ordinates are relative to the nominal centre point of the screen.
+        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The busbar UID.
         :type nUID: int
