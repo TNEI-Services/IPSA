@@ -5075,6 +5075,8 @@ class IscDiagram:
 
     def CreateLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
+        Deprecated in Ipsa 2.10.2. Instead, use CreateBranch.
+
         Creates a new branch component on the diagram.
 
         :param strName: The branch name.
@@ -5090,6 +5092,27 @@ class IscDiagram:
         :return: The unique positive ID of the new branch.
             A negative value is returned if the “from” end busbar is not found,
             and zero is returned if the “to” end busbar is not found.
+        :rtype: int
+        """
+        pass
+
+    # Fixing gaps in documentation EL 11/2023
+    def CreateBranch(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
+        """
+        Creates a new branch component on the diagram.
+
+        :param strName: The branch name.
+        :type strName: str
+        :param dXFrom: The x coordinate of the busbar where the branch starts.
+        :type dXFrom: float
+        :param dYFrom: The y coordinate of the busbar where the branch starts.
+        :type dYFrom: float
+        :param dXTo: The x coordinate of the busbar where the branch ends.
+        :type dXTo: float
+        :param dYTo: The y coordinate of the busbar where the branch ends.
+        :type dYTo: float
+        :return: The unique positive ID of the new branch.
+            If the branch cannot be drawn, the return value is 0.
         :rtype: int
         """
         pass
@@ -5145,6 +5168,8 @@ class IscDiagram:
 
     def CreateTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
+        Deprecated in Ipsa 2.10.2. Instead, use Create2WTransformer.
+
         Creates a new transformer component on the diagram.
 
         :param strName: The branch name.
@@ -5160,6 +5185,27 @@ class IscDiagram:
         :return: The unique positive ID of the new transformer.
             A negative value is returned if the “from” end busbar is not found,
             and zero is returned if the “to” end busbar is not found.
+        :rtype: int
+        """
+        pass
+
+    # Fixing gaps in documentation EL 11/2023
+    def Create2WTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
+        """
+        Creates a new transformer component on the diagram.
+
+        :param strName: The branch name.
+        :type strName: str
+        :param dXFrom: The x coordinate of the busbar where the branch starts.
+        :type dXFrom: float
+        :param dYFrom: The y coordinate of the busbar where the branch starts.
+        :type dYFrom: float
+        :param dXTo: The x coordinate of the busbar where the branch ends.
+        :type dXTo: float
+        :param dYTo: The y coordinate of the busbar where the branch ends.
+        :type dYTo: float
+        :return: The unique positive ID of the new transformer.
+            If the transformer cannot be drawn, the return value is 0.
         :rtype: int
         """
         pass
@@ -5181,6 +5227,8 @@ class IscDiagram:
 
     def CreateUnbalancedLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
+        Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalancedBranch.
+
         Creates a new unbalanced line component on the diagram.
 
         :param strName: The unbalanced line name.
@@ -5200,8 +5248,31 @@ class IscDiagram:
         """
         pass
 
+    # Fixing gaps in documentation EL 11/2023
+    def CreateUnbalancedBranch(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
+        """
+        Creates a new unbalanced line component on the diagram.
+
+        :param strName: The unbalanced line name.
+        :type strName: str
+        :param dXFrom: The x coordinate of the busbar where the branch starts.
+        :type dXFrom: float
+        :param dYFrom: The y coordinate of the busbar where the branch starts.
+        :type dYFrom: float
+        :param dXTo: The x coordinate of the busbar where the branch ends.
+        :type dXTo: float
+        :param dYTo: The y coordinate of the busbar where the branch ends.
+        :type dYTo: float
+        :return: The unique positive ID of the new unbalanced line component.
+            If the unbalanced line cannot be drawn, the return value is 0.
+        :rtype: int
+        """
+        pass
+
     def CreateUnbalancedTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
+        Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalanced2WTransformer.
+
         Creates a new unbalanced transformer component on the diagram.
 
         :param strName: The unbalanced transformer name.
@@ -5217,6 +5288,28 @@ class IscDiagram:
         :return: The unique positive ID of the new unbalanced transformer component.
             A negative value is returned if the “from” end busbar is not found,
             and zero is returned if the “to” end busbar is not found.
+        :rtype: int
+        """
+        pass
+
+    # Fixing gaps in documentation EL 11/2023
+    def CreateUnbalanced2WTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float,
+                                      dYTo: float) -> int:
+        """
+        Creates a new unbalanced transformer component on the diagram.
+
+        :param strName: The unbalanced transformer name.
+        :type strName: str
+        :param dXFrom: The x coordinate of the busbar where the branch starts.
+        :type dXFrom: float
+        :param dYFrom: The y coordinate of the busbar where the branch starts.
+        :type dYFrom: float
+        :param dXTo: The x coordinate of the busbar where the branch ends.
+        :type dXTo: float
+        :param dYTo: The y coordinate of the busbar where the branch ends.
+        :type dYTo: float
+        :return: The unique positive ID of the new unbalanced transformer component.
+            If the unbalanced transformer cannot be drawn, the return value is 0.
         :rtype: int
         """
         pass
