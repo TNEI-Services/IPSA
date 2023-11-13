@@ -5187,6 +5187,7 @@ class IscDiagram:
         Returns 0, if the component cannot be found,
         :rtype: int
         """
+        pass
 
     def GetBusbarUIDFromCoordinates(self, dX: float, dY: float) -> int:
         """
@@ -5201,6 +5202,7 @@ class IscDiagram:
         Returns 0, if the component cannot be found,
         :rtype: int
         """
+        pass
 
     def GetItemX(self, nUID: int) -> float:
         """
@@ -5279,6 +5281,17 @@ class IscDiagram:
         :type nUID: int
         :return: The screen Y coordinates.
         :rtype: float
+        """
+        pass
+
+    def DeleteItem(self, nItemUID: int) -> bool:
+        """
+        Deletes the item with the given UID.
+
+        :param nItemUID: The item UID to be deleted.
+        :type nItemUID: int
+        :return: True if successful.
+        :rtype: bool
         """
         pass
 
@@ -8357,23 +8370,24 @@ class IscNetwork:
         """Reset all analysis results."""
         pass
 
-    def GetLastSuccessfulAutomationUID(self) -> int:
-        """
-        Returns the integer UID of the last successful automation study.
-
-        :return: The last successful automation study UID.
-        :rtype: int
-        """
-        pass
-
-    def GetLastSuccessfulContingencyUID(self) -> int:
-        """
-        Returns the integer UID of the last successful contingency study.
-
-        :return: The last successful contingency study UID.
-        :rtype: int
-        """
-        pass
+# These functions don't exist yet in PyIPSA EL 11.2023
+    # def GetLastSuccessfulAutomationUID(self) -> int:
+    #     """
+    #     Returns the integer UID of the last successful automation study.
+    #
+    #     :return: The last successful automation study UID.
+    #     :rtype: int
+    #     """
+    #     pass
+    #
+    # def GetLastSuccessfulContingencyUID(self) -> int:
+    #     """
+    #     Returns the integer UID of the last successful contingency study.
+    #
+    #     :return: The last successful contingency study UID.
+    #     :rtype: int
+    #     """
+    #     pass
 
     def GetNumberOfIslands(self) -> int:
         """
@@ -9812,9 +9826,10 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetUnbalancedLoad(self, nUID: int):
         """
-        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the UID or the Python name.
+        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the UID.
 
         :param nUID: The selected unbalanced load UID.
         :type nUID: int
@@ -9823,14 +9838,91 @@ class IscNetwork:
         """
         pass
 
+    @overload
+    def GetUnbalancedLoad(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the Python name.
+
+        :param strPythonName: The selected unbalanced load name.
+        :type strPythonName: str
+        :return: The unbalanced load instance or None if such is not found.
+        :rtype: IscUnbalancedLoad
+        """
+        pass
+
+    def GetUnbalancedLoad(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the UID or the Python name.
+
+        :param nUID: The selected unbalanced load UID.
+        :type nUID: int
+        :param strPythonName: The selected unbalanced load name.
+        :type strPythonName: str
+        :return: The unbalanced load instance or None if such is not found.
+        :rtype: IscUnbalancedLoad
+        """
+        pass
+
+    @overload
     def GetUnbalancedLine(self, nUID: int):
         """
-        Returns an IscUnbalancedLine instance for the unbalanced line identified by the UID or the Python name.
+        Returns an IscUnbalancedLine instance for the unbalanced line identified by the UID.
 
         :param nUID: The selected unbalanced line UID.
         :type nUID: int
         :return: The unbalanced line instance or None if such is not found.
         :rtype: IscUnbalancedLine
+        """
+        pass
+
+    @overload
+    def GetUnbalancedLine(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLine instance for the unbalanced line identified by the Python name.
+
+        :param strPythonName: The selected unbalanced line name.
+        :type strPythonName: str
+        :return: The unbalanced line instance or None if such is not found.
+        :rtype: IscUnbalancedLine
+        """
+        pass
+
+    def GetUnbalancedLine(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLine instance for the unbalanced line identified by the UID or the Python name.
+
+        :param nUID: The selected unbalanced line UID.
+        :type nUID: int
+        :param strPythonName: The selected unbalanced line name.
+        :type strPythonName: str
+        :return: The unbalanced line instance or None if such is not found.
+        :rtype: IscUnbalancedLine
+        """
+        pass
+
+    @overload
+    def GetUnbalancedTransformer(self, nUID: int):
+        """
+        Returns an IscUnbalancedTransformer instance for the unbalanced transformer identified by
+        the UID.
+
+        :param nUID: The selected unbalanced transformer UID.
+        :type nUID: int
+        :return: The unbalanced transformer instance or None if such is not found.
+        :rtype: IscUnbalancedTransformer
+        """
+        pass
+
+    @overload
+    def GetUnbalancedTransformer(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedTransformer instance for the unbalanced transformer identified by
+        the Python name.
+
+        :param strPythonName: The selected unbalanced transformer name.
+        :type strPythonName: str
+        :return: The unbalanced transformer instance or None if such is not found.
+        :rtype: IscUnbalancedTransformer
         """
         pass
 
@@ -9841,6 +9933,8 @@ class IscNetwork:
 
         :param nUID: The selected unbalanced transformer UID.
         :type nUID: int
+        :param strPythonName: The selected unbalanced transformer name.
+        :type strPythonName: str
         :return: The unbalanced transformer instance or None if such is not found.
         :rtype: IscUnbalancedTransformer
         """
@@ -12069,65 +12163,209 @@ class IscNetwork:
 
     def GetGeneratorProfilePQScales(self):
         """
-        Returns a dictionary of all IscGeneratorProfilePQScale objects in the network for scaled generator profiles. The keys are the profile UIDs and the values are the IscGeneratorProfilePQScale objects.
+        Returns a dictionary of all IscGeneratorProfilePQScale objects in the network for scaled generator profiles.
+        The keys are the profile UIDs and the values are the IscGeneratorProfilePQScale objects.
 
         :return: A dictionary of all IscGeneratorProfilePQScale objects in the network for scaled generator profiles.
         :rtype: dict(int,IscGeneratorProfilePQScale)
         """
         pass
 
-    def GetLoadProfilePQActual(self, strName: str):
+    @overload
+    def GetLoadProfilePQActual(self, nUID: int):
         """
-        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified name.
+        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified UID.
 
-        :param strName: The profile name.
-        :type strName: str
-        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile. Returns None if a profile cannot be found.
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
+        Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQActual
         """
         pass
 
-    def GetGeneratorProfilePQActual(self, strName: str):
+    @overload
+    def GetLoadProfilePQActual(self, strPythonName: str):
         """
-        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified name.
+        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified python name.
 
-        :param strName: The profile name.
-        :type strName: str
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQActual
+        """
+        pass
+
+    def GetLoadProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified UID or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQActual(self, nUID: int):
+        """
+        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified UID.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified python name.
+
+        :param strPythonName: The profile name.
+        :type strPythonName: str
         :return: IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile. Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQActual
         """
         pass
 
-    def GetUMachineProfilePQActual(self, strName: str):
+    def GetGeneratorProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified UID
+        or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile. Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetUMachineProfilePQActual(self, nUID: int):
         """
         Returns an IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile with
-        a specified name.
+        a specified UID.
 
-        :param strName: The profile name.
-        :type strName: str
+        :param nUID: The profile UID.
+        :type nUID: int
         :return: IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile. Returns None if a profile cannot be found.
         :rtype: IscUMachineProfilePQActual
         """
         pass
 
-    def GetLoadProfilePQScale(self, strName: str):
+    @overload
+    def GetUMachineProfilePQActual(self, strPythonName: str):
         """
-        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified name.
+        Returns an IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile with
+        a specified python name.
 
-        :param strName: The profile name.
-        :type strName: str
-        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile. Returns None if a profile cannot be found.
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile. Returns None if a profile cannot be found.
+        :rtype: IscUMachineProfilePQActual
+        """
+        pass
+
+    def GetUMachineProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile with
+        a specified UID or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile. Returns None if a profile cannot be found.
+        :rtype: IscUMachineProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetLoadProfilePQScale(self, nUID: int):
+        """
+        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified UID.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
+        Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQScale
         """
         pass
 
-    def GetGeneratorProfilePQScale(self, strName: str):
+    @overload
+    def GetLoadProfilePQScale(self, strPythonName: str):
         """
-        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified name.
+        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified python name.
 
-        :param strName: The profile name.
-        :type strName: str
-        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile. Returns None if a profile cannot be found.
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQScale
+        """
+        pass
+
+    def GetLoadProfilePQScale(self, strPythonName: str):
+        """
+        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified UID or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQScale
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQScale(self, nUID: int):
+        """
+        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified UID.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQScale
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQScale(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified
+        python name.
+
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQScale
+        """
+        pass
+
+    def GetGeneratorProfilePQScale(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified UID or
+        python name.
+
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQScale
         """
         pass
@@ -12245,6 +12483,17 @@ class IscNetwork:
         """
         pass
 
+    def GetDiagram(self, strName: str):
+        """
+        Returns an IscDiagram instance for the diagram with name strName contained in the network.
+
+        :param strName: The name of the diagram.
+        :type strName: str
+        :return: The diagram of the Ipsa network.
+        :rtype: IscDiagram
+        """
+        pass
+
     def GetAllDiagrams(self):
         """
         Returns a list of IscDiagram objects for the network.
@@ -12265,10 +12514,10 @@ class IscNetwork:
 
     def GetAnalysisLF(self):
         """
-        Returns an IscAnlaysisLF object which can be used to get and set the load flow analysis parameters.
+        Returns an IscAnalysisLF object which can be used to get and set the load flow analysis parameters.
 
-        :return: IscAnlaysisLF object.
-        :rtype: IscAnlaysisLF
+        :return: IscAnalysisLF object.
+        :rtype: IscAnalysisLF
         """
         pass
 
@@ -12307,6 +12556,16 @@ class IscNetwork:
         :rtype: bool
         """
         pass
+
+    def GetAnalysisDCLF (self):
+        """
+        Returns an IscAnalysisDCLF object which can be used to get and set the DC load flow analysis parameters.
+
+        :return: IscAnalysisDCLF object.
+        :rtype: IscAnalysisDCLF
+        """
+        pass
+
 
     def DoDCLoadFlow(self):
         """
@@ -12485,6 +12744,24 @@ class IscNetwork:
         Returns the total network induction motor load in MVAr. GetLFSummaryResults() must be called first.
 
         :return: The total network induction motor load in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalUniMachineOutputMW(self) -> float:
+        """
+        Returns the total network universal machine generation in MW. GetLFSummaryResults() must be called first.
+
+        :return: The total network universal machine generation in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalUniMachineOutputMVAr (self) -> float:
+        """
+        Returns the total network universal machine generation in MVAr. GetLFSummaryResults() must be called first.
+
+        :return: The total network universal machine generation in MVAr.
         :rtype: float
         """
         pass
@@ -12691,18 +12968,25 @@ class IscNetwork:
         """
         pass
 
-    def DoStorageFlip(self, lGeneratorsUID: List[int]) -> bool:
+    def DoStorageFlip(self, lGeneratorsUID: List[int]) -> None:
         """
         Flips the storage of all defined Energy Storage units in the given list of UIDs.
 
         :param lGeneratorsUID: The given list of generators UIDs.
         :type lGeneratorsUID: list(int)
-        :return: True if successful.
-        :rtype: bool
         """
         pass
 
-    def DoGlobalStorageFlip(self, bFlipsImports: bool, bFlipExports: bool) -> bool:
+    def DoSingleStorageFlip(self, nGeneratorUID: int) -> None:
+        """
+        Flips the storage of the Energy Storage unit defined by its UID.
+
+        :param nGeneratorUID: The generator UID.
+        :type nGeneratorUID: int
+        """
+        pass
+
+    def DoGlobalStorageFlip(self, bFlipsImports: bool, bFlipExports: bool) -> None:
         """
         Flips all the storage units defined in the network depending on whether you want to flip imports to exports or vice versa.
 
@@ -12710,8 +12994,6 @@ class IscNetwork:
         :type bFlipsImports: bool
         :param bFlipExports: Variable denoting whether you want to flip exports to imports.
         :type bFlipExports: bool
-        :return: True if successful.
-        :rtype: bool
         """
         pass
 
