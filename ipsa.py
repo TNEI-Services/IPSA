@@ -2767,6 +2767,26 @@ class IscBusbar:
         """
         pass
 
+    @overload
+    def GetVoltageMagnitudekV(self) -> float:
+        """
+        Returns the voltage magnitude in kV.
+
+        :return: The voltage magnitude.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudekV(self) -> float:
+        """
+        Returns the voltage magnitude in kV.
+
+        :return: The voltage magnitude.
+        :rtype: float
+        """
+        pass
+
     def GetVoltageMagnitudekV(self) -> float:
         """
         Returns the voltage magnitude in kV.
@@ -3686,7 +3706,7 @@ class IscBusbar:
         """
         pass
 
-    def GetDCLFTransLF(self) -> float:
+    def GetDCLFTransmissionLossFactor(self) -> float:
         """
         Returns transmission losses factor for the busbar.
 
@@ -6070,6 +6090,17 @@ class IscHarmonic:
         """
         pass
 
+    def GetAngleDeg(self, nOrderIndex: int) -> float:
+        """
+        Gets the current or voltage angle in degrees for the order index.
+
+        :param nOrderIndex: The order index.
+        :type nOrderIndex: int
+        :return: The current or voltage angle in degrees.
+        :rtype: float
+        """
+        pass
+
     def SetAngleDeg(self, nOrderIndex: int, dAngleDeg: float) -> None:
         """
         Sets the current or voltage angle in degrees for the order index.
@@ -6806,52 +6837,52 @@ class IscInterface:
         :type strFileName: str
         """
         pass
-
-    @overload
-    def GetLineLength(self, diagram, pComponent) -> float:
-        """
-        Returns the component length as drawn on the diagram.
-        When used on geographic diagrams this function returns the physical as drawn line length.
-
-        :param diagram: IscDiagram instance obtained from the GetDiagram function.
-        :type diagram: IscDiagram
-        :param pComponent: IscBranch instance returned by a GetBranch function.
-        :type pComponent: IscBranch
-        :return: The component length.
-        :rtype: float
-        """
-        pass
-
-    @overload
-    def GetLineLength(self, diagram, nLineUID: int) -> float:
-        """
-        Returns the component length as drawn on the diagram.
-        When used on geographic diagrams this function returns the physical as drawn line length.
-
-        :param diagram: IscDiagram instance obtained from the GetDiagram function.
-        :type diagram: IscDiagram
-        :param nLineUID: The unique integer for the line.
-        :type nLineUID: int
-        :return: The component length.
-        :rtype: float
-        """
-        pass
-
-    def GetLineLength(self, diagram, nLineUID: int) -> float:
-        """
-        Returns the component length as drawn on the diagram.
-        When used on geographic diagrams this function returns the physical as drawn line length.
-
-        :param diagram: IscDiagram instance obtained from the GetDiagram function.
-        :type diagram: IscDiagram
-        :param pComponent: IscBranch instance returned by a GetBranch function.
-        :type pComponent: IscBranch
-        :param nLineUID: The unique integer for the line.
-        :type nLineUID: int
-        :return: The component length.
-        :rtype: float
-        """
-        pass
+    #
+    # @overload
+    # def GetLineLength(self, diagram, pComponent) -> float:
+    #     """
+    #     Returns the component length as drawn on the diagram.
+    #     When used on geographic diagrams this function returns the physical as drawn line length.
+    #
+    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
+    #     :type diagram: IscDiagram
+    #     :param pComponent: IscBranch instance returned by a GetBranch function.
+    #     :type pComponent: IscBranch
+    #     :return: The component length.
+    #     :rtype: float
+    #     """
+    #     pass
+    #
+    # @overload
+    # def GetLineLength(self, diagram, nLineUID: int) -> float:
+    #     """
+    #     Returns the component length as drawn on the diagram.
+    #     When used on geographic diagrams this function returns the physical as drawn line length.
+    #
+    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
+    #     :type diagram: IscDiagram
+    #     :param nLineUID: The unique integer for the line.
+    #     :type nLineUID: int
+    #     :return: The component length.
+    #     :rtype: float
+    #     """
+    #     pass
+    #
+    # def GetLineLength(self, diagram, nLineUID: int) -> float:
+    #     """
+    #     Returns the component length as drawn on the diagram.
+    #     When used on geographic diagrams this function returns the physical as drawn line length.
+    #
+    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
+    #     :type diagram: IscDiagram
+    #     :param pComponent: IscBranch instance returned by a GetBranch function.
+    #     :type pComponent: IscBranch
+    #     :param nLineUID: The unique integer for the line.
+    #     :type nLineUID: int
+    #     :return: The component length.
+    #     :rtype: float
+    #     """
+    #     pass
 
     def MessageBox(self, strDialogTitle: str, strMessage: str) -> bool:
         """
@@ -8192,6 +8223,18 @@ class IscNetComponent:
 
         :return: Dictionary of extension field indexes and field names.
         :rtype: dict(int, str)
+        """
+        pass
+
+    def GetNumberOfDataComponents(self) -> int:
+        """
+        Deprecated.
+        Returns the number of data components within the IscNetComponent object.
+        For most IscNetComponents this will return 1. To obtain the number of sections in a branch the function
+        \"GetSections()\" should instead be used
+
+        :return: Number of data components in the IscNetComponent object.
+        :rtype: int
         """
         pass
 
@@ -15694,6 +15737,24 @@ class IscUnbalancedLine:
         """
         pass
 
+    def AddSections(self, nSections: int) -> None:
+        """
+        Add sections to the unbalanced line. All unbalanced lines start with one section.
+
+        :param nSections: The number of sections.
+        :type nSections: int
+        """
+        pass
+
+    def GetSections(self) -> int:
+        """
+        Returns the number of sections in the unbalanced line. All unbalanced lines have at least one section.
+
+        :return: The number of sections in the unbalanced line.
+        :rtype: int
+        """
+        pass
+
     def GetRatingMVA(self, nRatingIndex: int) -> float:
         """
         Returns the MVA rating associated with the rating set.
@@ -16536,6 +16597,34 @@ class IscUnbalancedLine:
         :rtype: float
         """
         pass
+        pass
+
+    def GetSendPowerPoskVA(self) -> float:
+        """
+        Returns the positive branch phase sequence send end power in kVA.
+
+        :return: The positive branch phase sequence send end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetSendPowerNegkVA(self) -> float:
+        """
+        Returns the negative branch phase sequence send end power in kVA.
+
+        :return: The negative branch phase sequence send end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetSendPowerZerokVA(self) -> float:
+        """
+        Returns the zero branch phase sequence send end power in kVA.
+
+        :return: The zero branch phase sequence send end power in kVA.
+        :rtype: float
+        """
+        pass
 
     def GetRealPowerRecvPosMW(self) -> float:
         """
@@ -16972,7 +17061,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerAMVAr(self) -> float:
+    def GetReactivePowerAMVAr(self) -> float:
         """
         Returns the A phase power for the load in MVAr.
 
@@ -16981,7 +17070,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerBMVAr(self) -> float:
+    def GetReactivePowerBMVAr(self) -> float:
         """
         Returns the B phase power for the load in MVAr.
 
@@ -16990,7 +17079,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerCMVAr(self) -> float:
+    def GetReactivePowerCMVAr(self) -> float:
         """
         Returns the C phase power for the load in MVAr.
 
@@ -16999,7 +17088,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerAkVAr(self) -> float:
+    def GetReactivePowerAkVAr(self) -> float:
         """
         Returns the A phase power for the load in kVAr.
 
@@ -17008,7 +17097,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerBkVAr(self) -> float:
+    def GetReactivePowerBkVAr(self) -> float:
         """
         Returns the B phase power for the load in kVAr.
 
@@ -17017,7 +17106,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerCkVAr(self) -> float:
+    def GetReactivePowerCkVAr(self) -> float:
         """
         Returns the C phase power for the load in kVAr.
 
