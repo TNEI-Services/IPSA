@@ -11606,6 +11606,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def CreatePlugin(self, nCompUID: int, sPluginName: str, sName: str) -> int:
         """
         Returns the UID for the newly created plugin.
@@ -11613,12 +11614,53 @@ class IscNetwork:
         therefore this function should be used every time a plugin is assigned to a component,
         even if the same type of plugin is being assigned.
 
-        :param nCompUID: The UID of the component to which the plugin is to be assigned to.
+        :param nCompUID: The UID of the component to which the plugin is to be assigned.
         :type nCompUID: int
         :param sPluginName: The name of the plugin itself, for example ‘Constant Current Load’.
         :type sPluginName: str
         :param sName: The user defined plugin name or empty string.
         :type sName: str
+        :return: The plugin UID, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreatePlugin(self, pComp, sPluginName: str, sName: str) -> int:
+        """
+        Returns the IscPlugin object for the newly created plugin.
+        A different plugin UID is required for each component with a plugin,
+        therefore this function should be used every time a plugin is assigned to a component,
+        even if the same type of plugin is being assigned.
+
+        :param pComp: The component object (i.e., IscBranch, IscUMachine) to which the plugin is to be assigned.
+        :type nCompUID: IscNetComponent
+        :param sPluginName: The name of the plugin itself, for example ‘Constant Current Load’.
+        :type sPluginName: str
+        :param sName: The user defined plugin name or empty string.
+        :type sName: str
+        :return: The IscPlugin object for the newly created plugin or None on failure.
+        :rtype: IscPlugin
+        """
+        pass
+
+    def CreatePlugin(self, pComp, sPluginName: str, sName: str) -> int:
+        """
+        Returns the UID or the IscPlugin object for the newly created plugin.
+        A different plugin UID is required for each component with a plugin,
+        therefore this function should be used every time a plugin is assigned to a component,
+        even if the same type of plugin is being assigned.
+
+        :param nCompUID: The UID of the component to which the plugin is to be assigned.
+        :type nCompUID: int
+        :param pComp: The component object (i.e., IscBranch, IscUMachine) to which the plugin is to be assigned.
+        :type nCompUID: IscNetComponent
+        :param sPluginName: The name of the plugin itself, for example ‘Constant Current Load’.
+        :type sPluginName: str
+        :param sName: The user defined plugin name or empty string.
+        :type sName: str
+        :return: The IscPlugin object for the newly created plugin or None on failure.
+        :rtype: IscPlugin
         :return: The plugin UID, 0 on failure.
         :rtype: int
         """
