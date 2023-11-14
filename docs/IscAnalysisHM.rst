@@ -76,6 +76,26 @@ Field Values
         - 1 = Parallel RX 1 model
         - 2 = Parallel RX 2 model
         - 3 = X plus parallel RX model
+   * - Integer
+     - HarmonicGlobalGeneratorModel
+     - Global override generator model. One of the following:
+
+        - 0 = Polynomial resistance mode
+        - 1 = Resistance square root model
+        - 2 = Constant X/R model
+   * - Integer
+     - HarmonicGlobalMotorModel
+     - Global override induction machine model, including rotors. One of the following:
+
+        - 0 = Polynomial resistance mode. Rotor uses polynomial resistance mode.
+        - 1 = Resistance square root model. Rotor uses polynomial resistance mode.
+        - 2 = Constant X/R model. Rotor uses polynomial resistance mode.
+        - 3 = Polynomial resistance mode. Rotor uses resistance square root model.
+        - 4 = Resistance square root model. Rotor uses resistance square root model.
+        - 5 = Constant X/R model. Rotor uses resistance square root model.
+        - 6 = Polynomial resistance mode. Rotor uses constant X/R model
+        - 7 = Resistance square root model. Rotor uses constant X/R model
+        - 8 = Constant X/R model. Rotor uses constant X/R model
    * - Float
      - HarmonicOffNominalFrequencyHz
      - Off-nominal frequency (Hz).
