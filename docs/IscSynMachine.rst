@@ -192,6 +192,27 @@ Field Values
    * - Float
      - StorageIERatio
      - For energy storage components, this is the ratio between where a storage unit behaves as an import or an export. If the storage is flipped from export to import, the real power is multiplied by this ratio. Default is 1.
+   * - Float
+     -
+        HarmRC0
+        HarmRC12
+        HarmRC1
+        HarmRC2
+        HarmRC3
+     - Harmonic polynomial constants RC0, RC12, RC1, RC2 and RC3 in:
+
+       :math:`R_{h} = R[RC0 + RC12.h^{0.5} 0 + RC1.h + RC2.h^2 + RC3.h^3]`
+   * - Float
+     -
+        HarmXC0
+        HarmXC1
+        HarmXC2
+        HarmXC3
+        HarmXCEX
+        HarmXEX
+     - Harmonic polynomial constants XC0, XC1, XC2, XC3, XCEX and XEX in:
+
+       :math:`X{h} = X[XC0 + XC1.h + XC2.h^2 + XC3.h^3] + XCEX.X.h^{XEX}`
 
 IscSynMachine Class
 --------------------

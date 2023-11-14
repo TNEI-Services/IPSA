@@ -172,6 +172,34 @@ Field Values
    * - String
      - ControlPluginID
      - Gets the control plugin ID.
+   * - Float
+     -
+        HarmRC0
+        HarmRC12
+        HarmRC1
+        HarmRC2
+        HarmRC3
+     - Harmonic polynomial constants RC0, RC12, RC1, RC2 and RC3 in:
+
+       :math:`R_{h} = R[RC0 + RC12.h^{0.5} 0 + RC1.h + RC2.h^2 + RC3.h^3]`
+   * - Float
+     -
+        HarmXC0
+        HarmXC1
+        HarmXC2
+        HarmXC3
+        HarmXCEX
+        HarmXEX
+     - Harmonic polynomial constants XC0, XC1, XC2, XC3, XCEX and XEX in:
+
+       :math:`X{h} = X[XC0 + XC1.h + XC2.h^2 + XC3.h^3] + XCEX.X.h^{XEX}`
+   * - Float
+     -
+        HarmRotorRC0
+        HarmRotorRC2
+        HarmRotorXC0
+        HarmRotorXC2
+     - Harmonic polynomial constants for the rotors, RC0, RC2, XC0, XC2 following the two equations above.
 
 IscIndMachine Class
 --------------------

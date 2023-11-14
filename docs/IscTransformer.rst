@@ -72,6 +72,12 @@ Field Values
         - D = Delta
         - Z = Zig-zag
    * - Float
+     - CoreLossRPU
+     - Core loss resistance in per unit.
+   * - Float
+     - MagnetXPU
+     - Magnetising reactance in per unit.
+   * - Float
      - NEResistanceW1PU
      - Winding 1 neutral earth resistance in per unit.
    * - Float
