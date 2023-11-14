@@ -101,10 +101,10 @@ Field Values
      - FaultUseCDPs
      - Switch to decide whether the fault engine will include the impact of converter driven plants.
    * - Integer
-     - FaultMethodType
+     - FaultCDPStudyMode
      - The calculation method for CDPs. Currently only the simple method (0) works for PyIPSA. To input the data for the advanced method (1) you would need to open the IPSA UI.
    * - Integer
-     - CDPInterpolation
+     - FaultCDPInterpMethod
      - Chooses the interpolation method for the universal machines that represent the CDPs (in the advanced method):
 
         - 0 = Machine specific settings
