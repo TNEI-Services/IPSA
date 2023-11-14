@@ -24,6 +24,12 @@ Field Values
    * - String
      - Name
      - Gets and sets the name of the protection device.
+   * - Integer
+     - Status
+     - Status:
+
+        - 0 = Switched in
+        - -1 = Switched out
    * - String
      - DeviceManufacturer
      - Gets the name of the manufacturer for the relay assigned to the protection device.

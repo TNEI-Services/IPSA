@@ -36,6 +36,17 @@ Field Values
         - 8 = Voltage controlled by remote PV generator
         - 9 = Voltage controlled by local switched capacitor
         - 10 = Voltage controlled by remote switched capacitor
+   * - Integer
+     - Type
+     - Gets the physical type of busbar e.g. straight joint, mains joint etc.
+
+        - 0 = Unset
+        - 1 = Straight joint
+        - 2 = Mains joint
+        - 3 = Service cable joint
+        - 4 = Service termination joint
+        - 5 = Overhead termination joint
+        - 6 = Ground mounted substation node
    * - Float
      - VoltPU
      - Gets the voltage magnitude in per unit.

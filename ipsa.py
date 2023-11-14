@@ -1020,6 +1020,24 @@ class IscAnalysisHM:
         """
         pass
 
+    def SetBusesToAnalyse(self, nUIDs: List[int]) -> None:
+        """
+        Specifies which busbars will be analysed as defined by the list of busbar UIDs.
+
+        :param nUIDs: The list of busbar UIDs which will be analysed.
+        :type nUIDs: list(int)
+        """
+        pass
+
+    def GetBusesToAnalyse(self) -> List[int]:
+        """
+        Returns a list of busbar UIDs representing the busbars that have been selected to be analysed.
+
+        :return: The list of analysed busbars.
+        :rtype: list(int)
+        """
+        pass
+
 class IscAnalysisDCLF:
     """
     Analysis class for the DC load flow analysis.
@@ -2767,6 +2785,26 @@ class IscBusbar:
         """
         pass
 
+    @overload
+    def GetVoltageMagnitudekV(self) -> float:
+        """
+        Returns the voltage magnitude in kV.
+
+        :return: The voltage magnitude.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudekV(self) -> float:
+        """
+        Returns the voltage magnitude in kV.
+
+        :return: The voltage magnitude.
+        :rtype: float
+        """
+        pass
+
     def GetVoltageMagnitudekV(self) -> float:
         """
         Returns the voltage magnitude in kV.
@@ -3686,7 +3724,7 @@ class IscBusbar:
         """
         pass
 
-    def GetDCLFTransLF(self) -> float:
+    def GetDCLFTransmissionLossFactor(self) -> float:
         """
         Returns transmission losses factor for the busbar.
 
@@ -5267,10 +5305,40 @@ class IscDiagram:
         """
         pass
 
+    def GetUIDFromCoordinates(self, dX: float, dY: float) -> int:
+        """
+        Returns the UID of a component at coordinates  (dX, dY).
+        The screen coordinates are relative to the nominal centre point of the screen.
+
+        :param dX: The screen X coordinate.
+        :type dX: float
+        :param dY: The screen Y coordinate.
+        :type dY: float
+        :return: The UID of the component located.
+        Returns 0, if the component cannot be found,
+        :rtype: int
+        """
+        pass
+
+    def GetBusbarUIDFromCoordinates(self, dX: float, dY: float) -> int:
+        """
+        Returns the UID of a busbar at coordinates (dX, dY).
+        The screen coordinates are relative to the nominal centre point of the screen.
+
+        :param dX: The screen X coordinate.
+        :type dX: float
+        :param dY: The screen Y coordinate.
+        :type dY: float
+        :return: The UID of the component located.
+        Returns 0, if the component cannot be found,
+        :rtype: int
+        """
+        pass
+
     def GetItemX(self, nUID: int) -> float:
         """
         Returns the screen X coordinate of the busbar.
-        The screen co-ordinates are relative to the nominal centre point of the screen.
+        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The busbar UID.
         :type nUID: int
@@ -5344,6 +5412,17 @@ class IscDiagram:
         :type nUID: int
         :return: The screen Y coordinates.
         :rtype: float
+        """
+        pass
+
+    def DeleteItem(self, nItemUID: int) -> bool:
+        """
+        Deletes the item with the given UID.
+
+        :param nItemUID: The item UID to be deleted.
+        :type nItemUID: int
+        :return: True if successful.
+        :rtype: bool
         """
         pass
 
@@ -5870,6 +5949,8 @@ from typing import List
 class IscGroup:
     """
     The IscGroup class provides access to an IPSA group to set and get group members.
+    Note the extension functions will only work for general groups and may not function for e.g., areas, transformer
+    groups.
     """
     def GetUID(self) -> int:
         """
@@ -5964,6 +6045,243 @@ class IscGroup:
         :type fMVAr: float
         :return: True if successful.
         :rtype: bool
+        """
+        pass
+
+    def AddDataExtension(self, strName: str, default: Union[int,float,str]) -> int:
+        """
+        Adds an integer data field and returns the new field index. Sets the default value.
+
+        **Note: The variable of the function is not called default.**
+
+        You can use either nDefault, dDefault, or strDefault specifying the default value.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nDefault: The integer default value.
+        :type nDefault: int
+        :param dDefault: The float default value.
+        :type dDefault: float
+        :param strDefault: The string default value.
+        :type strDefault: str
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    def AddListIntDataExtension(self, strName: str) -> int:
+        """
+        Adds a list of integers data field and returns the new field index.
+        Sets the default value to an empty list.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    def AddListDblDataExtension(self, strName: str) -> int:
+        """
+        Adds a list of doubles data field and returns the new field index.
+        Sets the default value to an empty list.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    def AddListStrDataExtension(self, strName: str) -> int:
+        """
+        Adds a list of strings data field and returns the new field index.
+        Sets the default value to an empty list.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    def GetListIntExtensionValue(self, nFieldIndex: int, nIndex: int) -> int:
+        """
+        Get a single integer value from the list for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :return: The element value.
+        :rtype: int
+        """
+        pass
+
+    def GetListDblExtensionValue(self, nFieldIndex: int, nIndex: int) -> float:
+        """
+        Get a single float value from the list for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :return: The element value.
+        :rtype: float
+        """
+        pass
+
+    def GetListStrExtensionValue(self, nFieldIndex: int, nIndex: int) -> str:
+        """
+        Get a single string value from the list for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :return: The element value.
+        :rtype: str
+        """
+        pass
+
+    def GetListIntSize(self, nFieldIndex: int) -> int:
+        """
+        Get size of the list of integers for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The size of the field list.
+        :rtype: int
+        """
+        pass
+
+    def GetListDblSize(self, nFieldIndex: int) -> int:
+        """
+        Get size of the list of doubles for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The size of the field list.
+        :rtype: int
+        """
+        pass
+
+    def GetListStrSize(self, nFieldIndex: int) -> int:
+        """
+        Get size of the list of strings for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The size of the field list.
+        :rtype: int
+        """
+        pass
+
+    def SetListIntExtensionValue(self, nFieldIndex: int, nIndex: int, nValue: int) -> bool:
+        """
+        Sets the value of an element in a list of integers for the enumerated field at given position to given value.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :param nValue: The selected value.
+        :type nValue: int
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDblExtensionValue(self, nFieldIndex: int, nIndex: int, dValue: float) -> bool:
+        """
+        Sets the value of an element in a list of doubles for the enumerated field at given position to given value.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :param dValue: The selected value.
+        :type dValue: float
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListStrExtensionValue(self, nFieldIndex: int, nIndex: int, strValue: str) -> bool:
+        """
+        Sets the value of an element in a list of strings for the enumerated field at given position to given value.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :param strValue: The selected value.
+        :type strValue: str
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def PushBackListIntExtensionValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Adds an item to the end of a list of integers for the enumerated field with the given value.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The selected value.
+        :type nValue: int
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def PushBackListDblExtensionValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Adds an item to the end of a list of doubles for the enumerated field with the given value.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The selected value.
+        :type dValue: float
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def PushBackListStrExtensionValue(self, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Adds an item to the end of a list of strings for the enumerated field with the given value.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The selected value.
+        :type strValue: str
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetExtensionFieldIndex(self, strName: str) -> int:
+        """
+        Returns the field index for the extended data field.
+
+        :param strName: The name of the extended data field.
+        :type strName: str
+        :return: The field index.
+        :rtype: int
+        """
+        pass
+
+    def GetExtensionNames(self) -> Dict[int,str]:
+        """
+        Returns a dictionary of extension field indexes and field names.
+        The dictionary keys are integers representing all the extended data fields.
+        The dictionary values are the field names of the individual extended data fields.
+        Each extended data field is therefore represented by {nIndex:strName}, where integer nIndex is the field index
+        and string strName is the field name.
+
+        :return: Dictionary of extension field indexes and field names.
+        :rtype: dict(int, str)
         """
         pass
 
@@ -6119,6 +6437,17 @@ class IscHarmonic:
         :type nOrderIndex: int
         :param dMagnitude: The current or voltage magnitude.
         :type dMagnitude: float
+        """
+        pass
+
+    def GetAngleDeg(self, nOrderIndex: int) -> float:
+        """
+        Gets the current or voltage angle in degrees for the order index.
+
+        :param nOrderIndex: The order index.
+        :type nOrderIndex: int
+        :return: The current or voltage angle in degrees.
+        :rtype: float
         """
         pass
 
@@ -6858,52 +7187,52 @@ class IscInterface:
         :type strFileName: str
         """
         pass
-
-    @overload
-    def GetLineLength(self, diagram, pComponent) -> float:
-        """
-        Returns the component length as drawn on the diagram.
-        When used on geographic diagrams this function returns the physical as drawn line length.
-
-        :param diagram: IscDiagram instance obtained from the GetDiagram function.
-        :type diagram: IscDiagram
-        :param pComponent: IscBranch instance returned by a GetBranch function.
-        :type pComponent: IscBranch
-        :return: The component length.
-        :rtype: float
-        """
-        pass
-
-    @overload
-    def GetLineLength(self, diagram, nLineUID: int) -> float:
-        """
-        Returns the component length as drawn on the diagram.
-        When used on geographic diagrams this function returns the physical as drawn line length.
-
-        :param diagram: IscDiagram instance obtained from the GetDiagram function.
-        :type diagram: IscDiagram
-        :param nLineUID: The unique integer for the line.
-        :type nLineUID: int
-        :return: The component length.
-        :rtype: float
-        """
-        pass
-
-    def GetLineLength(self, diagram, nLineUID: int) -> float:
-        """
-        Returns the component length as drawn on the diagram.
-        When used on geographic diagrams this function returns the physical as drawn line length.
-
-        :param diagram: IscDiagram instance obtained from the GetDiagram function.
-        :type diagram: IscDiagram
-        :param pComponent: IscBranch instance returned by a GetBranch function.
-        :type pComponent: IscBranch
-        :param nLineUID: The unique integer for the line.
-        :type nLineUID: int
-        :return: The component length.
-        :rtype: float
-        """
-        pass
+    #
+    # @overload
+    # def GetLineLength(self, diagram, pComponent) -> float:
+    #     """
+    #     Returns the component length as drawn on the diagram.
+    #     When used on geographic diagrams this function returns the physical as drawn line length.
+    #
+    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
+    #     :type diagram: IscDiagram
+    #     :param pComponent: IscBranch instance returned by a GetBranch function.
+    #     :type pComponent: IscBranch
+    #     :return: The component length.
+    #     :rtype: float
+    #     """
+    #     pass
+    #
+    # @overload
+    # def GetLineLength(self, diagram, nLineUID: int) -> float:
+    #     """
+    #     Returns the component length as drawn on the diagram.
+    #     When used on geographic diagrams this function returns the physical as drawn line length.
+    #
+    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
+    #     :type diagram: IscDiagram
+    #     :param nLineUID: The unique integer for the line.
+    #     :type nLineUID: int
+    #     :return: The component length.
+    #     :rtype: float
+    #     """
+    #     pass
+    #
+    # def GetLineLength(self, diagram, nLineUID: int) -> float:
+    #     """
+    #     Returns the component length as drawn on the diagram.
+    #     When used on geographic diagrams this function returns the physical as drawn line length.
+    #
+    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
+    #     :type diagram: IscDiagram
+    #     :param pComponent: IscBranch instance returned by a GetBranch function.
+    #     :type pComponent: IscBranch
+    #     :param nLineUID: The unique integer for the line.
+    #     :type nLineUID: int
+    #     :return: The component length.
+    #     :rtype: float
+    #     """
+    #     pass
 
     def MessageBox(self, strDialogTitle: str, strMessage: str) -> bool:
         """
@@ -8247,6 +8576,18 @@ class IscNetComponent:
         """
         pass
 
+    def GetNumberOfDataComponents(self) -> int:
+        """
+        Deprecated.
+        Returns the number of data components within the IscNetComponent object.
+        For most IscNetComponents this will return 1. To obtain the number of sections in a branch the function
+        \"GetSections()\" should instead be used
+
+        :return: Number of data components in the IscNetComponent object.
+        :rtype: int
+        """
+        pass
+
 class IscNetwork:
     """
     Class providing the main access to an IPSA network.
@@ -8422,23 +8763,24 @@ class IscNetwork:
         """Reset all analysis results."""
         pass
 
-    def GetLastSuccessfulAutomationUID(self) -> int:
-        """
-        Returns the integer UID of the last successful automation study.
-
-        :return: The last successful automation study UID.
-        :rtype: int
-        """
-        pass
-
-    def GetLastSuccessfulContingencyUID(self) -> int:
-        """
-        Returns the integer UID of the last successful contingency study.
-
-        :return: The last successful contingency study UID.
-        :rtype: int
-        """
-        pass
+# These functions don't exist yet in PyIPSA EL 11.2023
+    # def GetLastSuccessfulAutomationUID(self) -> int:
+    #     """
+    #     Returns the integer UID of the last successful automation study.
+    #
+    #     :return: The last successful automation study UID.
+    #     :rtype: int
+    #     """
+    #     pass
+    #
+    # def GetLastSuccessfulContingencyUID(self) -> int:
+    #     """
+    #     Returns the integer UID of the last successful contingency study.
+    #
+    #     :return: The last successful contingency study UID.
+    #     :rtype: int
+    #     """
+    #     pass
 
     def GetNumberOfIslands(self) -> int:
         """
@@ -9877,9 +10219,10 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetUnbalancedLoad(self, nUID: int):
         """
-        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the UID or the Python name.
+        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the UID.
 
         :param nUID: The selected unbalanced load UID.
         :type nUID: int
@@ -9888,14 +10231,91 @@ class IscNetwork:
         """
         pass
 
+    @overload
+    def GetUnbalancedLoad(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the Python name.
+
+        :param strPythonName: The selected unbalanced load name.
+        :type strPythonName: str
+        :return: The unbalanced load instance or None if such is not found.
+        :rtype: IscUnbalancedLoad
+        """
+        pass
+
+    def GetUnbalancedLoad(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLoad instance for the unbalanced load identified by the UID or the Python name.
+
+        :param nUID: The selected unbalanced load UID.
+        :type nUID: int
+        :param strPythonName: The selected unbalanced load name.
+        :type strPythonName: str
+        :return: The unbalanced load instance or None if such is not found.
+        :rtype: IscUnbalancedLoad
+        """
+        pass
+
+    @overload
     def GetUnbalancedLine(self, nUID: int):
         """
-        Returns an IscUnbalancedLine instance for the unbalanced line identified by the UID or the Python name.
+        Returns an IscUnbalancedLine instance for the unbalanced line identified by the UID.
 
         :param nUID: The selected unbalanced line UID.
         :type nUID: int
         :return: The unbalanced line instance or None if such is not found.
         :rtype: IscUnbalancedLine
+        """
+        pass
+
+    @overload
+    def GetUnbalancedLine(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLine instance for the unbalanced line identified by the Python name.
+
+        :param strPythonName: The selected unbalanced line name.
+        :type strPythonName: str
+        :return: The unbalanced line instance or None if such is not found.
+        :rtype: IscUnbalancedLine
+        """
+        pass
+
+    def GetUnbalancedLine(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedLine instance for the unbalanced line identified by the UID or the Python name.
+
+        :param nUID: The selected unbalanced line UID.
+        :type nUID: int
+        :param strPythonName: The selected unbalanced line name.
+        :type strPythonName: str
+        :return: The unbalanced line instance or None if such is not found.
+        :rtype: IscUnbalancedLine
+        """
+        pass
+
+    @overload
+    def GetUnbalancedTransformer(self, nUID: int):
+        """
+        Returns an IscUnbalancedTransformer instance for the unbalanced transformer identified by
+        the UID.
+
+        :param nUID: The selected unbalanced transformer UID.
+        :type nUID: int
+        :return: The unbalanced transformer instance or None if such is not found.
+        :rtype: IscUnbalancedTransformer
+        """
+        pass
+
+    @overload
+    def GetUnbalancedTransformer(self, strPythonName: str):
+        """
+        Returns an IscUnbalancedTransformer instance for the unbalanced transformer identified by
+        the Python name.
+
+        :param strPythonName: The selected unbalanced transformer name.
+        :type strPythonName: str
+        :return: The unbalanced transformer instance or None if such is not found.
+        :rtype: IscUnbalancedTransformer
         """
         pass
 
@@ -9906,6 +10326,8 @@ class IscNetwork:
 
         :param nUID: The selected unbalanced transformer UID.
         :type nUID: int
+        :param strPythonName: The selected unbalanced transformer name.
+        :type strPythonName: str
         :return: The unbalanced transformer instance or None if such is not found.
         :rtype: IscUnbalancedTransformer
         """
@@ -12176,65 +12598,209 @@ class IscNetwork:
 
     def GetGeneratorProfilePQScales(self):
         """
-        Returns a dictionary of all IscGeneratorProfilePQScale objects in the network for scaled generator profiles. The keys are the profile UIDs and the values are the IscGeneratorProfilePQScale objects.
+        Returns a dictionary of all IscGeneratorProfilePQScale objects in the network for scaled generator profiles.
+        The keys are the profile UIDs and the values are the IscGeneratorProfilePQScale objects.
 
         :return: A dictionary of all IscGeneratorProfilePQScale objects in the network for scaled generator profiles.
         :rtype: dict(int,IscGeneratorProfilePQScale)
         """
         pass
 
-    def GetLoadProfilePQActual(self, strName: str):
+    @overload
+    def GetLoadProfilePQActual(self, nUID: int):
         """
-        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified name.
+        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified UID.
 
-        :param strName: The profile name.
-        :type strName: str
-        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile. Returns None if a profile cannot be found.
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
+        Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQActual
         """
         pass
 
-    def GetGeneratorProfilePQActual(self, strName: str):
+    @overload
+    def GetLoadProfilePQActual(self, strPythonName: str):
         """
-        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified name.
+        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified python name.
 
-        :param strName: The profile name.
-        :type strName: str
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQActual
+        """
+        pass
+
+    def GetLoadProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscLoadProfilePQActual object for the actual MW/MVAr load profile with a specified UID or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQActual(self, nUID: int):
+        """
+        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified UID.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified python name.
+
+        :param strPythonName: The profile name.
+        :type strPythonName: str
         :return: IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile. Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQActual
         """
         pass
 
-    def GetUMachineProfilePQActual(self, strName: str):
+    def GetGeneratorProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile with a specified UID
+        or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile. Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetUMachineProfilePQActual(self, nUID: int):
         """
         Returns an IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile with
-        a specified name.
+        a specified UID.
 
-        :param strName: The profile name.
-        :type strName: str
+        :param nUID: The profile UID.
+        :type nUID: int
         :return: IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile. Returns None if a profile cannot be found.
         :rtype: IscUMachineProfilePQActual
         """
         pass
 
-    def GetLoadProfilePQScale(self, strName: str):
+    @overload
+    def GetUMachineProfilePQActual(self, strPythonName: str):
         """
-        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified name.
+        Returns an IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile with
+        a specified python name.
 
-        :param strName: The profile name.
-        :type strName: str
-        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile. Returns None if a profile cannot be found.
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile. Returns None if a profile cannot be found.
+        :rtype: IscUMachineProfilePQActual
+        """
+        pass
+
+    def GetUMachineProfilePQActual(self, strPythonName: str):
+        """
+        Returns an IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile with
+        a specified UID or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscUMachineProfilePQActual object for the actual MW/MVAr universal machine profile. Returns None if a profile cannot be found.
+        :rtype: IscUMachineProfilePQActual
+        """
+        pass
+
+    @overload
+    def GetLoadProfilePQScale(self, nUID: int):
+        """
+        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified UID.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
+        Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQScale
         """
         pass
 
-    def GetGeneratorProfilePQScale(self, strName: str):
+    @overload
+    def GetLoadProfilePQScale(self, strPythonName: str):
         """
-        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified name.
+        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified python name.
 
-        :param strName: The profile name.
-        :type strName: str
-        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile. Returns None if a profile cannot be found.
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQScale
+        """
+        pass
+
+    def GetLoadProfilePQScale(self, strPythonName: str):
+        """
+        Returns an IscLoadProfilePQScale object for the scaled MW/MVAr load profile with a specified UID or python name.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscLoadProfilePQScale
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQScale(self, nUID: int):
+        """
+        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified UID.
+
+        :param nUID: The profile UID.
+        :type nUID: int
+        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQScale
+        """
+        pass
+
+    @overload
+    def GetGeneratorProfilePQScale(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified
+        python name.
+
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
+        :rtype: IscGeneratorProfilePQScale
+        """
+        pass
+
+    def GetGeneratorProfilePQScale(self, strPythonName: str):
+        """
+        Returns an IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile with a specified UID or
+        python name.
+
+        :param strPythonName: The profile name.
+        :type strPythonName: str
+        :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
+        Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQScale
         """
         pass
@@ -12352,6 +12918,17 @@ class IscNetwork:
         """
         pass
 
+    def GetDiagram(self, strName: str):
+        """
+        Returns an IscDiagram instance for the diagram with name strName contained in the network.
+
+        :param strName: The name of the diagram.
+        :type strName: str
+        :return: The diagram of the Ipsa network.
+        :rtype: IscDiagram
+        """
+        pass
+
     def GetAllDiagrams(self):
         """
         Returns a list of IscDiagram objects for the network.
@@ -12372,10 +12949,10 @@ class IscNetwork:
 
     def GetAnalysisLF(self):
         """
-        Returns an IscAnlaysisLF object which can be used to get and set the load flow analysis parameters.
+        Returns an IscAnalysisLF object which can be used to get and set the load flow analysis parameters.
 
-        :return: IscAnlaysisLF object.
-        :rtype: IscAnlaysisLF
+        :return: IscAnalysisLF object.
+        :rtype: IscAnalysisLF
         """
         pass
 
@@ -12414,6 +12991,16 @@ class IscNetwork:
         :rtype: bool
         """
         pass
+
+    def GetAnalysisDCLF (self):
+        """
+        Returns an IscAnalysisDCLF object which can be used to get and set the DC load flow analysis parameters.
+
+        :return: IscAnalysisDCLF object.
+        :rtype: IscAnalysisDCLF
+        """
+        pass
+
 
     def DoDCLoadFlow(self):
         """
@@ -12592,6 +13179,24 @@ class IscNetwork:
         Returns the total network induction motor load in MVAr. GetLFSummaryResults() must be called first.
 
         :return: The total network induction motor load in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalUniMachineOutputMW(self) -> float:
+        """
+        Returns the total network universal machine generation in MW. GetLFSummaryResults() must be called first.
+
+        :return: The total network universal machine generation in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalUniMachineOutputMVAr (self) -> float:
+        """
+        Returns the total network universal machine generation in MVAr. GetLFSummaryResults() must be called first.
+
+        :return: The total network universal machine generation in MVAr.
         :rtype: float
         """
         pass
@@ -12798,18 +13403,25 @@ class IscNetwork:
         """
         pass
 
-    def DoStorageFlip(self, lGeneratorsUID: List[int]) -> bool:
+    def DoStorageFlip(self, lGeneratorsUID: List[int]) -> None:
         """
         Flips the storage of all defined Energy Storage units in the given list of UIDs.
 
         :param lGeneratorsUID: The given list of generators UIDs.
         :type lGeneratorsUID: list(int)
-        :return: True if successful.
-        :rtype: bool
         """
         pass
 
-    def DoGlobalStorageFlip(self, bFlipsImports: bool, bFlipExports: bool) -> bool:
+    def DoSingleStorageFlip(self, nGeneratorUID: int) -> None:
+        """
+        Flips the storage of the Energy Storage unit defined by its UID.
+
+        :param nGeneratorUID: The generator UID.
+        :type nGeneratorUID: int
+        """
+        pass
+
+    def DoGlobalStorageFlip(self, bFlipsImports: bool, bFlipExports: bool) -> None:
         """
         Flips all the storage units defined in the network depending on whether you want to flip imports to exports or vice versa.
 
@@ -12817,8 +13429,6 @@ class IscNetwork:
         :type bFlipsImports: bool
         :param bFlipExports: Variable denoting whether you want to flip exports to imports.
         :type bFlipExports: bool
-        :return: True if successful.
-        :rtype: bool
         """
         pass
 
@@ -15519,6 +16129,24 @@ class IscUnbalancedLine:
         """
         pass
 
+    def AddSections(self, nSections: int) -> None:
+        """
+        Add sections to the unbalanced line. All unbalanced lines start with one section.
+
+        :param nSections: The number of sections.
+        :type nSections: int
+        """
+        pass
+
+    def GetSections(self) -> int:
+        """
+        Returns the number of sections in the unbalanced line. All unbalanced lines have at least one section.
+
+        :return: The number of sections in the unbalanced line.
+        :rtype: int
+        """
+        pass
+
     def GetRatingMVA(self, nRatingIndex: int) -> float:
         """
         Returns the MVA rating associated with the rating set.
@@ -16361,6 +16989,34 @@ class IscUnbalancedLine:
         :rtype: float
         """
         pass
+        pass
+
+    def GetSendPowerPoskVA(self) -> float:
+        """
+        Returns the positive branch phase sequence send end power in kVA.
+
+        :return: The positive branch phase sequence send end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetSendPowerNegkVA(self) -> float:
+        """
+        Returns the negative branch phase sequence send end power in kVA.
+
+        :return: The negative branch phase sequence send end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetSendPowerZerokVA(self) -> float:
+        """
+        Returns the zero branch phase sequence send end power in kVA.
+
+        :return: The zero branch phase sequence send end power in kVA.
+        :rtype: float
+        """
+        pass
 
     def GetRealPowerRecvPosMW(self) -> float:
         """
@@ -16797,7 +17453,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerAMVAr(self) -> float:
+    def GetReactivePowerAMVAr(self) -> float:
         """
         Returns the A phase power for the load in MVAr.
 
@@ -16806,7 +17462,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerBMVAr(self) -> float:
+    def GetReactivePowerBMVAr(self) -> float:
         """
         Returns the B phase power for the load in MVAr.
 
@@ -16815,7 +17471,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerCMVAr(self) -> float:
+    def GetReactivePowerCMVAr(self) -> float:
         """
         Returns the C phase power for the load in MVAr.
 
@@ -16824,7 +17480,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerAkVAr(self) -> float:
+    def GetReactivePowerAkVAr(self) -> float:
         """
         Returns the A phase power for the load in kVAr.
 
@@ -16833,7 +17489,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerBkVAr(self) -> float:
+    def GetReactivePowerBkVAr(self) -> float:
         """
         Returns the B phase power for the load in kVAr.
 
@@ -16842,7 +17498,7 @@ class IscUnbalancedLoad:
         """
         pass
 
-    def GetRealPowerCkVAr(self) -> float:
+    def GetReactivePowerCkVAr(self) -> float:
         """
         Returns the C phase power for the load in kVAr.
 

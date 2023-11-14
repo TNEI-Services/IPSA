@@ -16,6 +16,9 @@ Field Values
    * - Boolean
      - CalculateNodalTLF
      - If this option is selected then the nodal transmission loss factors will be calculated for the network.
+   * - Boolean
+     - CalculateLODF
+     - If this option is selected then the line outage distribution factors will be calculated for the network.
    * - Integer
      - BranchLossEstimationMethod
      - Type of method used to estimate the losses in the branches in the network. Should be one of:

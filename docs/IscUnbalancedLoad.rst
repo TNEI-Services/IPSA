@@ -30,6 +30,13 @@ Field Values
 
         - 0 = Switched in
         - -1 = Switched out
+   * - Integer
+     - Connection
+     - Connection type:
+
+        - 1 = Phase-ground
+        - 2 = Phase-neutral
+        - 3 = Phase-phase
    * - Boolean
      - HasPhaseA
      - Gets or sets if the line has the A phase connected. Set to ``True`` to enable the A phase.
