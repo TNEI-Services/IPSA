@@ -8806,18 +8806,6 @@ class IscNetwork:
         """
         pass
 
-    def GetBranches(self, bFetchFromSystem: bool):
-        """
-        Returns a dictionary of IscBranch instances.
-        Key values (sPyName) are the Python names and the associated values are IscBranch instances.
-
-        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps. If set to False, it only rebuilds if a new component has been built since last Get() function.
-        :type bFetchFromSystem: bool
-        :return: Dictionary of branches.
-        :rtype: dict(str,IscBranch)
-        """
-        pass
-
     def GetBusbarAttachedUnbalancedTransformers(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
         """
         Returns a tuple of unbalanced transformer UIDs attached to the busbar specified by busbar UID.
@@ -8829,6 +8817,18 @@ class IscNetwork:
         :type bFetchFromSystem: bool
         :return: Tuple of unbalanced transformer UIDs.
         :rtype: tuple(int)
+        """
+        pass
+
+    def GetBranches(self, bFetchFromSystem: bool):
+        """
+        Returns a dictionary of IscBranch instances.
+        Key values (sPyName) are the Python names and the associated values are IscBranch instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps. If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of branches.
+        :rtype: dict(str,IscBranch)
         """
         pass
 
@@ -9621,7 +9621,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetBranchGetUMachine(self, nUID: int):
+    def GetUMachine(self, nUID: int):
         """
         Returns an IscUMachine instance for the universal machine identified by the UID.
 
@@ -9633,7 +9633,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetBranchGetUMachine(self, strPythonName: str):
+    def GetUMachine(self, strPythonName: str):
         """
         Returns an IscUMachine instance for the universal machine identified by the Python name.
 
@@ -9644,7 +9644,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBranchGetUMachine(self, strPythonName: str):
+    def GetUMachine(self, strPythonName: str):
         """
         Returns an IscUMachine instance for the universal machine identified by the UID or the Python name.
 
