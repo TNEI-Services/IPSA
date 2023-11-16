@@ -117,3 +117,11 @@ IscNetwork Class
 
 .. autoclass:: ipsa.IscNetwork
    :members:
+
+Isc__ProfilePQ__ Class
+-----------------------
+The functionfs for the 5 profile classes (``IscLoadProfilePQActual``, ``IscLoadProfilePQScale``,
+``IscGeneratorProfilePQActual``, ``IscGeneratorProfilePQScale``, ``IscUMachineProfilePQActual``) are as follows:
+
+.. autoclass:: ipsa.Isc__ProfilePQ__
+   :members:
