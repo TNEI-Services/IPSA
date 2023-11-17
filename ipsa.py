@@ -2786,11 +2786,62 @@ class IscBusbar:
         pass
 
     @overload
-    def GetVoltageMagnitudekV(self) -> float:
+    def GetVoltageMagnitudePU(self, nStudyUid: int) -> float:
         """
-        Returns the voltage magnitude in kV.
+        Returns the voltage magnitude in per unit for the given automation or contingency study.
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: The voltage magnitude for the study.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudePU(self) -> float:
+        """
+        Returns the voltage magnitude in per unit.
 
         :return: The voltage magnitude.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudePU(self, dOrder: float) -> float:
+        """
+        Returns the harmonic voltage magnitude in per unit for harmonic order.
+
+        :param dOrder: The harmonic order.
+        :type dOrder: float
+        :return: The harmonic voltage magnitude in per unit.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageMagnitudePU(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage magnitude in per unit.
+        If a UID is provided this is for the associated automation or contingency study.
+        if a float dOrder is provided, this is the harmonic voltage magnitude for the given harmonic order.
+
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :param dOrder: The harmonic order, if wanted.
+        :type dOrder: float
+        :return: The voltage magnitude, if a UID is provided this returns the angle for the associated study..
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudekV(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage magnitude in kV for the given automation or contingency study.
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: The voltage magnitude for the study.
         :rtype: float
         """
         pass
@@ -2805,15 +2856,19 @@ class IscBusbar:
         """
         pass
 
-    def GetVoltageMagnitudekV(self) -> float:
+    def GetVoltageMagnitudekV(self, nStudyUid: int) -> float:
         """
         Returns the voltage magnitude in kV.
+        If a UID is provided this is for the associated automation or contingency study.
 
-        :return: The voltage magnitude.
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :return: The voltage magnitude, if a UID is provided this returns the angle for the associated study.
         :rtype: float
         """
         pass
 
+    @overload
     def GetVoltageAngleRad(self) -> float:
         """
         Returns the voltage angle in radians.
@@ -2823,11 +2878,60 @@ class IscBusbar:
         """
         pass
 
+    @overload
+    def GetVoltageAngleRad(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in radians for the given automation or contingency study
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: Returns the voltage angle in radians in per unit for the study.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageAngleRad(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in radians.
+        If a UID is provided this is for the associated automation or contingency study.
+
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :return: The voltage angle, if a UID is provided this returns the angle for the associated study.
+        :rtype: float
+        """
+        pass
+
+    @overload
     def GetVoltageAngleDeg(self) -> float:
         """
         Returns the voltage angle in degrees.
 
         :return: The voltage angle.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageAngleDeg(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in degrees for the given automation or contingency study
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: Returns the voltage angle in radians in per unit for the study.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageAngleDeg(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in degrees.
+        If a UID is provided this is for the associated automation or contingency study.
+
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :return: The voltage angle, if a UID is provided this returns the angle for the associated study.
         :rtype: float
         """
         pass
@@ -3460,17 +3564,6 @@ class IscBusbar:
 
         :return: All harmonic orders at a busbar.
         :rtype: list(float)
-        """
-        pass
-
-    def GetVoltageMagnitudePU(self, dOrder: float) -> float:
-        """
-        Returns the harmonic voltage magnitude in per unit for harmonic order.
-
-        :param dOrder: The harmonic order.
-        :type dOrder: float
-        :return: The harmonic voltage magnitude in per unit.
-        :rtype: float
         """
         pass
 
@@ -8486,10 +8579,10 @@ class IscNetComponent:
 
     def GetNumberOfDataComponents(self) -> int:
         """
-        Deprecated.
+        *Deprecated.*
         Returns the number of data components within the IscNetComponent object.
         For most IscNetComponents this will return 1. To obtain the number of sections in a branch the function
-        \"GetSections()\" should instead be used
+        :meth:`IscBranch.GetSections()` should instead be used
 
         :return: Number of data components in the IscNetComponent object.
         :rtype: int
@@ -13260,7 +13353,7 @@ class IscNetwork:
         """
         pass
 
-    def CreateContingency(self, nDepth: int, bExtendToBreakers: bool) -> None:
+    def CreateContingency(self, nDepth: int, bExtendToBreakers: bool) -> int:
         """
         Creates a new contingency study and returns the UID of the study created.
         The depth of the study is configured as follows:
@@ -13274,6 +13367,8 @@ class IscNetwork:
         :type nDepth: int
         :param bExtendToBreakers: If False then individual branches and transfers are switched out during the study. If True then the nearest circuit breakers are switched out allowing multiple components to be switched for each study.
         :type bExtendToBreakers: bool
+        :return: The UID of the contingency created.
+        :rtype: int
         """
         pass
 
@@ -13287,7 +13382,7 @@ class IscNetwork:
         :type bExtendToBreakers: bool
         :param lBusbarsRequired: The specified list of busbars.
         :type lBusbarsRequired: list(IscBusbar)
-        :return: The UID of the contingency.
+        :return: The UID of the contingency created.
         :rtype: int
         """
         pass
