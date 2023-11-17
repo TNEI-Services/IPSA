@@ -2810,6 +2810,8 @@ class IscBusbar:
     @overload
     def GetVoltageMagnitudePU(self, dOrder: float) -> float:
         """
+        *Deprecated in IPSA 2.10.2 instead use GetVoltageMagnitudeHarmPU*
+
         Returns the harmonic voltage magnitude in per unit for harmonic order.
 
         :param dOrder: The harmonic order.
@@ -2823,7 +2825,9 @@ class IscBusbar:
         """
         Returns the voltage magnitude in per unit.
         If a UID is provided this is for the associated automation or contingency study.
-        if a float dOrder is provided, this is the harmonic voltage magnitude for the given harmonic order.
+
+        *Deprecated. If a float dOrder is provided, this is the harmonic voltage magnitude for the given harmonic order.
+        Instead use GetVoltageMagnitudeHarmPU*
 
         :param nStudyUid: The UID of the study, if wanted.
         :type nStudyUid: int
@@ -3564,6 +3568,17 @@ class IscBusbar:
 
         :return: All harmonic orders at a busbar.
         :rtype: list(float)
+        """
+        pass
+
+    def GetVoltageMagnitudeHarmPU(self, dOrder: float) -> float:
+        """
+        Returns the harmonic voltage magnitude in per unit for harmonic order.
+
+        :param dOrder: The harmonic order.
+        :type dOrder: float
+        :return: The harmonic voltage magnitude in per unit.
+        :rtype: float
         """
         pass
 
@@ -4970,7 +4985,7 @@ class IscDiagram:
 
     def CreateLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use CreateBranch.
+        *Deprecated in Ipsa 2.10.2. Instead, use CreateBranch.*
 
         Creates a new branch component on the diagram.
 
@@ -5063,7 +5078,7 @@ class IscDiagram:
 
     def CreateTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use Create2WTransformer.
+        *Deprecated in Ipsa 2.10.2. Instead, use Create2WTransformer.*
 
         Creates a new transformer component on the diagram.
 
@@ -5122,7 +5137,7 @@ class IscDiagram:
 
     def CreateUnbalancedLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalancedBranch.
+        *Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalancedBranch.*
 
         Creates a new unbalanced line component on the diagram.
 
@@ -5166,7 +5181,7 @@ class IscDiagram:
 
     def CreateUnbalancedTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalanced2WTransformer.
+        *Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalanced2WTransformer.*
 
         Creates a new unbalanced transformer component on the diagram.
 
