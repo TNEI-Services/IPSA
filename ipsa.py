@@ -2786,11 +2786,62 @@ class IscBusbar:
         pass
 
     @overload
-    def GetVoltageMagnitudekV(self) -> float:
+    def GetVoltageMagnitudePU(self, nStudyUid: int) -> float:
         """
-        Returns the voltage magnitude in kV.
+        Returns the voltage magnitude in per unit for the given automation or contingency study.
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: The voltage magnitude for the study.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudePU(self) -> float:
+        """
+        Returns the voltage magnitude in per unit.
 
         :return: The voltage magnitude.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudePU(self, dOrder: float) -> float:
+        """
+        Returns the harmonic voltage magnitude in per unit for harmonic order.
+
+        :param dOrder: The harmonic order.
+        :type dOrder: float
+        :return: The harmonic voltage magnitude in per unit.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageMagnitudePU(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage magnitude in per unit.
+        If a UID is provided this is for the associated automation or contingency study.
+        if a float dOrder is provided, this is the harmonic voltage magnitude for the given harmonic order.
+
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :param dOrder: The harmonic order, if wanted.
+        :type dOrder: float
+        :return: The voltage magnitude, if a UID is provided this returns the angle for the associated study..
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageMagnitudekV(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage magnitude in kV for the given automation or contingency study.
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: The voltage magnitude for the study.
         :rtype: float
         """
         pass
@@ -2805,15 +2856,19 @@ class IscBusbar:
         """
         pass
 
-    def GetVoltageMagnitudekV(self) -> float:
+    def GetVoltageMagnitudekV(self, nStudyUid: int) -> float:
         """
         Returns the voltage magnitude in kV.
+        If a UID is provided this is for the associated automation or contingency study.
 
-        :return: The voltage magnitude.
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :return: The voltage magnitude, if a UID is provided this returns the angle for the associated study.
         :rtype: float
         """
         pass
 
+    @overload
     def GetVoltageAngleRad(self) -> float:
         """
         Returns the voltage angle in radians.
@@ -2823,11 +2878,60 @@ class IscBusbar:
         """
         pass
 
+    @overload
+    def GetVoltageAngleRad(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in radians for the given automation or contingency study
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: Returns the voltage angle in radians in per unit for the study.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageAngleRad(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in radians.
+        If a UID is provided this is for the associated automation or contingency study.
+
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :return: The voltage angle, if a UID is provided this returns the angle for the associated study.
+        :rtype: float
+        """
+        pass
+
+    @overload
     def GetVoltageAngleDeg(self) -> float:
         """
         Returns the voltage angle in degrees.
 
         :return: The voltage angle.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetVoltageAngleDeg(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in degrees for the given automation or contingency study
+
+        :param nStudyUid: The UID of the study.
+        :type nStudyUid: int
+        :return: Returns the voltage angle in radians in per unit for the study.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageAngleDeg(self, nStudyUid: int) -> float:
+        """
+        Returns the voltage angle in degrees.
+        If a UID is provided this is for the associated automation or contingency study.
+
+        :param nStudyUid: The UID of the study, if wanted.
+        :type nStudyUid: int
+        :return: The voltage angle, if a UID is provided this returns the angle for the associated study.
         :rtype: float
         """
         pass
@@ -3460,17 +3564,6 @@ class IscBusbar:
 
         :return: All harmonic orders at a busbar.
         :rtype: list(float)
-        """
-        pass
-
-    def GetVoltageMagnitudePU(self, dOrder: float) -> float:
-        """
-        Returns the harmonic voltage magnitude in per unit for harmonic order.
-
-        :param dOrder: The harmonic order.
-        :type dOrder: float
-        :return: The harmonic voltage magnitude in per unit.
-        :rtype: float
         """
         pass
 
@@ -5315,7 +5408,7 @@ class IscDiagram:
         :param dY: The screen Y coordinate.
         :type dY: float
         :return: The UID of the component located.
-        Returns 0, if the component cannot be found,
+            Returns 0, if the component cannot be found,
         :rtype: int
         """
         pass
@@ -5330,7 +5423,7 @@ class IscDiagram:
         :param dY: The screen Y coordinate.
         :type dY: float
         :return: The UID of the component located.
-        Returns 0, if the component cannot be found,
+            Returns 0, if the component cannot be found,
         :rtype: int
         """
         pass
@@ -7497,7 +7590,7 @@ class IscInterface:
             - ipsa.IscInterface.DCMachineLF = DC machine load flow results
             - ipsa.IscInterface.ConverterLF = AC-DC converter load flow results
             - ipsa.IscInterface.ChopperLF = DC-DC converter load flow results
-            - ipsa.IscInterface.MGSetLF = motor- generator set load flow results
+            - ipsa.IscInterface.MGSetLF = motor-generator set load flow results
             - ipsa.IscInterface.BusbarFL = busbar fault level results
             - ipsa.IscInterface.GeneratorFL = generator fault level results
             - ipsa.IscInterface.GridInfeedFL = grid infeed fault level results
@@ -7506,6 +7599,7 @@ class IscInterface:
             - ipsa.IscInterface.LineFL = branch fault level results
             - ipsa.IscInterface.TransformerFL = transformer fault level results
             - ipsa.IscInterface.ThreeWindingTransformerFL = 3 winding transformer fault level results
+            - ipsa.IscInterface.UniversalMachineFL = universal machine fault level results
             - ipsa.IscInterface.BusbarHM = busbar harmonic analysis results
             - ipsa.IscInterface.GeneratorHM = generator harmonic analysis results
             - ipsa.IscInterface.LoadHM = load object harmonic analysis results
@@ -8578,10 +8672,10 @@ class IscNetComponent:
 
     def GetNumberOfDataComponents(self) -> int:
         """
-        Deprecated.
+        *Deprecated.*
         Returns the number of data components within the IscNetComponent object.
         For most IscNetComponents this will return 1. To obtain the number of sections in a branch the function
-        \"GetSections()\" should instead be used
+        :meth:`IscBranch.GetSections()` should instead be used
 
         :return: Number of data components in the IscNetComponent object.
         :rtype: int
@@ -8899,18 +8993,6 @@ class IscNetwork:
         """
         pass
 
-    def GetBranches(self, bFetchFromSystem: bool):
-        """
-        Returns a dictionary of IscBranch instances.
-        Key values (sPyName) are the Python names and the associated values are IscBranch instances.
-
-        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps. If set to False, it only rebuilds if a new component has been built since last Get() function.
-        :type bFetchFromSystem: bool
-        :return: Dictionary of branches.
-        :rtype: dict(str,IscBranch)
-        """
-        pass
-
     def GetBusbarAttachedUnbalancedTransformers(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
         """
         Returns a tuple of unbalanced transformer UIDs attached to the busbar specified by busbar UID.
@@ -8922,6 +9004,18 @@ class IscNetwork:
         :type bFetchFromSystem: bool
         :return: Tuple of unbalanced transformer UIDs.
         :rtype: tuple(int)
+        """
+        pass
+
+    def GetBranches(self, bFetchFromSystem: bool):
+        """
+        Returns a dictionary of IscBranch instances.
+        Key values (sPyName) are the Python names and the associated values are IscBranch instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps. If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of branches.
+        :rtype: dict(str,IscBranch)
         """
         pass
 
@@ -9714,7 +9808,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetBranchGetUMachine(self, nUID: int):
+    def GetUMachine(self, nUID: int):
         """
         Returns an IscUMachine instance for the universal machine identified by the UID.
 
@@ -9726,7 +9820,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetBranchGetUMachine(self, strPythonName: str):
+    def GetUMachine(self, strPythonName: str):
         """
         Returns an IscUMachine instance for the universal machine identified by the Python name.
 
@@ -9737,7 +9831,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBranchGetUMachine(self, strPythonName: str):
+    def GetUMachine(self, strPythonName: str):
         """
         Returns an IscUMachine instance for the universal machine identified by the UID or the Python name.
 
@@ -12614,7 +12708,7 @@ class IscNetwork:
         :param nUID: The profile UID.
         :type nUID: int
         :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQActual
         """
         pass
@@ -12627,7 +12721,7 @@ class IscNetwork:
         :param strPythonName: The profile name.
         :type strPythonName: str
         :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQActual
         """
         pass
@@ -12641,7 +12735,7 @@ class IscNetwork:
         :param strPythonName: The profile name.
         :type strPythonName: str
         :return: IscLoadProfilePQActual object for the actual MW/MVAr load profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQActual
         """
         pass
@@ -12654,7 +12748,7 @@ class IscNetwork:
         :param nUID: The profile UID.
         :type nUID: int
         :return: IscGeneratorProfilePQActual object for the actual MW/MVAr generator profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQActual
         """
         pass
@@ -12733,7 +12827,7 @@ class IscNetwork:
         :param nUID: The profile UID.
         :type nUID: int
         :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQScale
         """
         pass
@@ -12746,7 +12840,7 @@ class IscNetwork:
         :param strPythonName: The profile name.
         :type strPythonName: str
         :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQScale
         """
         pass
@@ -12760,7 +12854,7 @@ class IscNetwork:
         :param strPythonName: The profile name.
         :type strPythonName: str
         :return: IscLoadProfilePQScale object for the scaled MW/MVAr load profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscLoadProfilePQScale
         """
         pass
@@ -12773,7 +12867,7 @@ class IscNetwork:
         :param nUID: The profile UID.
         :type nUID: int
         :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQScale
         """
         pass
@@ -12787,7 +12881,7 @@ class IscNetwork:
         :param strPythonName: The profile name.
         :type strPythonName: str
         :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQScale
         """
         pass
@@ -12800,7 +12894,7 @@ class IscNetwork:
         :param strPythonName: The profile name.
         :type strPythonName: str
         :return: IscGeneratorProfilePQScale object for the scaled MW/MVAr generator profile.
-        Returns None if a profile cannot be found.
+            Returns None if a profile cannot be found.
         :rtype: IscGeneratorProfilePQScale
         """
         pass
@@ -12857,55 +12951,6 @@ class IscNetwork:
         :type pProfile: IscUMachineProfilePQActual
         :return: True if successful.
         :rtype: bool
-        """
-        pass
-
-    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
-        """
-        Sets up the profile categories for the profile instance.
-        The dictionary should comprise a set of integer keys and string values.
-        The string values are used as the individual category labels whilst the integer keys are only used internally.
-        It is recommended that the keys are numbered sequentially starting from 0.
-
-        For example, passing the following dictionary to an IscLoadProfilePQActual instance would add 3 categories to
-        the profile with the strings as the categories:
-
-        categories = {0: "00:00", 1: "00:30", 2: "01:00"}
-
-        :param dicCategories: The profile categories for the profile instance.
-        :type dicCategories: dict(int,str)
-        """
-        pass
-
-    def SetPMW(self, dictCategoryToMW: Dict[int, float]) -> None:
-        """
-        Assigns MW values to the profile categories.
-        The dictionary should comprise a set of integer keys and float values.
-        The float values are the MW data values whilst the integer keys should be identical to those
-        being used when defining the categories.
-        For scaling profiles the values are the per unit scaling values.
-        For example, passing the following dictionary to an IscLoadProfilePQActual instance would set the MW data:
-
-        dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
-
-        :param dictCategoryToMW: MW values to the profile categories.
-        :type dictCategoryToMW: dict(int,float)
-        """
-        pass
-
-    def SetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
-        """
-        Assigns MVAr values to the profile categories.
-        The dictionary should comprise a set of integer keys and float values.
-        The float values are the MVAr data values whilst the integer keys should be identical to those
-        being used when defining the categories.
-        For scaling profiles the values are the per unit scaling values.
-        For example, passing the following dictionary to an IscLoadProfilePQActual instance would set the MVAr data:
-
-        dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
-
-        :param dictCategoryToMVAr: MVAr values to the profile categories.
-        :type dictCategoryToMVAr: dict(int,float)
         """
         pass
 
@@ -13443,7 +13488,7 @@ class IscNetwork:
         """
         pass
 
-    def CreateContingency(self, nDepth: int, bExtendToBreakers: bool) -> None:
+    def CreateContingency(self, nDepth: int, bExtendToBreakers: bool) -> int:
         """
         Creates a new contingency study and returns the UID of the study created.
         The depth of the study is configured as follows:
@@ -13457,6 +13502,8 @@ class IscNetwork:
         :type nDepth: int
         :param bExtendToBreakers: If False then individual branches and transfers are switched out during the study. If True then the nearest circuit breakers are switched out allowing multiple components to be switched for each study.
         :type bExtendToBreakers: bool
+        :return: The UID of the contingency created.
+        :rtype: int
         """
         pass
 
@@ -13470,7 +13517,7 @@ class IscNetwork:
         :type bExtendToBreakers: bool
         :param lBusbarsRequired: The specified list of busbars.
         :type lBusbarsRequired: list(IscBusbar)
-        :return: The UID of the contingency.
+        :return: The UID of the contingency created.
         :rtype: int
         """
         pass
@@ -13918,6 +13965,571 @@ class IscNetworkData:
         :type bValue: bool
         :return: True if successful.
         :rtype: bool
+        """
+        pass
+
+class Isc__ProfilePQ__:
+    """
+    Provides access to the actual given profile class.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+        """
+        Sets up the profile categories for the profile instance.
+        The dictionary should comprise a set of integer keys and string values.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+        It is recommended that the keys are numbered sequentially starting from 0.
+
+        For example, passing the following dictionary would add 3 categories to the profile with the strings as the
+        categories:
+
+        categories = {0: "00:00", 1: "00:30", 2: "01:00"}
+
+        :param dicCategories: The profile categories for the profile instance.
+        :type dicCategories: dict(int,str)
+        """
+        pass
+
+    def GetCategoryNames(self) -> Dict[int, str]:
+        """
+        Returns the profile categories for the profile instance.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+
+        :return: The profile categories for the profile instance.
+        :rtype: dict(int,str)
+        """
+        pass
+
+    def SetPMW(self, dictCategoryToMW: Dict[int, float]) -> None:
+        """
+        Assigns MW values to the profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MW data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For scaling profiles the values are the per unit scaling values.
+        For example, passing the following dictionary would set the MW data:
+
+        dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMW: MW/pu values to the profile categories.
+        :type dictCategoryToMW: dict(int,float)
+        """
+        pass
+
+    def GetPMW(self) -> Dict[int, float]:
+        """
+        Returns the MW values assigned to the profile categories.
+        The float values are the MW data values whilst the integer keys should be identical to those used defining the
+        categories.
+        For scaling profiles the values are the per unit scaling values.
+
+        :return: MW/pu values to the profile categories.
+        :rtype: dict(int,float)
+        """
+        pass
+
+    def SetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Assigns MVAr values to the profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MVAr data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For scaling profiles the values are the per unit scaling values.
+        For example, passing the following dictionary would set the MVAr data:
+
+        dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMVAr: MVAr/pu values to the profile categories.
+        :type dictCategoryToMVAr: dict(int,float)
+        """
+        pass
+
+    def GetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Returns the MVAr values assigned to the profile categories.
+        The float values are the MVAr data values whilst the integer keys should be identical to those used defining the
+        categories.
+        For scaling profiles the values are the per unit scaling values.
+
+        :return: MVAr/pu values to the profile categories.
+        :rtype: dict(int,float)
+        """
+        pass
+class IscLoadProfilePQActual:
+    """
+    Provides access to the actual load profile class.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+        """
+        Sets up the profile categories for the actual load profile instance.
+        The dictionary should comprise a set of integer keys and string values.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+        It is recommended that the keys are numbered sequentially starting from 0.
+
+        For example, passing the following dictionary would add 3 categories to the profile with the strings as the
+        categories:
+
+        categories = {0: "00:00", 1: "00:30", 2: "01:00"}
+
+        :param dicCategories: The profile categories for the actual load profile instance.
+        :type dicCategories: dict(int,str)
+        """
+        pass
+
+    def GetCategoryNames(self) -> Dict[int, str]:
+        """
+        Returns the profile categories for the actual load profile instance.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+
+        :return: The profile categories for the actual load profile instance.
+        :rtype: dict(int,str)
+        """
+        pass
+
+    def SetPMW(self, dictCategoryToMW: Dict[int, float]) -> None:
+        """
+        Assigns MW values to the actual load profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MW data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MW data:
+
+        dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMW: MW values to the actual load profile categories.
+        :type dictCategoryToMW: dict(int,float)
+        """
+        pass
+
+    def GetPMW(self) -> Dict[int, float]:
+        """
+        Returns the MW values assigned to the actual load profile categories.
+        The float values are the MW data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MW values to the actual load profile categories.
+        :rtype: dict(int,float)
+        """
+        pass
+
+    def SetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Assigns MVAr values to the actual load profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MVAr data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MVAr data:
+
+        dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMVAr: MVAr values to the actual load profile categories.
+        :type dictCategoryToMVAr: dict(int,float)
+        """
+        pass
+
+    def GetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Returns the MVAr values assigned to the actual load profile categories.
+        The float values are the MVAr data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MVAr values to the actual load profile categories.
+        :rtype: dict(int,float)
+        """
+        pass
+
+class IscLoadProfilePQScale:
+    """
+    Provides access to the scaled load profile class.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+        """
+        Sets up the profile categories for the scaled load profile instance.
+        The dictionary should comprise a set of integer keys and string values.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+        It is recommended that the keys are numbered sequentially starting from 0.
+
+        For example, passing the following dictionary would add 3 categories to the profile with the strings as the
+        categories:
+
+        categories = {0: "00:00", 1: "00:30", 2: "01:00"}
+
+        :param dicCategories: The profile categories for the scaled load profile instance.
+        :type dicCategories: dict(int,str)
+        """
+        pass
+
+    def GetCategoryNames(self) -> Dict[int, str]:
+        """
+        Returns the profile categories for the scaled load profile instance.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+
+        :return: The profile categories for the scaled load profile instance.
+        :rtype: dict(int,str)
+        """
+        pass
+
+    def SetPMW(self, dictCategoryToMW: Dict[int, float]) -> None:
+        """
+        Assigns MW values to the scaled load profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MW data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MW data:
+
+        dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMW: MW values to the scaled load profile categories as per unit scaling values.
+        :type dictCategoryToMW: dict(int,float)
+        """
+        pass
+
+    def GetPMW(self) -> Dict[int, float]:
+        """
+        Returns the MW values assigned to the scaled load profile categories.
+        The float values are the MW data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MW values to the scaled load profile categories as per unit scaling values.
+        :rtype: dict(int,float)
+        """
+        pass
+
+    def SetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Assigns MVAr values to the scaled load profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MVAr data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MVAr data:
+
+        dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMVAr: MVAr values to the scaled load profile categories as per unit scaling values.
+        :type dictCategoryToMVAr: dict(int,float)
+        """
+        pass
+
+    def GetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Returns the MVAr values assigned to the scaled load profile categories.
+        The float values are the MVAr data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MVAr values to the scaled load profile categories as per unit scaling values.
+        :rtype: dict(int,float)
+        """
+        pass
+class IscGeneratorProfilePQActual:
+    """
+    Provides access to the actual generator profile class.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+        """
+        Sets up the profile categories for the actual generator profile instance.
+        The dictionary should comprise a set of integer keys and string values.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+        It is recommended that the keys are numbered sequentially starting from 0.
+
+        For example, passing the following dictionary would add 3 categories to the profile with the strings as the
+        categories:
+
+        categories = {0: "00:00", 1: "00:30", 2: "01:00"}
+
+        :param dicCategories: The profile categories for the actual generator profile instance.
+        :type dicCategories: dict(int,str)
+        """
+        pass
+
+    def GetCategoryNames(self) -> Dict[int, str]:
+        """
+        Returns the profile categories for the actual generator profile instance.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+
+        :return: The profile categories for the actual generator profile instance.
+        :rtype: dict(int,str)
+        """
+        pass
+
+    def SetPMW(self, dictCategoryToMW: Dict[int, float]) -> None:
+        """
+        Assigns MW values to the actual generator profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MW data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MW data:
+
+        dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMW: MW values to the actual generator profile categories.
+        :type dictCategoryToMW: dict(int,float)
+        """
+        pass
+
+    def GetPMW(self) -> Dict[int, float]:
+        """
+        Returns the MW values assigned to the actual generator profile categories.
+        The float values are the MW data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MW values to the actual generator profile categories.
+        :rtype: dict(int,float)
+        """
+        pass
+
+    def SetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Assigns MVAr values to the actual generator profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MVAr data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MVAr data:
+
+        dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMVAr: MVAr values to the actual generator profile categories.
+        :type dictCategoryToMVAr: dict(int,float)
+        """
+        pass
+
+    def GetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Returns the MVAr values assigned to the actual generator profile categories.
+        The float values are the MVAr data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MVAr values to the actual generator profile categories.
+        :rtype: dict(int,float)
+        """
+        pass
+
+class IscGeneratorProfilePQScale:
+    """
+    Provides access to the scaled generator profile class.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+        """
+        Sets up the profile categories for the scaled generator profile instance.
+        The dictionary should comprise a set of integer keys and string values.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+        It is recommended that the keys are numbered sequentially starting from 0.
+
+        For example, passing the following dictionary would add 3 categories to the profile with the strings as the
+        categories:
+
+        categories = {0: "00:00", 1: "00:30", 2: "01:00"}
+
+        :param dicCategories: The profile categories for the scaled generator profile instance.
+        :type dicCategories: dict(int,str)
+        """
+        pass
+
+    def GetCategoryNames(self) -> Dict[int, str]:
+        """
+        Returns the profile categories for the scaled generator profile instance.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+
+        :return: The profile categories for the scaled generator profile instance.
+        :rtype: dict(int,str)
+        """
+        pass
+
+    def SetPMW(self, dictCategoryToMW: Dict[int, float]) -> None:
+        """
+        Assigns MW values to the scaled generator profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MW data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MW data:
+
+        dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMW: MW values to the scaled generator profile categories as per unit scaling values.
+        :type dictCategoryToMW: dict(int,float)
+        """
+        pass
+
+    def GetPMW(self) -> Dict[int, float]:
+        """
+        Returns the MW values assigned to the scaled generator profile categories.
+        The float values are the MW data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MW values to the scaled generator profile categories as per unit scaling values.
+        :rtype: dict(int,float)
+        """
+        pass
+
+    def SetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Assigns MVAr values to the scaled generator profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MVAr data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MVAr data:
+
+        dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMVAr: MVAr values to the scaled generator profile categories as per unit scaling values.
+        :type dictCategoryToMVAr: dict(int,float)
+        """
+        pass
+
+    def GetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Returns the MVAr values assigned to the scaled generator profile categories.
+        The float values are the MVAr data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MVAr values to the scaled generator profile categories as per unit scaling values.
+        :rtype: dict(int,float)
+        """
+        pass
+class IscUMachineProfilePQActual:
+    """
+    Provides access to the actual universal machine profile class.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+        """
+        Sets up the profile categories for the actual universal machine profile instance.
+        The dictionary should comprise a set of integer keys and string values.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+        It is recommended that the keys are numbered sequentially starting from 0.
+
+        For example, passing the following dictionary would add 3 categories to the profile with the strings as the
+        categories:
+
+        categories = {0: "00:00", 1: "00:30", 2: "01:00"}
+
+        :param dicCategories: The profile categories for the actual universal machine profile instance.
+        :type dicCategories: dict(int,str)
+        """
+        pass
+
+    def GetCategoryNames(self) -> Dict[int, str]:
+        """
+        Returns the profile categories for the actual universal machine profile instance.
+        The string values are used as the individual category labels whilst the integer keys are only used internally.
+
+        :return: The profile categories for the actual universal machine profile instance.
+        :rtype: dict(int,str)
+        """
+        pass
+
+    def SetPMW(self, dictCategoryToMW: Dict[int, float]) -> None:
+        """
+        Assigns MW values to the actual universal machine profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MW data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MW data:
+
+        dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMW: MW values to the actual universal machine profile categories.
+        :type dictCategoryToMW: dict(int,float)
+        """
+        pass
+
+    def GetPMW(self) -> Dict[int, float]:
+        """
+        Returns the MW values assigned to the actual universal machine profile categories.
+        The float values are the MW data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MW values to the actual universal machine profile categories.
+        :rtype: dict(int,float)
+        """
+        pass
+
+    def SetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Assigns MVAr values to the actual universal machine profile categories.
+        The dictionary should comprise a set of integer keys and float values.
+        The float values are the MVAr data values whilst the integer keys should be identical to those
+        being used when defining the categories.
+        For example, passing the following dictionary would set the MVAr data:
+
+        dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
+
+        :param dictCategoryToMVAr: MVAr values to the actual universal machine profile categories.
+        :type dictCategoryToMVAr: dict(int,float)
+        """
+        pass
+
+    def GetQMVAr(self, dictCategoryToMVAr: Dict[int, float]) -> None:
+        """
+        Returns the MVAr values assigned to the actual universal machine profile categories.
+        The float values are the MVAr data values whilst the integer keys should be identical to those used defining the
+        categories.
+
+        :return: MVAr values to the actual universal machine profile categories.
+        :rtype: dict(int,float)
         """
         pass
 
