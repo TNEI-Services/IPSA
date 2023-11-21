@@ -2333,6 +2333,15 @@ class IscBranch:
         """
         pass
 
+    def GetCapacityHeadroomPC(self) -> float:
+        """
+        Returns the branch capacity headroom as a percentage.
+
+        :return: The branch capacity headroom as a percentage.
+        :rtype: float
+        """
+        pass
+
     def GetFaultRedComponentMVA(self) -> float:
         """
         Returns the red phase level component in MVA.
@@ -5668,6 +5677,31 @@ class IscDiagram:
         """
         pass
 
+    def SetLabelCharacteristics(self, nUID: int, bShowLabel: bool, bFixedSize: bool) -> bool:
+        """
+        Sets whether the label for the component identified by the given UID is visible, and
+        whether it scales with zoom.
+        *Note the zoom scaling is not currently functioning and can only be set from Data Display Styles.*
+
+        :param nUID: The UID of the component with the label to be modified.
+        :type nUID: int
+        :param bShowLabel: True if the label should be visible.
+        :type bShowLabel: bool
+        :param bFixedSize: True if the label has a fixed size on scaling.
+        :type bFixedSize: bool
+        :return: Returns True if the values have been set.
+        :rtype: bool
+        """
+        pass
+
+    def RefreshDiagram(self) -> None:
+        """
+        Refreshes the diagram to ensure that the diagram window is up to date with the data held in IPSA.
+        *Note, currently this function doesn't work reliably and may not result in the diagram being updated as wished.*
+
+        """
+        pass
+
 class IscFilter:
     """
     Provides access to an IPSA harmonic filter.
@@ -7399,52 +7433,6 @@ class IscInterface:
         :type strFileName: str
         """
         pass
-    #
-    # @overload
-    # def GetLineLength(self, diagram, pComponent) -> float:
-    #     """
-    #     Returns the component length as drawn on the diagram.
-    #     When used on geographic diagrams this function returns the physical as drawn line length.
-    #
-    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
-    #     :type diagram: IscDiagram
-    #     :param pComponent: IscBranch instance returned by a GetBranch function.
-    #     :type pComponent: IscBranch
-    #     :return: The component length.
-    #     :rtype: float
-    #     """
-    #     pass
-    #
-    # @overload
-    # def GetLineLength(self, diagram, nLineUID: int) -> float:
-    #     """
-    #     Returns the component length as drawn on the diagram.
-    #     When used on geographic diagrams this function returns the physical as drawn line length.
-    #
-    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
-    #     :type diagram: IscDiagram
-    #     :param nLineUID: The unique integer for the line.
-    #     :type nLineUID: int
-    #     :return: The component length.
-    #     :rtype: float
-    #     """
-    #     pass
-    #
-    # def GetLineLength(self, diagram, nLineUID: int) -> float:
-    #     """
-    #     Returns the component length as drawn on the diagram.
-    #     When used on geographic diagrams this function returns the physical as drawn line length.
-    #
-    #     :param diagram: IscDiagram instance obtained from the GetDiagram function.
-    #     :type diagram: IscDiagram
-    #     :param pComponent: IscBranch instance returned by a GetBranch function.
-    #     :type pComponent: IscBranch
-    #     :param nLineUID: The unique integer for the line.
-    #     :type nLineUID: int
-    #     :return: The component length.
-    #     :rtype: float
-    #     """
-    #     pass
 
     def MessageBox(self, strDialogTitle: str, strMessage: str) -> bool:
         """
@@ -7880,6 +7868,84 @@ class IscInterface:
         :type strFilename: str
         :return: Returns list of the circuit breaker names.
         :rtype: list(str)
+        """
+        pass
+
+    def GetUndoActive(self) -> bool:
+        """
+        Returns a boolean determining whether Undo is currently active.
+        *Note that undo is currently faulty, and may crash IPSA.*
+
+        :return: Returns True if Undo is active.
+        :rtype: bool
+        """
+        pass
+
+    def SetUndoActive(self, bSetActive: bool):
+        """
+        Sets the boolean determining whether Undo is currently active.
+        *Note that undo is currently faulty, and may crash IPSA.*
+
+        :param bSetActive: True if undo should be active.
+        :type bSetActive: bool
+        """
+        pass
+
+    def HasPSSEIO(self) -> bool:
+        """
+        *Deprecated.*
+        Returns True if a PSSE analysis license is present.
+
+        :return: Boolean denoting whether a PSSE analysis license is presented.
+        :rtype: bool
+        """
+        pass
+
+    def GetIpsa1Mode(self) -> bool:
+        """
+        *Deprecated.*
+        Returns the IPSA 1 mode - note, this is currently not used anywhere so does nothing.
+
+        :return: The boolean of the Ipsa1 mode.
+        :rtype: bool
+        """
+        pass
+
+    def SetIpsa1Mode(self, bIpsa1) -> bool:
+        """
+        *Deprecated.*
+        Sets the IPSA 1 mode - note, this is currently not used anywhere so does nothing.
+
+        :param bIpsa1: The boolean of the Ipsa1 mode.
+        :type bIpsa1: bool
+        """
+        pass
+
+    def WriteJsonFile(self, strName: str) -> bool:
+        """
+        *Deprecated.*
+        Saves the graphical information, name and UID for every component in the network as a json file.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .json extension
+
+        :param strName: The name of the output file.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def WriteCSVItemFile(self, strName: str) -> bool:
+        """
+        *Deprecated.*
+        Saves the UID, component type and name for every component in the network as a csv file.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .csv extension
+
+        :param strName: The name of the output file.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
         """
         pass
 
@@ -15924,6 +15990,15 @@ class IscTransformer:
         Returns the transformer losses in kVAr.
 
         :return: The transformer losses in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetCapacityHeadroomPC(self) -> float:
+        """
+        Returns the transformer capacity headroom as a percentage.
+
+        :return: The transformer capacity headroom as a percentage.
         :rtype: float
         """
         pass
