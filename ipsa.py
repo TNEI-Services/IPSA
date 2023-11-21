@@ -16218,6 +16218,30 @@ class IscTransformer:
         :rtype: float
         """
         pass
+        
+    def GetShuntResistance(self, dOrder: float) -> float:
+        """
+        Returns the transformer harmonic shunt resistance in per unit on the network base for the harmonic order.
+
+        :param dOrder: The harmonic order.
+        :type dOrder: float
+        :return: The transformer shunt resistance in per unit.
+        :rtype: float
+
+        """
+        pass
+
+    def GetShuntReactance(self, dOrder: float) -> float:
+        """
+        Returns the transformer harmonic shunt reactance in per unit on the network base for the harmonic order.
+
+        :param dOrder: The harmonic order.
+        :type dOrder: float
+        :return: The transformer shunt reactance in per unit.
+        :rtype: float
+
+        """
+        pass
 
     def GetProfileMinimumFlowMVA(self) -> float:
         """
@@ -16403,6 +16427,42 @@ class IscTransformer:
         Returns the highest transformer end power in kW.
 
         :return: The highest transformer end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLossesMW(self) -> float:
+        """
+        Returns the transformer losses in MW.
+
+        :return: The transformer losses in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFLosseskW(self) -> float:
+        """
+        Returns the transformer losses in kW.
+
+        :return: The transformer losses in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFPhShiftDeg(self) -> float:
+        """
+        Returns the transformer phase shift in degrees.
+
+        :return: The transformer phase shift in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetDCLFPhShiftRad(self) -> float:
+        """
+        Returns the transformer phase shift in radians.
+
+        :return: The transformer phase shift in radians.
         :rtype: float
         """
         pass
