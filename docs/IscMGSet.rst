@@ -15,6 +15,12 @@ Field Values
    * - Type
      - Field Name
      - Description
+   * - Integer
+     - FromUID
+     - Gets the unique component ID for the sending busbar.
+   * - Integer
+     - ToUID
+     - Gets the unique component ID for the receiving busbar.
    * - String
      - FromBusName
      - Gets the sending busbar name.

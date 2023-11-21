@@ -31,6 +31,9 @@ Field Values
    * - Float
      - Base
      - Gets or sets the system base MVA for the network.
+   * - Boolean
+     - BaseinKVA
+     - If True the Base is in KVA otherwise the base is in MVA.
    * - Float
      - Frequency
      - Gets or sets the system base frequency in hertz for the network.

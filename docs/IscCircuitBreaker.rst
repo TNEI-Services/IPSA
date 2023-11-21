@@ -61,6 +61,9 @@ Field Values
    * - Float
      - SwitchTimeHr
      - Sets and gets the switch time in hours, used for reliability analysis.
+   * - Float
+     - NomCurrentkA
+     - Sets and gets the nominal current rating in kA
    * - String
      - DbType
      - Gets the database type.

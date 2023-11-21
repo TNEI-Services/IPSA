@@ -1495,7 +1495,7 @@ class IscBranch:
         """
         Returns an integer value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1508,7 +1508,7 @@ class IscBranch:
         """
         Returns an integer value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1534,7 +1534,7 @@ class IscBranch:
         """
         Returns a double value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1547,7 +1547,7 @@ class IscBranch:
         """
         Returns a double value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1573,7 +1573,7 @@ class IscBranch:
         """
         Returns a string value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1586,7 +1586,7 @@ class IscBranch:
         """
         Returns a string value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1612,7 +1612,7 @@ class IscBranch:
         """
         Returns a boolean value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1625,7 +1625,7 @@ class IscBranch:
         """
         Returns a boolean value for the enumerated field.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1653,7 +1653,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from an integer.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1668,7 +1668,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from an integer.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1698,7 +1698,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from a double.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1713,7 +1713,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from a double.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1743,7 +1743,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from a string.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1758,7 +1758,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from a string.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1788,7 +1788,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from boolean.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1803,7 +1803,7 @@ class IscBranch:
         """
         Sets the value for the enumerated field from boolean.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -1833,7 +1833,7 @@ class IscBranch:
         Returns the MVA rating associated with the rating set given by the rating index.
         Set 0 for details of branch rating indices.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1847,7 +1847,7 @@ class IscBranch:
         Returns the MVA rating associated with the rating set given by the rating index.
         Set 0 for details of branch rating indices.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1875,7 +1875,7 @@ class IscBranch:
         Returns the send end kA rating associated with the rating set given by the rating index.
         Set 0 for details of branch rating indices.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1889,7 +1889,7 @@ class IscBranch:
         Returns the send end kA rating associated with the rating set given by the rating index.
         Set 0 for details of branch rating indices.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1917,7 +1917,7 @@ class IscBranch:
         Returns the receiving end kA rating associated with the rating set given by the rating index.
         Set 0 for details of branch rating indices.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1931,7 +1931,7 @@ class IscBranch:
         Returns the receiving end kA rating associated with the rating set given by the rating index.
         Set 0 for details of branch rating indices.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1957,7 +1957,7 @@ class IscBranch:
         """
         Sets the MVA rating to the specified rating MVA for the rating set given by the rating index.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1970,7 +1970,7 @@ class IscBranch:
         """
         Sets the MVA rating to the specified rating MVA for the rating set given by the rating index.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -1996,7 +1996,7 @@ class IscBranch:
         """
         Sets the kA rating to the specified rating kA for the rating set given by the rating index.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -2009,7 +2009,85 @@ class IscBranch:
         """
         Sets the kA rating to the specified rating kA for the rating set given by the rating index.
 
-        :param nSection: The number of sections.
+        :param nSection: The index of the section.
+        :type nSection: int
+        :param nRatingIndex: The rating index.
+        :type nRatingIndex: int
+        :param dRatingkA: The rating kA.
+        :type dRatingkA: float
+        """
+        pass
+
+    @overload
+    def SetRatingSendkA(self, nRatingIndex: int, dRatingkA: float) -> None:
+        """
+        Sets the send end kA rating to the specified rating kA for the rating set given by the rating index.
+
+        :param nRatingIndex: The rating index.
+        :type nRatingIndex: int
+        :param dRatingkA: The rating kA.
+        :type dRatingkA: float
+        """
+        pass
+
+    @overload
+    def SetRatingSendkA(self, nSection: int, nRatingIndex: int, dRatingkA: float) -> None:
+        """
+        Sets the send end kA rating to the specified rating kA for the rating set given by the rating index.
+
+        :param nSection: The index of the section.
+        :type nSection: int
+        :param nRatingIndex: The rating index.
+        :type nRatingIndex: int
+        :param dRatingkA: The rating kA.
+        :type dRatingkA: float
+        """
+        pass
+
+    def SetRatingSendkA(self, nRatingIndex: int, dRatingkA: float) -> None:
+        """
+        Sets the send end kA rating to the specified rating kA for the rating set given by the rating index.
+
+        :param nSection: The index of the section.
+        :type nSection: int
+        :param nRatingIndex: The rating index.
+        :type nRatingIndex: int
+        :param dRatingkA: The rating kA.
+        :type dRatingkA: float
+        """
+        pass
+
+    @overload
+    def SetRatingReceivekA(self, nRatingIndex: int, dRatingkA: float) -> None:
+        """
+        Sets the receiving end kA rating to the specified rating kA for the rating set given by the rating index.
+
+        :param nRatingIndex: The rating index.
+        :type nRatingIndex: int
+        :param dRatingkA: The rating kA.
+        :type dRatingkA: float
+        """
+        pass
+
+    @overload
+    def SetRatingReceivekA(self, nSection: int, nRatingIndex: int, dRatingkA: float) -> None:
+        """
+        Sets the receiving end kA rating to the specified rating kA for the rating set given by the rating index.
+
+        :param nSection: The index of the section.
+        :type nSection: int
+        :param nRatingIndex: The rating index.
+        :type nRatingIndex: int
+        :param dRatingkA: The rating kA.
+        :type dRatingkA: float
+        """
+        pass
+
+    def SetRatingReceivekA(self, nRatingIndex: int, dRatingkA: float) -> None:
+        """
+        Sets the receiving end kA rating to the specified rating kA for the rating set given by the rating index.
+
+        :param nSection: The index of the section.
         :type nSection: int
         :param nRatingIndex: The rating index.
         :type nRatingIndex: int
@@ -2141,10 +2219,34 @@ class IscBranch:
         """
         pass
 
+    @overload
     def GetLargestPowerMagnitudeMVA(self) -> float:
         """
         Returns the highest branch power in MVA.
 
+        :return: The highest branch power in MVA.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetLargestPowerMagnitudeMVA(self, nStudyUID: int) -> float:
+        """
+        Returns the highest branch power in MVA.
+
+        :param nStudyUID: The automation or contingency study UID which the results are for
+        :type nStudyUID: int
+        :return: The highest branch power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the highest branch power in MVA.
+
+        :param nStudyUID: If supplied, the automation or contingency study UID which the results are for
+        :type nStudyUID: int
         :return: The highest branch power in MVA.
         :rtype: float
         """
@@ -2822,14 +2924,17 @@ class IscBusbar:
     def GetVoltageMagnitudePU(self, nStudyUid: int) -> float:
         """
         Returns the voltage magnitude in per unit.
+
         If a UID is provided this is for the associated automation or contingency study.
-        if a float dOrder is provided, this is the harmonic voltage magnitude for the given harmonic order.
+
+        If a float dOrder is provided, this is the harmonic voltage magnitude for the given harmonic order.
 
         :param nStudyUid: The UID of the study, if wanted.
         :type nStudyUid: int
         :param dOrder: The harmonic order, if wanted.
         :type dOrder: float
-        :return: The voltage magnitude, if a UID is provided this returns the angle for the associated study..
+        :return: The voltage magnitude, if a UID is provided this returns the voltage magnitude for the associated
+            study. If a dOrder is provided this returns the voltage magnitude for the harmonic order.
         :rtype: float
         """
         pass
@@ -2863,7 +2968,7 @@ class IscBusbar:
 
         :param nStudyUid: The UID of the study, if wanted.
         :type nStudyUid: int
-        :return: The voltage magnitude, if a UID is provided this returns the angle for the associated study.
+        :return: The voltage magnitude, if a UID is provided this returns the voltage magnitude for the associated study.
         :rtype: float
         """
         pass
@@ -2897,7 +3002,7 @@ class IscBusbar:
 
         :param nStudyUid: The UID of the study, if wanted.
         :type nStudyUid: int
-        :return: The voltage angle, if a UID is provided this returns the angle for the associated study.
+        :return: The voltage angle, if a UID is provided this returns the voltage angle for the associated study.
         :rtype: float
         """
         pass
@@ -2931,7 +3036,7 @@ class IscBusbar:
 
         :param nStudyUid: The UID of the study, if wanted.
         :type nStudyUid: int
-        :return: The voltage angle, if a UID is provided this returns the angle for the associated study.
+        :return: The voltage angle, if a UID is provided this returns the voltage angle for the associated study.
         :rtype: float
         """
         pass
@@ -13833,6 +13938,17 @@ class IscNetworkData:
         """
         pass
 
+    def GetBranchRatingName(self, nIndex: int) -> str:
+        """
+        Returns the name representing the rating set identified by an index.
+
+        :param nIndex: The specified index.
+        :type nIndex: int
+        :return: The rating set name, or empty set if no rating set with that index exists in the network.
+        :rtype: str
+        """
+        pass
+
 class Isc__ProfilePQ__:
     """
     Provides access to the actual given profile class.
@@ -15549,10 +15665,34 @@ class IscTransformer:
         """
         pass
 
+    @overload
     def GetLargestPowerMagnitudeMVA(self) -> float:
         """
         Returns the highest transformer power in MVA.
 
+        :return: The highest transformer power in MVA.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetLargestPowerMagnitudeMVA(self, nStudyUID: int) -> float:
+        """
+        Returns the highest transformer power in MVA.
+
+        :param nStudyUID: The automation or contingency study UID which the results are for
+        :type nStudyUID: int
+        :return: The highest transformer power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the highest transformer power in MVA.
+
+        :param nStudyUID: If supplied, the automation or contingency study UID which the results are for
+        :type nStudyUID: int
         :return: The highest transformer power in MVA.
         :rtype: float
         """

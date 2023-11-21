@@ -42,6 +42,27 @@ Field Values
    * - Integer
      - PluginID
      - Gets and sets the ID of the plugin applied to the universal machine. Set to 0 to not use any profiles.
+   * - Boolean
+     - ConverterDrivenPlant
+     - True if the universal machine is being used as a Converter Driven Plant (G74/2)
+   * - Integer
+     - CDPMethodType
+     - The CDP current-output mode
+
+        - 0 = Simple
+        - 1 = Advanced
+   * - Integer
+     - CDPVoltageInterpolation
+     - The CDP voltage interpolation scheme
+
+        - 0 = Linear
+        - 1 = Cubic
+   * - Integer
+     - CDPVoltageInterpolation
+     - The CDP voltage interpolation scheme
+
+        - 0 = Linear
+        - 1 = Cubic
    * - Float
      - CDPKFactor
      - The K factor co-efficient that determines the strength of the current injection contributions (only valid between 0 and 10).
