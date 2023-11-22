@@ -13846,16 +13846,39 @@ class IscNetwork:
         """
         pass
 
-    def GetContingencyStudyItemResults(self, nStudyID: int) -> List[int]:
+    def GetContingencyStudyItemResults(self, nStudyID: int) -> Dict[int, int]:
         """
-        Returns a list of integers containing the study result IDs for the contingency study ID.
-        Each switching operation in a contingency study may produce a number of constraints.
-        Each constraint can be examined using the result IDs returned by this function.
+        Returns a dict of the component uids to the result ID for each component for the study with the given ID.
+        The result IDs can be understood as followed:
+
+            - 1 = Busbar over voltage (balanced or unbalanced)
+            - 2 = Busbar under voltage (balanced or unbalanced)
+            - 3 = Branch over rating (balanced or unbalanced)
+            - 4 = Transformer over rating (2- or 3- winding, or unbalanced)
+            - 0 = Otherwise
 
         :param nStudyID: The contingency study ID.
         :type nStudyID: int
-        :return: The study result IDs for the contingency study ID.
-        :rtype: list(int)
+        :return: The map of the component UIDs to the result IDs for the contingency study ID.
+        :rtype: dict[int, int]
+        """
+        pass
+
+    def GetAutomationStudyItemResults(self, nStudyID: int) -> Dict[int, int]:
+        """
+        Returns a dict of the component uids to the result ID for each component for the study with the given ID.
+        The result IDs can be understood as followed:
+
+            - 1 = Busbar over voltage (balanced or unbalanced)
+            - 2 = Busbar under voltage (balanced or unbalanced)
+            - 3 = Branch over rating (balanced or unbalanced)
+            - 4 = Transformer over rating (2- or 3- winding, or unbalanced)
+            - 0 = Otherwise
+
+        :param nStudyID: The automation study ID.
+        :type nStudyID: int
+        :return: The map of the component UIDs to the result IDs for the automation study ID.
+        :rtype: dict[int, int]
         """
         pass
 
