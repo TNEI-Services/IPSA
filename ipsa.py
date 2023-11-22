@@ -7881,6 +7881,32 @@ class IscInterface:
         """
         pass
 
+    def GetReportType(self) -> int:
+        """
+        The nReport type of the most recently generated report, matching those in e.g.,
+        :meth:`IscNetwork.GetStudies(nReportType)`.
+
+        Automation studies:
+            - 100 = All studies in the order run
+            - 101 = All solved studies in the order run
+            - 102 = All solved studies listed by severity of overload
+            - 103 = All solved studies listed by the number of items exceeding limits
+            - 104 = All studies that failed to solve
+
+        Contingency studies:
+            - 120 = All studies in the order run
+            - 121 = All solved studies in the order run
+            - 122 = All solved studies listed by severity of overload
+            - 123 = All solved studies listed by the number of items exceeding limits
+            - 124 = All studies that failed to solve
+
+        *Note this number only updates if a report has been generated from the IPSA UI.*
+
+        :return: The nReport type of the most recently generated report.
+        :rtype: int
+        """
+        pass
+
     def SetUndoActive(self, bSetActive: bool):
         """
         Sets the boolean determining whether Undo is currently active.
@@ -9042,24 +9068,23 @@ class IscNetwork:
         """Reset all analysis results."""
         pass
 
-# These functions don't exist yet in PyIPSA EL 11.2023
-    # def GetLastSuccessfulAutomationUID(self) -> int:
-    #     """
-    #     Returns the integer UID of the last successful automation study.
-    #
-    #     :return: The last successful automation study UID.
-    #     :rtype: int
-    #     """
-    #     pass
-    #
-    # def GetLastSuccessfulContingencyUID(self) -> int:
-    #     """
-    #     Returns the integer UID of the last successful contingency study.
-    #
-    #     :return: The last successful contingency study UID.
-    #     :rtype: int
-    #     """
-    #     pass
+    def GetLastSuccessfulAutomationUID(self) -> int:
+        """
+        Returns the integer UID of the last successful automation study.
+
+        :return: The last successful automation study UID.
+        :rtype: int
+        """
+        pass
+
+    def GetLastSuccessfulContingencyUID(self) -> int:
+        """
+        Returns the integer UID of the last successful contingency study.
+
+        :return: The last successful contingency study UID.
+        :rtype: int
+        """
+        pass
 
     def GetNumberOfIslands(self) -> int:
         """
@@ -12327,15 +12352,15 @@ class IscNetwork:
         pass
 
     @overload
-    def CreatePlugin(self, pComp, sPluginName: str, sName: str) -> int:
+    def CreatePlugin(self, pComponent, sPluginName: str, sName: str) -> int:
         """
         Returns the IscPlugin object for the newly created plugin.
         A different plugin UID is required for each component with a plugin,
         therefore this function should be used every time a plugin is assigned to a component,
         even if the same type of plugin is being assigned.
 
-        :param pComp: The component object (i.e., IscBranch, IscUMachine) to which the plugin is to be assigned.
-        :type nCompUID: IscNetComponent
+        :param pComponent: The component object (i.e., IscBranch, IscUMachine) to which the plugin is to be assigned.
+        :type pComponent: IscNetComponent
         :param sPluginName: The name of the plugin itself, for example ‘Constant Current Load’.
         :type sPluginName: str
         :param sName: The user defined plugin name or empty string.
@@ -12354,8 +12379,8 @@ class IscNetwork:
 
         :param nCompUID: The UID of the component to which the plugin is to be assigned.
         :type nCompUID: int
-        :param pComp: The component object (i.e., IscBranch, IscUMachine) to which the plugin is to be assigned.
-        :type nCompUID: IscNetComponent
+        :param pComponent: The component object (i.e., IscBranch, IscUMachine) to which the plugin is to be assigned.
+        :type pComponent: IscNetComponent
         :param sPluginName: The name of the plugin itself, for example ‘Constant Current Load’.
         :type sPluginName: str
         :param sName: The user defined plugin name or empty string.
@@ -13505,6 +13530,17 @@ class IscNetwork:
         """
         pass
 
+    def IsComponentOutsideLimits(self, pComponent) -> int:
+        """
+        Checks whether a given component has values within limits after a load flow has been run.
+        The function returns 0 if the values are within limits, 1 if they are over limits and if they are under.
+
+        :param pComponent: The component object to be checked.
+        :type pComponent: IscNetComponent
+        :return: 0 if it's in limits, 1 if it is over limits and 2 if it is under limits.
+        :rtype: int
+        """
+        pass
 
     def GetBusbarsOutsideLimits(self) -> Dict[int, bool]:
         """
@@ -13884,6 +13920,32 @@ class IscNetwork:
 
         :return: The Ipsa rating index.
         :rtype: int
+        """
+        pass
+
+    def GetProtectionDeviceSettings(self, nProtectionDeviceUID: int) -> List[str]:
+        """
+        Generates the protection devices details for the protection device indicated by the UID.
+        The data is formatted as a list containing the html table filled with the settings, as presented in the
+        protection settings report.
+        *Note this formatting may be updated in the future.*
+
+        :param nProtectionDeviceUID: The UID of the protection device of interest.
+        :type nProtectionDeviceUID: int
+        :returns: The protection device settings in an html table.
+        :rtype: list(str)
+        """
+        pass
+
+    def GetAllProtectionDeviceSettings (self) -> List[str]:
+        """
+        Generates the protection devices details for all the protection devices.
+        The data is formatted as a list containing the html tables filled with the settings, as presented in the
+        protection settings report.
+        *Note this formatting may be updated in the future.*
+
+        :returns: All the protection device settings as a list of html tables.
+        :rtype: list(str)
         """
         pass
 
