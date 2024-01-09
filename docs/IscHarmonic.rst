@@ -66,6 +66,24 @@ Field Values
    * - String
      - VoltageImpedanceX
      - Sets and gets the reactance for the harmonic impedance if ``ImpedanceType`` is 2.
+   * - List[Float]
+     - Orders
+     - The list of orders of the harmonic injection to be modelled.
+   * - List[Float]
+     - Magnitudes
+     - The list of magnitudes associated with each order of harmonic injection.
+   * - List[Float]
+     - Angles
+     - The list of angles associated with each order of harmonic injection.
+   * - List[Float]
+     - VImpedanceRList
+     - The list of resistances for the harmonic impedance if ``ImpedanceType`` is 3.
+   * - List[Float]
+     - VImpedanceXList
+     - The list of reactances for the harmonic impedance if ``ImpedanceType`` is 3.
+   * - String
+     - DbType
+     - Gets and sets the database type.
 
 IscHarmonic Class
 ------------------

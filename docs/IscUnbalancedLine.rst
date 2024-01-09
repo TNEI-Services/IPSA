@@ -77,6 +77,15 @@ Field Values
    * - Float
      - SusceptanceNeutralPU
      - Gets or sets the neutral conductor susceptance in all phases.
+   * - List[Float]
+     - RatingMVAs
+     - Ratings for all rating sets in MVA.
+   * - List[Float]
+     - RatingSendkAs
+     - Send ratings for all rating sets in kA.
+   * - List[Float]
+     - RatingReceivekAs
+     - Receive ratings for all rating sets in kA.
    * - String
      - DbType
      - Gets the branch database type.

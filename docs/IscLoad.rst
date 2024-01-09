@@ -48,6 +48,17 @@ Field Values
    * - Boolean
      - IsEquivalent
      - If ``True`` then the load is an equivalent load.
+   * - Integer
+     - LoadPlanningStage
+     - The stage the load is current at:
+
+        - 0 = Proposed
+        - 1 = Accepted
+        - 2 = Completed
+        - 3 = Energised (default, in service)
+   * - String
+     - Comment
+     - Gets and sets the comments.
 
 IscLoad Class
 --------------

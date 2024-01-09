@@ -130,6 +130,9 @@ Field Values
      - PMaxMW
      - Maximum machine real power.
    * - Float
+     - QMaxMVAr
+     - Maximum machine reactive power.
+   * - Float
      - SMaxMVA
      - Maximum machine apparent power.
    * - Float
@@ -197,7 +200,8 @@ Field Values
         - 3 = Energized (default, in service)
    * - Float
      - StorageIERatio
-     - For energy storage components, this is the ratio between where a storage unit behaves as an import or an export. If the storage is flipped from export to import, the real power is multiplied by this ratio. Default is 1.
+     - For energy storage components, this is the ratio between where a storage unit behaves as an import or an export.
+       If the storage is flipped from export to import, the real power is multiplied by this ratio. Default is 1.
    * - Float
      -
         HarmRC0
@@ -219,6 +223,27 @@ Field Values
      - Harmonic polynomial constants XC0, XC1, XC2, XC3, XCEX and XEX in:
 
        :math:`X{h} = X[XC0 + XC1.h + XC2.h^2 + XC3.h^3] + XCEX.X.h^{XEX}`
+   * - Float
+     - QMinMVAr
+     - Maximum reactive power the machine can absorb.
+   * - Float
+     - DistFactor
+     - Distribution factor.
+   * - Float
+     - GenCostPerMW
+     - Cost of generating real power.
+   * - Float
+     - AbsCostPerMW
+     - Cost of absorbing real power.
+   * - Float
+     - GenCostPerMVAr
+     - Cost of generating reactive power.
+   * - Float
+     - AbsCostPerMVAr
+     - Cost of absorbing reactive power.
+   * - String
+     - Comment
+     - Gets and sets the comments.
 
 IscSynMachine Class
 --------------------

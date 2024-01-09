@@ -51,6 +51,18 @@ Field Values
    * - Float
      - InductancePU
      - Sets and gets the internal battery inductance in per unit.
+   * - Float
+     - SwitchTime1Sec
+     - Battery switching time 1.
+   * - Float
+     - SwitchTime2Sec
+     - Battery switching time 2.
+   * - String
+     - DbType
+     - Gets and sets the database type.
+   * - Integer
+     - DbPar
+     - Gets and sets the number of batteries of the database type in parallel.
 
 IscBattery Class
 -----------------

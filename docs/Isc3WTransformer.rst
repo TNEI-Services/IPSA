@@ -249,11 +249,32 @@ Field Values
 
        :math:`R_{h} = R[RC0 + RC12.h^{0.5} 0 + RC1.h + RC2.h^2 + RC3.h^3]`
    * - Float
+     - SwitchTime1Sec
+     - 3W transformer switching time 1.
+   * - Float
+     - SwitchTime2Sec
+     - 3W transformer switching time 2.
+   * - Float
      - FailureRateYr
      - 3W transformer failure rate per annum.
    * - Float
      - RepairTimeHr
      - 3W transformer repair time in hours.
+   * - List[Float]
+     - W1RatingMVAs
+     - Winding 1 ratings for all rating sets in MVA.
+   * - List[Float]
+     - W2RatingMVAs
+     - Winding 2 ratings for all rating sets in MVA.
+   * - List[Float]
+     - W3RatingMVAs
+     - Winding 3 ratings for all rating sets in MVA.
+   * - String
+     - PluginID
+     - Plugin Name, empty string means no plugin is assigned.
+   * - String
+     - DbType
+     - Gets and sets the database type.
 
 Isc3WTransformer Class
 -----------------------

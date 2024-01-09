@@ -63,6 +63,24 @@ Field Values
    * - Float
      - Tbreak
      - RMS fault time in seconds.
+   * - Boolean
+     - EnergyStorage
+     - ``True`` if the grid infeed can be used for energy storage.
+   * - Float
+     - StorageIERatio
+     - For energy storage components, this is the ratio between where a storage unit behaves as an import or an export.
+       If the storage is flipped from export to import, the real power is multiplied by this ratio. Default is 1.
+   * - Integer
+     - GridPlanningStage
+     - The stage the load is current at:
+
+        - 0 = Proposed
+        - 1 = Accepted
+        - 2 = Completed
+        - 3 = Energised (default, in service)
+   * - String
+     - Comment
+     - Gets and sets the comments.
 
 IscGridInfeed Class
 --------------------

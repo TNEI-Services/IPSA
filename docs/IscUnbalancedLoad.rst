@@ -73,6 +73,9 @@ Field Values
    * - Integer
      - ProfilePhaseCUID
      - Gets or sets the load profile UID applied to the C phase of this load.
+   * - Boolean
+     - HasTransformer
+     - If ``True``, it includes unbalanced transformer data.
 
 IscUnbalancedLoad Class
 ------------------------

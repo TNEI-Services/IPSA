@@ -106,6 +106,12 @@ Field Values
      - Harmonic polynomial constants XC0, XC1, XC2, XC3, XCEX and XEX in:
 
        :math:`X{h} = X[XC0 + XC1.h + XC2.h^2 + XC3.h^3] + XCEX.X.h^{XEX}`
+   * - Integer
+     - HarmonicModel
+     - The model used to represent the shunt in harmonic studies:
+
+        - 0 = Polynomial plus default resistance
+        - 1 = Polynomial only
    * - Float
      - FailureRateYr
      - Branch failure rate per annum.
@@ -114,16 +120,16 @@ Field Values
      - Branch repair time in hours.
    * - String
      - DbType1
-     - Branch database type. For representing the cable at the From end of the transformer.
+     - Gets the Branch database type. For representing the cable at the From end of the transformer.
    * - String
      - DbType2
-     - Second cable database type representing the cable at the To end of the transformer.
+     - Gets the Second cable database type representing the cable at the To end of the transformer.
    * - Float
      - DbLength1 / LengthKm
-     - First cable database length.
+     - Gets the First cable database length.
    * - Float
      - DbLength2
-     - Second cable database length (for transformers only).
+     - Gets the Second cable database length (for transformers only).
    * - Integer
      - DbPar1
      - Gets the number of lines of database type 1 in parallel.
@@ -148,9 +154,21 @@ Field Values
    * - Integer
      - UdmCtrlUID
      - Gets the UDM control ID.
+   * - List[Float]
+     - RatingMVAs
+     - Ratings for all rating sets in MVA.
+   * - List[Float]
+     - RatingSendkAs
+     - Send ratings for all rating sets in kA.
+   * - List[Float]
+     - RatingReceivekAs
+     - Receive ratings for all rating sets in kA.
    * - String
      - PluginID
      - Plugin Name, empty string means no plugin is assigned.
+   * - String
+     - Comment
+     - Gets and sets the comments.
 
 IscBranch Class
 ----------------

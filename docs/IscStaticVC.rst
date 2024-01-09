@@ -46,6 +46,14 @@ Field Values
    * - Boolean
      - IsStatcom
      - ``True`` if the SVC is a STATCOM.
+   * - Integer
+     - ModelType
+     - Determines whether the SVC uses the built in parameters or a plugin.
+        - 0 = Built in
+        - 1 = Plugin
+   * - String
+     - PluginID
+     - Plugin Name, empty string means no plugin is assigned.
 
 IscStaticVC Class
 ------------------

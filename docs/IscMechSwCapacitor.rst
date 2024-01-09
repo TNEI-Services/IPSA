@@ -65,7 +65,11 @@ Field Values
      - Sets or returns the bandwidth of acceptable voltage in percentage.
    * - Integer
      - InitPosition
-     - Sets or returns the initial position of the mechanical switched capacitor. Positive values represent capacitor steps and negative values are inductive steps.
+     - Sets or returns the initial position of the mechanical switched capacitor.
+        Positive values represent capacitor steps and negative values are inductive steps.
+   * - Integer
+     - NominalPosition
+     - Sets or returns the nominal position of the mechanical switched capacitor.
    * - Float
      - MaxContinuousMVAr
      - Sets or returns the maximum MVAr output of the MSC when in continuous control mode.
@@ -90,7 +94,14 @@ Field Values
 
         - 0 = Control power factor at receiving end
         - 1 = Control power factor at send end
-
+   * - Integer
+     - ModelType
+     - Determines whether the MSC uses the built in parameters or a plugin.
+        - 0 = Built in
+        - 1 = Plugin
+   * - String
+     - PluginID
+     - Plugin Name, empty string means no plugin is assigned.
 IscMechSwCapacitor Class
 -------------------------
 

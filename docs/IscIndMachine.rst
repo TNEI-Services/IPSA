@@ -200,6 +200,9 @@ Field Values
         HarmRotorXC0
         HarmRotorXC2
      - Harmonic polynomial constants for the rotors, RC0, RC2, XC0, XC2 following the two equations above.
+   * - Boolean
+     - ExcludeFromTransient
+     - If ``True`` then the induction machine is excluded from transient stability studies.
 
 IscIndMachine Class
 --------------------

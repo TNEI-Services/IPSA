@@ -60,6 +60,17 @@ class Isc3WTransformer:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the value for the enumerated field from an integer.
@@ -107,6 +118,19 @@ class Isc3WTransformer:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given list of double values.
+        :type bValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -1634,6 +1658,17 @@ class IscBranch:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     @overload
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
@@ -1809,6 +1844,19 @@ class IscBranch:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given list of double values.
+        :type bValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -2868,31 +2916,35 @@ class IscBusbar:
         """
         pass
 
-    def GetFaultDValue(self, nCircuitBreakerFieldIndex: int) -> float:
+    def GetFaultDValue(self, nFaultFieldIndex: int) -> float:
         """
         Returns a float value for the circuit breaker field.
-        **Note that nCircuitBreakerFieldIndex should be one of MakePeakkA, BreakRMSkA, BreakDCPC, BreakTimemS or
-        NomCurrentkA – it is an IscCircuitBreaker field index.**
+        In IPSA 2.10.2, nFaultFieldIndex should be one of FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC,
+        FaultBreakTimemS or FaultNomCurrentkA.
+        nFaultFieldIndex can also be one of the IscCircuitBreaker field indexes MakePeakkA, BreakRMSkA, BreakDCPC,
+        BreakTimemS or NomCurrentkA.
         This function is used to get fault (breaker) ratings for a busbar.
 
-        :param nCircuitBreakerFieldIndex: MakePeakkA, BreakRMSkA, BreakDCPC, BreakTimemS or NomCurrentkA – it is an
-            IscCircuitBreaker field index.
-        :type nCircuitBreakerFieldIndex: int
+        :param nFaultFieldIndex: FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC, FaultBreakTimemS or
+            FaultNomCurrentkA.
+        :type nFaultFieldIndex: int
         :return: The float value for the selected field.
         :rtype: float
         """
         pass
 
-    def SetFaultDValue(self, nCircuitBreakerFieldIndex: int) -> bool:
+    def SetFaultDValue(self, nFaultFieldIndex: int) -> bool:
         """
         Sets the value for the circuit breaker field.
-        **Note that nCircuitBreakerFieldIndex should be one of MakePeakkA, BreakRMSkA, BreakDCPC, BreakTimemS or
-        NomCurrentkA – it is an IscCircuitBreaker field index.**
+        In IPSA 2.10.2, nFaultFieldIndex should be one of FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC,
+        FaultBreakTimemS or FaultNomCurrentkA.
+        nFaultFieldIndex can also be one of the IscCircuitBreaker field indexes MakePeakkA, BreakRMSkA, BreakDCPC,
+        BreakTimemS or NomCurrentkA.
         This function is used to set fault (breaker) ratings for a busbar.
 
-        :param nCircuitBreakerFieldIndex: MakePeakkA, BreakRMSkA, BreakDCPC, BreakTimemS or NomCurrentkA – it is an
-            IscCircuitBreaker field index.
-        :type nCircuitBreakerFieldIndex: int
+        :param nFaultFieldIndex: FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC, FaultBreakTimemS or
+            FaultNomCurrentkA.
+        :type nFaultFieldIndex: int
         :return: True if successful.
         :rtype: bool
         """
@@ -6735,6 +6787,17 @@ class IscHarmonic:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the value for the enumerated field from an integer.
@@ -6782,6 +6845,19 @@ class IscHarmonic:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given list of double values.
+        :type bValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -15855,6 +15931,17 @@ class IscTransformer:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the value for the enumerated field from an integer.
@@ -15902,6 +15989,19 @@ class IscTransformer:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given list of double values.
+        :type bValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -17049,6 +17149,17 @@ class IscUMachine:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the value for the enumerated field from an integer.
@@ -17096,6 +17207,19 @@ class IscUMachine:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given list of double values.
+        :type bValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -17277,6 +17401,17 @@ class IscUnbalancedLine:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the value for the enumerated field from an integer.
@@ -17324,6 +17459,19 @@ class IscUnbalancedLine:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given list of double values.
+        :type bValue: list[float]
         :return: True if successful.
         :rtype: bool
         """

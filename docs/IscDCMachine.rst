@@ -93,6 +93,18 @@ Field Values
    * - Float
      - TSlipC
      - Sets and gets the load torque slip coefficient C.
+   * - Float
+     - SwitchTime1Sec
+     - DC machine switching time 1.
+   * - Float
+     - SwitchTime2Sec
+     - DC machine switching time 2.
+   * - String
+     - DbType
+     - Gets and sets the database type.
+   * - Integer
+     - DbPar
+     - Gets and sets the number of DC machines of the database type in parallel.
 
 IscDCMachine Class
 --------------------

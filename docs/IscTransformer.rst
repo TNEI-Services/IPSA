@@ -71,6 +71,12 @@ Field Values
         - Y = Unearthed star
         - D = Delta
         - Z = Zig-zag
+   * - Integer
+     - MagnetEnd
+     - The magnetising end where the calculations are calculated:
+
+        - 0 = on from side
+        - 1 = on to side
    * - Float
      - CoreLossRPU
      - Core loss resistance in per unit.
@@ -158,6 +164,27 @@ Field Values
    * - Integer
      - RemoteCtlBusbarUID
      - Specifies the UID of the remote busbar which is used as the basis for the transformer voltage control.
+   * - Integer
+     - TapControlMethod
+     - Specifies whether the normal tap method is being used or the tabular tap data.
+
+        - 0 = Basic tap data
+        - 1 = Tabular tap data
+   * - Integer
+     - TapNumber
+     - The present tap position for tabular tap data, used as a starting point for the next load flow.
+   * - List[Float]
+     - TapStepActualPC
+     - The list of actual tap step values for tabular tap data.
+   * - List[Float]
+     - TapStepValuePC
+     - The list of adjusted tap step values for tabular tap data.
+   * - List[Float]
+     - TapStepXPU
+     - The list of tap step reactances in per unit for tabular tap data.
+   * - String
+     - Comment
+     - Gets and sets the comments.
 
 IscTransformer Class
 ---------------------

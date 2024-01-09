@@ -55,7 +55,27 @@ Field Values
      - Gets the voltage angle in radians.
    * - String
      - Comment
-     - Gets the comments.
+     - Gets and sets the comments.
+   * - Float
+     - FaultMakePeakkA
+     - The rated asymmetric peak make current in kA at half a cycle.
+       These must be accessed through the GetFaultDValue/SetFaultDValue functions.
+   * - Float
+     - FaultBreakRMSkA
+     - The rated RMS symmetric break rating in kA at the break time specified.
+       These must be accessed through the GetFaultDValue/SetFaultDValue functions.
+   * - Float
+     - FaultBreakTimemS
+     - The time in milliseconds for which the Break ratings are given.
+       These must be accessed through the GetFaultDValue/SetFaultDValue functions.
+   * - Float
+     - FaultBreakDCPC
+     - The rated DC break current as a percentage of the rated symmetric break current.
+       These must be accessed through the GetFaultDValue/SetFaultDValue functions.
+   * - Float
+     - FaultNomCurrentkA
+     - A value designating the "standard" current at which the busbar operates.
+       These must be accessed through the GetFaultDValue/SetFaultDValue functions.
    * - Integer
      - ArcBusbarConfiguration
      - Specific busbar configuration for this bus according to the definitions penned out by IEEE-1584 standard:
@@ -81,6 +101,30 @@ Field Values
    * - Float
      - ArcWorkingDistanceMM
      - Working distance for the bus container in mm.
+   * - Integer
+     - ArcIEEEStandard
+     - The IEEE-1584 standard for conduction arc flash studies. Users can toggle between the two for comparative studies:
+
+        - 0 = 2002
+        - 1 = 2018
+   * - Integer
+     - ArcEnclosure
+     - A 2002 IEEE-1584 legacy parameter. The type of busbar enclosure:
+
+        - 0 = None or open
+        - 1 = Box
+   * - Integer
+     - ArcEquipmentType
+     - A 2002 IEEE-1584 legacy parameter. The specific type of busbar:
+
+        - 0 = Not set
+        - 1 = Open air
+        - 2 = Switchgear
+        - 3 = MCC and panels
+        - 4 = Cable
+   * - Boolean
+     - ArcUngrounded
+     - A 2002 IEEE-1584 legacy parameter. ``True`` if the busbar is ungrounded.
 
 IscBusbar Class
 ----------------
