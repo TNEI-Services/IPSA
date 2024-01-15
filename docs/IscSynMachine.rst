@@ -167,10 +167,10 @@ Field Values
      - The voltage factor (P_g) of the machine, only for use in IEC60909 fault calculations.
    * - Float
      - DispPMaxPC
-     - Maximum economic dispatch as a percentage to the machine maximum power.
+     - Maximum economic dispatch as a percentage of the machine maximum power.
    * - Float
      - DispPMinPC
-     - Minimum economic dispatch as a percentage to the machine maximum power.
+     - Minimum economic dispatch as a percentage of the machine maximum power.
    * - Integer
      - GenTechnology
      - The specific type of generator that can be categorized:

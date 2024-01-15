@@ -119,7 +119,7 @@ Field Values
      - DbType2
      - Second cable database type representing the cable at the To end of the transformer.
    * - Float
-     - DbLength1 / LengthKm
+     - DbLength1 *or* LengthKm
      - First cable database length.
    * - Float
      - DbLength2

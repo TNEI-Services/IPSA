@@ -44,7 +44,7 @@ Field Values
      - Gets and sets the ID of the plugin applied to the universal machine. Set to 0 to not use any profiles.
    * - Boolean
      - ConverterDrivenPlant
-     - True if the universal machine is being used as a Converter Driven Plant (G74/2)
+     - ``True`` if the universal machine is being used as a Converter Driven Plant (G74/2)
    * - Integer
      - CDPMethodType
      - The CDP current-output mode
