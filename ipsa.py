@@ -6103,11 +6103,78 @@ class IscGroup:
 
     def SetMembers(self, nUIDs: List[int]) -> None:
         """
-        Sets the group members to the list of component integers.
+        Overwrites the current list of group members with the given list of component UIDs.
         This replaces any existing members with the supplied list of UIDs.
 
         :param nUIDs: List of component integers.
         :type nUIDs: list(int)
+        """
+        pass
+
+    def ClearMembers(self) -> None:
+        """
+        Sets the group members to an empty list.
+        This clears any existing members.
+        """
+        pass
+
+    def AddMember(self, nUID: int) -> None:
+        """
+        Appends the component with the given UID to the list of component UIDs if the UID is not present.
+        All existing group member UIDs are unaffected.
+
+        :param nUID: Component UID.
+        :type nUID: int
+        """
+        pass
+
+    def RemoveMember(self, nUID: int) -> None:
+        """
+        Removes the component with the given UID from the list of component UIDs if the UID is present.
+        All other existing group member UIDs are unaffected.
+
+        :param nUID: Component UID.
+        :type nUID: int
+        """
+        pass
+
+    def IsMember(self, nUID: int) -> bool:
+        """
+        Checks whether the component with the given UID is present in the list of component UIDs.
+        The list of group member UIDs will be unaffected.
+
+        :param nUID: Component UID.
+        :type nUID: int
+        :return: True if nUID is present in list of member UIDs.
+        :rtype: bool
+        """
+        pass
+
+    def CompareGroups(self, nGroupUID: int, bUseIntersection: bool) -> List[int]:
+        """
+        Compares the current group with the group with UID given by nGroupUID.
+        By default, will perform a difference operation returning a list of component UIDs present in the current group but not present in the group with UID given by nGroupUID.
+        If bUseIntersection is true it will return a list of component UIDs present in both lists.
+        Both lists of group member UIDs will be unaffected.
+
+        :param nGroupUID: UID of the group to compare with.
+        :type nGroupUID: int
+        :param bUseIntersection: If true performs an intersection, if false a difference operation.
+        :type bUseIntersection: bool
+        :return: The list of UIDs that make up the difference (default) or intersection of the two groups.
+        :rtype: list(int)
+        """
+        pass
+
+    def MergeGroups(self, nGroupUID: int, bDeleteGroup: bool) -> None:
+        """
+        Appends the list of component UIDs from the group with the given UID onto the current group's UID list.
+        By default the group with the given UID will be unnaffected, unless bDeleteGroup is true, in which case it will be deleted.
+
+        :param nGroupUID: UID of the group to merge with.
+        :type nGroupUID: int
+        :param bDeleteGroup: If true deletes the group with nGroupUID, otherwise the group is unnaffected.
+        :type bDeleteGroup: bool
         """
         pass
 
