@@ -222,7 +222,7 @@ Field Values
         HarmXEX
      - Harmonic polynomial constants XC0, XC1, XC2, XC3, XCEX and XEX in:
 
-       :math:`X{h} = X[XC0 + XC1.h + XC2.h^2 + XC3.h^3] + XCEX.X.h^{XEX}`
+       :math:`X_{h} = X[XC0 + XC1.h + XC2.h^2 + XC3.h^3 + XCEX.h^{XEX}]`
    * - Float
      - QMinMVAr
      - Maximum reactive power the machine can absorb.

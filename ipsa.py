@@ -5408,15 +5408,15 @@ class IscDiagram:
         """
         Creates a new transformer component on the diagram.
 
-        :param strName: The branch name.
+        :param strName: The transformer name.
         :type strName: str
-        :param dXFrom: The x coordinate of the busbar where the branch starts.
+        :param dXFrom: The x coordinate of the busbar where the transformer starts.
         :type dXFrom: float
-        :param dYFrom: The y coordinate of the busbar where the branch starts.
+        :param dYFrom: The y coordinate of the busbar where the transformer starts.
         :type dYFrom: float
-        :param dXTo: The x coordinate of the busbar where the branch ends.
+        :param dXTo: The x coordinate of the busbar where the transformer ends.
         :type dXTo: float
-        :param dYTo: The y coordinate of the busbar where the branch ends.
+        :param dYTo: The y coordinate of the busbar where the transformer ends.
         :type dYTo: float
         :return: The unique positive ID of the new transformer.
             If the transformer cannot be drawn, the return value is 0.
@@ -5469,13 +5469,13 @@ class IscDiagram:
 
         :param strName: The unbalanced line name.
         :type strName: str
-        :param dXFrom: The x coordinate of the busbar where the branch starts.
+        :param dXFrom: The x coordinate of the busbar where the unbalanced line starts.
         :type dXFrom: float
-        :param dYFrom: The y coordinate of the busbar where the branch starts.
+        :param dYFrom: The y coordinate of the busbar where the unbalanced line starts.
         :type dYFrom: float
-        :param dXTo: The x coordinate of the busbar where the branch ends.
+        :param dXTo: The x coordinate of the busbar where the unbalanced line ends.
         :type dXTo: float
-        :param dYTo: The y coordinate of the busbar where the branch ends.
+        :param dYTo: The y coordinate of the busbar where the unbalanced line ends.
         :type dYTo: float
         :return: The unique positive ID of the new unbalanced line component.
             If the unbalanced line cannot be drawn, the return value is 0.
@@ -5514,13 +5514,13 @@ class IscDiagram:
 
         :param strName: The unbalanced transformer name.
         :type strName: str
-        :param dXFrom: The x coordinate of the busbar where the branch starts.
+        :param dXFrom: The x coordinate of the busbar where the unbalanced transformer starts.
         :type dXFrom: float
-        :param dYFrom: The y coordinate of the busbar where the branch starts.
+        :param dYFrom: The y coordinate of the busbar where the unbalanced transformer starts.
         :type dYFrom: float
-        :param dXTo: The x coordinate of the busbar where the branch ends.
+        :param dXTo: The x coordinate of the busbar where the unbalanced transformer ends.
         :type dXTo: float
-        :param dYTo: The y coordinate of the busbar where the branch ends.
+        :param dYTo: The y coordinate of the busbar where the unbalanced transformer ends.
         :type dYTo: float
         :return: The unique positive ID of the new unbalanced transformer component.
             If the unbalanced transformer cannot be drawn, the return value is 0.
@@ -5872,7 +5872,7 @@ class IscDiagram:
         """
         Sets whether the label for the component identified by the given UID is visible, and
         whether it scales with zoom.
-        *Note the zoom scaling is not currently functioning and can only be set from Data Display Styles.*
+        This can also be set from Data Display Styles.
 
         :param nUID: The UID of the component with the label to be modified.
         :type nUID: int
@@ -8121,7 +8121,6 @@ class IscInterface:
     def GetUndoActive(self) -> bool:
         """
         Returns a boolean determining whether Undo is currently active.
-        *Note that undo is currently faulty, and may crash IPSA.*
 
         :return: Returns True if Undo is active.
         :rtype: bool
@@ -8131,7 +8130,6 @@ class IscInterface:
     def SetUndoActive(self, bSetActive: bool):
         """
         Sets the boolean determining whether Undo is currently active.
-        *Note that undo is currently faulty, and may crash IPSA.*
 
         :param bSetActive: True if undo should be active.
         :type bSetActive: bool
@@ -12611,7 +12609,7 @@ class IscNetwork:
         """
         pass
 
-    def CreatePlugin(self, pComp, sPluginName: str, sName: str) -> int:
+    def CreatePlugin(self, pComponent, sPluginName: str, sName: str) -> int:
         """
         Returns the UID or the IscPlugin object for the newly created plugin.
         A different plugin UID is required for each component with a plugin,
