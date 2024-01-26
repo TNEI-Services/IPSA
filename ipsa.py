@@ -6150,30 +6150,31 @@ class IscGroup:
         """
         pass
 
-    def CompareGroups(self, nGroupUID: int, bUseIntersection: bool) -> List[int]:
+    def CompareGroups(self, nGroupUID: int, bUseIntersection: bool = False) -> List[int]:
         """
         Compares the current group with the group with UID given by nGroupUID.
-        By default, will perform a difference operation returning a list of component UIDs present in the current group but not present in the group with UID given by nGroupUID.
-        If bUseIntersection is true it will return a list of component UIDs present in both lists.
+        By default, will perform a difference operation returning a list of component UIDs present in the current group
+        but not present in the group with UID given by nGroupUID.
+        If bUseIntersection is True it will return a list of component UIDs present in both lists.
         Both lists of group member UIDs will be unaffected.
 
         :param nGroupUID: UID of the group to compare with.
         :type nGroupUID: int
-        :param bUseIntersection: If true performs an intersection, if false a difference operation.
+        :param bUseIntersection: If True performs an intersection, if False a difference operation.
         :type bUseIntersection: bool
         :return: The list of UIDs that make up the difference (default) or intersection of the two groups.
         :rtype: list(int)
         """
         pass
 
-    def MergeGroups(self, nGroupUID: int, bDeleteGroup: bool) -> None:
+    def MergeGroups(self, nGroupUID: int, bDeleteGroup: bool = False) -> None:
         """
         Appends the list of component UIDs from the group with the given UID onto the current group's UID list.
-        By default the group with the given UID will be unnaffected, unless bDeleteGroup is true, in which case it will be deleted.
+        By default the group with the given UID will be unnaffected, unless bDeleteGroup is True, in which case it will be deleted.
 
         :param nGroupUID: UID of the group to merge with.
         :type nGroupUID: int
-        :param bDeleteGroup: If true deletes the group with nGroupUID, otherwise the group is unnaffected.
+        :param bDeleteGroup: If True deletes the group with nGroupUID, otherwise the group is unnaffected.
         :type bDeleteGroup: bool
         """
         pass
