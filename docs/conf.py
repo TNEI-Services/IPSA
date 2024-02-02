@@ -12,6 +12,7 @@ author = 'IPSA'
 
 release = '1.0'
 version = 'v2.10.2'
+reference = 'UG004'
 
 html_css_files = ['css/custom.css']
 # -- General configuration
@@ -63,7 +64,7 @@ latex_elements = {
      'printindex': '',
      'fontenc': '',
      'inputenc': '',
-     'classoptions': ',docversion='+version,
+     'classoptions': ',docversion='+version+',docreference='+reference,
      'utf8extra': '',
      'sphinxsetup': 'VerbatimColor={white},TableRowColorHeader={HTML}{e3b5c7},TableRowColorOdd={white},'
                     'TableRowColorEven={HTML}{e6e0eb}'

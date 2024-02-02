@@ -19,6 +19,10 @@
 \define@key{ipsa.cls}{docversion}[latest]{
     \def\docversion{#1}
 }
+\def\docreference{latest}
+\define@key{ipsa.cls}{docreference}[latest]{
+    \def\docreference{#1}
+}
 \ExecuteOptionsX{docversion}
 \ProcessOptionsX
 
@@ -104,9 +108,11 @@
         {\fontsize{34}{38}\selectfont {\bf \textcolor{purpleaccent}{PyIPSA Reference Manual}}}
         \vspace{3mm}
 
-        {\Large \textcolor{purpleaccent}{Version:} \textcolor{pinkaccent}{IPSA \docversion} }
+        {\large \textcolor{purpleaccent}{Version:} \textcolor{pinkaccent}{IPSA \docversion} }
 
-        {\Large \textcolor{purpleaccent}{Date Modified:} \textcolor{pinkaccent}{\@date} }
+        {\large \textcolor{purpleaccent}{Date Modified:} \textcolor{pinkaccent}{\@date} }
+
+        {\large \textcolor{purpleaccent}{Document Referent:} \textcolor{pinkaccent}{\docreference} }
         \vspace{2mm}
 
 
