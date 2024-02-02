@@ -3,8 +3,8 @@ Welcome to PyIPSA's documentation!
 
 **PyIPSA** is the fastest and easiest interfacing python tool in power systems analysis!
 
-This guide provides a full reference to all the IPSA objects and their callable functions exposed through Python. This reference guide refers to IPSA version 2.10.1.
-IPSA version 2.10.1 32-bit uses Python version 2.7, while the 64-bit one makes use of Python 3.8.
+This guide provides a full reference to all the IPSA objects and their callable functions exposed through Python. This reference guide refers to IPSA version 2.10.2.
+IPSA version 2.10.2 32-bit uses Python version 2.7, while the 64-bit one makes use of Python 3.8.
 
 Current Features
 -----------------
