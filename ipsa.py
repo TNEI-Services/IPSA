@@ -8926,6 +8926,16 @@ class IscNetwork:
         """Reset all analysis results."""
         pass
 
+    def GetSystemBaseMVA(self) -> float:
+        """
+        Returns the current system MVA defined for the IPSA network
+        Default: 100 MVA
+
+        :return: Network system MVA value
+        :rtype: float
+        """
+        pass
+
 # These functions don't exist yet in PyIPSA EL 11.2023
     # def GetLastSuccessfulAutomationUID(self) -> int:
     #     """
@@ -16774,6 +16784,218 @@ class IscUMachine:
         :rtype: float
         """
         pass
+
+    def TransformCDPParameters(self, dMachineMVA: float) -> bool:
+        """
+        Transforms the given CDP parametrisation based on the ratio
+        between the machine and system base. Note this function should only be used if
+        the user has the CDP parameters in machine base.
+
+        :param dMachineMVA: Machine base in MVA
+        :type dMachineMVA: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def ActivateCDP(self) -> bool:
+        """
+        Switches the CDP functionality for the given Universal Machine on
+
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeactivateCDP(self) -> bool:
+        """
+        Switches the CDP functionality for the given Universal Machine off
+
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetCDPVoltagePU(self) -> List[float]:
+        """
+        Returns the synchronous region voltages for the CDP advanced mode
+
+        :return: List of voltage entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPVoltageTransientPU(self) -> List[float]:
+        """
+        Returns the transient region voltages for the CDP advanced mode
+
+        :return: List of voltage entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPVoltageSubTransientPU(self) -> List[float]:
+        """
+        Returns the subtransient region voltages for the CDP advanced mode
+
+        :return: List of voltage entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPRealCurrentPU(self) -> List[float]:
+        """
+        Returns the synchronous real current values for the CDP advanced mode
+
+        :return: List of real current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPRealCurrentTransientPU(self) -> List[float]:
+        """
+        Returns the transient real current values for the CDP advanced mode
+
+        :return: List of real current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPRealCurrentSubTransientPU(self) -> List[float]:
+        """
+        Returns the subtransient real current values for the CDP advanced mode
+
+        :return: List of real current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPReactiveCurrentPU(self) -> List[float]:
+        """
+        Returns the synchronous reactive current values for the CDP advanced mode
+
+        :return: List of reactive current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPReactiveCurrentTransientPU(self) -> List[float]:
+        """
+        Returns the transient reactive current values for the CDP advanced mode
+
+        :return: List of reactive current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPReactiveCurrentSubTransientPU(self) -> List[float]:
+        """
+        Returns the subtransient reactive current values for the CDP advanced mode
+
+        :return: List of reactive current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def SetCDPVoltagePU(self, lVoltage: List[float]) -> bool:
+        """
+        Sets the synchronous region voltages for the CDP advanced mode
+
+        :param: List of voltage entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPVoltageTransientPU(self, lVoltage: List[float]) -> bool:
+        """
+        Sets the transient region voltages for the CDP advanced mode
+
+        :param: List of voltage entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPVoltageSubTransientPU(self, lVoltage: List[float]) -> bool:
+        """
+        Sets the subtransient region voltages for the CDP advanced mode
+
+        :param: List of voltage entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPRealCurrentPU(self, lRealCurrent: List[float]) -> bool:
+        """
+        Sets the synchronous real current values for the CDP advanced mode
+
+        :param: List of real current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPRealCurrentTransientPU(self, lRealCurrent: List[float]) -> bool:
+        """
+        Sets the transient real current values for the CDP advanced mode
+
+        :param: List of real current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPRealCurrentSubTransientPU(self, lRealCurrent: List[float]) -> bool:
+        """
+        Sets the subtransient real current values for the CDP advanced mode
+
+        :param: List of real current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPReactiveCurrentPU(self, lReactiveCurrent: List[float]) -> bool:
+        """
+        Sets the synchronous reactive current values for the CDP advanced mode
+
+        :param: List of reactive current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPReactiveCurrentTransientPU(self, lReactiveCurrent: List[float]) -> bool:
+        """
+        Sets the transient reactive current values for the CDP advanced mode
+
+        :param: List of reactive current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPReactiveCurrentSubTransientPU(self, lReactiveCurrent: List[float]) -> bool:
+        """
+        Sets the subtransient reactive current values for the CDP advanced mode
+
+        :param: List of reactive current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
 
 class IscUnbalancedLine:
     """
