@@ -60,12 +60,6 @@ Field Values
 
         - 0 = Linear
         - 1 = Cubic
-   * - Integer
-     - CDPVoltageInterpolation
-     - The CDP voltage interpolation scheme
-
-        - 0 = Linear
-        - 1 = Cubic
    * - Float
      - CDPKFactor
      - The K factor co-efficient that determines the strength of the current injection contributions (only valid between 0 and 10).
@@ -84,6 +78,12 @@ Field Values
    * - Float
      - CDPTimeConstantSubTransientMs
      - Time constant value in ms for the subtransient window duration.
+   * - Boolean
+     - CDPPhaseCorrections
+     - Switch for the CDP functionality of the universal machine that forces the phase correction of the injected current to be in
+       quadrature with the pre-fault voltage. This 'prioritises' reactive power injection at the CDP injection site. In advanced mode,
+       when this is disabled it will adopt the phase of the active-reactive current phasor. In simple mode, when this is disabled it
+       will be in phase with the retained voltage.
 
 IscUMachine Class
 ------------------
