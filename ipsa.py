@@ -11609,7 +11609,7 @@ class IscNetwork:
         """
         Returns the UID or an IscCircuitBreaker object for the newly created circuit breaker. In order to draw this component, the function IscDiagram.DrawUndrawnItemsAttachedToBusbar needs to be called before IscDiagram.DrawLine.
 
-        :param nBranchOrTxUID: The UID of the busbar or the transformer where the circuit breaker is located.
+        :param nBranchOrTxUID: The UID of the branch or the transformer where the circuit breaker is located.
         :type nBranchOrTxUID: int
         :param pBranchOrTx: The IscBranch or IscTransformer object of the branch or transformer where the circuit breaker is located.
         :type pBranchOrTx: IscBranch or IscTransformer
