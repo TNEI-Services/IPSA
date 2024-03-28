@@ -5075,7 +5075,7 @@ class IscDiagram:
 
     def CreateLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in IPSA 2.10.2. Instead, use CreateBranch.
+        *Deprecated.* Instead, use CreateBranch.
 
         Creates a new branch component on the diagram.
 
@@ -5168,7 +5168,7 @@ class IscDiagram:
 
     def CreateTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in IPSA 2.10.2. Instead, use Create2WTransformer.
+        *Deprecated.* Instead, use Create2WTransformer.
 
         Creates a new transformer component on the diagram.
 
@@ -5227,7 +5227,7 @@ class IscDiagram:
 
     def CreateUnbalancedLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in IPSA 2.10.2. Instead, use CreateUnbalancedBranch.
+        *Deprecated.* Instead, use CreateUnbalancedBranch.
 
         Creates a new unbalanced line component on the diagram.
 
@@ -5271,7 +5271,7 @@ class IscDiagram:
 
     def CreateUnbalancedTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in IPSA 2.10.2. Instead, use CreateUnbalanced2WTransformer.
+        *Deprecated.* Instead, use CreateUnbalanced2WTransformer.
 
         Creates a new unbalanced transformer component on the diagram.
 
