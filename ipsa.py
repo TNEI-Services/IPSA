@@ -1273,7 +1273,7 @@ class IscAnnotation:
 
 class IscBattery:
     """
-    Provides access to an Ipsa battery.
+    Provides access to an IPSA battery.
     """
     def SetName(self, strName: str) -> bool:
         """
@@ -5075,7 +5075,7 @@ class IscDiagram:
 
     def CreateLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use CreateBranch.
+        Deprecated in IPSA 2.10.2. Instead, use CreateBranch.
 
         Creates a new branch component on the diagram.
 
@@ -5168,7 +5168,7 @@ class IscDiagram:
 
     def CreateTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use Create2WTransformer.
+        Deprecated in IPSA 2.10.2. Instead, use Create2WTransformer.
 
         Creates a new transformer component on the diagram.
 
@@ -5227,7 +5227,7 @@ class IscDiagram:
 
     def CreateUnbalancedLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalancedBranch.
+        Deprecated in IPSA 2.10.2. Instead, use CreateUnbalancedBranch.
 
         Creates a new unbalanced line component on the diagram.
 
@@ -5271,7 +5271,7 @@ class IscDiagram:
 
     def CreateUnbalancedTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        Deprecated in Ipsa 2.10.2. Instead, use CreateUnbalanced2WTransformer.
+        Deprecated in IPSA 2.10.2. Instead, use CreateUnbalanced2WTransformer.
 
         Creates a new unbalanced transformer component on the diagram.
 
@@ -7246,9 +7246,9 @@ class IscInterface:
     """
     def ReadFile(self, strName: str):
         """
-        Opens an Ipsa i2f file strName and returns an IscNetwork instance for that file.
+        Opens an IPSA i2f file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The Ipsa i2f file that is going to be opened.
+        :param strName: The IPSA i2f file that is going to be opened.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -7257,9 +7257,9 @@ class IscInterface:
 
     def ReadIpsa1File(self, strName: str):
         """
-        Imports an Ipsa 1 (\*.iif) file strName and returns an IscNetwork instance for that file.
+        Imports an IPSA 1 (\*.iif) file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The Ipsa i2f file that is going to be imported.
+        :param strName: The IPSA i2f file that is going to be imported.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -7268,9 +7268,9 @@ class IscInterface:
 
     def GetNetwork(self):
         """
-        Returns an IscNetwork instance for the current Ipsa network.
+        Returns an IscNetwork instance for the current IPSA network.
 
-        :return: The IscNetwork instance of the Ipsa network.
+        :return: The IscNetwork instance of the IPSA network.
         :rtype: IscNetwork
         """
         pass
@@ -7289,11 +7289,11 @@ class IscInterface:
         Returns an IscDiagram instance for the diagram with name strName contained in the network
         referred to by iscNetwork.
 
-        :param network: The IscNetwork instance of the Ipsa network.
+        :param network: The IscNetwork instance of the IPSA network.
         :type network: IscNetwork
         :param strName: The name of the diagram.
         :type strName: str
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -7308,7 +7308,7 @@ class IscInterface:
             nSceneMeasurementUnit: int
     ) -> bool:
         """
-        Creates a new Ipsa network based on the supplied parameters. Returns False if the network can’t be created.
+        Creates a new IPSA network based on the supplied parameters. Returns False if the network can’t be created.
 
         :param dSystemBaseMVA: The network base MVA.
         :type dSystemBaseMVA: float
@@ -7339,7 +7339,7 @@ class IscInterface:
 
     def MergeFile(self, sMergeName: str) -> bool:
         """
-        Merges the Ipsa I2F file sMergeName into the current network.
+        Merges the IPSA I2F file sMergeName into the current network.
 
         :param sMergeName: The name of the file being merged.
         :type sMergeName: str
@@ -7350,7 +7350,7 @@ class IscInterface:
 
     def ValidatedMergeFile(self, sMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the Ipsa I2F file sMergeName can be merged into
+        Performs a consistency check to determine if the IPSA I2F file sMergeName can be merged into
         the current network. Use the GetFilingErrors() function to get details of the merge errors.
 
         :param sMergeName: The name of the file being merged.
@@ -7383,7 +7383,7 @@ class IscInterface:
 # Fixing gaps in documentation EL 11/2023
     def WriteFile(self, strName: str) -> bool:
         """
-        Saves the IscNetwork instance as a new Ipsa i2f network file with the file name strName.
+        Saves the IscNetwork instance as a new IPSA i2f network file with the file name strName.
         The file is saved in the current working directory unless the path is defined in the file name.
         The file name should include the .i2f extension
 
@@ -7396,7 +7396,7 @@ class IscInterface:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group specified by the UID, nAreaUID, as a new Ipsa i2f network file with the file name strName.
+        Saves the area group specified by the UID, nAreaUID, as a new IPSA i2f network file with the file name strName.
         The integer nAreaUID can be obtained using the IscGroup functions.
         The file is saved in the current working directory unless the path is defined in the file name.
         The file name should include the .i2f extension
@@ -7414,7 +7414,7 @@ class IscInterface:
         """
         Returns a tuple of IscDiagram instances for the network referred to by IscNetwork.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :return: The network diagram.
         :rtype: tuple(IscDiagram)
@@ -7425,7 +7425,7 @@ class IscInterface:
         """
         Returns a list of all the diagram names for the network referred to by IscNetwork.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :return: List of diagram names.
         :rtype: list(str)
@@ -7436,7 +7436,7 @@ class IscInterface:
         """
         Print the IscDiagram instance to a PDF format file with name strFileName.
 
-        :param diagram: The diagram of the Ipsa network.
+        :param diagram: The diagram of the IPSA network.
         :type diagram: IscDiagram
         :param strFileName: The name of the pdf file.
         :type strFileName: str
@@ -7518,17 +7518,17 @@ class IscInterface:
 
     def AllowStackBarUpdates(self, bAllow: bool) -> None:
         """
-        Setting bAllow to True prevents the Ipsa stack bar from updating during script execution.
+        Setting bAllow to True prevents the IPSA stack bar from updating during script execution.
         This can provide speed improvements since redrawing the stack bar is prevented.
 
-        :param bAllow: Deciding whether the Ipsa stack bar can be updated during script execution.
+        :param bAllow: Deciding whether the IPSA stack bar can be updated during script execution.
         :type bAllow: bool
         """
         pass
 
     def GetDate(self) -> str:
         """
-        Returns the date and time that Ipsa was launched, e.g. 06 Nov 2012 22:53:17.
+        Returns the date and time that IPSA was launched, e.g. 06 Nov 2012 22:53:17.
 
         :return: The date in a string format.
         :rtype: str
@@ -7732,7 +7732,7 @@ class IscInterface:
 
     def DisplayResultsTable(self, nTableType: int) -> None:
         """
-        Displays the Ipsa results table which will contain the results of the last analysis.
+        Displays the IPSA results table which will contain the results of the last analysis.
 
         :param nTableType: Specify the type of table displayed:
 
@@ -7807,7 +7807,7 @@ class IscInterface:
     def DbgSetLogFileName(self, strName: str) -> None:
         """
         Set the name of the load flow log file to strName.
-        If no file path is specified then the file is created in the Ipsa bin directory.
+        If no file path is specified then the file is created in the IPSA bin directory.
 
         :param strName: The name of the load flow log file.
         :type strName: str
@@ -8506,7 +8506,7 @@ class IscNetComponent:
     def GetName(self) -> str:
         """
         Gets the name as a string - this is the name Python knows the object by
-        (only identical to the Ipsa name for busbars).
+        (only identical to the IPSA name for busbars).
 
         :return: The name of the component.
         :rtype: str
@@ -8859,7 +8859,7 @@ class IscNetwork:
 
     def RefreshSystem(self) -> None:
         """
-        Forces Ipsa to rebuild its internal component data maps.
+        Forces IPSA to rebuild its internal component data maps.
         This function can be used if the network has been modified outside of scripting while a script is running.
         """
         pass
@@ -8877,7 +8877,7 @@ class IscNetwork:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group UID as a new Ipsa i2f network file.
+        Saves the area group UID as a new IPSA i2f network file.
         The file is saved in the current working directory.
         The file name should include the .i2f extension.
 
@@ -8903,7 +8903,7 @@ class IscNetwork:
 
     def ValidatedMergeFile(self, strMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the Ipsa I2F file can be merged into the current network.
+        Performs a consistency check to determine if the IPSA I2F file can be merged into the current network.
         Use the GetFilingErrors() function to get details of the merge errors.
 
         :param strMergeName: The merged file name.
@@ -8948,7 +8948,7 @@ class IscNetwork:
 
     def CreateChangeFile(self, nVersion: int, strMergeName: str) -> bool:
         """
-        Creates an Ipsa merge file based on the network differences between the given version and the current version.
+        Creates an IPSA merge file based on the network differences between the given version and the current version.
 
         :param nVersion: The selected version.
         :type nVersion: int
@@ -13099,7 +13099,7 @@ class IscNetwork:
 
         :param strName: The name of the diagram.
         :type strName: str
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -13146,7 +13146,7 @@ class IscNetwork:
         """
         Performs a load flow calculation.
 
-        :param bNoEngineLoad: If False (default), loads the engine from the Ipsa model before doing a load flow calculation. If True, skips the load from the Ipsa model and uses whatever network is currently loaded in the engine.
+        :param bNoEngineLoad: If False (default), loads the engine from the IPSA model before doing a load flow calculation. If True, skips the load from the IPSA model and uses whatever network is currently loaded in the engine.
         :type bNoEngineLoad: bool
         :param bDontUpdateData: If False (default), allows the load flow results being written back to the network model data (e.g. Busbar voltages and angles). If True, skips this stage, so the network model remains the same as it was loaded. **Note that calling the function with no arguments is allowed and works as if it has been called with bNoEngineLoad and bDontUpdateData set to False.**
         :type bDontUpdateData: bool
@@ -13266,7 +13266,7 @@ class IscNetwork:
 
     def SetEngineMessageSuppression(self, nLevel: int) -> None:
         """
-        Sets the verbosity of the load flow messages that are generated in the Ipsa progress window.
+        Sets the verbosity of the load flow messages that are generated in the IPSA progress window.
         This can provide a speed improvement for complex scripts
 
             - 0 = Displays all messages
@@ -13836,7 +13836,7 @@ class IscNetwork:
         of a dynamic rating plugin.
         Dynamic rating plugins can be used to model the thermal response of OHLs,
         transformers and cables and provide ratings which are based on these models.
-        The normal Ipsa rating of a component is overridden if it has a dynamic rating plugin applied.
+        The normal IPSA rating of a component is overridden if it has a dynamic rating plugin applied.
         In this case this function returns the UIDs of all such overloaded components in contingency study ID.
 
         :param nStudyID: The contingency study ID.
@@ -13848,9 +13848,9 @@ class IscNetwork:
 
     def GetContingencyBranchRatingIndex(self) -> int:
         """
-        Returns the Ipsa rating index of the rating set used during the contingency study.
+        Returns the IPSA rating index of the rating set used during the contingency study.
 
-        :return: The Ipsa rating index.
+        :return: The IPSA rating index.
         :rtype: int
         """
         pass
