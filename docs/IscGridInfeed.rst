@@ -63,6 +63,14 @@ Field Values
    * - Float
      - Tbreak
      - RMS fault time in seconds.
+   * - Integer
+     - GridPlanningStage
+     - The stage the load is currently at:
+
+        - 0 = Proposed
+        - 1 = Accepted
+        - 2 = Completed
+        - 3 = Energised (default, in service)
 
 IscGridInfeed Class
 --------------------
