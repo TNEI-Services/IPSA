@@ -5557,7 +5557,9 @@ class IscDiagram:
 
     def SplitBranch(self, nLineUID: int, nSection: int, dRatio: float, strName: str) -> int:
         """
+        *Deprecated. Instead, use IscNetwork.SplitBranch.*
         Splits a branch into two sections connected by a new busbar.
+        This will only act if the branch is only drawn in this IscDiagram instance.
 
         :param nLineUID: The line UID.
         :type nLineUID: int
@@ -12628,6 +12630,57 @@ class IscNetwork:
         :rtype: IscPlugin
         :return: The plugin UID, 0 on failure.
         :rtype: int
+        """
+        pass
+
+    def ReverseBranch(self, nBranchUID: int) -> bool:
+        """
+        Reverses the connection of branch or transformer supplied.
+
+        :param nBranchUID: the branch or transformer UID.
+        :type nBranchUID: int
+        :return: denotes if the branch has been successfully reversed.
+        :rtype: bool
+        """
+        pass
+
+    def SplitBranch(self, nBranchUID: int, nSection: int, dDistanceRatio: float, strNewBusName: str) -> int:
+        """
+        Splits a branch or transformer into two sections connected by a new busbar.
+
+        :param nBranchUID: The branch UID.
+        :type nBranchUID: int
+        :param nSection: Specifies which section of a multi-section branch is split.
+            For branches with only one section then nSection should be set to 0.
+        :type nSection: int
+        :param dDistanceRatio: Specifies how the branch impedances are divided between the new branches.
+            A value of 0.0 sets the split position to be at the “From” end whilst a value of 1.0 specifies the “To” end.
+            Values between 0.0 and 1.0 split the branch in proportion.
+            For multi-section branches dRatio splits the section identified by nSection.
+        :type dDistanceRatio: float
+        :param strName: The name of the new busbar.
+        :type strName: str
+        :return: The UID of the new branch. If it is not greater than 0, the branch has not been split.
+            This is because there is a protection device or controller on the branch or the branch is connected to an
+            embedded diagram.
+        :rtype: int
+        """
+        pass
+
+    def ChangeConnection(self, nUID: int, nOldBusUID: int, nNewBusUID: int) -> bool:
+        """
+        Changes the connection busbar for the component specified by nUID. nOldBusUID must identify a busbar currently
+        connected to the component, and nNewBusUID but identify an existing busbar which is not already connected to
+        the component.
+
+        :param nUID: The UID of the component with the connection to be changed.
+        :type nUID: int
+        :param nOldBusUID: The UID of the connection busbar to be disconnected.
+        :type nOldBusUID: int
+        :param nNewBusUID: The UID of the new connection busbar to be connected.
+        :type nNewBusUID: int
+        :return: denotes if the connection change has been successful.
+        :rtype: bool
         """
         pass
 
