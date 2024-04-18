@@ -37,8 +37,8 @@ Field Values
 
         - 0 = Local voltage control
         - 1 = Remote busbar voltage control
-        - 2 = Reactive power flow control at receive end of branch
-        - 3 = Reactive power control at send end of branch
+        - 2 = Branch reactive power control entering the busbar
+        - 3 = Branch reactive power control leaving the busbar
    * - Integer
      - ControlSteps
      - Sets or returns the control mode of the mechanical switched capacitor:
@@ -59,7 +59,7 @@ Field Values
      - Sets or returns the inductor step size in MVAr.
    * - Float
      - TargetVoltagePU
-     - Sets or returns the target voltage in per unit.
+     - Sets or returns the target voltage in per unit. Note when the MSC is branch reactive power controlled, this is the target power factor.
    * - Float
      - BandwidthPC
      - Sets or returns the bandwidth of acceptable voltage in percentage.
@@ -83,7 +83,7 @@ Field Values
         - 1 = Voltage or power factor control is active
    * - Integer
      - ControlledUID
-     - Sets or returns the busbar UID for the remote busbar whose voltage is being controlled.
+     - Sets or returns the busbar or branch UID for the remote busbar or branch whose voltage is being controlled.
    * - Integer
      - SendEnd
      - Sets or returns the branch end that is controlled when in power factor control mode:
