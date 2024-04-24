@@ -9325,7 +9325,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbars(self, bFetchFromSystem: bool):
+    def GetBusbars(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of busbars. The keys are the busbar names.
 
@@ -9337,7 +9337,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbarsOrderedByVoltage(self, bFetchFromSystem: bool) -> Tuple[int]:
+    def GetBusbarsOrderedByVoltage(self, bFetchFromSystem: bool = True) -> Tuple[int]:
         """
         Returns a tuple of busbar UIDs, sorted in ascending order of voltage and then by busbar name.
 
@@ -9349,7 +9349,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbarAttachedBranches(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
+    def GetBusbarAttachedBranches(self, nBusbarUID: int, bFetchFromSystem: bool = True) -> Tuple[int]:
         """
         Returns a tuple of branch UIDs attached to the busbar specified by busbar UID.
         Only branches are returned, not transformers.
@@ -9364,7 +9364,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbarAttachedTransformers(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
+    def GetBusbarAttachedTransformers(self, nBusbarUID: int, bFetchFromSystem: bool = True) -> Tuple[int]:
         """
         Returns a tuple of transformer UIDs attached to the busbar specified by busbar UID.
         Only transformers are returned, not branches or 3W transformers.
@@ -9379,7 +9379,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbarAttached3WTransformers(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
+    def GetBusbarAttached3WTransformers(self, nBusbarUID: int, bFetchFromSystem: bool = True) -> Tuple[int]:
         """
         Returns a tuple of 3-winding transformer UIDs attached to the busbar specified by busbar UID.
         Only 3-winding transformers are returned, not 2-winding transformers or branches.
@@ -9394,7 +9394,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbarAttachedUnbalancedBranches(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
+    def GetBusbarAttachedUnbalancedBranches(self, nBusbarUID: int, bFetchFromSystem: bool = True) -> Tuple[int]:
         """
         Returns a tuple of unbalanced branch UIDs attached to the busbar specified by busbar UID.
         Only unbalanced branches are returned, not unbalanced transformers.
@@ -9409,7 +9409,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbarAttachedUnbalancedTransformers(self, nBusbarUID: int, bFetchFromSystem: bool) -> Tuple[int]:
+    def GetBusbarAttachedUnbalancedTransformers(self, nBusbarUID: int, bFetchFromSystem: bool = True) -> Tuple[int]:
         """
         Returns a tuple of unbalanced transformer UIDs attached to the busbar specified by busbar UID.
         Only unbalanced transformers are returned, not unbalanced branches.
@@ -9424,7 +9424,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBranches(self, bFetchFromSystem: bool):
+    def GetBranches(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscBranch instances.
         Key values (sPyName) are the Python names and the associated values are IscBranch instances.
@@ -9437,7 +9437,7 @@ class IscNetwork:
         """
         pass
 
-    def GetTransformers(self, bFetchFromSystem: bool):
+    def GetTransformers(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscTransformer instances.
         Keys (sPyName) are the Python names and the associated values are IscTransformer instances.
@@ -9450,7 +9450,7 @@ class IscNetwork:
         """
         pass
 
-    def Get3WTransformers(self, bFetchFromSystem: bool):
+    def Get3WTransformers(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of Isc3WTransformer instances.
         Keys (sPyName) are the Python names and the associated values are Isc3WTransformer instances.
@@ -9463,7 +9463,7 @@ class IscNetwork:
         """
         pass
 
-    def GetLoads(self, bFetchFromSystem: bool):
+    def GetLoads(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscLoad instances.
         Keys (sPyName) are the Python names and the associated values are IscLoad instances.
@@ -9476,7 +9476,7 @@ class IscNetwork:
         """
         pass
 
-    def GetSynMachines(self, bFetchFromSystem: bool):
+    def GetSynMachines(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscSynMachine instances.
         Keys (sPyName) are the Python names and the associated values are IscSynMachine instances.
@@ -9489,7 +9489,7 @@ class IscNetwork:
         """
         pass
 
-    def GetGridInfeeds(self, bFetchFromSystem: bool):
+    def GetGridInfeeds(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscGridInfeed instances.
         Keys (sPyName) are the Python names and the associated values are IscGridInfeed instances.
@@ -9502,7 +9502,7 @@ class IscNetwork:
         """
         pass
 
-    def GetFilters(self, bFetchFromSystem: bool):
+    def GetFilters(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscFilter instances.
         Keys (sPyName) are the Python names and the associated values are IscFilter instances.
@@ -9515,7 +9515,7 @@ class IscNetwork:
         """
         pass
 
-    def GetIndMachines(self, bFetchFromSystem: bool):
+    def GetIndMachines(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscIndMachine instances.
         Keys (sPyName) are the Python names and the associated values are IscIndMachine instances.
@@ -9528,7 +9528,7 @@ class IscNetwork:
         """
         pass
 
-    def GetMechSwCapacitors(self, bFetchFromSystem: bool):
+    def GetMechSwCapacitors(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscMechSwCapacitor instances.
         Keys (sPyName) are the Python names and the associated values are IscMechSwCapacitor instances.
@@ -9541,7 +9541,7 @@ class IscNetwork:
         """
         pass
 
-    def GetStaticVCs(self, bFetchFromSystem: bool):
+    def GetStaticVCs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscStaticVC instances.
         Keys (sPyName) are the Python names and the associated values are IscStaticVC instances.
@@ -9554,7 +9554,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUMachines(self, bFetchFromSystem: bool):
+    def GetUMachines(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscUMachine instances.
         Keys (sPyName) are the Python names and the associated values are IscUMachine instances.
@@ -9567,7 +9567,7 @@ class IscNetwork:
         """
         pass
 
-    def GetHarmonics(self, bFetchFromSystem: bool):
+    def GetHarmonics(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscHarmonic instances.
         Keys (sPyName) are the Python names and the associated values are IscHarmonic instances.
@@ -9580,7 +9580,7 @@ class IscNetwork:
         """
         pass
 
-    def GetCircuitBreakers(self, bFetchFromSystem: bool):
+    def GetCircuitBreakers(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscCircuitBreaker instances.
         Keys (sPyName) are the Python names and the associated values are IscCircuitBreaker instances.
@@ -9593,7 +9593,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBatteries(self, bFetchFromSystem: bool):
+    def GetBatteries(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscBattery instances.
         Keys (sPyName) are the Python names and the associated values are IscBattery instances.
@@ -9606,7 +9606,7 @@ class IscNetwork:
         """
         pass
 
-    def GetDCMachines(self, bFetchFromSystem: bool):
+    def GetDCMachines(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscDCMachine instances.
         Keys (sPyName) are the Python names and the associated values are IscDCMachine instances.
@@ -9619,7 +9619,7 @@ class IscNetwork:
         """
         pass
 
-    def GetConverters(self, bFetchFromSystem: bool):
+    def GetConverters(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscConverter instances.
         Keys (sPyName) are the Python names and the associated values are IscConverter instances.
@@ -9632,7 +9632,7 @@ class IscNetwork:
         """
         pass
 
-    def GetChoppers(self, bFetchFromSystem: bool):
+    def GetChoppers(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscChopper instances.
         Keys (sPyName) are the Python names and the associated values are IscChopper instances.
@@ -9645,7 +9645,7 @@ class IscNetwork:
         """
         pass
 
-    def GetMGSets(self, bFetchFromSystem: bool):
+    def GetMGSets(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscMGSet instances.
         Keys (sPyName) are the Python names and the associated values are IscMGSet instances.
@@ -9658,7 +9658,7 @@ class IscNetwork:
         """
         pass
 
-    def GetProtectionDevices(self, bFetchFromSystem: bool):
+    def GetProtectionDevices(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscProtectionDevice instances.
         Keys (sPyName) are the Python names and the associated values are IscProtectionDevice instances.
@@ -9671,7 +9671,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUnbalancedLoads(self, bFetchFromSystem: bool):
+    def GetUnbalancedLoads(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscUnbalancedLoad instances.
         Keys (sPyName) are the Python names and the associated values are IscUnbalancedLoad instances.
@@ -9684,7 +9684,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUnbalancedLines(self, bFetchFromSystem: bool):
+    def GetUnbalancedLines(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscUnbalancedLine instances.
         Keys (sPyName) are the Python names and the associated values are IscUnbalancedLine instances.
@@ -9697,7 +9697,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUnbalancedTransformers(self, bFetchFromSystem: bool):
+    def GetUnbalancedTransformers(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscUnbalancedTransformer instances.
         Keys (sPyName) are the Python names and the associated values are IscUnbalancedTransformer instances.
@@ -9710,7 +9710,7 @@ class IscNetwork:
         """
         pass
 
-    def GetVoltageRegulators(self, bFetchFromSystem: bool):
+    def GetVoltageRegulators(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscVoltageRegulator instances.
         Keys (sPyName) are the Python names and the associated values are IscVoltageRegulator instances.
@@ -9723,7 +9723,7 @@ class IscNetwork:
         """
         pass
 
-    def GetAnnotations(self, bFetchFromSystem: bool):
+    def GetAnnotations(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscAnnotation instances.
         Keys (sPyName) are the Python names and the associated values are IscAnnotation instances.
@@ -9736,20 +9736,26 @@ class IscNetwork:
         """
         pass
 
-    def GetGroups(self):
+    def GetGroups(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscGroup instances.
         Keys (sPyName) are the Python names and the associated values are IscGroup instances.
 
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
         :return: Dictionary of groups.
         :rtype: dict(str,IscGroup)
         """
         pass
 
-    def GetGroupsForItem(self, nUID: int) -> Tuple[int]:
+    def GetGroupsForItem(self, nUID: int, bFetchFromSystem: bool = True) -> Tuple[int]:
         """
         Returns a tuple containing the group UIDs for each group that the component UID is a member of.
 
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
         :param nUID: Component UID.
         :type nUID: int
         :return: Tuple of group UIDs.
@@ -9757,17 +9763,20 @@ class IscNetwork:
         """
         pass
 
-    def GetPlugins(self):
+    def GetPlugins(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscPlugin instances.
         Keys (sPyName) are the Python names and the associated values are IscPlugin instances.
 
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
         :return: Dictionary of plugins.
         :rtype: dict(str,IscPlugin)
         """
         pass
 
-    def GetBusbarUIDs(self, bFetchFromSystem: bool):
+    def GetBusbarUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all busbar UIDs in the network.
         The keys are the integer UIDs and the values are the IscBusbar instances.
@@ -9780,7 +9789,7 @@ class IscNetwork:
         """
         pass
 
-    def GetProtectionDeviceUIDs(self, bFetchFromSystem: bool):
+    def GetProtectionDeviceUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all protection device UIDs in the network.
         The keys are the integer UIDs and the values are the IscProtectionDevice instances.
@@ -10906,7 +10915,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBranchUIDs(self, bFetchFromSystem: bool):
+    def GetBranchUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all branch UIDs in the network.
         The keys are the integer UIDs and the values are the IscBranch instances.
@@ -10934,7 +10943,7 @@ class IscNetwork:
         """
         pass
 
-    def GetTransformerUIDs(self, bFetchFromSystem: bool):
+    def GetTransformerUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all transformer UIDs in the network.
         The keys are the integer UIDs and the values are the IscTransformer instances.
@@ -10965,7 +10974,7 @@ class IscNetwork:
         """
         pass
 
-    def Get3WTransformerUIDs(self, bFetchFromSystem: bool):
+    def Get3WTransformerUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all busbar UIDs in the network.
         The keys are the integer UIDs and the values are the IscBusbar instances.
