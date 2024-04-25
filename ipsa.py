@@ -8196,6 +8196,263 @@ class IscInterface:
         """
         pass
 
+class IscIntertrip:
+    """
+    Provides access to an IPSA intertrip object.
+    """
+    def GetUID(self) -> str:
+        """
+        Gets the unique ID of the intertrip
+
+        :return: The UID of the intertrip.
+        :rtype: str
+        """
+        pass
+
+    def GetName(self) -> str:
+        """
+        Gets the python name as a string.
+
+        :return: The name of the intertrip.
+        :rtype: str
+        """
+        pass
+
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name of the intertrip to the specified name.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a double value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value.
+        :rtype: str
+        """
+        pass
+
+    def GetListIValue(self, nFieldIndex: int) -> list[int]:
+        """
+        Returns a list of integer values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[int]
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from an integer.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The given integer value.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the value for the enumerated field from a double.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The given double value.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from a string.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The given string value.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListIValue(self, nFieldIndex: int, lIValue: list[int]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of integers.
+
+        Note: Setting the Masters/Slaves will set the list to be the provided list, removing any circuit breakers that
+        are in a different intertrip, or in the current intertrip in the opposite role.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lIValue: The given list of values.
+        :type lIValue:  list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetMembers(self) -> List[int]:
+        """
+        Returns a list containing the UIDs of the breakers in the intertrip.
+
+        :return: The UIDs of the breakers in the intertrip.
+        :rtype: list(int)
+        """
+        pass
+
+    def GetMasters(self) -> List[int]:
+        """
+        Returns a list containing the UIDs of the master breakers in the intertrip.
+
+        :return: The UIDs of the masters in the intertrip.
+        :rtype: list(int)
+        """
+        pass
+
+    def GetSlaves(self) -> List[int]:
+        """
+        Returns a list containing the UIDs of the slave breakers in the intertrip.
+
+        :return: The UIDs of the slaves in the intertrip.
+        :rtype: list(int)
+        """
+        pass
+
+    def AddMaster(self, nUID: int) -> bool:
+        """
+        Appends the circuit breaker identified by the nUID to the intertrip as a master.
+        If the circuit breaker already exists in another IscIntertrip object, or as a slave, the intertrip is
+        unchanged.
+
+        :param nUID: The UID of the specified circuit breaker.
+        :type nUID: int
+        :return: True if the circuit breaker is added to the intertrip as a master.
+        :rtype: bool
+        """
+        pass
+
+    def AddSlave(self, nUID: int) -> bool:
+        """
+        Appends the circuit breaker identified by the nUID to the intertrip as a slave.
+        If the circuit breaker already exists in another IscIntertrip object, or as a master, the intertrip is
+        unchanged.
+
+        :param nUID: The UID of the specified circuit breaker.
+        :type nUID: int
+        :return: True if the circuit breaker is added to the intertrip as a slave.
+        :rtype: bool
+        """
+        pass
+
+    def SwitchMasterSlave(self, nUID: int) -> bool:
+        """
+        If nUID identifies a master within the intertrip, converts it to a slave.
+        Otherwise, if it identifies a slave, converts it to a master.
+
+        :param nUID: The UID of the specified circuit breaker.
+        :type nUID: int
+        :return: True if the role of the circuit breaker is successfully switched.
+        :rtype: bool
+        """
+        pass
+
+    def RemoveMember(self, nUID: int):
+        """
+        Removes the circuit breaker identified by  nUID from the intertrip.
+
+        :param nUID: The UID of the specified circuit breaker.
+        :type nUID: int
+        """
+        pass
+
+    def IsMember(self, nUID: int) -> bool:
+        """
+        Checks if the breaker identified by the UID is in the intertrip.
+
+        :param nUID: The UID of the specified circuit breaker.
+        :type nUID: int
+        :return: True if circuit breaker is a member of the intertrip.
+        :rtype: bool
+        """
+        pass
+
+    def IsMaster(self, nUID: int) -> bool:
+        """
+        Checks if the breaker identified by the UID is a master in the intertrip.
+
+        :param nUID: The UID of the specified circuit breaker.
+        :type nUID: int
+        :return: True if circuit breaker is a master in the intertrip.
+        :rtype: bool
+        """
+        pass
+
+    def IsSlave(self, nUID: int) -> bool:
+        """
+        Checks if the breaker identified by the UID is a slave in the intertrip.
+
+        :param nUID: The UID of the specified circuit breaker.
+        :type nUID: int
+        :return: True if circuit breaker is a slave in the intertrip.
+        :rtype: bool
+        """
+        pass
+
+    def ClearMembers(self):
+        """
+        Removes all the member circuit breakers from the intertrip.
+        """
+        pass
+
+    def ClearMasters(self):
+        """
+        Removes all the master circuit breakers from the intertrip.
+        """
+        pass
+
+    def ClearSlaves(self):
+        """
+        Removes all the slave circuit breakers from the intertrip.
+        """
+        pass
+
 class IscLoad:
     """
     Provides access to an IPSA load.
@@ -9763,6 +10020,19 @@ class IscNetwork:
         """
         pass
 
+    def GetIntertrips(self, bFetchFromSystem: bool = True):
+        """
+        Returns a dictionary of IscIntertrip instances.
+        Keys (sPyName) are the Python names and the associated values are IscIntertrip instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of intertrips.
+        :rtype: dict(str,IscIntertrip)
+        """
+        pass
+
     def GetPlugins(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscPlugin instances.
@@ -10724,6 +10994,57 @@ class IscNetwork:
         :type strPythonName: str
         :return: The group instance or None if such is not found.
         :rtype: IscGroup
+        """
+        pass
+
+    @overload
+    def GetIntertrip(self, nUID: int):
+        """
+        Returns an IscIntertrip instance for the intertrip identified by the UID.
+
+        :param nUID: The selected intertrip UID.
+        :type nUID: int
+        :return: The intertrip instance or None if such is not found.
+        :rtype: IscIntertrip
+        """
+        pass
+
+    @overload
+    def GetIntertrip(self, strPythonName: str):
+        """
+        Returns an IscIntertrip instance for the intertrip identified by the Python name.
+
+        :param strPythonName: The selected intertrip name.
+        :type strPythonName: str
+        :return: The intertrip instance or None if such is not found.
+        :rtype: IscIntertrip
+        """
+        pass
+
+    def GetIntertrip(self, strPythonName: str):
+        """
+        Returns an IscIntertrip instance for the intertrip identified by the UID or the Python name.
+
+        You can use either nUID specifying the intertrip UID, or strPythonName specifying its name.
+
+        :param nUID: The selected intertrip UID.
+        :type nUID: int
+        :param strPythonName: The selected intertrip name.
+        :type strPythonName: str
+        :return: The intertrip instance or None if such is not found.
+        :rtype: IscIntertrip
+        """
+        pass
+
+    def GetIntertripFromBreaker(self, nBreakerUID: int) -> int:
+        """"
+        Returns the UID of the intertrip the breaker identified by nBreakerUID belongs to.
+        Returns 0 if no intertrip is found.
+
+        :param nBreakerUID: The breaker UID.
+        :type nBreakerUID: int
+        :return: The UID of the intertrip associated with the breaker or 0 if none is found.
+        :rtype: int
         """
         pass
 
@@ -12582,6 +12903,28 @@ class IscNetwork:
         """
         pass
 
+    def CreateIntertrip(self, strName: str) -> int:
+        """
+        Create a new empty intertrip and returns the intertrip UID.
+
+        :param strName: The intertrip name.
+        :type strName: str
+        :return: The intertrip UID, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    def CreateIntertripNoGraphics(self, strName: str):
+        """
+        Create a new empty intertrip and returns the IscIntertrip object.
+
+        :param strName: The intertrip name.
+        :type strName: str
+        :return: The IscIntertrip object or None on failure.
+        :rtype: IscIntertrip
+        """
+        pass
+
     @overload
     def CreatePlugin(self, nCompUID: int, sPluginName: str, sName: str) -> int:
         """
@@ -12963,6 +13306,17 @@ class IscNetwork:
 
         :param pGroup: The IscGroup object for deletion.
         :type pGroup: IscGroup
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteIntertrip(self, pIntertrip) -> bool:
+        """
+        Deletes a group by passing the IscIntertrip object for deletion.
+
+        :param pIntertrip: The IscIntertrip object for deletion.
+        :type pIntertrip: IscIntertrip
         :return: True if successful.
         :rtype: bool
         """
