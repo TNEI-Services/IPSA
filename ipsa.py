@@ -5119,6 +5119,15 @@ class IscDiagram:
         """
         pass
 
+    def GetUID(self) -> int:
+        """
+        Returns the unique diagram ID.
+
+        :return: The ID of the diagram.
+        :rtype: int
+        """
+        pass
+
     def CreateBusbarPoint(self, strName: str, dX: float, dY: float) -> int:
         """
         Creates a new busbar component on the diagram.
@@ -5859,12 +5868,10 @@ class IscDiagram:
 
     def PrintPDF(self, strFileName: str) -> None:
         """
-        Print the diagram to a PDF file.
+        Print the diagram to a PDF format file with name strFileName.
 
-        :param nUID: The line UID.
-        :type nUID: int
-        :return: The screen Y coordinate.
-        :rtype: float
+        :param strFileName: The name of the pdf file.
+        :type strFileName: str
         """
         pass
 
@@ -5882,6 +5889,39 @@ class IscDiagram:
         :type bFixedSize: bool
         :return: Returns True if the values have been set.
         :rtype: bool
+        """
+        pass
+
+    def SetBackgroundColour(self, strHexColour: str) -> None:
+        """
+        Sets the diagram background colour to the specified hex colour.
+        strHexColour can either be set as a hex colour code or as one of the SVG color keyword names.
+
+        :param strHexColour: The hex colour to set the diagram background to.
+        :type strHexColour: str
+        """
+        pass
+
+    def SetBackgroundImage(self, dOpacity: float, strImageFile: str, dWidth: float, dHeight: float,
+                           bKeepAspectRatio: bool) -> None:
+        """
+        Sets the background image of a diagram to the image found in strImageFile. The background image is displayed
+        with the opacity defined by dOpacity, and the image size defined by dWidth and dHeight. If bKeepAspectRatio is
+        set to True, dHeight is ignored, and the image is displayed with the width determined by dWidth and a height
+        automatically calculated to maintain the image aspect ratio.
+
+        Note, if strImageFile is not a valid image path, the background image will be cleared.
+
+        :param dOpacity: The opacity of the background image in the range 0-1.
+        :type dOpacity: float
+        :param strImageFile: The path to the new background image.
+        :type strImageFile: str
+        :param dWidth: The pixel width the background image will be displayed with.
+        :type dWidth: float
+        :param dHeight: The pixel height the background image will be displayed with.
+        :type dHeight: float
+        :param bKeepAspectRatio: If True, dHeight is auto-calculated to maintain the provided image aspect ratio.
+        :type bKeepAspectRatio: bool
         """
         pass
 
@@ -7496,15 +7536,44 @@ class IscInterface:
         """
         pass
 
+    @overload
     def GetDiagram(self, network, strName: str):
         """
-        Returns an IscDiagram instance for the diagram with name strName contained in the network
-        referred to by iscNetwork.
+        Returns an IscDiagram instance for the diagram with name strName contained in the identified network.
 
         :param network: The IscNetwork instance of the Ipsa network.
         :type network: IscNetwork
         :param strName: The name of the diagram.
         :type strName: str
+        :return: The diagram of the Ipsa network.
+        :rtype: IscDiagram
+        """
+        pass
+
+    @overload
+    def GetDiagram(self, network, nUID: int):
+        """
+        Returns an IscDiagram instance for the diagram with ID nUID contained the identified network.
+
+        :param network: The IscNetwork instance of the Ipsa network.
+        :type network: IscNetwork
+        :param nUID: The diagram ID.
+        :type nUID: int
+        :return: The diagram of the Ipsa network.
+        :rtype: IscDiagram
+        """
+        pass
+
+    def GetDiagram(self, network, strName: str):
+        """
+        Returns an IscDiagram instance for the diagram with name strName or ID nUID contained in the identified network.
+
+        :param network: The IscNetwork instance of the Ipsa network.
+        :type network: IscNetwork
+        :param strName: The name of the diagram.
+        :type strName: str
+        :param nUID: The diagram ID.
+        :type nUID: int
         :return: The diagram of the Ipsa network.
         :rtype: IscDiagram
         """
@@ -7624,7 +7693,7 @@ class IscInterface:
 
     def GetAllDiagrams(self, network):
         """
-        Returns a tuple of IscDiagram instances for the network referred to by IscNetwork.
+        Returns a tuple of IscDiagram instances for the identified network.
 
         :param network: The Ipsa network.
         :type network: IscNetwork
@@ -7635,12 +7704,207 @@ class IscInterface:
 
     def GetAllDiagramsNames(self, network) -> List[str]:
         """
-        Returns a list of all the diagram names for the network referred to by IscNetwork.
+        Returns a list of all the diagram names for the identified network.
 
         :param network: The Ipsa network.
         :type network: IscNetwork
         :return: List of diagram names.
         :rtype: list(str)
+        """
+        pass
+
+    def GetAllDiagramsUIDs(self, network):
+        """
+        Returns a dictionary of diagrams for the identified network. The keys are the Diagram IDs.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :return: Dictionary of diagrams for the network.
+        :rtype: dict(int, IscDiagram)
+        """
+        pass
+
+    @overload
+    def AddDiagram(self, network,
+                   strSceneTitle: str,
+                   bIsDiagramSingleLine: bool,
+                   dGeoSceneScale: float,
+                   nSceneMeasurementUnit: int):
+        """
+        Creates a new diagram for the identified network based on the supplied parameters.
+        Returns an IscDiagram object corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :return: The IscDiagram object for the newly created diagram.
+        :rtype: IscDiagram
+        """
+        pass
+
+    @overload
+    def AddDiagram(self, network,
+                   strSceneTitle: str,
+                   bIsDiagramSingleLine: bool,
+                   dGeoSceneScale: float,
+                   nSceneMeasurementUnit: int,
+                   nCopyWhat: int,
+                   pDiagramToCopy: IscDiagram):
+        """
+        Creates a new diagram for the identified network based on the supplied parameters.
+        Returns an IscDiagram object corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+        pDiagramToCopy provides a reference diagram, which this new diagram is based upon.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
+
+            * 0 if copy nothing
+            * 1 if copy the busbars as they are
+            * 2 if copy the busbars as junctions
+            * 3 if copy everything
+        :type nCopyWhat: int
+        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
+        :type pDiagramToCopy: IscDiagram
+        :return: The IscDiagram object for the newly created diagram.
+        :rtype: IscDiagram
+        """
+        pass
+
+    def AddDiagram(self, network,
+                   strSceneTitle: str,
+                   bIsDiagramSingleLine: bool,
+                   dGeoSceneScale: float,
+                   nSceneMeasurementUnit: int,
+                   nCopyWhat: int,
+                   pDiagramToCopy: IscDiagram):
+        """
+        Creates a new diagram for the identified network based on the supplied parameters.
+        Returns an IscDiagram object corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+
+        If nCopy what and pDiagramToCopy are provided, they provide a reference diagram and determine what is copied
+        from that diagram into the new diagram.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
+
+            * 0 if copy nothing
+            * 1 if copy the busbars as they are
+            * 2 if copy the busbars as junctions
+            * 3 if copy everything
+        :type nCopyWhat: int
+        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
+        :type pDiagramToCopy: IscDiagram
+        :return: The IscDiagram object for the newly created diagram.
+        :rtype: IscDiagram
+        """
+        pass
+
+    @overload
+    def DeleteDiagram(self, network, pDiagram: IscDiagram)-> None:
+        """
+        Deletes the diagram associated with the IscDiagram object from the identified network.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param pDiagram: The diagram to be deleted.
+        :type pDiagram: IscDiagram
+        """
+        pass
+
+    @overload
+    def DeleteDiagram(self, network, nUID: int) -> None:
+        """
+        Deletes the diagram identified by ID nUID from the identified network.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param nUID: The diagram ID to be deleted.
+        :type nUID: int
+        """
+        pass
+
+    @overload
+    def DeleteDiagram(self, network, strName: str) -> None:
+        """
+        Deletes the diagram identified by name strName from the identified network.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param strName: The name of the diagram to be deleted.
+        :type strName: str
+        """
+        pass
+
+    def DeleteDiagram(self, network, strName: str) -> None:
+        """
+        Deletes the diagram identified by name strName, ID nUID or IscDiagram pDiagram from the identified network.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param strName: The name of the diagram to be deleted.
+        :type strName: str
+        :param nUID: The diagram ID to be deleted.
+        :type nUID: int
+        :param pDiagram: The diagram to be deleted.
+        :type pDiagram: IscDiagram
         """
         pass
 
@@ -13419,12 +13683,38 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetDiagram(self, strName: str):
         """
         Returns an IscDiagram instance for the diagram with name strName contained in the network.
 
         :param strName: The name of the diagram.
         :type strName: str
+        :return: The diagram of the Ipsa network.
+        :rtype: IscDiagram
+        """
+        pass
+
+    @overload
+    def GetDiagram(self, nUID: int):
+        """
+        Returns an IscDiagram instance for the diagram with ID nUID contained in the network.
+
+        :param nUID: The diagram ID.
+        :type nUID: int
+        :return: The diagram of the Ipsa network.
+        :rtype: IscDiagram
+        """
+        pass
+
+    def GetDiagram(self, strName: str):
+        """
+        Returns an IscDiagram instance for the diagram with name strName or ID nUID contained in the network.
+
+        :param strName: The name of the diagram.
+        :type strName: str
+        :param nUID: The diagram ID.
+        :type nUID: int
         :return: The diagram of the Ipsa network.
         :rtype: IscDiagram
         """
@@ -13445,6 +13735,188 @@ class IscNetwork:
 
         :return: The names of the diagrams for the network.
         :rtype: list(str)
+        """
+        pass
+
+    def GetAllDiagramsUIDs(self, bFetchFromSystem: bool = True):
+        """
+        Returns a dictionary of diagrams for the network. The keys are the Diagram IDs.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the IscDiagram data maps.
+            If set to False, it only rebuilds if IscDiagrams have been added/deleted since the last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of diagrams for the network.
+        :rtype: dict(int, IscDiagram)
+        """
+        pass
+
+    @overload
+    def AddDiagram(self,
+            strSceneTitle: str,
+            bIsDiagramSingleLine: bool,
+            dGeoSceneScale: float,
+            nSceneMeasurementUnit: int):
+        """
+        Creates a new diagram for the network based on the supplied parameters.
+        Returns an IscDiagram object corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :return: The IscDiagram object for the newly created diagram.
+        :rtype: IscDiagram
+        """
+        pass
+
+    @overload
+    def AddDiagram(self,
+            strSceneTitle: str,
+            bIsDiagramSingleLine: bool,
+            dGeoSceneScale: float,
+            nSceneMeasurementUnit: int,
+            nCopyWhat: int,
+            pDiagramToCopy: IscDiagram):
+        """
+        Creates a new diagram for the network based on the supplied parameters.
+        Returns an IscDiagram object corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+        pDiagramToCopy provides a reference diagram, which this new diagram is based upon.
+
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
+
+            * 0 if copy nothing
+            * 1 if copy the busbars as they are
+            * 2 if copy the busbars as junctions
+            * 3 if copy everything
+        :type nCopyWhat: int
+        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
+        :type pDiagramToCopy: IscDiagram
+        :return: The IscDiagram object for the newly created diagram.
+        :rtype: IscDiagram
+        """
+        pass
+
+    def AddDiagram(self,
+            strSceneTitle: str,
+            bIsDiagramSingleLine: bool,
+            dGeoSceneScale: float,
+            nSceneMeasurementUnit: int,
+            nCopyWhat: int,
+            pDiagramToCopy: IscDiagram):
+        """
+        Creates a new diagram for the network based on the supplied parameters.
+        Returns an IscDiagram object corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+
+        If nCopy what and pDiagramToCopy are provided, they provide a reference diagram and determine what is copied
+        from that diagram into the new diagram.
+
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
+
+            * 0 if copy nothing
+            * 1 if copy the busbars as they are
+            * 2 if copy the busbars as junctions
+            * 3 if copy everything
+        :type nCopyWhat: int
+        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
+        :type pDiagramToCopy: IscDiagram
+        :return: The IscDiagram object for the newly created diagram.
+        :rtype: IscDiagram
+        """
+        pass
+
+    @overload
+    def DeleteDiagram(self, pDiagram: IscDiagram)-> None:
+        """
+        Deletes the diagram associated with the IscDiagram object.
+
+        :param pDiagram: The diagram to be deleted.
+        :type pDiagram: IscDiagram
+        """
+        pass
+
+    @overload
+    def DeleteDiagram(self, nUID: int) -> None:
+        """
+        Deletes the diagram identified by ID nUID.
+
+        :param nUID: The diagram ID to be deleted.
+        :type nUID: int
+        """
+        pass
+
+    @overload
+    def DeleteDiagram(self, strName: str) -> None:
+        """
+        Deletes the diagram identified by name strName.
+
+        :param strName: The name of the diagram to be deleted.
+        :type strName: str
+        """
+        pass
+
+    def DeleteDiagram(self, strName: str) -> None:
+        """
+        Deletes the diagram identified by name strName, ID nUID or IscDiagram pDiagram.
+
+        :param strName: The name of the diagram to be deleted.
+        :type strName: str
+        :param nUID: The diagram ID to be deleted.
+        :type nUID: int
+        :param pDiagram: The diagram to be deleted.
+        :type pDiagram: IscDiagram
         """
         pass
 
