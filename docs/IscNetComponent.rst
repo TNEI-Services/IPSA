@@ -107,6 +107,8 @@ Below is a list of the field values for IscNetComponent which map each derived c
      - (Not mapped to PyIPSA)
    * - Study
      - (Not mapped to PyIPSA)
+   * - Intertrip
+     - IscIntertrip
    * - Network
      - IscNetwork
    * - ResultsDisplayStyle
@@ -114,6 +116,12 @@ Below is a list of the field values for IscNetComponent which map each derived c
    * - ResultsDisplayLF
      - (Not mapped to PyIPSA)
    * - SQL
+     - (Not mapped to PyIPSA)
+   * - NetworkCapacity
+     - (Not mapped to PyIPSA)
+   * - DrawTools
+     - (Not mapped to PyIPSA)
+   * - Staging
      - (Not mapped to PyIPSA)
 
 IscNetComponent Class
