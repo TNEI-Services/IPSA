@@ -5537,9 +5537,12 @@ class IscDiagram:
         """
         pass
 
-    def AddPointToLine(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool) -> bool:
+    def AddPointToLine(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
         """
-        Adds a knee point to the line identified by the unique ID.
+        Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
+        the knee point has been added to. This can be disabled by setting bRefreshLine to False.
+
+        *Deprecated in IPSA 2.10.3 instead use AddKneepoint*
 
         :param nLineUID: The line UID.
         :type nLineUID: int
@@ -5550,6 +5553,86 @@ class IscDiagram:
         :param bFromEnd: If True then the knee point is added to the last segment, i.e. furthest from the From end.
             If False then the knee point is added to the first segment.
         :type bFromEnd: float
+        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
+        :type bRefreshLine: bool
+        :return: Boolean denoting whether the knee point was added.
+        :rtype: bool
+        """
+        pass
+
+    def AddKneepoint(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
+        """
+        Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
+        the knee point has been added to. This can be disabled by setting bRefreshLine to False.
+
+        :param nLineUID: The line UID.
+        :type nLineUID: int
+        :param dX: The knee point x coordinate.
+        :type dX: float
+        :param dY: The knee point y coordinate.
+        :type dY: float
+        :param bFromEnd: If True then the knee point is added to the last segment, i.e. furthest from the From end.
+            If False then the knee point is added to the first segment.
+        :type bFromEnd: float
+        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
+        :type bRefreshLine: bool
+        :return: Boolean denoting whether the knee point was added.
+        :rtype: bool
+        """
+        pass
+
+    def AddKneepoints(self, nLineUID: int, listX: list[float], listY: list[float], bFromEnd: bool,
+                      bRefreshLine: bool) -> bool:
+        """
+        Adds multiple knee points to the line identified by the unique ID. By default, this function will fully redraw
+        the line the knee point has been added to. This can be disabled by setting bRefreshLine to False.
+
+        If listX and listY are not of the same length, no kneepoints will be added.
+
+        :param nLineUID: The line UID.
+        :type nLineUID: int
+        :param listX: A list of x coordinates for each knee point to be added.
+        :type listX: list(float)
+        :param listY: A corresponding list of y coordinates for each knee point to be added.
+        :type listY: list(float)
+        :param bFromEnd: If True then the knee point is added to the last segment, i.e. furthest from the From end.
+            If False then the knee point is added to the first segment.
+        :type bFromEnd: float
+        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
+        :type bRefreshLine: bool
+        :return: Boolean denoting whether the knee points were added.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteKneepoint(self, nLineUID: int, dX: float, dY: float, bRefreshLine: bool) -> bool:
+        """
+        Deletes a specific knee point from the line identified by the unique ID. If no kneepoint is found at the
+        provided coordinates, nothing will occur. By default, this function will fully redraw the line the knee point
+        has been deleted from. This can be disabled by setting bRefreshLine to False.
+
+        :param nLineUID: The line UID.
+        :type nLineUID: int
+        :param dX: The knee point x coordinate.
+        :type dX: float
+        :param dY: The knee point y coordinate.
+        :type dY: float
+        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
+        :type bRefreshLine: bool
+        :return: Boolean denoting whether the knee point was added.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteAllKneepoints(self, nLineUID: int, bRefreshLine: bool) -> bool:
+        """
+        Deletes all the knee points from the line identified by the unique ID. By default, this function will fully
+        redraw the line the knee point has been deleted from. This can be disabled by setting bRefreshLine to False.
+
+        :param nLineUID: The line UID.
+        :type nLineUID: int
+        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
+        :type bRefreshLine: bool
         :return: Boolean denoting whether the knee point was added.
         :rtype: bool
         """
