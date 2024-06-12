@@ -129,8 +129,8 @@ class Isc3WTransformer:
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
-        :param bValue: The given list of double values.
-        :type bValue: list[float]
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -1855,8 +1855,8 @@ class IscBranch:
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
-        :param bValue: The given list of double values.
-        :type bValue: list[float]
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -6550,13 +6550,15 @@ class IscGroup:
         """
         pass
 
-    def AddDataExtension(self, strName: str, default: Union[int,float,str]) -> int:
+    def AddDataExtension(self, strName: str, default: Union[int,float,str, bool]) -> int:
         """
-        Adds an integer data field and returns the new field index. Sets the default value.
+        Adds an integer/float/string/double extension data field and returns the new field index.
+        Sets the default value.
 
         **Note: The variable of the function is not called default.**
 
-        You can use either nDefault, dDefault, or strDefault to specify the default value depending on the type of dta extension being added.
+        You can use either nDefault, dDefault, strDefault or bDefault to specify the default value depending on the
+        type of data extension being added.
 
         :param strName: The name of the field.
         :type strName: str
@@ -6566,6 +6568,8 @@ class IscGroup:
         :type dDefault: float
         :param strDefault: The string default value.
         :type strDefault: str
+        :param bDefault: The bool default value.
+        :type bDefault: bool
         :return: The new field index.
         :rtype: int
         """
@@ -6604,6 +6608,139 @@ class IscGroup:
         :type strName: str
         :return: The new field index.
         :rtype: int
+        """
+        pass
+
+    @overload
+    def DeleteDataExtensionField(self, nFieldIndex: int) -> bool:
+        """
+        Deletes the extension field identified by the index nFieldIndex. This will delete the data in this extension
+        field from this group and all other groups of the same type.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def DeleteDataExtensionField(self, strName: str) -> bool:
+        """
+        Deletes the extension field identified by the name strName. This will delete the data in this extension field
+        from this group and all other groups of the same type.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteDataExtensionField(self, strName: str) -> bool:
+        """
+        Deletes the extension field identified by the name strName or index nFieldIndex. This will delete the data in
+        this extension field from this group and all other groups of the same type.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def NonDefaultExtensionField(self, nFieldIndex: int) -> int:
+        """
+        Returns the number of groups of the same type where the extension field identified by nFieldIndex is set to
+        a non-default value. That is, the count of the components where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: The number of components with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def NonDefaultExtensionField(self, strName: str) -> int:
+        """
+        Returns the number of groups of the same type where the extension field identified by strName is set to
+        a non-default value. That is, the count of the components where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The number of components with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    def NonDefaultExtensionField(self, strName: str) -> int:
+        """
+        Returns the number of groups of the same type where the extension field identified by strName or nFieldIndex is
+        set to a non-default value. That is, the count of the components where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: The number of components with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    def GetIntExtensionValue(self, nFieldIndex: int) -> int:
+        """
+        Get the integer value from the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: int
+        """
+        pass
+
+    def GetDblExtensionValue(self, nFieldIndex: int) -> float:
+        """
+        Get the float value from the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: float
+        """
+        pass
+
+    def GetStrExtensionValue(self, nFieldIndex: int) -> str:
+        """
+        Get the string value from the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: str
+        """
+        pass
+
+    def GetBoolExtensionValue(self, nFieldIndex: int) -> bool:
+        """
+        Get the boolean value from the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: bool
         """
         pass
 
@@ -6915,8 +7052,8 @@ class IscHarmonic:
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
-        :param bValue: The given list of double values.
-        :type bValue: list[float]
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -9176,13 +9313,15 @@ class IscNetComponent:
         """
         pass
 
-    def AddDataExtension(self, strName: str, default: Union[int,float,str]) -> int:
+    def AddDataExtension(self, strName: str, default: Union[int, float, str, bool]) -> int:
         """
-        Adds an integer data field and returns the new field index. Sets the default value.
+        Adds an integer/float/string/double extension data field and returns the new field index.
+        Sets the default value.
 
         **Note: The variable of the function is not called default.**
 
-        You can use either nDefault, dDefault, or strDefault specifying the default value.
+        You can use either nDefault, dDefault, strDefault or bDefault to specify the default value depending on the
+        type of data extension being added.
 
         :param strName: The name of the field.
         :type strName: str
@@ -9192,6 +9331,8 @@ class IscNetComponent:
         :type dDefault: float
         :param strDefault: The string default value.
         :type strDefault: str
+        :param bDefault: The bool default value.
+        :type bDefault: bool
         :return: The new field index.
         :rtype: int
         """
@@ -9229,6 +9370,95 @@ class IscNetComponent:
         :param strName: The name of the field.
         :type strName: str
         :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def DeleteDataExtensionField(self, nFieldIndex: int) -> bool:
+        """
+        Deletes the extension field identified by the index nFieldIndex. This will delete the data in this extension
+        field from this component and all other components of the same type.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def DeleteDataExtensionField(self, strName: str) -> bool:
+        """
+        Deletes the extension field identified by the name strName. This will delete the data in this extension field
+        from this component and all other components of the same type.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteDataExtensionField(self, strName: str) -> bool:
+        """
+        Deletes the extension field identified by the name strName or index nFieldIndex. This will delete the data in
+        this extension field from this component and all other components of the same type.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def NonDefaultExtensionField(self, nFieldIndex: int) -> int:
+        """
+        Returns the number of components of the same type where the extension field identified by nFieldIndex is set to
+        a non-default value. That is, the count of the components where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: The number of components with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def NonDefaultExtensionField(self, strName: str) -> int:
+        """
+        Returns the number of components of the same type where the extension field identified by strName is set to
+        a non-default value. That is, the count of the components where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The number of components with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    def NonDefaultExtensionField(self, strName: str) -> int:
+        """
+        Returns the number of components of the same type where the extension field identified by strName or nFieldIndex is
+        set to a non-default value. That is, the count of the components where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: The number of components with a non-default value in the extension field.
         :rtype: int
         """
         pass
@@ -16481,8 +16711,8 @@ class IscTransformer:
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
-        :param bValue: The given list of double values.
-        :type bValue: list[float]
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -17699,8 +17929,8 @@ class IscUMachine:
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
-        :param bValue: The given list of double values.
-        :type bValue: list[float]
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -18163,8 +18393,8 @@ class IscUnbalancedLine:
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
-        :param bValue: The given list of double values.
-        :type bValue: list[float]
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -19607,6 +19837,17 @@ class IscUnbalancedTransformer:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the value for the enumerated field from an integer.
@@ -19654,6 +19895,19 @@ class IscUnbalancedTransformer:
         :type nFieldIndex: int
         :param bValue: The given boolean value.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
