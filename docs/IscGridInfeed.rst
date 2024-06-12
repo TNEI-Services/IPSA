@@ -72,7 +72,7 @@ Field Values
        If the storage is flipped from export to import, the real power is multiplied by this ratio. Default is 1.
    * - Integer
      - GridPlanningStage
-     - The stage the load is current at:
+     - The stage the load is currently at:
 
         - 0 = Proposed
         - 1 = Accepted
