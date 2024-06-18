@@ -5848,14 +5848,15 @@ class IscDiagram:
         """
         pass
 
-    def PrintPDF(self, strFileName: str) -> None:
+    def PrintPDF(self, strFileName: str, bRefreshDiagram: bool = True ) -> None:
         """
         Print the diagram to a PDF file.
 
-        :param nUID: The line UID.
-        :type nUID: int
-        :return: The screen Y coordinate.
-        :rtype: float
+        :param strFileName: The path and filename where the PDF should be saved (including the .pdf extension).
+        :type strFileName: str
+        :param bRefreshDiagram: If True, calls RefreshDiagram before saving, so the diagram is up-to-date with any
+            changes made in scripting.
+        :type bRefreshDiagram: bool
         """
         pass
 
@@ -13627,6 +13628,17 @@ class IscNetwork:
         :type pPlugin: IscPlugin
         :return: True if successful.
         :rtype: bool
+        """
+        pass
+
+    def DeleteAllItems(self):
+        """
+        Delete all items in the network. This will delete all the components, groups, automations, contingencies and
+        intertrips, and resets the component UIDs to start again from 1.
+
+        It will delete all versions and the entire undo history.
+
+        Analysis settings, network settings and diagrams will be unchanged.
         """
         pass
 
