@@ -10344,32 +10344,6 @@ class IscNetwork:
         """
         pass
 
-    def GetBusbarUIDs(self, bFetchFromSystem: bool = True):
-        """
-        Returns a dictionary of all busbar UIDs in the network.
-        The keys are the integer UIDs and the values are the IscBusbar instances.
-
-        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
-            If set to False, it only rebuilds if a new component has been built since last Get() function.
-        :type bFetchFromSystem: bool
-        :return: Dictionary of all busbar UIDs.
-        :rtype: dict(int,IscBusbar)
-        """
-        pass
-
-    def GetProtectionDeviceUIDs(self, bFetchFromSystem: bool = True):
-        """
-        Returns a dictionary of all protection device UIDs in the network.
-        The keys are the integer UIDs and the values are the IscProtectionDevice instances.
-
-        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
-            If set to False, it only rebuilds if a new component has been built since last Get() function.
-        :type bFetchFromSystem: bool
-        :return: Dictionary of all protection devices UIDs.
-        :rtype: dict(int,IscProtectionDevice)
-        """
-        pass
-
     def TraceBusbarUIDs(self, nBranchUID: int, bOpenBreakers: bool, nGroupUID: int) -> List[int]:
         """
         Performs a network trace to identify all busbars that are connected to the selected branch.
@@ -11519,6 +11493,19 @@ class IscNetwork:
         """
         pass
 
+    def GetBusbarUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscBusbar]:
+        """
+        Returns a dictionary of all busbar UIDs in the network.
+        The keys are the integer UIDs and the values are the IscBusbar instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all busbar UIDs.
+        :rtype: dict(int,IscBusbar)
+        """
+        pass
+
     def GetBranchUID(self, nFromID: int, nToID: int, strName: str) -> int:
         """
         Returns the UID of a branch with the given name between two busbars that are specified by their UIDs.
@@ -11534,7 +11521,8 @@ class IscNetwork:
         """
         pass
 
-    def GetBranchUIDs(self, bFetchFromSystem: bool = True):
+    @overload
+    def GetBranchUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscBranch]:
         """
         Returns a dictionary of all branch UIDs in the network.
         The keys are the integer UIDs and the values are the IscBranch instances.
@@ -11542,6 +11530,53 @@ class IscNetwork:
         :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
             If set to False, it only rebuilds if a new component has been built since last Get() function.
         :type bFetchFromSystem: bool
+        :return: Dictionary of all branches.
+        :rtype: dict(int,IscBranch)
+        """
+        pass
+
+    @overload
+    def GetBranchUIDs(self, nFirstBusID: int) -> List[int]:
+        """
+        Returns all branches connected to the busbar specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of branch UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetBranchUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all branches connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of branch UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    def GetBranchUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscBranch]:
+        """
+        Returns either a dictionary of all branch UIDs in the network or a list of branches connected to the busbars
+        specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscBranch instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of branch UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
         :return: Dictionary of all branches.
         :rtype: dict(int,IscBranch)
         """
@@ -11562,7 +11597,8 @@ class IscNetwork:
         """
         pass
 
-    def GetTransformerUIDs(self, bFetchFromSystem: bool = True):
+    @overload
+    def GetTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscTransformer]:
         """
         Returns a dictionary of all transformer UIDs in the network.
         The keys are the integer UIDs and the values are the IscTransformer instances.
@@ -11571,6 +11607,53 @@ class IscNetwork:
             If set to False, it only rebuilds if a new component has been built since last Get() function.
         :type bFetchFromSystem: bool
         :return: Dictionary of all transformer UIDs.
+        :rtype: dict(int,IscTransformer)
+        """
+        pass
+
+    @overload
+    def GetTransformerUIDs(self, nFirstBusID: int) -> List[int]:
+        """
+        Returns all transformers connected to the busbar specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of transformer UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetTransformerUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all transformers connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of transformer UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    def GetTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscTransformer]:
+        """
+        Returns either a dictionary of all transformer UIDs in the network or a list of transformers connected to the
+        busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscTransformer instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of transformer UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all transformers.
         :rtype: dict(int,IscTransformer)
         """
         pass
@@ -11593,15 +11676,67 @@ class IscNetwork:
         """
         pass
 
-    def Get3WTransformerUIDs(self, bFetchFromSystem: bool = True):
+    @overload
+    def Get3WTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, Isc3WTransformer]:
         """
-        Returns a dictionary of all busbar UIDs in the network.
-        The keys are the integer UIDs and the values are the IscBusbar instances.
+        Returns a dictionary of all 3W transformer UIDs in the network.
+        The keys are the integer UIDs and the values are the Isc3WTransformer instances.
 
         :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
             If set to False, it only rebuilds if a new component has been built since last Get() function.
         :type bFetchFromSystem: bool
-        :return: Dictionary of all 3WTransformers.
+        :return: Dictionary of all 3W Transformers.
+        :rtype: dict(int,Isc3WTransformer)
+        """
+        pass
+
+    @overload
+    def Get3WTransformerUIDs(self, nFirstBusID: int) -> List[int]:
+        """
+        Returns all 3W transformers connected to the busbar specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of 3W transformer UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def Get3WTransformerUIDs(self, nFirstBusID: int, nSecondBusID: int, nThirdBusID: int) -> List[int]:
+        """
+        Returns all 3W transformers connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param nThirdBusID: The UID of the third busbar.
+        :type nThirdBusID: int
+        :return: List of 3W transformer UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    def Get3WTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, Isc3WTransformer]:
+        """
+        Returns either a dictionary of all 3W transformer UIDs in the network or a list of 3W transformers connected to
+        the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscTransformer instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param nThirdBusID: The UID of the third busbar.
+        :type nThirdBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of 3W transformer UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all 3W transformers.
         :rtype: dict(int,Isc3WTransformer)
         """
         pass
@@ -11619,6 +11754,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetLoadUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all loads connected to the busbars specified by the given UID.
@@ -11627,6 +11763,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of load UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetLoadUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscLoad]:
+        """
+        Returns a dictionary of all load UIDs in the network.
+        The keys are the integer UIDs and the values are the IscLoad instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all loads.
+        :rtype: dict(int,IscLoad)
+        """
+        pass
+
+    def GetLoadUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscLoad]:
+        """
+        Returns either a dictionary of all load UIDs in the network or a list of loads connected to
+        the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscLoad instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of load UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all loads.
+        :rtype: dict(int,IscLoad)
         """
         pass
 
@@ -11643,6 +11812,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetSynMachineUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all synchronous machines connected to the busbars specified by the given UID.
@@ -11651,6 +11821,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of synchronous machine UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetSynMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscSynMachine]:
+        """
+        Returns a dictionary of all synchronous machine UIDs in the network.
+        The keys are the integer UIDs and the values are the IscSynMachine instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all synchronous machines.
+        :rtype: dict(int,IscSynMachine)
+        """
+        pass
+
+    def GetSynMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscSynMachine]:
+        """
+        Returns either a dictionary of all synchronous machine UIDs in the network or a list of synchronous machines
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscSynMachine instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of synchronous machine UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all synchronous machines.
+        :rtype: dict(int,IscSynMachine)
         """
         pass
 
@@ -11667,6 +11870,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetGridInfeedUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all grid infeeds connected to the busbars specified by the given UID.
@@ -11675,6 +11879,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of grid infeed UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetGridInfeedUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGridInfeed]:
+        """
+        Returns a dictionary of all grid infeed UIDs in the network.
+        The keys are the integer UIDs and the values are the IscGridInfeed instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all grid infeeds.
+        :rtype: dict(int,IscGridInfeed)
+        """
+        pass
+
+    def GetGridInfeedUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGridInfeed]:
+        """
+        Returns either a dictionary of all grid infeed UIDs in the network or a list of grid infeeds
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscGridInfeed instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of grid infeed UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all grid infeeds.
+        :rtype: dict(int,IscGridInfeed)
         """
         pass
 
@@ -11691,6 +11928,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetIndMachineUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all induction machines connected to the busbars specified by the given UID.
@@ -11699,6 +11937,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of induction machine UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetIndMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscIndMachine]:
+        """
+        Returns a dictionary of all induction machine UIDs in the network.
+        The keys are the integer UIDs and the values are the IscIndMachine instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all induction machines.
+        :rtype: dict(int,IscIndMachine)
+        """
+        pass
+
+    def GetIndMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscIndMachine]:
+        """
+        Returns either a dictionary of all induction machine UIDs in the network or a list of induction machines
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscIndMachine instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of induction machine UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all induction machines.
+        :rtype: dict(int,IscIndMachine)
         """
         pass
 
@@ -11715,6 +11986,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetFilterUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all filters connected to the busbars specified by the given UID.
@@ -11723,6 +11995,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of filter UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetFilterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscFilter]:
+        """
+        Returns a dictionary of all filter UIDs in the network.
+        The keys are the integer UIDs and the values are the IscFilter instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all filters.
+        :rtype: dict(int,IscFilter)
+        """
+        pass
+
+    def GetFilterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscFilter]:
+        """
+        Returns either a dictionary of all filter UIDs in the network or a list of filters
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscFilter instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of filter UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all filters.
+        :rtype: dict(int,IscFilter)
         """
         pass
 
@@ -11739,6 +12044,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetMechSwCapacitorUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all mechanically switched capacitors connected to the busbars specified by the given UID.
@@ -11747,6 +12053,40 @@ class IscNetwork:
         :type nBusID: int
         :return: List of mechanically switched capacitor UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetMechSwCapacitorUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMechSwCapacitor]:
+        """
+        Returns a dictionary of all mechanically switched capacitor UIDs in the network.
+        The keys are the integer UIDs and the values are the IscMechSwCapacitor instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all mechanically switched capacitors.
+        :rtype: dict(int,IscMechSwCapacitor)
+        """
+        pass
+
+    def GetMechSwCapacitorUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMechSwCapacitor]:
+        """
+        Returns either a dictionary of all mechanically switched capacitor UIDs in the network or a list of
+        mechanically switched capacitors
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscMechSwCapacitor instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of mechanically switched capacitor UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all mechanically switched capacitors.
+        :rtype: dict(int,IscMechSwCapacitor)
         """
         pass
 
@@ -11763,6 +12103,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetStaticVCUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all static VAr compensators connected to the busbars specified by the given UID.
@@ -11771,6 +12112,40 @@ class IscNetwork:
         :type nBusID: int
         :return: List of static VAr compensator UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetStaticVCUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscStaticVC]:
+        """
+        Returns a dictionary of all static VAr compensator UIDs in the network.
+        The keys are the integer UIDs and the values are the IscStaticVC instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all static VAr compensators.
+        :rtype: dict(int,IscStaticVC)
+        """
+        pass
+
+    def GetStaticVCUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscStaticVC]:
+        """
+        Returns either a dictionary of all static VAr compensator UIDs in the network or a list of
+        static VAr compensators
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscStaticVC instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of static VAr compensator UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all static VAr compensators.
+        :rtype: dict(int,IscStaticVC)
         """
         pass
 
@@ -11787,6 +12162,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetUMachineUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all universal machines connected to the busbars specified by the given UID.
@@ -11795,6 +12171,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of universal machine UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetUMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUMachine]:
+        """
+        Returns a dictionary of all universal machine UIDs in the network.
+        The keys are the integer UIDs and the values are the IscUMachine instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all universal machines.
+        :rtype: dict(int,IscUMachine)
+        """
+        pass
+
+    def GetUMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUMachine]:
+        """
+        Returns either a dictionary of all universal machine UIDs in the network or a list of universal machines
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscUMachine instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of universal machine UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all universal machines.
+        :rtype: dict(int,IscUMachine)
         """
         pass
 
@@ -11811,6 +12220,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetHarmonicUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all harmonic sources connected to the busbars specified by the given UID.
@@ -11819,6 +12229,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of harmonic source UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetHarmonicUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscHarmonic]:
+        """
+        Returns a dictionary of all harmonic source UIDs in the network.
+        The keys are the integer UIDs and the values are the IscHarmonic instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all harmonic sources.
+        :rtype: dict(int,IscHarmonic)
+        """
+        pass
+
+    def GetHarmonicUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscHarmonic]:
+        """
+        Returns either a dictionary of all harmonic source UIDs in the network or a list of harmonic sources
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscHarmonic instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of harmonic source UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all harmonic sources.
+        :rtype: dict(int,IscHarmonic)
         """
         pass
 
@@ -11833,6 +12276,51 @@ class IscNetwork:
         :type nClosestBusbarUID: int
         :return: The circuit breaker UID, 0 if no matches.
         :rtype: int
+        """
+        pass
+
+    @overload
+    def GetCircuitBreakerUIDs(self, nBranchID: int) -> List[int]:
+        """
+        Returns all circuit breakers connected to the component specified by the given UID.
+
+        :param nBranchID: The UID of the component.
+        :type nBranchID: int
+        :return: List of circuit breaker UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetCircuitBreakerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscCircuitBreaker]:
+        """
+        Returns a dictionary of all circuit breaker UIDs in the network.
+        The keys are the integer UIDs and the values are the IscCircuitBreaker instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all circuit breakers.
+        :rtype: dict(int,IscCircuitBreaker)
+        """
+        pass
+
+    def GetCircuitBreakerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscCircuitBreaker]:
+        """
+        Returns either a dictionary of all circuit breaker UIDs in the network or a list of circuit breakers
+        connected to the component specified by the given UID.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscCircuitBreaker instances.
+
+        :param nBranchID: The UID of the component.
+        :type nBranchID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of circuit breaker UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all circuit breakers.
+        :rtype: dict(int,IscCircuitBreaker)
         """
         pass
 
@@ -11873,6 +12361,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetBatteryUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all batteries connected to the busbars specified by the given UID.
@@ -11881,6 +12370,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of battery UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetBatteryUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscBattery]:
+        """
+        Returns a dictionary of all battery UIDs in the network.
+        The keys are the integer UIDs and the values are the IscBattery instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all batteries.
+        :rtype: dict(int,IscBattery)
+        """
+        pass
+
+    def GetBatteryUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscBattery]:
+        """
+        Returns either a dictionary of all battery UIDs in the network or a list of batteries
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscBattery instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of battery UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all batteries.
+        :rtype: dict(int,IscBattery)
         """
         pass
 
@@ -11897,6 +12419,7 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def GetDCMachineUIDs(self, nBusID: int) -> List[int]:
         """
         Returns all DC Machines connected to the busbars specified by the given UID.
@@ -11905,6 +12428,39 @@ class IscNetwork:
         :type nBusID: int
         :return: List of DC Machine UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetDCMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscDCMachine]:
+        """
+        Returns a dictionary of all DC Machine UIDs in the network.
+        The keys are the integer UIDs and the values are the IscDCMachine instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all DC Machines.
+        :rtype: dict(int,IscDCMachine)
+        """
+        pass
+
+    def GetDCMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscDCMachine]:
+        """
+        Returns either a dictionary of all DC Machine UIDs in the network or a list of DC Machines
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscDCMachine instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of DC Machine UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all DC Machines.
+        :rtype: dict(int,IscDCMachine)
         """
         pass
 
@@ -11923,16 +12479,64 @@ class IscNetwork:
         """
         pass
 
-    def GetConverterUIDs(self, nFromID: int, nToID: int) -> List[int]:
+    @overload
+    def GetConverterUIDs(self, nFirstBusID: int) -> List[int]:
         """
-        Returns all converters connected between two busbars that are specified by their UIDs.
+        Returns all converters connected to the busbar specified by the given UID.
 
-        :param nFromID: The UID of the From busbar.
-        :type nFromID: int
-        :param nToID: The UID of the To busbar.
-        :type nToID: int
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
         :return: List of converter UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetConverterUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all converters connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of converter UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetConverterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscConverter]:
+        """
+        Returns a dictionary of all converter UIDs in the network.
+        The keys are the integer UIDs and the values are the IscConverter instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all converters.
+        :rtype: dict(int,IscConverter)
+        """
+        pass
+
+    def GetConverterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscConverter]:
+        """
+        Returns either a dictionary of all converter UIDs in the network or a list of converters connected to the
+        busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscConverter instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of converter UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all converters.
+        :rtype: dict(int,IscConverter)
         """
         pass
 
@@ -11951,16 +12555,64 @@ class IscNetwork:
         """
         pass
 
-    def GetChopperUIDs(self, nFromID: int, nToID: int) -> List[int]:
+    @overload
+    def GetChopperUIDs(self, nFirstBusID: int) -> List[int]:
         """
-        Returns all choppers connected between two busbars that are specified by their UIDs.
+        Returns all choppers connected to the busbar specified by the given UID.
 
-        :param nFromID: The UID of the From busbar.
-        :type nFromID: int
-        :param nToID: The UID of the To busbar.
-        :type nToID: int
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
         :return: List of chopper UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetChopperUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all choppers connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of chopper UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetChopperUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscChopper]:
+        """
+        Returns a dictionary of all chopper UIDs in the network.
+        The keys are the integer UIDs and the values are the IscChopper instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all choppers.
+        :rtype: dict(int,IscChopper)
+        """
+        pass
+
+    def GetChopperUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscChopper]:
+        """
+        Returns either a dictionary of all chopper UIDs in the network or a list of choppers connected to the
+        busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscChopper instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of chopper UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all choppers.
+        :rtype: dict(int,IscChopper)
         """
         pass
 
@@ -11979,16 +12631,64 @@ class IscNetwork:
         """
         pass
 
-    def GetMGSetUIDs(self, nFromID: int, nToID: int) -> List[int]:
+    @overload
+    def GetMGSetUIDs(self, nFirstBusID: int) -> List[int]:
         """
-        Returns all motors/generators connected between two busbars that are specified by their UIDs.
+        Returns all motors/generator sets connected to the busbar specified by the given UID.
 
-        :param nFromID: The UID of the From busbar.
-        :type nFromID: int
-        :param nToID: The UID of the To busbar.
-        :type nToID: int
-        :return: List of motor/generator UIDs.
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of motors/generator set UIDs.
         :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetMGSetUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all motors/generator sets connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of motors/generator set UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetMGSetUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMGSet]:
+        """
+        Returns a dictionary of all motors/generator set UIDs in the network.
+        The keys are the integer UIDs and the values are the IscMGSet instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all motors/generator sets.
+        :rtype: dict(int,IscMGSet)
+        """
+        pass
+
+    def GetMGSetUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMGSet]:
+        """
+        Returns either a dictionary of all motors/generator set UIDs in the network or a list of motors/generator sets
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscMGSet instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of motors/generator set UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all motors/generator sets.
+        :rtype: dict(int,IscMGSet)
         """
         pass
 
@@ -12005,6 +12705,51 @@ class IscNetwork:
         """
         pass
 
+    @overload
+    def GetUnbalancedLoadUIDs(self, nBusID: int) -> List[int]:
+        """
+        Returns all unbalanced loads connected to the busbars specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of unbalanced load UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetUnbalancedLoadUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLoad]:
+        """
+        Returns a dictionary of all unbalanced load UIDs in the network.
+        The keys are the integer UIDs and the values are the IscUnbalancedLoad instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all unbalanced loads.
+        :rtype: dict(int,IscUnbalancedLoad)
+        """
+        pass
+
+    def GetUnbalancedLoadUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLoad]:
+        """
+        Returns either a dictionary of all unbalanced load UIDs in the network or a list of unbalanced loads
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscUnbalancedLoad instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of unbalanced load UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all unbalanced loads.
+        :rtype: dict(int,IscUnbalancedLoad)
+        """
+        pass
+
     def GetUnbalancedLineUID(self, nFromID: int, nToID: int, strName: str) -> int:
         """
         Returns the UID of an unbalanced line with the given name between two busbars that are specified by their UIDs.
@@ -12017,6 +12762,67 @@ class IscNetwork:
         :type strName: str
         :return: The unbalanced line UID, 0 if no matches or -N if we have N matches.
         :rtype: int
+        """
+        pass
+
+    @overload
+    def GetUnbalancedLineUIDs(self, nFirstBusID: int) -> List[int]:
+        """
+        Returns all unbalanced lines connected to the busbar specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of unbalanced line UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetUnbalancedLineUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all unbalanced lines connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of unbalanced line UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetUnbalancedLineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLine]:
+        """
+        Returns a dictionary of all unbalanced line UIDs in the network.
+        The keys are the integer UIDs and the values are the IscUnbalancedLine instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all unbalanced lines.
+        :rtype: dict(int,IscUnbalancedLine)
+        """
+        pass
+
+    def GetUnbalancedLineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLine]:
+        """
+        Returns either a dictionary of all unbalanced line UIDs in the network or a list of unbalanced lines
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscUnbalancedLine instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of unbalanced line UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all unbalanced lines.
+        :rtype: dict(int,IscUnbalancedLine)
         """
         pass
 
@@ -12036,6 +12842,69 @@ class IscNetwork:
         """
         pass
 
+    @overload
+    def GetUnbalancedTransformerUIDs(self, nFirstBusID: int) -> List[int]:
+        """
+        Returns all unbalanced transformers connected to the busbar specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of unbalanced transformer UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetUnbalancedTransformerUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all unbalanced transformers connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of unbalanced transformer UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetUnbalancedTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedTransformer]:
+        """
+        Returns a dictionary of all unbalanced transformer UIDs in the network.
+        The keys are the integer UIDs and the values are the IscUnbalancedTransformer instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all unbalanced transformers.
+        :rtype: dict(int,IscUnbalancedTransformer)
+        """
+        pass
+
+    def GetUnbalancedTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedTransformer]:
+        """
+        Returns either a dictionary of all unbalanced transformer UIDs in the network or a list of
+        unbalanced transformers
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscUnbalancedTransformer
+        instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of unbalanced transformer UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all unbalanced transformers.
+        :rtype: dict(int,IscUnbalancedTransformer)
+        """
+        pass
+
     def GetVoltageRegulatorUID(self, nBranchID: int) -> int:
         """
         Returns the UID of a voltage regulator at branch specified by its UID.
@@ -12044,6 +12913,84 @@ class IscNetwork:
         :type nBranchID: int
         :return: The voltage regulator UID.
         :rtype: int
+        """
+        pass
+
+    def GetVoltageRegulatorUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscVoltageRegulator]:
+        """
+        Returns a dictionary of all voltage regulator UIDs in the network.
+        The keys are the integer UIDs and the values are the IscVoltageRegulator instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all voltage regulators.
+        :rtype: dict(int,IscVoltageRegulator)
+        """
+        pass
+
+    def GetProtectionDeviceUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscProtectionDevice]:
+        """
+        Returns a dictionary of all protection device UIDs in the network.
+        The keys are the integer UIDs and the values are the IscProtectionDevice instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all protection devices UIDs.
+        :rtype: dict(int,IscProtectionDevice)
+        """
+        pass
+
+    def GetAnnotationUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscAnnotation]:
+        """
+        Returns a dictionary of all annotation UIDs in the network.
+        The keys are the integer UIDs and the values are the IscAnnotation instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all annotation UIDs.
+        :rtype: dict(int,IscAnnotation)
+        """
+        pass
+
+    def GetGroupUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGroup]:
+        """
+        Returns a dictionary of all group UIDs in the network.
+        The keys are the integer UIDs and the values are the IscGroup instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all group UIDs.
+        :rtype: dict(int,IscGroup)
+        """
+        pass
+
+    def GetIntertripUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscIntertrip]:
+        """
+        Returns a dictionary of all intertrip UIDs in the network.
+        The keys are the integer UIDs and the values are the IscIntertrip instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all intertrip UIDs.
+        :rtype: dict(int,IscIntertrip)
+        """
+        pass
+
+    def GetPluginUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscPlugin]:
+        """
+        Returns a dictionary of all Plugin UIDs in the network.
+        The keys are the integer UIDs and the values are the IscIntertrip instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all Plugin UIDs.
+        :rtype: dict(int,IscIntertrip)
         """
         pass
 
@@ -12056,6 +13003,71 @@ class IscNetwork:
         :return: The profile for the component UID, 0 if the component nUID does not have a profile assigned to it,
             or if nUID is not a load, generator, grid infeed or universal machine.
         :rtype: int
+        """
+        pass
+
+    def GetLoadProfilePQActualUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscLoadProfilePQActual]:
+        """
+        Returns a dictionary of all PQ Actual Load profile UIDs in the network.
+        The keys are the integer UIDs and the values are the IscLoadProfilePQActual instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all PQ Actual Load profile UIDs.
+        :rtype: dict(int,IscLoadProfilePQActual)
+        """
+        pass
+
+    def GetLoadProfilePQScaleUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscLoadProfilePQScale]:
+        """
+        Returns a dictionary of all PQ Scale Load profile UIDs in the network.
+        The keys are the integer UIDs and the values are the IscLoadProfilePQScale instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all PQ Actual Load profile UIDs.
+        :rtype: dict(int,IscLoadProfilePQScale)
+        """
+        pass
+
+    def GetGeneratorProfilePQActualUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGeneratorProfilePQActual]:
+        """
+        Returns a dictionary of all PQ Actual Generator profile UIDs in the network.
+        The keys are the integer UIDs and the values are the IscGeneratorProfilePQActual instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all PQ Actual Generator profile UIDs.
+        :rtype: dict(int,IscGeneratorProfilePQActual)
+        """
+        pass
+
+    def GetGeneratorProfilePQScaleUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGeneratorProfilePQScale]:
+        """
+        Returns a dictionary of all PQ Scale Generator profile UIDs in the network.
+        The keys are the integer UIDs and the values are the IscGeneratorProfilePQScale instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all PQ Scale Generator profile UIDs.
+        :rtype: dict(int,IscGeneratorProfilePQScale)
+        """
+        pass
+
+    def GetUMachineProfilePQActualUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUMachineProfilePQActual]:
+        """
+        Returns a dictionary of all PQ Actual UMachine profile UIDs in the network.
+        The keys are the integer UIDs and the values are the IscUMachineProfilePQActual instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all PQ Actual UMachine profile UIDs.
+        :rtype: dict(int,IscUMachineProfilePQActual)
         """
         pass
 
