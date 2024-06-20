@@ -42,20 +42,29 @@ Field Values
      - Ground
      - Get or set the grounded status of the filter. ``True`` if grounded , ``False`` if isolated.
    * - Float
-     - Data1
+     - R1 *or* Data1
      - Get or set the resistance R1 in per unit on the system MVA.
    * - Float
-     - Data2
+     - XL1 *or* Data2
      - Get or set the reactance XL1 in per unit on the system MVA.
    * - Float
-     - Data3
+     - XC1 *or* Data3
      - Get or set the capacitance XC1 in per unit on the system MVA.
    * - Float
-     - Data4
+     - XC2 *or* Data4
      - Get or set the capacitance XC2 in per unit on the system MVA - double tuned and C type only.
    * - Float
-     - Data5
+     - XL2 *or* Data5
      - Get or set the reactance XL2 in per unit on the system MVA - double tuned only.
+   * - Float
+     - TuningHarmonic
+     - Get the harmonic the filter is tuned to to remove from the network - single tuned and single tuned high pass only.
+   * - Float
+     - QualityFactor
+     - Get the measure of the damping achieved at the tuning harmonic frequency - single tuned and single tuned high pass only.
+   * - Float
+     - SizeMVAr
+     - Get the size of the filter in MVAr associated with the tuning harmonic and quality factor - single tuned and single tuned high pass only.
 
 IscFilter Class
 ----------------

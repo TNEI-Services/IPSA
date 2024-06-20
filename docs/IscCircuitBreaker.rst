@@ -16,8 +16,11 @@ Field Values
      - Field Name
      - Description
    * - String
-     - BusName
+     - BusName *or* NearBusName
      - Gets the busbar name nearest to the circuit breaker.
+   * - String
+     - FarBusName
+     - For a circuit breaker on a branch, gets the busbar name at the other end of the branch to the circuit breaker.
    * - String
      - BranchName
      - Gets the branch name the circuit breaker is located on.

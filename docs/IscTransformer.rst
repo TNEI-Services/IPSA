@@ -43,7 +43,7 @@ Field Values
         - 6 = Primary Distribution
         - 7 = Secondary Distribution
    * - Integer
-     - Winding
+     - Winding *or* VectorGroup
      - Transformer winding type connection as follows:
 
         - 1 = none
