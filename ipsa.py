@@ -5880,7 +5880,6 @@ class IscDiagram:
     def RefreshDiagram(self) -> None:
         """
         Refreshes the diagram to ensure that the diagram window is up to date with the data held in IPSA.
-        *Note, currently this function doesn't work reliably and may not result in the diagram being updated as wished.*
 
         """
         pass
