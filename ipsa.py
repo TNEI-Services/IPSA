@@ -5643,7 +5643,7 @@ class IscDiagram:
         """
         pass
 
-    def SetItemPenColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int) -> bool:
+    def SetItemPenColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int):
         """
         Sets the outline colour of the diagram object.
         The colour is set by the RGB parameters.
@@ -5657,14 +5657,12 @@ class IscDiagram:
         :type nGreen: int
         :param nBlue: The blue colour.
         :type nBlue: int
-        :param nAlpha: The transparency of the colour.
+        :param nAlpha: The transparency of the colour with 255 being opaque, and 0 being invisible.
         :type nAlpha: int
-        :return: Denoting whether the colour is set.
-        :rtype: bool
         """
         pass
 
-    def SetItemBrushColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int) -> bool:
+    def SetItemBrushColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int):
         """
         Sets the fill colour of the diagram object.
         The colour is set by the RGB parameters.
@@ -5678,43 +5676,39 @@ class IscDiagram:
         :type nGreen: int
         :param nBlue: The blue colour.
         :type nBlue: int
-        :param nAlpha: The transparency of the colour.
+        :param nAlpha: The transparency of the colour with 255 being opaque, and 0 being invisible.
         :type nAlpha: int
-        :return: Denoting whether the colour is set.
-        :rtype: bool
         """
         pass
 
-    def MapToLatLong(self, fScreenX: float, fScreenY: float) -> List[float]:
+    def MapToLatLong(self, dDiagramX: float, dDiagramY: float) -> List[float]:
         """
-        Returns the latitude and longitude in decimal degrees of the screen position.
-        The diagram is the one referenced by the IscDiagram object that the function is called on.
-        The fScreenX and fScreenY parameters are relative to the nominal centre point of the screen,
-        therefore calling this function with fScreenX = 0.0 and fScreenY = 0.0 returns the centre point of
-        the background map in degrees.
-        Note that the screen X is north/south and screen y is east/west.
+        Returns the latitude and longitude in decimal degrees of the specified diagram pixel position.
+        Note that the diagram X is south/north and diagram Y is east/west.
 
-        :param fScreenX: The x coordinate of the screen position.
-        :type fScreenX: float
-        :param fScreenX: The y coordinate of the screen position.
-        :type fScreenX: float
-        :return: The latitude and longitude of the screen position.
+        This function will return (0.0, 0.0) unless the diagram has a tiled geographic map.
+
+        :param dDiagramX: The diagram x coordinate.
+        :type dDiagramX: float
+        :param dDiagramY: The diagram y coordinate.
+        :type dDiagramY: float
+        :return: The latitude and longitude of the diagram position.
         :rtype: list(float)
         """
         pass
 
     def LatLongToMap(self, fN: float, fE: float) -> List[float]:
         """
-        Returns the screen X and Y coordinates of the latitude and longitude.
-        The fScreenX and fScreenY coordinates are relative to the nominal centre point of the screen
-        which can be found by the MapToLatLong function.
-        Note that the screen X is north/south and screen y is east/west.
+        Returns the diagram pixel X and Y coordinates of the latitude and longitude.
+        Note that the diagram X is south/north and diagram Y is east/west.
+
+        This function will return (0.0, 0.0) unless the diagram has a tiled geographic map.
 
         :param fN: The latitude.
         :type fN: float
         :param fE: The longitude.
         :type fE: float
-        :return: The screen X and Y coordinates.
+        :return: The diagram X and Y coordinates.
         :rtype: list(float)
         """
         pass
@@ -5722,11 +5716,10 @@ class IscDiagram:
     def GetUIDFromCoordinates(self, dX: float, dY: float) -> int:
         """
         Returns the UID of a component at coordinates  (dX, dY).
-        The screen coordinates are relative to the nominal centre point of the screen.
 
-        :param dX: The screen X coordinate.
+        :param dX: The diagram X coordinate.
         :type dX: float
-        :param dY: The screen Y coordinate.
+        :param dY: The diagram Y coordinate.
         :type dY: float
         :return: The UID of the component located.
             Returns 0, if the component cannot be found,
@@ -5737,11 +5730,10 @@ class IscDiagram:
     def GetBusbarUIDFromCoordinates(self, dX: float, dY: float) -> int:
         """
         Returns the UID of a busbar at coordinates (dX, dY).
-        The screen coordinates are relative to the nominal centre point of the screen.
 
-        :param dX: The screen X coordinate.
+        :param dX: The diagram X coordinate.
         :type dX: float
-        :param dY: The screen Y coordinate.
+        :param dY: The diagram Y coordinate.
         :type dY: float
         :return: The UID of the component located.
             Returns 0, if the component cannot be found,
@@ -5751,80 +5743,76 @@ class IscDiagram:
 
     def GetItemX(self, nUID: int) -> float:
         """
-        Returns the screen X coordinate of the busbar.
-        The screen coordinates are relative to the nominal centre point of the screen.
+        Returns the diagram X coordinate of the specified item.
+        Note for branches and transformers this will return the midpoint of the object.
 
         :param nUID: The busbar UID.
         :type nUID: int
-        :return: The screen X coordinate.
+        :return: The diagram X coordinate.
         :rtype: float
         """
         pass
 
     def GetItemY(self, nUID: int) -> float:
         """
-        Returns the screen Y coordinate of the busbar.
-        The screen coordinates are relative to the nominal centre point of the screen.
+        Returns the diagram Y coordinate of the specified item.
+        Note for branches and transformers this will return the midpoint of the object.
 
         :param nUID: The busbar UID.
         :type nUID: int
-        :return: The screen Y coordinate.
+        :return: The diagram Y coordinate.
         :rtype: float
         """
         pass
 
     def GetItemFromXPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen X coordinates of the FROM busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram X coordinates of the edge of the FROM busbar, the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item between these two points.
         The coordinates are for the FROM end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen X coordinates.
+        :return: The diagram X coordinates.
         :rtype: float
         """
         pass
 
     def GetItemFromYPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen Y coordinates of the FROM busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram Y coordinates of the edge of the FROM busbar, the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
         The coordinates are for the FROM end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen Y coordinates.
+        :return: The diagram Y coordinates.
         :rtype: float
         """
         pass
 
     def GetItemToXPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen X coordinates of the TO busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram X coordinates of the edge of the TO busbar, the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
         The coordinates are for the TO end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen X coordinates.
+        :return: The diagram X coordinates.
         :rtype: float
         """
         pass
 
     def GetItemToYPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen Y coordinates of the TO busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram Y coordinates of the edge of the TO busbar,the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
         The coordinates are for the TO end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen Y coordinates.
+        :return: The diagram Y coordinates.
         :rtype: float
         """
         pass
@@ -5832,7 +5820,6 @@ class IscDiagram:
     def CreateAnnotation(self, strName: str, strAnnotationText: str, dX: float, dY: float) -> int:
         """
         Creates a new diagram annotation.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param strName: The strName is not used and can be an empty string.
         :type strName: str
