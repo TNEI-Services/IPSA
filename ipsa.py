@@ -5206,6 +5206,8 @@ class IscDiagram:
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         A point busbar symbol is displayed as a small dot which does not resize as the diagram zoom level is changed.
 
+        Note this will only have an effect if the busbar is not already drawn.
+
         :param nUID: The busbar UID.
         :type nUID: int
         :param dX: The busbar x coordinate.
@@ -5221,6 +5223,8 @@ class IscDiagram:
         """
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         A junction busbar symbol is the solid circular junction symbol.
+
+        Note this will only have an effect if the busbar is not already drawn.
 
         :param nUID: The busbar UID.
         :type nUID: int
@@ -5238,6 +5242,8 @@ class IscDiagram:
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         The hexagonal symbol is the standard filled hexagonal busbar.
 
+        Note this will only have an effect if the busbar is not already drawn.
+
         :param nUID: The busbar UID.
         :type nUID: int
         :param dX: The busbar x coordinate.
@@ -5253,6 +5259,8 @@ class IscDiagram:
         """
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         The rectangular symbol is the standard horizontal or vertical busbar.
+
+        Note this will only have an effect if the busbar is not already drawn.
 
         :param nUID: The busbar UID.
         :type nUID: int
@@ -5273,6 +5281,8 @@ class IscDiagram:
         """
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         The circular symbol is the larger unfilled circle.
+
+        Note this will only have an effect if the busbar is not already drawn.
 
         :param nUID: The busbar UID.
         :type nUID: int
@@ -5335,11 +5345,8 @@ class IscDiagram:
         """
         Draws the symbol for the line identified by the unique ID.
         The line is drawn as a single segment between two busbars.
-        The line must have been created using one of the following first:
 
-            - IscDiagram.CreateLine
-            - IscNetwork.CreateBranch
-            - IscNetwork.CreateTransformer
+        Note this will only have an effect if the line is not already drawn.
 
         :param nUID: The line UID.
         :type nUID: int
@@ -5427,14 +5434,13 @@ class IscDiagram:
     def DrawTransformer(self, nUID: int) -> bool:
         """
         Draws the symbol for the transformer identified by the unique ID.
-        The line is drawn as a single segment between two busbars.
-        The line must have been created using the following first:
+        The transformer is drawn as a single segment between two busbars.
 
-            - IscNetwork.CreateTransformer
+        Note this will only have an effect if the transformer is not already drawn.
 
         :param nUID: The transformer UID.
         :type nUID: int
-        :return: Boolean denoting whether the line was drawn.
+        :return: Boolean denoting whether the transformer was drawn.
         :rtype: bool
         """
         pass
@@ -5576,6 +5582,96 @@ class IscDiagram:
         :return: The UID of the new branch if it is greater than 0. ) if the branch has not been split.
             This is because there is a circuit breaker on the branch or the branch is drawn on more than one diagram.
         :rtype: int
+        """
+        pass
+
+    def DrawRadial(self, nRadialUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the symbol for the radial object (i.e., an object connected to one busbar only) identified by the
+        unique ID nRadialUID. The radial symbol will be drawn at the location dX,dY and connected to its busbar.
+
+        Note this function will return false if the provided UID is not a radial or is already drawn.
+
+        :param nRadialUID: The radial UID.
+        :type nRadialUID: int
+        :param dX: The x coordinate of the radial symbol.
+        :type dX: float
+        :param dY: The y coordinate of the radial symbol.
+        :type dY: float
+        :return: The function returns True if the radial was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBranchItem(self, nBranchItemUID: int) -> bool:
+        """
+        Draws the symbol for the branch item object (i.e., an object connected to exactly two busbars) identified by the
+        unique ID nBranchItemUID. The branch item will be drawn as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a branch item or is already drawn.
+
+        :param nBranchItemUID: The branch item UID.
+        :type nBranchItemUID: int
+        :return: The function returns True if the branch item was drawn
+        :rtype: bool
+        """
+        pass
+
+    def Draw3Port(self, n3PortUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the symbol for the 3Port object (i.e., an object connected to exactly three busbars) identified by the
+        unique ID nRadialUID. The 3Port symbol will be drawn at the location dX,dY and connected with straight lines
+        to its busbars.
+
+        Note this function will return false if the provided UID is not a 3Port component or is already drawn.
+
+        :param n3PortUID: The 3Port UID.
+        :type n3PortUID: int
+        :param dX: The x coordinate of the 3Port symbol.
+        :type dX: float
+        :param dY: The y coordinate of the 3Port symbol.
+        :type dY: float
+        :return: The function returns True if the 3Port was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawInline(self, nInlineUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the symbol for the inline object (i.e., an object that sits upon a branch item) identified by the
+        unique ID nInlineUID. The inline symbol will be drawn on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not an inline or is already drawn.
+
+        :param nInlineUID: The inline UID.
+        :type nInlineUID: int
+        :param dX: The x coordinate of the inline symbol.
+        :type dX: float
+        :param dY: The y coordinate of the inline symbol.
+        :type dY: float
+        :return: The function returns True if the inline was drawn
+        :rtype: bool
+        """
+        pass
+
+    def MoveItemCentre(self, nItemUID: int, dX: float, dY: float) -> bool:
+        """
+        Moves the item specifed by nItemUID to the location dX,dY. For busbars this will relocate the busbar
+        (bringing its connected radials). For radials and 3Ports this will relocate the symbol of the object, leaving
+        its busbars inplace. For inlines this will move the inline to the point on its branch closest to the specified
+        point. For branch items this will move the branch as close to the specified point as possible if the branch is
+        free to move.
+
+        Note this function will return false if the provided UID is not already drawn.
+
+        :param nItemUID: The item UID.
+        :type nItemUID: int
+        :param dX: The x coordinate of the symbol.
+        :type dX: float
+        :param dY: The y coordinate of the symbol.
+        :type dY: float
+        :return: The function returns True if the item graphic was found
+        :rtype: bool
         """
         pass
 
@@ -5868,6 +5964,88 @@ class IscDiagram:
         """
         Refreshes the diagram to ensure that the diagram window is up to date with the data held in IPSA.
 
+        """
+        pass
+
+    def GetBusbarSize(self, nUID: int) -> float:
+        """
+        Returns the size of the graphical item for the busbar identified by nUID. This will return 0.0 if the busbar
+        isn't found.
+
+        :param nUID: The busbar UID.
+        :type nUID: int
+        :return: The size of the busbar graphic.
+        :rtype: float
+        """
+        pass
+
+    def GetBusbarGraphicsType(self, nUID: int) -> int:
+        """
+        Returns an int identifying what type of graphic the busbar identified by nUID is drawn with.
+        This will return -1 if the busbar isn't found. The busbar graphic types are:
+
+            - 0 = Horizontal rectangular
+            - 1 = Vertical rectangular
+            - 2 = Junction
+            - 3 = Circular
+            - 4 = Point
+            - 5 = Hexagonal
+
+        :param nUID: The busbar UID.
+        :type nUID: int
+        :return: The busbar graphic type.
+        :rtype: int
+        """
+        pass
+
+    def IsGeographic(self) -> bool:
+        """
+        Returns if the diagram is a geographic diagram or a single line diagram.
+
+        :return: True if the diagram is a geographic diagram and false if it is an SLD.
+        :rtype: bool
+        """
+        pass
+
+    def HasTiledGeographicMap(self) -> bool:
+        """
+        Returns if the diagram has a tiled geographic map.
+
+        :return: True if the diagram has a tiled geographic map.
+        :rtype: bool
+        """
+        pass
+
+    def GetMapCentre(self) -> List[float]:
+        """
+        Returns the centre position of the map. Returns lat-long centre for diagrams with tiled geographic maps and
+        (0,0) otherwise.
+
+        :return: The diagram lat-long centre position.
+        :rtype: list(float)
+        """
+        pass
+
+    def AddTiledGeographicMap(self, dBaseLatitude: float, dBaseLongitude: float) -> bool:
+        """
+        Adds a tiled geographic map to the diagram if the diagram is geographic. The geographic map centre will be at
+        the specified coordinates (dBaseLatitude, dBaseLongitude).
+
+        :param dBaseLatitude: The centre latitude of the tiled geographic map.
+        :type dBaseLatitude: float
+        :param dBaseLongitude: The centre longitude of the tiled geographic map.
+        :type dBaseLongitude: float
+        :return: True if the map is successfully added.
+        :rtype: bool
+        """
+        pass
+
+    def RemoveTiledGeographicMap(self) -> bool:
+        """
+        Removes the tiled geographic map from the diagram if there is one.
+
+        :return: True if the map is successfully removed
+        :rtype: bool
         """
         pass
 
