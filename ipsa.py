@@ -5842,7 +5842,7 @@ class IscDiagram:
         Returns the diagram X coordinate of the specified item.
         Note for branches and transformers this will return the midpoint of the object.
 
-        :param nUID: The busbar UID.
+        :param nUID: The item UID.
         :type nUID: int
         :return: The diagram X coordinate.
         :rtype: float
@@ -5854,7 +5854,7 @@ class IscDiagram:
         Returns the diagram Y coordinate of the specified item.
         Note for branches and transformers this will return the midpoint of the object.
 
-        :param nUID: The busbar UID.
+        :param nUID: The item UID.
         :type nUID: int
         :return: The diagram Y coordinate.
         :rtype: float
@@ -5970,7 +5970,7 @@ class IscDiagram:
     def GetBusbarSize(self, nUID: int) -> float:
         """
         Returns the size of the graphical item for the busbar identified by nUID. This will return 0.0 if the busbar
-        isn't found.
+        isn't found. Note this returns the *radius* of circular busbars.
 
         :param nUID: The busbar UID.
         :type nUID: int
