@@ -15248,9 +15248,9 @@ class IscNetwork:
 
     def RunProfile(self) -> int:
         """
-        Runs the profile study. Returns the number of profile categories which have been run.
+        Runs the profile study. Returns the calculation UID of the study which has just been run.
 
-        :return: The number of profile categories which have been run.
+        :return: The calculation UID of the study which has been run.
         :rtype: int
         """
         pass
