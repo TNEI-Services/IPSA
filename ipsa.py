@@ -6555,6 +6555,8 @@ class IscGroup:
         Adds an integer/float/string/double extension data field and returns the new field index.
         Sets the default value.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         **Note: The variable of the function is not called default.**
 
         You can use either nDefault, dDefault, strDefault or bDefault to specify the default value depending on the
@@ -6580,6 +6582,8 @@ class IscGroup:
         Adds a data field for a list of integers and returns the new field index.
         Sets the default value to an empty list.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param strName: The name of the field.
         :type strName: str
         :return: The new field index.
@@ -6592,6 +6596,8 @@ class IscGroup:
         Adds a data field for a list of doubles and returns the new field index.
         Sets the default value to an empty list.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param strName: The name of the field.
         :type strName: str
         :return: The new field index.
@@ -6603,6 +6609,8 @@ class IscGroup:
         """
         Adds a data field for a list of strings and returns the new field index.
         Sets the default value to an empty list.
+
+        This only has to be called once per component type - not for every instance of the component!
 
         :param strName: The name of the field.
         :type strName: str
@@ -6619,6 +6627,8 @@ class IscGroup:
         It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
         expected amount of data shall be deleted.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param nFieldIndex: The index of the field.
         :type nFieldIndex: int
         :return: True if the field is deleted successfully.
@@ -6634,6 +6644,8 @@ class IscGroup:
         It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
         expected amount of data shall be deleted.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param strName: The name of the field.
         :type strName: str
         :return: True if the field is deleted successfully.
@@ -6647,6 +6659,8 @@ class IscGroup:
         this extension field from this group and all other groups of the same type.
         It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
         expected amount of data shall be deleted.
+
+        This only has to be called once per component type - not for every instance of the component!
 
         :param strName: The name of the field.
         :type strName: str
@@ -6816,9 +6830,64 @@ class IscGroup:
         """
         pass
 
+    def SetIntExtensionValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Set the integer value for the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The selected value.
+        :type nValue: int
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDblExtensionValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Set the float value for the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The selected value.
+        :type dValue: float
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetStrExtensionValue(self, nFieldIndex: int, sValue: str) -> bool:
+        """
+        Set the string value for the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param sValue: The selected value.
+        :type sValue: str
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBoolExtensionValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Set the boolean value for the given extension field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The selected value.
+        :type bValue: bool
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
     def SetListIntExtensionValue(self, nFieldIndex: int, nIndex: int, nValue: int) -> bool:
         """
         Sets the value of a specified element in a list of integers within the given enumerated field.
+
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListIntSize) must be larger than nIndex.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6835,6 +6904,9 @@ class IscGroup:
         """
         Sets the value of a specified element in a list of doubles within the given enumerated field.
 
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListDblSize) must be larger than nIndex.
+
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param nIndex: The index of the selected element.
@@ -6849,6 +6921,9 @@ class IscGroup:
     def SetListStrExtensionValue(self, nFieldIndex: int, nIndex: int, strValue: str) -> bool:
         """
         Sets the value of a specific element in a list of strings within the given enumerated field.
+
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListStrSize) must be larger than nIndex.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -9318,6 +9393,8 @@ class IscNetComponent:
         Adds an integer/float/string/double extension data field and returns the new field index.
         Sets the default value.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         **Note: The variable of the function is not called default.**
 
         You can use either nDefault, dDefault, strDefault or bDefault to specify the default value depending on the
@@ -9343,6 +9420,8 @@ class IscNetComponent:
         Adds a list of integers data field and returns the new field index.
         Sets the default value to an empty list.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param strName: The name of the field.
         :type strName: str
         :return: The new field index.
@@ -9355,6 +9434,8 @@ class IscNetComponent:
         Adds a list of doubles data field and returns the new field index.
         Sets the default value to an empty list.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param strName: The name of the field.
         :type strName: str
         :return: The new field index.
@@ -9366,6 +9447,8 @@ class IscNetComponent:
         """
         Adds a list of strings data field and returns the new field index.
         Sets the default value to an empty list.
+
+        This only has to be called once per component type - not for every instance of the component!
 
         :param strName: The name of the field.
         :type strName: str
@@ -9382,6 +9465,8 @@ class IscNetComponent:
         It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
         expected amount of data shall be deleted.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param nFieldIndex: The index of the field.
         :type nFieldIndex: int
         :return: True if the field is deleted successfully.
@@ -9397,6 +9482,8 @@ class IscNetComponent:
         It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
         expected amount of data shall be deleted.
 
+        This only has to be called once per component type - not for every instance of the component!
+
         :param strName: The name of the field.
         :type strName: str
         :return: True if the field is deleted successfully.
@@ -9410,6 +9497,8 @@ class IscNetComponent:
         this extension field from this component and all other components of the same type.
         It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
         expected amount of data shall be deleted.
+
+        This only has to be called once per component type - not for every instance of the component!
 
         :param strName: The name of the field.
         :type strName: str
@@ -9539,6 +9628,9 @@ class IscNetComponent:
         """
         Sets the value of an element in a list of integers for the enumerated field at given position to given value.
 
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListIntSize) must be larger than nIndex.
+
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param nIndex: The index of the selected element.
@@ -9554,6 +9646,9 @@ class IscNetComponent:
         """
         Sets the value of an element in a list of doubles for the enumerated field at given position to given value.
 
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListDblSize) must be larger than nIndex.
+
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param nIndex: The index of the selected element.
@@ -9568,6 +9663,9 @@ class IscNetComponent:
     def SetListStrExtensionValue(self, nFieldIndex: int, nIndex: int, strValue: str) -> bool:
         """
         Sets the value of an element in a list of strings for the enumerated field at given position to given value.
+
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListStrSize) must be larger than nIndex.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
