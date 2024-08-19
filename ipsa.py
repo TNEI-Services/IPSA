@@ -14215,6 +14215,7 @@ class IscNetwork:
     def CreateIntertrip(self, strName: str) -> int:
         """
         Create a new empty intertrip and returns the intertrip UID.
+        Note the new intertrip name must be **unique** or no new intertrip will be created.
 
         :param strName: The intertrip name.
         :type strName: str
@@ -14226,6 +14227,7 @@ class IscNetwork:
     def CreateIntertripNoGraphics(self, strName: str):
         """
         Create a new empty intertrip and returns the IscIntertrip object.
+        Note the new intertrip name must be **unique** or no new intertrip will be created.
 
         :param strName: The intertrip name.
         :type strName: str
