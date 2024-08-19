@@ -14647,7 +14647,7 @@ class IscNetwork:
     def DeleteAllItems(self):
         """
         Delete all items in the network. This will delete all the components, groups, automations, contingencies and
-        intertrips, and resets the component UIDs to start again from 1.
+        intertrips.
 
         It will delete all versions and the entire undo history.
 
