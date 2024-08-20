@@ -5869,7 +5869,7 @@ class IscDiagram:
         """
         pass
 
-    def MapToLatLong(self, dDiagramX: float, dDiagramY: float) -> List[float]:
+    def MapToLatLong(self, dDiagramX: float, dDiagramY: float) -> Tuple[float]:
         """
         Returns the latitude and longitude in decimal degrees of the specified diagram pixel position.
         Note that the diagram X is south/north and diagram Y is east/west.
@@ -5881,11 +5881,11 @@ class IscDiagram:
         :param dDiagramY: The diagram y coordinate.
         :type dDiagramY: float
         :return: The latitude and longitude of the diagram position.
-        :rtype: list(float)
+        :rtype: tuple(float)
         """
         pass
 
-    def LatLongToMap(self, fN: float, fE: float) -> List[float]:
+    def LatLongToMap(self, fN: float, fE: float) -> Tuple[float]:
         """
         Returns the diagram pixel X and Y coordinates of the latitude and longitude.
         Note that the diagram X is south/north and diagram Y is east/west.
@@ -5897,7 +5897,7 @@ class IscDiagram:
         :param fE: The longitude.
         :type fE: float
         :return: The diagram X and Y coordinates.
-        :rtype: list(float)
+        :rtype: tuple(float)
         """
         pass
 
@@ -6055,7 +6055,7 @@ class IscDiagram:
     def SetBackgroundColour(self, strHexColour: str) -> None:
         """
         Sets the diagram background colour to the specified hex colour.
-        strHexColour can either be set as a hex colour code or as one of the SVG color keyword names.
+        strHexColour can either be set as a hex colour code (i.e., "#BA4675") or as one of the SVG color keyword names.
 
         :param strHexColour: The hex colour to set the diagram background to.
         :type strHexColour: str
@@ -6141,13 +6141,13 @@ class IscDiagram:
         """
         pass
 
-    def GetMapCentre(self) -> List[float]:
+    def GetMapCentre(self) -> Tuple[float]:
         """
         Returns the centre position of the map. Returns lat-long centre for diagrams with tiled geographic maps and
         (0,0) otherwise.
 
         :return: The diagram lat-long centre position.
-        :rtype: list(float)
+        :rtype: tuple(float)
         """
         pass
 
