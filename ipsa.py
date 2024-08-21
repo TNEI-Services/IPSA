@@ -60,7 +60,7 @@ class Isc3WTransformer:
         """
         pass
 
-    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
         """
         Returns a list of double values for the enumerated field.
 
@@ -123,7 +123,7 @@ class Isc3WTransformer:
         """
         pass
 
-    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
         """
         Sets the value for the enumerated field from a list of doubles.
 
@@ -1658,7 +1658,7 @@ class IscBranch:
         """
         pass
 
-    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
         """
         Returns a list of double values for the enumerated field.
 
@@ -1849,7 +1849,7 @@ class IscBranch:
         """
         pass
 
-    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
         """
         Sets the value for the enumerated field from a list of doubles.
 
@@ -7058,7 +7058,7 @@ class IscHarmonic:
         """
         pass
 
-    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
         """
         Returns a list of double values for the enumerated field.
 
@@ -7121,7 +7121,7 @@ class IscHarmonic:
         """
         pass
 
-    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
         """
         Sets the value for the enumerated field from a list of doubles.
 
@@ -8531,7 +8531,7 @@ class IscIntertrip:
         """
         pass
 
-    def GetListIValue(self, nFieldIndex: int) -> list[int]:
+    def GetListIValue(self, nFieldIndex: int) -> List[int]:
         """
         Returns a list of integer values for the enumerated field.
 
@@ -8581,7 +8581,7 @@ class IscIntertrip:
         """
         pass
 
-    def SetListIValue(self, nFieldIndex: int, lIValue: list[int]) -> bool:
+    def SetListIValue(self, nFieldIndex: int, lIValue: List[int]) -> bool:
         """
         Sets the value for the enumerated field from a list of integers.
 
@@ -11695,7 +11695,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscTransformer]:
+    def GetTransformerUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all transformer UIDs in the network.
         The keys are the integer UIDs and the values are the IscTransformer instances.
@@ -11734,7 +11734,7 @@ class IscNetwork:
         """
         pass
 
-    def GetTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscTransformer]:
+    def GetTransformerUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all transformer UIDs in the network or a list of transformers connected to the
         busbars specified by the given UIDs.
@@ -11922,7 +11922,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetSynMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscSynMachine]:
+    def GetSynMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all synchronous machine UIDs in the network.
         The keys are the integer UIDs and the values are the IscSynMachine instances.
@@ -11935,7 +11935,7 @@ class IscNetwork:
         """
         pass
 
-    def GetSynMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscSynMachine]:
+    def GetSynMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all synchronous machine UIDs in the network or a list of synchronous machines
         connected to the busbars specified by the given UIDs.
@@ -11980,7 +11980,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetGridInfeedUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGridInfeed]:
+    def GetGridInfeedUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all grid infeed UIDs in the network.
         The keys are the integer UIDs and the values are the IscGridInfeed instances.
@@ -11993,7 +11993,7 @@ class IscNetwork:
         """
         pass
 
-    def GetGridInfeedUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGridInfeed]:
+    def GetGridInfeedUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all grid infeed UIDs in the network or a list of grid infeeds
         connected to the busbars specified by the given UIDs.
@@ -12038,7 +12038,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetIndMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscIndMachine]:
+    def GetIndMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all induction machine UIDs in the network.
         The keys are the integer UIDs and the values are the IscIndMachine instances.
@@ -12051,7 +12051,7 @@ class IscNetwork:
         """
         pass
 
-    def GetIndMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscIndMachine]:
+    def GetIndMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all induction machine UIDs in the network or a list of induction machines
         connected to the busbars specified by the given UIDs.
@@ -12096,7 +12096,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetFilterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscFilter]:
+    def GetFilterUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all filter UIDs in the network.
         The keys are the integer UIDs and the values are the IscFilter instances.
@@ -12109,7 +12109,7 @@ class IscNetwork:
         """
         pass
 
-    def GetFilterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscFilter]:
+    def GetFilterUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all filter UIDs in the network or a list of filters
         connected to the busbars specified by the given UIDs.
@@ -12154,7 +12154,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetMechSwCapacitorUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMechSwCapacitor]:
+    def GetMechSwCapacitorUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all mechanically switched capacitor UIDs in the network.
         The keys are the integer UIDs and the values are the IscMechSwCapacitor instances.
@@ -12167,7 +12167,7 @@ class IscNetwork:
         """
         pass
 
-    def GetMechSwCapacitorUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMechSwCapacitor]:
+    def GetMechSwCapacitorUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all mechanically switched capacitor UIDs in the network or a list of
         mechanically switched capacitors
@@ -12213,7 +12213,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetStaticVCUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscStaticVC]:
+    def GetStaticVCUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all static VAr compensator UIDs in the network.
         The keys are the integer UIDs and the values are the IscStaticVC instances.
@@ -12226,7 +12226,7 @@ class IscNetwork:
         """
         pass
 
-    def GetStaticVCUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscStaticVC]:
+    def GetStaticVCUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all static VAr compensator UIDs in the network or a list of
         static VAr compensators
@@ -12272,7 +12272,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetUMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUMachine]:
+    def GetUMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all universal machine UIDs in the network.
         The keys are the integer UIDs and the values are the IscUMachine instances.
@@ -12285,7 +12285,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUMachine]:
+    def GetUMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all universal machine UIDs in the network or a list of universal machines
         connected to the busbars specified by the given UIDs.
@@ -12330,7 +12330,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetHarmonicUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscHarmonic]:
+    def GetHarmonicUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all harmonic source UIDs in the network.
         The keys are the integer UIDs and the values are the IscHarmonic instances.
@@ -12343,7 +12343,7 @@ class IscNetwork:
         """
         pass
 
-    def GetHarmonicUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscHarmonic]:
+    def GetHarmonicUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all harmonic source UIDs in the network or a list of harmonic sources
         connected to the busbars specified by the given UIDs.
@@ -12389,7 +12389,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetCircuitBreakerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscCircuitBreaker]:
+    def GetCircuitBreakerUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all circuit breaker UIDs in the network.
         The keys are the integer UIDs and the values are the IscCircuitBreaker instances.
@@ -12402,7 +12402,7 @@ class IscNetwork:
         """
         pass
 
-    def GetCircuitBreakerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscCircuitBreaker]:
+    def GetCircuitBreakerUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all circuit breaker UIDs in the network or a list of circuit breakers
         connected to the component specified by the given UID.
@@ -12471,7 +12471,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetBatteryUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscBattery]:
+    def GetBatteryUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all battery UIDs in the network.
         The keys are the integer UIDs and the values are the IscBattery instances.
@@ -12484,7 +12484,7 @@ class IscNetwork:
         """
         pass
 
-    def GetBatteryUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscBattery]:
+    def GetBatteryUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all battery UIDs in the network or a list of batteries
         connected to the busbars specified by the given UIDs.
@@ -12529,7 +12529,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetDCMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscDCMachine]:
+    def GetDCMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all DC Machine UIDs in the network.
         The keys are the integer UIDs and the values are the IscDCMachine instances.
@@ -12542,7 +12542,7 @@ class IscNetwork:
         """
         pass
 
-    def GetDCMachineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscDCMachine]:
+    def GetDCMachineUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all DC Machine UIDs in the network or a list of DC Machines
         connected to the busbars specified by the given UIDs.
@@ -12603,7 +12603,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetConverterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscConverter]:
+    def GetConverterUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all converter UIDs in the network.
         The keys are the integer UIDs and the values are the IscConverter instances.
@@ -12616,7 +12616,7 @@ class IscNetwork:
         """
         pass
 
-    def GetConverterUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscConverter]:
+    def GetConverterUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all converter UIDs in the network or a list of converters connected to the
         busbars specified by the given UIDs.
@@ -12679,7 +12679,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetChopperUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscChopper]:
+    def GetChopperUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all chopper UIDs in the network.
         The keys are the integer UIDs and the values are the IscChopper instances.
@@ -12692,7 +12692,7 @@ class IscNetwork:
         """
         pass
 
-    def GetChopperUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscChopper]:
+    def GetChopperUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all chopper UIDs in the network or a list of choppers connected to the
         busbars specified by the given UIDs.
@@ -12755,7 +12755,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetMGSetUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMGSet]:
+    def GetMGSetUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all motors/generator set UIDs in the network.
         The keys are the integer UIDs and the values are the IscMGSet instances.
@@ -12768,7 +12768,7 @@ class IscNetwork:
         """
         pass
 
-    def GetMGSetUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscMGSet]:
+    def GetMGSetUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all motors/generator set UIDs in the network or a list of motors/generator sets
         connected to the busbars specified by the given UIDs.
@@ -12815,7 +12815,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetUnbalancedLoadUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLoad]:
+    def GetUnbalancedLoadUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all unbalanced load UIDs in the network.
         The keys are the integer UIDs and the values are the IscUnbalancedLoad instances.
@@ -12828,7 +12828,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUnbalancedLoadUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLoad]:
+    def GetUnbalancedLoadUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns either a dictionary of all unbalanced load UIDs in the network or a list of unbalanced loads
         connected to the busbars specified by the given UIDs.
@@ -12889,7 +12889,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetUnbalancedLineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLine]:
+    def GetUnbalancedLineUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all unbalanced line UIDs in the network.
         The keys are the integer UIDs and the values are the IscUnbalancedLine instances.
@@ -12902,7 +12902,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUnbalancedLineUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedLine]:
+    def GetUnbalancedLineUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns either a dictionary of all unbalanced line UIDs in the network or a list of unbalanced lines
         connected to the busbars specified by the given UIDs.
@@ -12966,7 +12966,7 @@ class IscNetwork:
         pass
 
     @overload
-    def GetUnbalancedTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedTransformer]:
+    def GetUnbalancedTransformerUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all unbalanced transformer UIDs in the network.
         The keys are the integer UIDs and the values are the IscUnbalancedTransformer instances.
@@ -12979,7 +12979,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUnbalancedTransformerUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUnbalancedTransformer]:
+    def GetUnbalancedTransformerUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns either a dictionary of all unbalanced transformer UIDs in the network or a list of
         unbalanced transformers
@@ -13013,7 +13013,7 @@ class IscNetwork:
         """
         pass
 
-    def GetVoltageRegulatorUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscVoltageRegulator]:
+    def GetVoltageRegulatorUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all voltage regulator UIDs in the network.
         The keys are the integer UIDs and the values are the IscVoltageRegulator instances.
@@ -13026,7 +13026,7 @@ class IscNetwork:
         """
         pass
 
-    def GetProtectionDeviceUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscProtectionDevice]:
+    def GetProtectionDeviceUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all protection device UIDs in the network.
         The keys are the integer UIDs and the values are the IscProtectionDevice instances.
@@ -13039,7 +13039,7 @@ class IscNetwork:
         """
         pass
 
-    def GetAnnotationUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscAnnotation]:
+    def GetAnnotationUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all annotation UIDs in the network.
         The keys are the integer UIDs and the values are the IscAnnotation instances.
@@ -13052,7 +13052,7 @@ class IscNetwork:
         """
         pass
 
-    def GetGroupUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGroup]:
+    def GetGroupUIDs(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of all group UIDs in the network.
         The keys are the integer UIDs and the values are the IscGroup instances.
@@ -13065,7 +13065,7 @@ class IscNetwork:
         """
         pass
 
-    def GetIntertripUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscIntertrip]:
+    def GetIntertripUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all intertrip UIDs in the network.
         The keys are the integer UIDs and the values are the IscIntertrip instances.
@@ -13078,7 +13078,7 @@ class IscNetwork:
         """
         pass
 
-    def GetPluginUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscPlugin]:
+    def GetPluginUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all Plugin UIDs in the network.
         The keys are the integer UIDs and the values are the IscIntertrip instances.
@@ -13103,7 +13103,7 @@ class IscNetwork:
         """
         pass
 
-    def GetLoadProfilePQActualUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscLoadProfilePQActual]:
+    def GetLoadProfilePQActualUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all PQ Actual Load profile UIDs in the network.
         The keys are the integer UIDs and the values are the IscLoadProfilePQActual instances.
@@ -13116,7 +13116,7 @@ class IscNetwork:
         """
         pass
 
-    def GetLoadProfilePQScaleUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscLoadProfilePQScale]:
+    def GetLoadProfilePQScaleUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all PQ Scale Load profile UIDs in the network.
         The keys are the integer UIDs and the values are the IscLoadProfilePQScale instances.
@@ -13129,7 +13129,7 @@ class IscNetwork:
         """
         pass
 
-    def GetGeneratorProfilePQActualUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGeneratorProfilePQActual]:
+    def GetGeneratorProfilePQActualUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all PQ Actual Generator profile UIDs in the network.
         The keys are the integer UIDs and the values are the IscGeneratorProfilePQActual instances.
@@ -13142,7 +13142,7 @@ class IscNetwork:
         """
         pass
 
-    def GetGeneratorProfilePQScaleUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscGeneratorProfilePQScale]:
+    def GetGeneratorProfilePQScaleUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all PQ Scale Generator profile UIDs in the network.
         The keys are the integer UIDs and the values are the IscGeneratorProfilePQScale instances.
@@ -13155,7 +13155,7 @@ class IscNetwork:
         """
         pass
 
-    def GetUMachineProfilePQActualUIDs(self, bFetchFromSystem: bool = True) -> Dict[int, IscUMachineProfilePQActual]:
+    def GetUMachineProfilePQActualUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all PQ Actual UMachine profile UIDs in the network.
         The keys are the integer UIDs and the values are the IscUMachineProfilePQActual instances.
@@ -17765,7 +17765,7 @@ class IscTransformer:
         """
         pass
 
-    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
         """
         Returns a list of double values for the enumerated field.
 
@@ -17828,7 +17828,7 @@ class IscTransformer:
         """
         pass
 
-    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
         """
         Sets the value for the enumerated field from a list of doubles.
 
@@ -18983,7 +18983,7 @@ class IscUMachine:
         """
         pass
 
-    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
         """
         Returns a list of double values for the enumerated field.
 
@@ -19046,7 +19046,7 @@ class IscUMachine:
         """
         pass
 
-    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
         """
         Sets the value for the enumerated field from a list of doubles.
 
@@ -19447,7 +19447,7 @@ class IscUnbalancedLine:
         """
         pass
 
-    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
         """
         Returns a list of double values for the enumerated field.
 
@@ -19510,7 +19510,7 @@ class IscUnbalancedLine:
         """
         pass
 
-    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
         """
         Sets the value for the enumerated field from a list of doubles.
 
@@ -20960,7 +20960,7 @@ class IscUnbalancedTransformer:
         """
         pass
 
-    def GetListDValue(self, nFieldIndex: int) -> list[float]:
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
         """
         Returns a list of double values for the enumerated field.
 
@@ -21023,7 +21023,7 @@ class IscUnbalancedTransformer:
         """
         pass
 
-    def SetListDValue(self, nFieldIndex: int, lDValue: list[float]) -> bool:
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
         """
         Sets the value for the enumerated field from a list of doubles.
 
