@@ -109,6 +109,15 @@ Field Values
    * - Float
      - MaxTapSecondaryPC
      - Maximum tap position on the secondary winding, normally positive or zero.
+   * - List[Float]
+     - RatingMVAs
+     - Ratings for all rating sets in MVA.
+   * - List[Float]
+     - RatingSendkAs
+     - Send ratings for all rating sets in kA.
+   * - List[Float]
+     - RatingReceivekAs
+     - Receive ratings for all rating sets in kA.
    * - String
      - DbType
      - Gets the branch database type.

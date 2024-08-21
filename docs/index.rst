@@ -61,6 +61,7 @@ The following actions are possible:
    IscMGSet
    IscMechSwCapacitor
    IscGroup
+   IscIntertrip
    IscPlugin
    IscVoltageRegulator
    IscUnbalancedLine

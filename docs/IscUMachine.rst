@@ -107,6 +107,12 @@ Field Values
    * - Float
      - CDPTimeConstantSubTransientMs
      - Time constant value in ms for the subtransient window duration.
+   * - Boolean
+     - CDPPhaseCorrections
+     - Switch for the CDP functionality of the universal machine that forces the phase correction of the injected current to be in
+       quadrature with the pre-fault voltage. This 'prioritises' reactive power injection at the CDP injection site. In advanced mode,
+       when this is disabled it will adopt the phase of the active-reactive current phasor. In simple mode, when this is disabled it
+       will be in phase with the retained voltage.
    * - List[Float]
      - CDPVoltagePU
      - The list of (synchronous) voltage values in per unit for the CDP current injection (advanced method only).
@@ -134,12 +140,6 @@ Field Values
    * - List[Float]
      - CDPReactiveCurrentSubTransientPU
      - The list of reactive (sub-transient) current values in per unit for the CDP current injection (advanced method only).
-   * - Boolean
-     - CDPPhaseCorrections
-     - Switch for the CDP functionality of the universal machine that forces the phase correction of the injected current to be in
-       quadrature with the pre-fault voltage. This 'prioritises' reactive power injection at the CDP injection site. In advanced mode,
-       when this is disabled it will adopt the phase of the active-reactive current phasor. In simple mode, when this is disabled it
-       will be in phase with the retained voltage.
 
 IscUMachine Class
 ------------------
