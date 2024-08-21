@@ -50,7 +50,7 @@ Field Values
      - If ``True`` then the load is an equivalent load.
    * - Integer
      - LoadPlanningStage
-     - The stage the load is current at:
+     - The stage the load is currently at:
 
         - 0 = Proposed
         - 1 = Accepted

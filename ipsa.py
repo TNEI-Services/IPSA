@@ -1297,7 +1297,7 @@ class IscAnnotation:
 
 class IscBattery:
     """
-    Provides access to an Ipsa battery.
+    Provides access to an IPSA battery.
     """
     def SetName(self, strName: str) -> bool:
         """
@@ -2995,9 +2995,9 @@ class IscBusbar:
         *Deprecated. If a float dOrder is provided, this is the harmonic voltage magnitude for the given harmonic order.
         Instead, use GetVoltageMagnitudeHarmPU*
 
-        :param nStudyUid: The UID of the study, if wanted.
+        :param nStudyUid: The UID of the study.
         :type nStudyUid: int
-        :param dOrder: The harmonic order, if wanted.
+        :param dOrder: The harmonic order.
         :type dOrder: float
         :return: The voltage magnitude, if a UID is provided this returns the voltage magnitude for the associated
             study. If a dOrder is provided this returns the voltage magnitude for the harmonic order.
@@ -3032,7 +3032,7 @@ class IscBusbar:
         Returns the voltage magnitude in kV.
         If a UID is provided this is for the associated automation or contingency study.
 
-        :param nStudyUid: The UID of the study, if wanted.
+        :param nStudyUid: The UID of the study.
         :type nStudyUid: int
         :return: The voltage magnitude, if a UID is provided this returns the voltage magnitude for the associated study.
         :rtype: float
@@ -3066,7 +3066,7 @@ class IscBusbar:
         Returns the voltage angle in radians.
         If a UID is provided this is for the associated automation or contingency study.
 
-        :param nStudyUid: The UID of the study, if wanted.
+        :param nStudyUid: The UID of the study.
         :type nStudyUid: int
         :return: The voltage angle, if a UID is provided this returns the voltage angle for the associated study.
         :rtype: float
@@ -3100,7 +3100,7 @@ class IscBusbar:
         Returns the voltage angle in degrees.
         If a UID is provided this is for the associated automation or contingency study.
 
-        :param nStudyUid: The UID of the study, if wanted.
+        :param nStudyUid: The UID of the study.
         :type nStudyUid: int
         :return: The voltage angle, if a UID is provided this returns the voltage angle for the associated study.
         :rtype: float
@@ -5589,11 +5589,11 @@ class IscDiagram:
 
     def DeleteItem(self, nUID: int) -> bool:
         """
-        Deletes the graphic item identified by the ID. This may be a line, radial component or busbar.
+        Deletes the graphic item identified by the UID. This may be a line, radial component or busbar.
 
         :param nUID: The graphical item UID.
         :type nUID: int
-        :return: Denoting whether the item was deleted.
+        :return: ``True`` if deletion is successful.
         :rtype: bool
         """
         pass
@@ -5824,17 +5824,6 @@ class IscDiagram:
         :type nUID: int
         :return: The screen Y coordinates.
         :rtype: float
-        """
-        pass
-
-    def DeleteItem(self, nItemUID: int) -> bool:
-        """
-        Deletes the item with the given UID.
-
-        :param nItemUID: The item UID to be deleted.
-        :type nItemUID: int
-        :return: True if successful.
-        :rtype: bool
         """
         pass
 
@@ -6392,7 +6381,7 @@ from typing import List
 class IscGroup:
     """
     The IscGroup class provides access to an IPSA group to set and get group members.
-    Note the extension functions will only work for general groups and may not function for e.g., areas, transformer
+    Note the extension functions will only work for general groups and may not function for other groups e.g., areas, transformer
     groups.
     """
     def GetUID(self) -> int:
@@ -6452,11 +6441,79 @@ class IscGroup:
 
     def SetMembers(self, nUIDs: List[int]) -> None:
         """
-        Sets the group members to the list of component integers.
+        Overwrites the current list of group members with the given list of component UIDs.
         This replaces any existing members with the supplied list of UIDs.
 
         :param nUIDs: List of component integers.
         :type nUIDs: list(int)
+        """
+        pass
+
+    def ClearMembers(self) -> None:
+        """
+        Sets the group members to an empty list.
+        This clears any existing members.
+        """
+        pass
+
+    def AddMember(self, nUID: int) -> None:
+        """
+        Appends the component with the given UID to the list of component UIDs if the UID is not present.
+        All existing group member UIDs are unaffected.
+
+        :param nUID: Component UID.
+        :type nUID: int
+        """
+        pass
+
+    def RemoveMember(self, nUID: int) -> None:
+        """
+        Removes the component with the given UID from the list of component UIDs if the UID is present.
+        All other existing group member UIDs are unaffected.
+
+        :param nUID: Component UID.
+        :type nUID: int
+        """
+        pass
+
+    def IsMember(self, nUID: int) -> bool:
+        """
+        Checks whether the component with the given UID is present in the list of component UIDs.
+        The list of group member UIDs will be unaffected.
+
+        :param nUID: Component UID.
+        :type nUID: int
+        :return: True if nUID is present in list of member UIDs.
+        :rtype: bool
+        """
+        pass
+
+    def CompareGroups(self, nGroupUID: int, bUseIntersection: bool = False) -> List[int]:
+        """
+        Compares the current group with the group with UID given by nGroupUID.
+        By default, will perform a difference operation returning a list of component UIDs present in the current group
+        but not present in the group with UID given by nGroupUID.
+        If bUseIntersection is True it will return a list of component UIDs present in both lists.
+        Both lists of group member UIDs will be unaffected.
+
+        :param nGroupUID: UID of the group to compare with.
+        :type nGroupUID: int
+        :param bUseIntersection: If True performs an intersection, if False a difference operation.
+        :type bUseIntersection: bool
+        :return: The list of UIDs that make up the difference (default) or intersection of the two groups.
+        :rtype: list(int)
+        """
+        pass
+
+    def MergeGroups(self, nGroupUID: int, bDeleteGroup: bool = False) -> None:
+        """
+        Appends the list of component UIDs from the group with the given UID onto the current group's UID list.
+        By default the group with the given UID will be unnaffected, unless bDeleteGroup is True, in which case it will be deleted.
+
+        :param nGroupUID: UID of the group to merge with.
+        :type nGroupUID: int
+        :param bDeleteGroup: If True deletes the group with nGroupUID, otherwise the group is unnaffected.
+        :type bDeleteGroup: bool
         """
         pass
 
@@ -6497,7 +6554,7 @@ class IscGroup:
 
         **Note: The variable of the function is not called default.**
 
-        You can use either nDefault, dDefault, or strDefault specifying the default value.
+        You can use either nDefault, dDefault, or strDefault to specify the default value depending on the type of dta extension being added.
 
         :param strName: The name of the field.
         :type strName: str
@@ -6514,7 +6571,7 @@ class IscGroup:
 
     def AddListIntDataExtension(self, strName: str) -> int:
         """
-        Adds a list of integers data field and returns the new field index.
+        Adds a data field for a list of integers and returns the new field index.
         Sets the default value to an empty list.
 
         :param strName: The name of the field.
@@ -6526,7 +6583,7 @@ class IscGroup:
 
     def AddListDblDataExtension(self, strName: str) -> int:
         """
-        Adds a list of doubles data field and returns the new field index.
+        Adds a data field for a list of doubles and returns the new field index.
         Sets the default value to an empty list.
 
         :param strName: The name of the field.
@@ -6538,7 +6595,7 @@ class IscGroup:
 
     def AddListStrDataExtension(self, strName: str) -> int:
         """
-        Adds a list of strings data field and returns the new field index.
+        Adds a data field for a list of strings and returns the new field index.
         Sets the default value to an empty list.
 
         :param strName: The name of the field.
@@ -6550,7 +6607,7 @@ class IscGroup:
 
     def GetListIntExtensionValue(self, nFieldIndex: int, nIndex: int) -> int:
         """
-        Get a single integer value from the list for the enumerated field.
+        Get a single integer value from the list within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6563,7 +6620,7 @@ class IscGroup:
 
     def GetListDblExtensionValue(self, nFieldIndex: int, nIndex: int) -> float:
         """
-        Get a single float value from the list for the enumerated field.
+        Get a single float value from the list within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6576,7 +6633,7 @@ class IscGroup:
 
     def GetListStrExtensionValue(self, nFieldIndex: int, nIndex: int) -> str:
         """
-        Get a single string value from the list for the enumerated field.
+        Get a single string value from the list within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6589,7 +6646,7 @@ class IscGroup:
 
     def GetListIntSize(self, nFieldIndex: int) -> int:
         """
-        Get size of the list of integers for the enumerated field.
+        Gets the size of the list of integers for the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6600,7 +6657,7 @@ class IscGroup:
 
     def GetListDblSize(self, nFieldIndex: int) -> int:
         """
-        Get size of the list of doubles for the enumerated field.
+        Gets the size of the list of doubles for the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6611,7 +6668,7 @@ class IscGroup:
 
     def GetListStrSize(self, nFieldIndex: int) -> int:
         """
-        Get size of the list of strings for the enumerated field.
+        Gets the size of the list of strings for the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6622,7 +6679,7 @@ class IscGroup:
 
     def SetListIntExtensionValue(self, nFieldIndex: int, nIndex: int, nValue: int) -> bool:
         """
-        Sets the value of an element in a list of integers for the enumerated field at given position to given value.
+        Sets the value of a specified element in a list of integers within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6637,7 +6694,7 @@ class IscGroup:
 
     def SetListDblExtensionValue(self, nFieldIndex: int, nIndex: int, dValue: float) -> bool:
         """
-        Sets the value of an element in a list of doubles for the enumerated field at given position to given value.
+        Sets the value of a specified element in a list of doubles within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6652,7 +6709,7 @@ class IscGroup:
 
     def SetListStrExtensionValue(self, nFieldIndex: int, nIndex: int, strValue: str) -> bool:
         """
-        Sets the value of an element in a list of strings for the enumerated field at given position to given value.
+        Sets the value of a specific element in a list of strings within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6667,7 +6724,7 @@ class IscGroup:
 
     def PushBackListIntExtensionValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
-        Adds an item to the end of a list of integers for the enumerated field with the given value.
+        Adds an item with the given value to the end of a list of integers within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6680,7 +6737,7 @@ class IscGroup:
 
     def PushBackListDblExtensionValue(self, nFieldIndex: int, dValue: float) -> bool:
         """
-        Adds an item to the end of a list of doubles for the enumerated field with the given value.
+        Adds an item with the given value to the end of a list of doubles within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6693,7 +6750,7 @@ class IscGroup:
 
     def PushBackListStrExtensionValue(self, nFieldIndex: int, strValue: str) -> bool:
         """
-        Adds an item to the end of a list of strings for the enumerated field with the given value.
+        Adds an item with the given value to the end of a list of strings within the given enumerated field.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -6706,7 +6763,7 @@ class IscGroup:
 
     def GetExtensionFieldIndex(self, strName: str) -> int:
         """
-        Returns the field index for the extended data field.
+        Returns the field index for the extended data field of a specified name.
 
         :param strName: The name of the extended data field.
         :type strName: str
@@ -7458,9 +7515,9 @@ class IscInterface:
     """
     def ReadFile(self, strName: str):
         """
-        Opens an Ipsa i2f file strName and returns an IscNetwork instance for that file.
+        Opens an IPSA i2f file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The Ipsa i2f file that is going to be opened.
+        :param strName: The IPSA i2f file that is going to be opened.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -7469,9 +7526,9 @@ class IscInterface:
 
     def ReadIpsa1File(self, strName: str):
         """
-        Imports an Ipsa 1 (\*.iif) file strName and returns an IscNetwork instance for that file.
+        Imports an IPSA 1 (\*.iif) file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The Ipsa i2f file that is going to be imported.
+        :param strName: The IPSA i2f file that is going to be imported.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -7480,9 +7537,9 @@ class IscInterface:
 
     def GetNetwork(self):
         """
-        Returns an IscNetwork instance for the current Ipsa network.
+        Returns an IscNetwork instance for the current IPSA network.
 
-        :return: The IscNetwork instance of the Ipsa network.
+        :return: The IscNetwork instance of the IPSA network.
         :rtype: IscNetwork
         """
         pass
@@ -7501,11 +7558,11 @@ class IscInterface:
         Returns an IscDiagram instance for the diagram with name strName contained in the network
         referred to by iscNetwork.
 
-        :param network: The IscNetwork instance of the Ipsa network.
+        :param network: The IscNetwork instance of the IPSA network.
         :type network: IscNetwork
         :param strName: The name of the diagram.
         :type strName: str
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -7520,7 +7577,7 @@ class IscInterface:
             nSceneMeasurementUnit: int
     ) -> bool:
         """
-        Creates a new Ipsa network based on the supplied parameters. Returns False if the network can’t be created.
+        Creates a new IPSA network based on the supplied parameters. Returns False if the network can’t be created.
 
         :param dSystemBaseMVA: The network base MVA.
         :type dSystemBaseMVA: float
@@ -7551,7 +7608,7 @@ class IscInterface:
 
     def MergeFile(self, sMergeName: str) -> bool:
         """
-        Merges the Ipsa I2F file sMergeName into the current network.
+        Merges the IPSA I2F file sMergeName into the current network.
 
         :param sMergeName: The name of the file being merged.
         :type sMergeName: str
@@ -7562,7 +7619,7 @@ class IscInterface:
 
     def ValidatedMergeFile(self, sMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the Ipsa I2F file sMergeName can be merged into
+        Performs a consistency check to determine if the IPSA I2F file sMergeName can be merged into
         the current network. Use the GetFilingErrors() function to get details of the merge errors.
 
         :param sMergeName: The name of the file being merged.
@@ -7595,7 +7652,7 @@ class IscInterface:
 # Fixing gaps in documentation EL 11/2023
     def WriteFile(self, strName: str) -> bool:
         """
-        Saves the IscNetwork instance as a new Ipsa i2f network file with the file name strName.
+        Saves the IscNetwork instance as a new IPSA i2f network file with the file name strName.
         The file is saved in the current working directory unless the path is defined in the file name.
         The file name should include the .i2f extension
 
@@ -7608,7 +7665,7 @@ class IscInterface:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group nAreaUID as a new Ipsa i2f network file with the file name strName.
+        Saves the area group specified by the UID, nAreaUID, as a new IPSA i2f network file with the file name strName.
         The integer nAreaUID can be obtained using the IscGroup functions.
         The file is saved in the current working directory unless the path is defined in the file name.
         The file name should include the .i2f extension
@@ -7626,7 +7683,7 @@ class IscInterface:
         """
         Returns a tuple of IscDiagram instances for the network referred to by IscNetwork.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :return: The network diagram.
         :rtype: tuple(IscDiagram)
@@ -7637,7 +7694,7 @@ class IscInterface:
         """
         Returns a list of all the diagram names for the network referred to by IscNetwork.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :return: List of diagram names.
         :rtype: list(str)
@@ -7648,7 +7705,7 @@ class IscInterface:
         """
         Print the IscDiagram instance to a PDF format file with name strFileName.
 
-        :param diagram: The diagram of the Ipsa network.
+        :param diagram: The diagram of the IPSA network.
         :type diagram: IscDiagram
         :param strFileName: The name of the pdf file.
         :type strFileName: str
@@ -7684,17 +7741,17 @@ class IscInterface:
 
     def AllowStackBarUpdates(self, bAllow: bool) -> None:
         """
-        Setting bAllow to True prevents the Ipsa stack bar from updating during script execution.
+        Setting bAllow to True prevents the IPSA stack bar from updating during script execution.
         This can provide speed improvements since redrawing the stack bar is prevented.
 
-        :param bAllow: Deciding whether the Ipsa stack bar can be updated during script execution.
+        :param bAllow: Deciding whether the IPSA stack bar can be updated during script execution.
         :type bAllow: bool
         """
         pass
 
     def GetDate(self) -> str:
         """
-        Returns the date and time that Ipsa was launched, e.g. 06 Nov 2012 22:53:17.
+        Returns the date and time that IPSA was launched, e.g. 06 Nov 2012 22:53:17.
 
         :return: The date in a string format.
         :rtype: str
@@ -7898,7 +7955,7 @@ class IscInterface:
 
     def DisplayResultsTable(self, nTableType: int) -> None:
         """
-        Displays the Ipsa results table which will contain the results of the last analysis.
+        Displays the IPSA results table which will contain the results of the last analysis.
 
         :param nTableType: Specify the type of table displayed:
 
@@ -7973,7 +8030,7 @@ class IscInterface:
     def DbgSetLogFileName(self, strName: str) -> None:
         """
         Set the name of the load flow log file to strName.
-        If no file path is specified then the file is created in the Ipsa bin directory.
+        If no file path is specified then the file is created in the IPSA bin directory.
 
         :param strName: The name of the load flow log file.
         :type strName: str
@@ -8774,7 +8831,7 @@ class IscNetComponent:
     def GetName(self) -> str:
         """
         Gets the name as a string - this is the name Python knows the object by
-        (only identical to the Ipsa name for busbars).
+        (only identical to the IPSA name for busbars).
 
         :return: The name of the component.
         :rtype: str
@@ -9124,7 +9181,7 @@ class IscNetwork:
 
     def RefreshSystem(self) -> None:
         """
-        Forces Ipsa to rebuild its internal component data maps.
+        Forces IPSA to rebuild its internal component data maps.
         This function can be used if the network has been modified outside of scripting while a script is running.
         """
         pass
@@ -9142,7 +9199,7 @@ class IscNetwork:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group UID as a new Ipsa i2f network file.
+        Saves the area group UID as a new IPSA i2f network file.
         The file is saved in the current working directory.
         The file name should include the .i2f extension.
 
@@ -9168,7 +9225,7 @@ class IscNetwork:
 
     def ValidatedMergeFile(self, strMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the Ipsa I2F file can be merged into the current network.
+        Performs a consistency check to determine if the IPSA I2F file can be merged into the current network.
         Use the GetFilingErrors() function to get details of the merge errors.
 
         :param strMergeName: The merged file name.
@@ -9213,7 +9270,7 @@ class IscNetwork:
 
     def CreateChangeFile(self, nVersion: int, strMergeName: str) -> bool:
         """
-        Creates an Ipsa merge file based on the network differences between the given version and the current version.
+        Creates an IPSA merge file based on the network differences between the given version and the current version.
 
         :param nVersion: The selected version.
         :type nVersion: int
@@ -9282,6 +9339,16 @@ class IscNetwork:
 
     def ResetResults(self) -> None:
         """Reset all analysis results."""
+        pass
+
+    def GetSystemBaseMVA(self) -> float:
+        """
+        Returns the current system MVA defined for the IPSA network
+        Default: 100 MVA
+
+        :return: Network system MVA value
+        :rtype: float
+        """
         pass
 
     def GetNumberOfIslands(self) -> int:
@@ -11979,7 +12046,7 @@ class IscNetwork:
         component, the function :meth:`IscDiagram.DrawUndrawnItemsAttachedToBusbar` needs to be called before
         :meth:`IscDiagram.DrawLine`.
 
-        :param nBranchOrTxUID: The UID of the busbar or the transformer where the circuit breaker is located.
+        :param nBranchOrTxUID: The UID of the branch or the transformer where the circuit breaker is located.
         :type nBranchOrTxUID: int
         :param pBranchOrTx: The IscBranch or IscTransformer object of the branch or transformer where the circuit breaker is located.
         :type pBranchOrTx: IscBranch or IscTransformer
@@ -13412,20 +13479,20 @@ class IscNetwork:
 
     def RunProfile(self) -> int:
         """
-        Runs the profile study. Returns the number of profile categories which have been run.
+        Runs the profile study. Returns the calculation UID of the study which has just been run.
 
-        :return: The number of profile categories which have been run.
+        :return: The calculation UID of the study which has been run.
         :rtype: int
         """
         pass
 
     def GetDiagram(self, strName: str):
         """
-        Returns an IscDiagram instance for the diagram with name strName contained in the network.
+        Returns an IscDiagram instance for the diagram with given name contained in the network.
 
         :param strName: The name of the diagram.
         :type strName: str
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -13598,7 +13665,7 @@ class IscNetwork:
 
     def SetEngineMessageSuppression(self, nLevel: int) -> None:
         """
-        Sets the verbosity of the load flow messages that are generated in the Ipsa progress window.
+        Sets the verbosity of the load flow messages that are generated in the IPSA progress window.
         This can provide a speed improvement for complex scripts
 
             - 0 = Displays all messages
@@ -13636,47 +13703,47 @@ class IscNetwork:
 
     def GetTotalGenerationOutputMW(self) -> float:
         """
-        Returns the total network generation, excluding slack generators, in MW.
+        Returns the total network generation real power, excluding slack generators, in MW.
         GetLFSummaryResults() must be called first.
 
-        :return: The total network generation, excluding slack generators, in MW.
+        :return: The total network generation real power, excluding slack generators, in MW.
         :rtype: float
         """
         pass
 
     def GetTotalGenerationOutputMVAr(self) -> float:
         """
-        Returns the total network generation, excluding slack generators, in MVAr.
+        Returns the total network generation reactive power, excluding slack generators, in MVAr.
         GetLFSummaryResults() must be called first.
 
-        :return: The total network generation, excluding slack generators, in MVAr.
+        :return: The total network generation reactive power, excluding slack generators, in MVAr.
         :rtype: float
         """
         pass
 
     def GetTotalLoadInputMW(self) -> float:
         """
-        Returns the total network load in MW. GetLFSummaryResults() must be called first.
+        Returns the total network load real power in MW. GetLFSummaryResults() must be called first.
 
-        :return: The total network load in MW.
+        :return: The total network load real power in MW.
         :rtype: float
         """
         pass
 
     def GetTotalLoadInputMVAr(self) -> float:
         """
-        Returns the total network load in MVAr. GetLFSummaryResults() must be called first.
+        Returns the total network load reactive power in MVAr. GetLFSummaryResults() must be called first.
 
-        :return: The total network load in MVAr.
+        :return: The total network load reactive power in MVAr.
         :rtype: float
         """
         pass
 
     def GetTotalInductionInputMW(self) -> float:
         """
-        Returns the total network induction motor load in MW. GetLFSummaryResults() must be called first.
+        Returns the total network induction motor real power in MW. GetLFSummaryResults() must be called first.
 
-        :return: The total network induction motor load in MW.
+        :return: The total network induction motor real power in MW.
         :rtype: float
         """
         pass
@@ -13692,36 +13759,36 @@ class IscNetwork:
 
     def GetTotalUniMachineOutputMW(self) -> float:
         """
-        Returns the total network universal machine generation in MW. GetLFSummaryResults() must be called first.
+        Returns the total network universal machine generation real power in MW. GetLFSummaryResults() must be called first.
 
-        :return: The total network universal machine generation in MW.
+        :return: The total network universal machine generation real power in MW.
         :rtype: float
         """
         pass
 
     def GetTotalUniMachineOutputMVAr (self) -> float:
         """
-        Returns the total network universal machine generation in MVAr. GetLFSummaryResults() must be called first.
+        Returns the total network universal machine generation reactive power in MVAr. GetLFSummaryResults() must be called first.
 
-        :return: The total network universal machine generation in MVAr.
+        :return: The total network universal machine generation reactive power in MVAr.
         :rtype: float
         """
         pass
 
     def GetSlackOutputMW(self) -> float:
         """
-        Returns the total network slack generation in MW. GetLFSummaryResults() must be called first.
+        Returns the total network slack generation real power in MW. GetLFSummaryResults() must be called first.
 
-        :return: The total network slack generation in MW.
+        :return: The total network slack generation real power in MW.
         :rtype: float
         """
         pass
 
     def GetSlackOutputMVAr(self) -> float:
         """
-        Returns the total network slack generation in MVAr. GetLFSummaryResults() must be called first.
+        Returns the total network slack generation reactive power in MVAr. GetLFSummaryResults() must be called first.
 
-        :return: The total network slack generation in MVAr.
+        :return: The total network slack generation reactive power in MVAr.
         :rtype: float
         """
         pass
@@ -14131,7 +14198,7 @@ class IscNetwork:
 
     def GetContingencyStudyItemResults(self, nStudyID: int) -> Dict[int, int]:
         """
-        Returns a dict of the component uids to the result ID for each component for the study with the given ID.
+        Returns a dict of the component UIDs to the result ID for each component for the study with the given ID.
         The result IDs can be understood as followed:
 
             - 1 = Busbar over voltage (balanced or unbalanced)
@@ -14149,7 +14216,7 @@ class IscNetwork:
 
     def GetAutomationStudyItemResults(self, nStudyID: int) -> Dict[int, int]:
         """
-        Returns a dict of the component uids to the result ID for each component for the study with the given ID.
+        Returns a dict of the component UIDs to the result ID for each component for the study with the given ID.
         The result IDs can be understood as followed:
 
             - 1 = Busbar over voltage (balanced or unbalanced)
@@ -14210,7 +14277,7 @@ class IscNetwork:
         of a dynamic rating plugin.
         Dynamic rating plugins can be used to model the thermal response of OHLs,
         transformers and cables and provide ratings which are based on these models.
-        The normal Ipsa rating of a component is overridden if it has a dynamic rating plugin applied.
+        The normal IPSA rating of a component is overridden if it has a dynamic rating plugin applied.
         In this case this function returns the UIDs of all such overloaded components in contingency study ID.
 
         :param nStudyID: The contingency study ID.
@@ -14222,9 +14289,9 @@ class IscNetwork:
 
     def GetContingencyBranchRatingIndex(self) -> int:
         """
-        Returns the Ipsa rating index of the rating set used during the contingency study.
+        Returns the IPSA rating index of the rating set used during the contingency study.
 
-        :return: The Ipsa rating index.
+        :return: The IPSA rating index.
         :rtype: int
         """
         pass
@@ -14402,9 +14469,9 @@ class IscNetwork:
         """
         Sets the network global high and low limits for busbar overloads.
 
-        :param dBusVoltHighPU: The high limit for busbar overloads per unit.
+        :param dBusVoltHighPU: The high limit for busbar overloads in per unit.
         :type dBusVoltHighPU: float
-        :param dBusVoltlowPU: The low limit for busbar overloads per unit.
+        :param dBusVoltlowPU: The low limit for busbar overloads in per unit.
         :type dBusVoltlowPU: float
         """
         pass
@@ -14549,7 +14616,7 @@ class Isc__ProfilePQ__:
         """
         pass
 
-    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+    def SetCategoryNames(self, dictCategories: Dict[int, str]) -> None:
         """
         Sets up the profile categories for the profile instance.
         The dictionary should comprise a set of integer keys and string values.
@@ -14561,8 +14628,8 @@ class Isc__ProfilePQ__:
 
         categories = {0: "00:00", 1: "00:30", 2: "01:00"}
 
-        :param dicCategories: The profile categories for the profile instance.
-        :type dicCategories: dict(int,str)
+        :param dictCategories: The profile categories for the profile instance.
+        :type dictCategories: dict(int,str)
         """
         pass
 
@@ -14587,7 +14654,7 @@ class Isc__ProfilePQ__:
 
         dictCategoryToMW = {0: 1.23, 1: 3.73, 2: 5.67}
 
-        :param dictCategoryToMW: MW/pu values to the profile categories.
+        :param dictCategoryToMW: MW or pu values to the profile categories.
         :type dictCategoryToMW: dict(int,float)
         """
         pass
@@ -14599,7 +14666,7 @@ class Isc__ProfilePQ__:
         categories.
         For scaling profiles the values are the per unit scaling values.
 
-        :return: MW/pu values to the profile categories.
+        :return: MW or pu values to the profile categories.
         :rtype: dict(int,float)
         """
         pass
@@ -14615,7 +14682,7 @@ class Isc__ProfilePQ__:
 
         dictCategoryToMVAr = {0: 1.23, 1: 3.73, 2: 5.67}
 
-        :param dictCategoryToMVAr: MVAr/pu values to the profile categories.
+        :param dictCategoryToMVAr: MVAr or pu values to the profile categories.
         :type dictCategoryToMVAr: dict(int,float)
         """
         pass
@@ -14627,7 +14694,7 @@ class Isc__ProfilePQ__:
         categories.
         For scaling profiles the values are the per unit scaling values.
 
-        :return: MVAr/pu values to the profile categories.
+        :return: MVAr or pu values to the profile categories.
         :rtype: dict(int,float)
         """
         pass
@@ -14646,7 +14713,7 @@ class IscLoadProfilePQActual:
         """
         pass
 
-    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+    def SetCategoryNames(self, dictCategories: Dict[int, str]) -> None:
         """
         Sets up the profile categories for the actual load profile instance.
         The dictionary should comprise a set of integer keys and string values.
@@ -14658,8 +14725,8 @@ class IscLoadProfilePQActual:
 
         categories = {0: "00:00", 1: "00:30", 2: "01:00"}
 
-        :param dicCategories: The profile categories for the actual load profile instance.
-        :type dicCategories: dict(int,str)
+        :param dictCategories: The profile categories for the actual load profile instance.
+        :type dictCategories: dict(int,str)
         """
         pass
 
@@ -14740,7 +14807,7 @@ class IscLoadProfilePQScale:
         """
         pass
 
-    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+    def SetCategoryNames(self, dictCategories: Dict[int, str]) -> None:
         """
         Sets up the profile categories for the scaled load profile instance.
         The dictionary should comprise a set of integer keys and string values.
@@ -14752,8 +14819,8 @@ class IscLoadProfilePQScale:
 
         categories = {0: "00:00", 1: "00:30", 2: "01:00"}
 
-        :param dicCategories: The profile categories for the scaled load profile instance.
-        :type dicCategories: dict(int,str)
+        :param dictCategories: The profile categories for the scaled load profile instance.
+        :type dictCategories: dict(int,str)
         """
         pass
 
@@ -14833,7 +14900,7 @@ class IscGeneratorProfilePQActual:
         """
         pass
 
-    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+    def SetCategoryNames(self, dictCategories: Dict[int, str]) -> None:
         """
         Sets up the profile categories for the actual generator profile instance.
         The dictionary should comprise a set of integer keys and string values.
@@ -14845,8 +14912,8 @@ class IscGeneratorProfilePQActual:
 
         categories = {0: "00:00", 1: "00:30", 2: "01:00"}
 
-        :param dicCategories: The profile categories for the actual generator profile instance.
-        :type dicCategories: dict(int,str)
+        :param dictCategories: The profile categories for the actual generator profile instance.
+        :type dictCategories: dict(int,str)
         """
         pass
 
@@ -14927,7 +14994,7 @@ class IscGeneratorProfilePQScale:
         """
         pass
 
-    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+    def SetCategoryNames(self, dictCategories: Dict[int, str]) -> None:
         """
         Sets up the profile categories for the scaled generator profile instance.
         The dictionary should comprise a set of integer keys and string values.
@@ -14939,8 +15006,8 @@ class IscGeneratorProfilePQScale:
 
         categories = {0: "00:00", 1: "00:30", 2: "01:00"}
 
-        :param dicCategories: The profile categories for the scaled generator profile instance.
-        :type dicCategories: dict(int,str)
+        :param dictCategories: The profile categories for the scaled generator profile instance.
+        :type dictCategories: dict(int,str)
         """
         pass
 
@@ -15020,7 +15087,7 @@ class IscUMachineProfilePQActual:
         """
         pass
 
-    def SetCategoryNames(self, dicCategories: Dict[int, str]) -> None:
+    def SetCategoryNames(self, dictCategories: Dict[int, str]) -> None:
         """
         Sets up the profile categories for the actual universal machine profile instance.
         The dictionary should comprise a set of integer keys and string values.
@@ -15032,8 +15099,8 @@ class IscUMachineProfilePQActual:
 
         categories = {0: "00:00", 1: "00:30", 2: "01:00"}
 
-        :param dicCategories: The profile categories for the actual universal machine profile instance.
-        :type dicCategories: dict(int,str)
+        :param dictCategories: The profile categories for the actual universal machine profile instance.
+        :type dictCategories: dict(int,str)
         """
         pass
 
@@ -16292,7 +16359,7 @@ class IscTransformer:
         """
         Returns the highest transformer power in MVA.
 
-        :param nStudyUID: The automation or contingency study UID which the results are for
+        :param nStudyUID: The automation or contingency study UID which the results belong to.
         :type nStudyUID: int
         :return: The highest transformer power in MVA.
         :rtype: float
@@ -16303,7 +16370,7 @@ class IscTransformer:
         """
         Returns the highest transformer power in MVA.
 
-        :param nStudyUID: If supplied, the automation or contingency study UID which the results are for
+        :param nStudyUID: If supplied, the automation or contingency study UID which the results belong to.
         :type nStudyUID: int
         :return: The highest transformer power in MVA.
         :rtype: float
@@ -17340,9 +17407,221 @@ class IscUMachine:
         """
         pass
 
+    def TransformCDPParameters(self, dMachineMVA: float) -> bool:
+        """
+        Transforms the given CDP parametrisation based on the ratio
+        between the machine and system base. Note this function should only be used if
+        the user has the CDP parameters in machine base.
+
+        :param dMachineMVA: Machine base in MVA
+        :type dMachineMVA: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def ActivateCDP(self) -> bool:
+        """
+        Switches the CDP functionality for the given Universal Machine on
+
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeactivateCDP(self) -> bool:
+        """
+        Switches the CDP functionality for the given Universal Machine off
+
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetCDPVoltagePU(self) -> List[float]:
+        """
+        Returns the synchronous region voltages for the CDP advanced mode
+
+        :return: List of voltage entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPVoltageTransientPU(self) -> List[float]:
+        """
+        Returns the transient region voltages for the CDP advanced mode
+
+        :return: List of voltage entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPVoltageSubTransientPU(self) -> List[float]:
+        """
+        Returns the subtransient region voltages for the CDP advanced mode
+
+        :return: List of voltage entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPRealCurrentPU(self) -> List[float]:
+        """
+        Returns the synchronous real current values for the CDP advanced mode
+
+        :return: List of real current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPRealCurrentTransientPU(self) -> List[float]:
+        """
+        Returns the transient real current values for the CDP advanced mode
+
+        :return: List of real current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPRealCurrentSubTransientPU(self) -> List[float]:
+        """
+        Returns the subtransient real current values for the CDP advanced mode
+
+        :return: List of real current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPReactiveCurrentPU(self) -> List[float]:
+        """
+        Returns the synchronous reactive current values for the CDP advanced mode
+
+        :return: List of reactive current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPReactiveCurrentTransientPU(self) -> List[float]:
+        """
+        Returns the transient reactive current values for the CDP advanced mode
+
+        :return: List of reactive current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def GetCDPReactiveCurrentSubTransientPU(self) -> List[float]:
+        """
+        Returns the subtransient reactive current values for the CDP advanced mode
+
+        :return: List of reactive current entries (PU)
+        :rtype: list(float)
+        """
+        pass
+
+    def SetCDPVoltagePU(self, lVoltage: List[float]) -> bool:
+        """
+        Sets the synchronous region voltages for the CDP advanced mode
+
+        :param: List of voltage entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPVoltageTransientPU(self, lVoltage: List[float]) -> bool:
+        """
+        Sets the transient region voltages for the CDP advanced mode
+
+        :param: List of voltage entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPVoltageSubTransientPU(self, lVoltage: List[float]) -> bool:
+        """
+        Sets the subtransient region voltages for the CDP advanced mode
+
+        :param: List of voltage entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPRealCurrentPU(self, lRealCurrent: List[float]) -> bool:
+        """
+        Sets the synchronous real current values for the CDP advanced mode
+
+        :param: List of real current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPRealCurrentTransientPU(self, lRealCurrent: List[float]) -> bool:
+        """
+        Sets the transient real current values for the CDP advanced mode
+
+        :param: List of real current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPRealCurrentSubTransientPU(self, lRealCurrent: List[float]) -> bool:
+        """
+        Sets the subtransient real current values for the CDP advanced mode
+
+        :param: List of real current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPReactiveCurrentPU(self, lReactiveCurrent: List[float]) -> bool:
+        """
+        Sets the synchronous reactive current values for the CDP advanced mode
+
+        :param: List of reactive current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPReactiveCurrentTransientPU(self, lReactiveCurrent: List[float]) -> bool:
+        """
+        Sets the transient reactive current values for the CDP advanced mode
+
+        :param: List of reactive current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+    def SetCDPReactiveCurrentSubTransientPU(self, lReactiveCurrent: List[float]) -> bool:
+        """
+        Sets the subtransient reactive current values for the CDP advanced mode
+
+        :param: List of reactive current entries (PU)
+        :type: list(float)
+        :return: True is successful
+        :rtype: bool
+        """
+        pass
+
+
 class IscUnbalancedLine:
     """
-    Provides access to the three phase unbalanced lines.
+    Provides access to the three-phase unbalanced lines.
     """
     def SetName(self, strName: str) -> bool:
         """

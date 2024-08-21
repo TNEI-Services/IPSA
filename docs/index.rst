@@ -3,8 +3,16 @@ Welcome to PyIPSA's documentation!
 
 **PyIPSA** is the fastest and easiest interfacing python tool in power systems analysis!
 
-This guide provides a full reference to all the IPSA objects and their callable functions exposed through Python. This reference guide refers to IPSA version 2.10.0.
-IPSA version 2.10.0 32-bit uses Python version 2.7, while the 64-bit one makes use of Python 3.8.
+This guide provides a full reference to all the IPSA objects and their callable functions exposed through Python.
+This reference guide refers to IPSA version 2.10.2.
+IPSA version 2.10.2 (64-bit) uses Python version 3.11.
+
+Note the PyIPSA documentation can now be |pdf_location_link| from the Read the Docs flyout menu.
+
+.. |pdf_location_link| raw:: html
+
+   <a href="https://ipsa.readthedocs.io/_/downloads/en/latest/pdf/" target="_blank">downloaded in an offline version</a>
+
 
 Current Features
 -----------------
@@ -24,8 +32,7 @@ The following actions are possible:
    :caption: Contents
    :hidden:
 
-   Changes from IPSA 2.10.0
-   Changes from IPSA 2.9.0
+   Changes from previous versions
    IPSA and Python
    Coding Requirements
    IscInterface
