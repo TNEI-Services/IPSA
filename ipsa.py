@@ -5308,7 +5308,7 @@ class IscDiagram:
 
     def CreateLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        *Deprecated in Ipsa 2.10.2.* Instead, use CreateBranch.
+        *Deprecated in IPSA 2.10.2.* Instead, use CreateBranch.
 
         Creates a new branch component on the diagram.
 
@@ -5398,7 +5398,7 @@ class IscDiagram:
 
     def CreateTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        *Deprecated in Ipsa 2.10.2.* Instead, use Create2WTransformer.
+        *Deprecated in IPSA 2.10.2.* Instead, use Create2WTransformer.
 
         Creates a new transformer component on the diagram.
 
@@ -5456,7 +5456,7 @@ class IscDiagram:
 
     def CreateUnbalancedLine(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        *Deprecated in Ipsa 2.10.2.* Instead, use CreateUnbalancedBranch.
+        *Deprecated in IPSA 2.10.2.* Instead, use CreateUnbalancedBranch.
 
         Creates a new unbalanced line component on the diagram.
 
@@ -5500,7 +5500,7 @@ class IscDiagram:
 
     def CreateUnbalancedTransformer(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
         """
-        *Deprecated in Ipsa 2.10.2.* Instead, use CreateUnbalanced2WTransformer.
+        *Deprecated in IPSA 2.10.2.* Instead, use CreateUnbalanced2WTransformer.
 
         Creates a new unbalanced transformer component on the diagram.
 
@@ -8082,11 +8082,11 @@ class IscInterface:
         """
         Returns an IscDiagram instance for the diagram with ID nUID contained the identified network.
 
-        :param network: The IscNetwork instance of the Ipsa network.
+        :param network: The IscNetwork instance of the IPSA network.
         :type network: IscNetwork
         :param nUID: The diagram ID.
         :type nUID: int
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -8095,13 +8095,13 @@ class IscInterface:
         """
         Returns an IscDiagram instance for the diagram with name strName or ID nUID contained in the identified network.
 
-        :param network: The IscNetwork instance of the Ipsa network.
+        :param network: The IscNetwork instance of the IPSA network.
         :type network: IscNetwork
         :param strName: The name of the diagram.
         :type strName: str
         :param nUID: The diagram ID.
         :type nUID: int
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -8244,7 +8244,7 @@ class IscInterface:
         """
         Returns a dictionary of diagrams for the identified network. The keys are the Diagram IDs.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :return: Dictionary of diagrams for the network.
         :rtype: dict(int, IscDiagram)
@@ -8262,7 +8262,7 @@ class IscInterface:
         Returns the diagram UID corresponding to the new diagram.
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param strSceneTitle: The name of the new diagram.
         :type strSceneTitle: str
@@ -8304,7 +8304,7 @@ class IscInterface:
         from that diagram into the new diagram. If nDiagramToCopy doesn't refer to an existing diagram, 
         no new diagram will be created.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param strSceneTitle: The name of the new diagram.
         :type strSceneTitle: str
@@ -8354,7 +8354,7 @@ class IscInterface:
         from that diagram into the new diagram. If nDiagramToCopy is provided and doesn't refer to an existing 
         diagram, no new diagram will be created.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param strSceneTitle: The name of the new diagram.
         :type strSceneTitle: str
@@ -8395,7 +8395,7 @@ class IscInterface:
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
         This is equivalent to calling AddDiagram with bIsDiagramSingleLine = True.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param strSceneTitle: The name of the new diagram.
         :type strSceneTitle: str
@@ -8409,7 +8409,7 @@ class IscInterface:
         """
         Deletes the diagram associated with the IscDiagram object from the identified network.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param pDiagram: The diagram to be deleted.
         :type pDiagram: IscDiagram
@@ -8423,7 +8423,7 @@ class IscInterface:
         """
         Deletes the diagram identified by ID nUID from the identified network.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param nUID: The diagram ID to be deleted.
         :type nUID: int
@@ -8437,7 +8437,7 @@ class IscInterface:
         """
         Deletes the diagram identified by name strName from the identified network.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param strName: The name of the diagram to be deleted.
         :type strName: str
@@ -8450,7 +8450,7 @@ class IscInterface:
         """
         Deletes the diagram identified by name strName, ID nUID or IscDiagram pDiagram from the identified network.
 
-        :param network: The Ipsa network.
+        :param network: The IPSA network.
         :type network: IscNetwork
         :param strName: The name of the diagram to be deleted.
         :type strName: str
@@ -15822,7 +15822,7 @@ class IscNetwork:
 
         :param nUID: The diagram ID.
         :type nUID: int
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -15835,7 +15835,7 @@ class IscNetwork:
         :type strName: str
         :param nUID: The diagram ID.
         :type nUID: int
-        :return: The diagram of the Ipsa network.
+        :return: The diagram of the IPSA network.
         :rtype: IscDiagram
         """
         pass
@@ -16090,8 +16090,8 @@ class IscNetwork:
         """
         Performs a load flow calculation.
 
-        :param bNoEngineLoad: If False (default), loads the engine from the Ipsa model before doing a load flow calculation.
-            If True, skips the load from the Ipsa model and uses whatever network is currently loaded in the engine.
+        :param bNoEngineLoad: If False (default), loads the engine from the IPSA model before doing a load flow calculation.
+            If True, skips the load from the IPSA model and uses whatever network is currently loaded in the engine.
         :type bNoEngineLoad: bool
         :param bDontUpdateData: If False (default), allows the load flow results being written back to the network model
             data (e.g. Busbar voltages and angles). If True, skips this stage, so the network model remains the same as
