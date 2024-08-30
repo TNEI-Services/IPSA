@@ -5587,7 +5587,7 @@ class IscDiagram:
         """
         pass
 
-    def AddKneepoints(self, nLineUID: int, listX: list[float], listY: list[float], bFromEnd: bool,
+    def AddKneepoints(self, nLineUID: int, listX: List[float], listY: List[float], bFromEnd: bool,
                       bRefreshLine: bool) -> bool:
         """
         Adds multiple knee points to the line identified by the unique ID. By default, this function will fully redraw
