@@ -102,6 +102,7 @@ Field Values
    * - String
      - PluginID
      - Plugin Name, empty string means no plugin is assigned.
+     
 IscMechSwCapacitor Class
 -------------------------
 
