@@ -5215,6 +5215,8 @@ class IscDiagram:
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         A point busbar symbol is displayed as a small dot which does not resize as the diagram zoom level is changed.
 
+        Note this will only have an effect if the busbar is not already drawn.
+
         :param nUID: The busbar UID.
         :type nUID: int
         :param dX: The busbar x coordinate.
@@ -5230,6 +5232,8 @@ class IscDiagram:
         """
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         A junction busbar symbol is the solid circular junction symbol.
+
+        Note this will only have an effect if the busbar is not already drawn.
 
         :param nUID: The busbar UID.
         :type nUID: int
@@ -5247,6 +5251,8 @@ class IscDiagram:
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         The hexagonal symbol is the standard filled hexagonal busbar.
 
+        Note this will only have an effect if the busbar is not already drawn.
+
         :param nUID: The busbar UID.
         :type nUID: int
         :param dX: The busbar x coordinate.
@@ -5262,6 +5268,8 @@ class IscDiagram:
         """
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         The rectangular symbol is the standard horizontal or vertical busbar.
+
+        Note this will only have an effect if the busbar is not already drawn.
 
         :param nUID: The busbar UID.
         :type nUID: int
@@ -5282,6 +5290,8 @@ class IscDiagram:
         """
         Draws an existing busbar component on the diagram as defined by the busbar UID.
         The circular symbol is the larger unfilled circle.
+
+        Note this will only have an effect if the busbar is not already drawn.
 
         :param nUID: The busbar UID.
         :type nUID: int
@@ -5344,11 +5354,8 @@ class IscDiagram:
         """
         Draws the symbol for the line identified by the unique ID.
         The line is drawn as a single segment between two busbars.
-        The line must have been created using one of the following first:
 
-            - IscDiagram.CreateLine
-            - IscNetwork.CreateBranch
-            - IscNetwork.CreateTransformer
+        Note this will only have an effect if the line is not already drawn.
 
         :param nUID: The line UID.
         :type nUID: int
@@ -5436,14 +5443,13 @@ class IscDiagram:
     def DrawTransformer(self, nUID: int) -> bool:
         """
         Draws the symbol for the transformer identified by the unique ID.
-        The line is drawn as a single segment between two busbars.
-        The line must have been created using the following first:
+        The transformer is drawn as a single segment between two busbars.
 
-            - IscNetwork.CreateTransformer
+        Note this will only have an effect if the transformer is not already drawn.
 
         :param nUID: The transformer UID.
         :type nUID: int
-        :return: Boolean denoting whether the line was drawn.
+        :return: Boolean denoting whether the transformer was drawn.
         :rtype: bool
         """
         pass
@@ -5671,6 +5677,96 @@ class IscDiagram:
         """
         pass
 
+    def DrawRadial(self, nRadialUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the symbol for the radial object (i.e., an object connected to one busbar only) identified by the
+        unique ID nRadialUID. The radial symbol will be drawn at the location dX,dY and connected to its busbar.
+
+        Note this function will return false if the provided UID is not a radial or is already drawn.
+
+        :param nRadialUID: The radial UID.
+        :type nRadialUID: int
+        :param dX: The x coordinate of the radial symbol.
+        :type dX: float
+        :param dY: The y coordinate of the radial symbol.
+        :type dY: float
+        :return: The function returns True if the radial was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBranchItem(self, nBranchItemUID: int) -> bool:
+        """
+        Draws the symbol for the branch item object (i.e., an object connected to exactly two busbars) identified by the
+        unique ID nBranchItemUID. The branch item will be drawn as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a branch item or is already drawn.
+
+        :param nBranchItemUID: The branch item UID.
+        :type nBranchItemUID: int
+        :return: The function returns True if the branch item was drawn
+        :rtype: bool
+        """
+        pass
+
+    def Draw3Port(self, n3PortUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the symbol for the 3Port object (i.e., an object connected to exactly three busbars) identified by the
+        unique ID nRadialUID. The 3Port symbol will be drawn at the location dX,dY and connected with straight lines
+        to its busbars.
+
+        Note this function will return false if the provided UID is not a 3Port component or is already drawn.
+
+        :param n3PortUID: The 3Port UID.
+        :type n3PortUID: int
+        :param dX: The x coordinate of the 3Port symbol.
+        :type dX: float
+        :param dY: The y coordinate of the 3Port symbol.
+        :type dY: float
+        :return: The function returns True if the 3Port was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawInline(self, nInlineUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the symbol for the inline object (i.e., an object that sits upon a branch item) identified by the
+        unique ID nInlineUID. The inline symbol will be drawn on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not an inline or is already drawn.
+
+        :param nInlineUID: The inline UID.
+        :type nInlineUID: int
+        :param dX: The x coordinate of the inline symbol.
+        :type dX: float
+        :param dY: The y coordinate of the inline symbol.
+        :type dY: float
+        :return: The function returns True if the inline was drawn
+        :rtype: bool
+        """
+        pass
+
+    def MoveItemCentre(self, nItemUID: int, dX: float, dY: float) -> bool:
+        """
+        Moves the item specifed by nItemUID to the location dX,dY. For busbars this will relocate the busbar
+        (bringing its connected radials). For radials and 3Ports this will relocate the symbol of the object, leaving
+        its busbars inplace. For inlines this will move the inline to the point on its branch closest to the specified
+        point. For branch items this will move the branch as close to the specified point as possible if the branch is
+        free to move.
+
+        Note this function will return false if the provided UID is not already drawn.
+
+        :param nItemUID: The item UID.
+        :type nItemUID: int
+        :param dX: The x coordinate of the symbol.
+        :type dX: float
+        :param dY: The y coordinate of the symbol.
+        :type dY: float
+        :return: The function returns True if the item graphic was found
+        :rtype: bool
+        """
+        pass
+
     def DrawUndrawnItemsAttachedToBusbar(self, nBusbarUID: int) -> None:
         """
         Draws items attached to the busbar identified by the busbar UID if they are not already drawn on the diagram.
@@ -5735,7 +5831,7 @@ class IscDiagram:
         """
         pass
 
-    def SetItemPenColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int) -> bool:
+    def SetItemPenColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int):
         """
         Sets the outline colour of the diagram object.
         The colour is set by the RGB parameters.
@@ -5749,14 +5845,12 @@ class IscDiagram:
         :type nGreen: int
         :param nBlue: The blue colour.
         :type nBlue: int
-        :param nAlpha: The transparency of the colour.
+        :param nAlpha: The transparency of the colour with 255 being opaque, and 0 being invisible.
         :type nAlpha: int
-        :return: Denoting whether the colour is set.
-        :rtype: bool
         """
         pass
 
-    def SetItemBrushColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int) -> bool:
+    def SetItemBrushColour(self, nUID: int, nRed: int, nGreen: int, nBlue: int, nAlpha: int):
         """
         Sets the fill colour of the diagram object.
         The colour is set by the RGB parameters.
@@ -5770,55 +5864,50 @@ class IscDiagram:
         :type nGreen: int
         :param nBlue: The blue colour.
         :type nBlue: int
-        :param nAlpha: The transparency of the colour.
+        :param nAlpha: The transparency of the colour with 255 being opaque, and 0 being invisible.
         :type nAlpha: int
-        :return: Denoting whether the colour is set.
-        :rtype: bool
         """
         pass
 
-    def MapToLatLong(self, fScreenX: float, fScreenY: float) -> List[float]:
+    def MapToLatLong(self, dDiagramX: float, dDiagramY: float) -> Tuple[float]:
         """
-        Returns the latitude and longitude in decimal degrees of the screen position.
-        The diagram is the one referenced by the IscDiagram object that the function is called on.
-        The fScreenX and fScreenY parameters are relative to the nominal centre point of the screen,
-        therefore calling this function with fScreenX = 0.0 and fScreenY = 0.0 returns the centre point of
-        the background map in degrees.
-        Note that the screen X is north/south and screen y is east/west.
+        Returns the latitude and longitude in decimal degrees of the specified diagram pixel position.
+        Note that the diagram X is south/north and diagram Y is east/west.
 
-        :param fScreenX: The x coordinate of the screen position.
-        :type fScreenX: float
-        :param fScreenX: The y coordinate of the screen position.
-        :type fScreenX: float
-        :return: The latitude and longitude of the screen position.
-        :rtype: list(float)
+        This function will return (0.0, 0.0) unless the diagram has a tiled geographic map.
+
+        :param dDiagramX: The diagram x coordinate.
+        :type dDiagramX: float
+        :param dDiagramY: The diagram y coordinate.
+        :type dDiagramY: float
+        :return: The latitude and longitude of the diagram position.
+        :rtype: tuple(float)
         """
         pass
 
-    def LatLongToMap(self, fN: float, fE: float) -> List[float]:
+    def LatLongToMap(self, fN: float, fE: float) -> Tuple[float]:
         """
-        Returns the screen X and Y coordinates of the latitude and longitude.
-        The fScreenX and fScreenY coordinates are relative to the nominal centre point of the screen
-        which can be found by the MapToLatLong function.
-        Note that the screen X is north/south and screen y is east/west.
+        Returns the diagram pixel X and Y coordinates of the latitude and longitude.
+        Note that the diagram X is south/north and diagram Y is east/west.
+
+        This function will return (0.0, 0.0) unless the diagram has a tiled geographic map.
 
         :param fN: The latitude.
         :type fN: float
         :param fE: The longitude.
         :type fE: float
-        :return: The screen X and Y coordinates.
-        :rtype: list(float)
+        :return: The diagram X and Y coordinates.
+        :rtype: tuple(float)
         """
         pass
 
     def GetUIDFromCoordinates(self, dX: float, dY: float) -> int:
         """
         Returns the UID of a component at coordinates  (dX, dY).
-        The screen coordinates are relative to the nominal centre point of the screen.
 
-        :param dX: The screen X coordinate.
+        :param dX: The diagram X coordinate.
         :type dX: float
-        :param dY: The screen Y coordinate.
+        :param dY: The diagram Y coordinate.
         :type dY: float
         :return: The UID of the component located.
             Returns 0, if the component cannot be found,
@@ -5829,11 +5918,10 @@ class IscDiagram:
     def GetBusbarUIDFromCoordinates(self, dX: float, dY: float) -> int:
         """
         Returns the UID of a busbar at coordinates (dX, dY).
-        The screen coordinates are relative to the nominal centre point of the screen.
 
-        :param dX: The screen X coordinate.
+        :param dX: The diagram X coordinate.
         :type dX: float
-        :param dY: The screen Y coordinate.
+        :param dY: The diagram Y coordinate.
         :type dY: float
         :return: The UID of the component located.
             Returns 0, if the component cannot be found,
@@ -5843,80 +5931,76 @@ class IscDiagram:
 
     def GetItemX(self, nUID: int) -> float:
         """
-        Returns the screen X coordinate of the busbar.
-        The screen coordinates are relative to the nominal centre point of the screen.
+        Returns the diagram X coordinate of the specified item.
+        Note for branches and transformers this will return the midpoint of the object.
 
-        :param nUID: The busbar UID.
+        :param nUID: The item UID.
         :type nUID: int
-        :return: The screen X coordinate.
+        :return: The diagram X coordinate.
         :rtype: float
         """
         pass
 
     def GetItemY(self, nUID: int) -> float:
         """
-        Returns the screen Y coordinate of the busbar.
-        The screen coordinates are relative to the nominal centre point of the screen.
+        Returns the diagram Y coordinate of the specified item.
+        Note for branches and transformers this will return the midpoint of the object.
 
-        :param nUID: The busbar UID.
+        :param nUID: The item UID.
         :type nUID: int
-        :return: The screen Y coordinate.
+        :return: The diagram Y coordinate.
         :rtype: float
         """
         pass
 
     def GetItemFromXPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen X coordinates of the FROM busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram X coordinates of the edge of the FROM busbar, the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item between these two points.
         The coordinates are for the FROM end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen X coordinates.
+        :return: The diagram X coordinates.
         :rtype: float
         """
         pass
 
     def GetItemFromYPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen Y coordinates of the FROM busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram Y coordinates of the edge of the FROM busbar, the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
         The coordinates are for the FROM end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen Y coordinates.
+        :return: The diagram Y coordinates.
         :rtype: float
         """
         pass
 
     def GetItemToXPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen X coordinates of the TO busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram X coordinates of the edge of the TO busbar, the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
         The coordinates are for the TO end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen X coordinates.
+        :return: The diagram X coordinates.
         :rtype: float
         """
         pass
 
     def GetItemToYPoints(self, nUID: int) -> List[float]:
         """
-        Returns a list of floats for the screen Y coordinates of the TO busbar point, the middle point of the line and
-        all knee points lying on the branch between these two points.
+        Returns a list of floats for the diagram Y coordinates of the edge of the TO busbar,the middle point of the
+        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
         The coordinates are for the TO end of the line.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param nUID: The line UID.
         :type nUID: int
-        :return: The screen Y coordinates.
+        :return: The diagram Y coordinates.
         :rtype: float
         """
         pass
@@ -5924,7 +6008,6 @@ class IscDiagram:
     def CreateAnnotation(self, strName: str, strAnnotationText: str, dX: float, dY: float) -> int:
         """
         Creates a new diagram annotation.
-        The screen coordinates are relative to the nominal centre point of the screen.
 
         :param strName: The strName is not used and can be an empty string.
         :type strName: str
@@ -5972,7 +6055,7 @@ class IscDiagram:
     def SetBackgroundColour(self, strHexColour: str) -> None:
         """
         Sets the diagram background colour to the specified hex colour.
-        strHexColour can either be set as a hex colour code or as one of the SVG color keyword names.
+        strHexColour can either be set as a hex colour code (i.e., "#BA4675") or as one of the SVG color keyword names.
 
         :param strHexColour: The hex colour to set the diagram background to.
         :type strHexColour: str
@@ -6002,10 +6085,98 @@ class IscDiagram:
         """
         pass
 
+    def RemoveBackgroundImage(self) -> None:
+        """
+        Removes the background image of a diagram.
+        """
+        pass
+
     def RefreshDiagram(self) -> None:
         """
         Refreshes the diagram to ensure that the diagram window is up to date with the data held in IPSA.
 
+        """
+        pass
+
+    def GetBusbarSize(self, nUID: int) -> float:
+        """
+        Returns the size of the graphical item for the busbar identified by nUID. This will return 0.0 if the busbar
+        isn't found. Note this returns the *radius* of circular busbars.
+
+        :param nUID: The busbar UID.
+        :type nUID: int
+        :return: The size of the busbar graphic.
+        :rtype: float
+        """
+        pass
+
+    def GetBusbarGraphicsType(self, nUID: int) -> int:
+        """
+        Returns an int identifying what type of graphic the busbar identified by nUID is drawn with.
+        This will return -1 if the busbar isn't found. The busbar graphic types are:
+
+            - 0 = Horizontal rectangular
+            - 1 = Vertical rectangular
+            - 2 = Junction
+            - 3 = Circular
+            - 4 = Point
+            - 5 = Hexagonal
+
+        :param nUID: The busbar UID.
+        :type nUID: int
+        :return: The busbar graphic type.
+        :rtype: int
+        """
+        pass
+
+    def IsGeographic(self) -> bool:
+        """
+        Returns if the diagram is a geographic diagram or a single line diagram.
+
+        :return: True if the diagram is a geographic diagram and false if it is an SLD.
+        :rtype: bool
+        """
+        pass
+
+    def HasTiledGeographicMap(self) -> bool:
+        """
+        Returns if the diagram has a tiled geographic map.
+
+        :return: True if the diagram has a tiled geographic map.
+        :rtype: bool
+        """
+        pass
+
+    def GetMapCentre(self) -> Tuple[float]:
+        """
+        Returns the centre position of the map. Returns lat-long centre for diagrams with tiled geographic maps and
+        (0,0) otherwise.
+
+        :return: The diagram lat-long centre position.
+        :rtype: tuple(float)
+        """
+        pass
+
+    def AddTiledGeographicMap(self, dBaseLatitude: float, dBaseLongitude: float) -> bool:
+        """
+        Adds a tiled geographic map to the diagram *if* the diagram is geographic. The geographic map centre will be at
+        the specified coordinates (dBaseLatitude, dBaseLongitude).
+
+        :param dBaseLatitude: The centre latitude of the tiled geographic map.
+        :type dBaseLatitude: float
+        :param dBaseLongitude: The centre longitude of the tiled geographic map.
+        :type dBaseLongitude: float
+        :return: True if the map is successfully added.
+        :rtype: bool
+        """
+        pass
+
+    def RemoveTiledGeographicMap(self) -> bool:
+        """
+        Removes the tiled geographic map from the diagram if there is one.
+
+        :return: True if the map is successfully removed
+        :rtype: bool
         """
         pass
 
@@ -8085,10 +8256,10 @@ class IscInterface:
                    strSceneTitle: str,
                    bIsDiagramSingleLine: bool,
                    dGeoSceneScale: float,
-                   nSceneMeasurementUnit: int):
+                   nSceneMeasurementUnit: int) -> int:
         """
         Creates a new diagram for the identified network based on the supplied parameters.
-        Returns an IscDiagram object corresponding to the new diagram.
+        Returns the diagram UID corresponding to the new diagram.
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
         :param network: The Ipsa network.
@@ -8111,8 +8282,8 @@ class IscInterface:
             * 6 if Yards
             * 7 if Miles
         :type nSceneMeasurementUnit: int
-        :return: The IscDiagram object for the newly created diagram.
-        :rtype: IscDiagram
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
         """
         pass
 
@@ -8123,60 +8294,13 @@ class IscInterface:
                    dGeoSceneScale: float,
                    nSceneMeasurementUnit: int,
                    nCopyWhat: int,
-                   pDiagramToCopy: IscDiagram):
+                   nDiagramToCopy: int) -> int:
         """
         Creates a new diagram for the identified network based on the supplied parameters.
-        Returns an IscDiagram object corresponding to the new diagram.
-        Note that this function causes IPSA to rebuild the IscDiagram data maps.
-        pDiagramToCopy provides a reference diagram, which this new diagram is based upon.
-
-        :param network: The Ipsa network.
-        :type network: IscNetwork
-        :param strSceneTitle: The name of the new diagram.
-        :type strSceneTitle: str
-        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
-            False if the diagram is a scaled geographic diagram.
-        :type bIsDiagramSingleLine: bool
-        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
-        :type dGeoSceneScale: float
-        :param nSceneMeasurementUnit: The unit used for the geographic scale.
-
-            * 0 if Millimetres
-            * 1 if Centimetres
-            * 2 if Metres
-            * 3 if Kilometres
-            * 4 if Inches
-            * 5 if Feet
-            * 6 if Yards
-            * 7 if Miles
-        :type nSceneMeasurementUnit: int
-        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
-
-            * 0 if copy nothing
-            * 1 if copy the busbars as they are
-            * 2 if copy the busbars as junctions
-            * 3 if copy everything
-        :type nCopyWhat: int
-        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
-        :type pDiagramToCopy: IscDiagram
-        :return: The IscDiagram object for the newly created diagram.
-        :rtype: IscDiagram
-        """
-        pass
-
-    def AddDiagram(self, network,
-                   strSceneTitle: str,
-                   bIsDiagramSingleLine: bool,
-                   dGeoSceneScale: float,
-                   nSceneMeasurementUnit: int,
-                   nCopyWhat: int,
-                   pDiagramToCopy: IscDiagram):
-        """
-        Creates a new diagram for the identified network based on the supplied parameters.
-        Returns an IscDiagram object corresponding to the new diagram.
+        Returns the diagram UID corresponding to the new diagram.
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
-        If nCopy what and pDiagramToCopy are provided, they provide a reference diagram and determine what is copied
+        nCopy what and nDiagramToCopy provide a reference diagram and determine what is copied
         from that diagram into the new diagram.
 
         :param network: The Ipsa network.
@@ -8206,15 +8330,80 @@ class IscInterface:
             * 2 if copy the busbars as junctions
             * 3 if copy everything
         :type nCopyWhat: int
-        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
-        :type pDiagramToCopy: IscDiagram
-        :return: The IscDiagram object for the newly created diagram.
-        :rtype: IscDiagram
+        :param nDiagramToCopy: The UID of the diagram that any components may be copied from.
+        :type nDiagramToCopy: int
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
+        """
+        pass
+
+    def AddDiagram(self, network,
+                   strSceneTitle: str,
+                   bIsDiagramSingleLine: bool,
+                   dGeoSceneScale: float,
+                   nSceneMeasurementUnit: int,
+                   nCopyWhat: int,
+                   nDiagramToCopy: int) -> int:
+        """
+        Creates a new diagram for the identified network based on the supplied parameters.
+        Returns the diagram UID corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+
+        If nCopy what and nDiagramToCopy are provided, they provide a reference diagram and determine what is copied
+        from that diagram into the new diagram.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
+
+            * 0 if copy nothing
+            * 1 if copy the busbars as they are
+            * 2 if copy the busbars as junctions
+            * 3 if copy everything
+        :type nCopyWhat: int
+        :param nDiagramToCopy: The UID of the diagram that any components may be copied from.
+        :type nDiagramToCopy: int
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
+        """
+        pass
+
+    def AddSLDiagram(self, network, strSceneTitle: str) -> int:
+        """
+        Creates a new single line diagram for the identified network.
+        Returns the diagram UID corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+        This is equivalent to calling AddDiagram with bIsDiagramSingleLine = True.
+
+        :param network: The Ipsa network.
+        :type network: IscNetwork
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
         """
         pass
 
     @overload
-    def DeleteDiagram(self, network, pDiagram: IscDiagram)-> None:
+    def DeleteDiagram(self, network, pDiagram: IscDiagram)-> bool:
         """
         Deletes the diagram associated with the IscDiagram object from the identified network.
 
@@ -8222,11 +8411,13 @@ class IscInterface:
         :type network: IscNetwork
         :param pDiagram: The diagram to be deleted.
         :type pDiagram: IscDiagram
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
     @overload
-    def DeleteDiagram(self, network, nUID: int) -> None:
+    def DeleteDiagram(self, network, nUID: int) -> bool:
         """
         Deletes the diagram identified by ID nUID from the identified network.
 
@@ -8234,11 +8425,13 @@ class IscInterface:
         :type network: IscNetwork
         :param nUID: The diagram ID to be deleted.
         :type nUID: int
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
     @overload
-    def DeleteDiagram(self, network, strName: str) -> None:
+    def DeleteDiagram(self, network, strName: str) -> bool:
         """
         Deletes the diagram identified by name strName from the identified network.
 
@@ -8246,10 +8439,12 @@ class IscInterface:
         :type network: IscNetwork
         :param strName: The name of the diagram to be deleted.
         :type strName: str
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
-    def DeleteDiagram(self, network, strName: str) -> None:
+    def DeleteDiagram(self, network, strName: str) -> bool:
         """
         Deletes the diagram identified by name strName, ID nUID or IscDiagram pDiagram from the identified network.
 
@@ -8261,6 +8456,8 @@ class IscInterface:
         :type nUID: int
         :param pDiagram: The diagram to be deleted.
         :type pDiagram: IscDiagram
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
@@ -15676,10 +15873,10 @@ class IscNetwork:
             strSceneTitle: str,
             bIsDiagramSingleLine: bool,
             dGeoSceneScale: float,
-            nSceneMeasurementUnit: int):
+            nSceneMeasurementUnit: int) -> int:
         """
         Creates a new diagram for the network based on the supplied parameters.
-        Returns an IscDiagram object corresponding to the new diagram.
+        Returns the diagram UID corresponding to the new diagram.
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
         :param strSceneTitle: The name of the new diagram.
@@ -15700,8 +15897,8 @@ class IscNetwork:
             * 6 if Yards
             * 7 if Miles
         :type nSceneMeasurementUnit: int
-        :return: The IscDiagram object for the newly created diagram.
-        :rtype: IscDiagram
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
         """
         pass
 
@@ -15712,58 +15909,13 @@ class IscNetwork:
             dGeoSceneScale: float,
             nSceneMeasurementUnit: int,
             nCopyWhat: int,
-            pDiagramToCopy: IscDiagram):
+            nDiagramToCopy: int) -> int:
         """
         Creates a new diagram for the network based on the supplied parameters.
-        Returns an IscDiagram object corresponding to the new diagram.
-        Note that this function causes IPSA to rebuild the IscDiagram data maps.
-        pDiagramToCopy provides a reference diagram, which this new diagram is based upon.
-
-        :param strSceneTitle: The name of the new diagram.
-        :type strSceneTitle: str
-        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
-            False if the diagram is a scaled geographic diagram.
-        :type bIsDiagramSingleLine: bool
-        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
-        :type dGeoSceneScale: float
-        :param nSceneMeasurementUnit: The unit used for the geographic scale.
-
-            * 0 if Millimetres
-            * 1 if Centimetres
-            * 2 if Metres
-            * 3 if Kilometres
-            * 4 if Inches
-            * 5 if Feet
-            * 6 if Yards
-            * 7 if Miles
-        :type nSceneMeasurementUnit: int
-        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
-
-            * 0 if copy nothing
-            * 1 if copy the busbars as they are
-            * 2 if copy the busbars as junctions
-            * 3 if copy everything
-        :type nCopyWhat: int
-        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
-        :type pDiagramToCopy: IscDiagram
-        :return: The IscDiagram object for the newly created diagram.
-        :rtype: IscDiagram
-        """
-        pass
-
-    def AddDiagram(self,
-            strSceneTitle: str,
-            bIsDiagramSingleLine: bool,
-            dGeoSceneScale: float,
-            nSceneMeasurementUnit: int,
-            nCopyWhat: int,
-            pDiagramToCopy: IscDiagram):
-        """
-        Creates a new diagram for the network based on the supplied parameters.
-        Returns an IscDiagram object corresponding to the new diagram.
+        Returns the diagram UID corresponding to the new diagram.
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
-        If nCopy what and pDiagramToCopy are provided, they provide a reference diagram and determine what is copied
+        nCopy what and nDiagramToCopy provide a reference diagram and determine what is copied
         from that diagram into the new diagram.
 
         :param strSceneTitle: The name of the new diagram.
@@ -15791,44 +15943,111 @@ class IscNetwork:
             * 2 if copy the busbars as junctions
             * 3 if copy everything
         :type nCopyWhat: int
-        :param pDiagramToCopy: The IscDiagram object that any components may be copied from.
-        :type pDiagramToCopy: IscDiagram
-        :return: The IscDiagram object for the newly created diagram.
-        :rtype: IscDiagram
+        :param nDiagramToCopy: The UID of the diagram that any components may be copied from.
+        :type nDiagramToCopy: int
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
+        """
+        pass
+
+    def AddDiagram(self,
+            strSceneTitle: str,
+            bIsDiagramSingleLine: bool,
+            dGeoSceneScale: float,
+            nSceneMeasurementUnit: int,
+            nCopyWhat: int,
+            nDiagramToCopy: int) -> int:
+        """
+        Creates a new diagram for the network based on the supplied parameters.
+        Returns the diagram UID corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+
+        If nCopy what and nDiagramToCopy are provided, they provide a reference diagram and determine what is copied
+        from that diagram into the new diagram.
+
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :param bIsDiagramSingleLine: True if a normal single line diagram type is required,
+            False if the diagram is a scaled geographic diagram.
+        :type bIsDiagramSingleLine: bool
+        :param dGeoSceneScale: The scaling factor used to locate or size network components on geographic diagrams.
+        :type dGeoSceneScale: float
+        :param nSceneMeasurementUnit: The unit used for the geographic scale.
+
+            * 0 if Millimetres
+            * 1 if Centimetres
+            * 2 if Metres
+            * 3 if Kilometres
+            * 4 if Inches
+            * 5 if Feet
+            * 6 if Yards
+            * 7 if Miles
+        :type nSceneMeasurementUnit: int
+        :param nCopyWhat: Determines what is copied from the provided diagram pDiagramToCopy
+
+            * 0 if copy nothing
+            * 1 if copy the busbars as they are
+            * 2 if copy the busbars as junctions
+            * 3 if copy everything
+        :type nCopyWhat: int
+        :param nDiagramToCopy: The UID of the diagram that any components may be copied from.
+        :type nDiagramToCopy: int
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
+        """
+        pass
+
+    def AddSLDiagram(self, strSceneTitle: str) -> int:
+        """
+        Creates a new single line diagram for the network.
+        Returns the diagram UID corresponding to the new diagram.
+        Note that this function causes IPSA to rebuild the IscDiagram data maps.
+        This is equivalent to calling AddDiagram with bIsDiagramSingleLine = True.
+
+        :param strSceneTitle: The name of the new diagram.
+        :type strSceneTitle: str
+        :return: The diagram UID for the newly created diagram.
+        :rtype: int
         """
         pass
 
     @overload
-    def DeleteDiagram(self, pDiagram: IscDiagram)-> None:
+    def DeleteDiagram(self, pDiagram: IscDiagram)-> bool:
         """
         Deletes the diagram associated with the IscDiagram object.
 
         :param pDiagram: The diagram to be deleted.
         :type pDiagram: IscDiagram
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
     @overload
-    def DeleteDiagram(self, nUID: int) -> None:
+    def DeleteDiagram(self, nUID: int) -> bool:
         """
         Deletes the diagram identified by ID nUID.
 
         :param nUID: The diagram ID to be deleted.
         :type nUID: int
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
     @overload
-    def DeleteDiagram(self, strName: str) -> None:
+    def DeleteDiagram(self, strName: str) -> bool:
         """
         Deletes the diagram identified by name strName.
 
         :param strName: The name of the diagram to be deleted.
         :type strName: str
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
-    def DeleteDiagram(self, strName: str) -> None:
+    def DeleteDiagram(self, strName: str) -> bool:
         """
         Deletes the diagram identified by name strName, ID nUID or IscDiagram pDiagram.
 
@@ -15838,6 +16057,8 @@ class IscNetwork:
         :type nUID: int
         :param pDiagram: The diagram to be deleted.
         :type pDiagram: IscDiagram
+        :return: True if the diagram is deleted.
+        :rtype: bool
         """
         pass
 
