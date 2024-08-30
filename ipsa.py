@@ -8301,7 +8301,8 @@ class IscInterface:
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
         nCopy what and nDiagramToCopy provide a reference diagram and determine what is copied
-        from that diagram into the new diagram.
+        from that diagram into the new diagram. If nDiagramToCopy doesn't refer to an existing diagram, 
+        no new diagram will be created.
 
         :param network: The Ipsa network.
         :type network: IscNetwork
@@ -8350,7 +8351,8 @@ class IscInterface:
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
         If nCopy what and nDiagramToCopy are provided, they provide a reference diagram and determine what is copied
-        from that diagram into the new diagram.
+        from that diagram into the new diagram. If nDiagramToCopy is provided and doesn't refer to an existing 
+        diagram, no new diagram will be created.
 
         :param network: The Ipsa network.
         :type network: IscNetwork
@@ -15916,7 +15918,8 @@ class IscNetwork:
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
         nCopy what and nDiagramToCopy provide a reference diagram and determine what is copied
-        from that diagram into the new diagram.
+        from that diagram into the new diagram.  If nDiagramToCopy doesn't refer to an existing diagram, 
+        no new diagram will be created.
 
         :param strSceneTitle: The name of the new diagram.
         :type strSceneTitle: str
@@ -15963,7 +15966,8 @@ class IscNetwork:
         Note that this function causes IPSA to rebuild the IscDiagram data maps.
 
         If nCopy what and nDiagramToCopy are provided, they provide a reference diagram and determine what is copied
-        from that diagram into the new diagram.
+        from that diagram into the new diagram. If nDiagramToCopy is provided and doesn't refer to an existing diagram, 
+        no new diagram will be created.
 
         :param strSceneTitle: The name of the new diagram.
         :type strSceneTitle: str
