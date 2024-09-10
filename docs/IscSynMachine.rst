@@ -127,14 +127,17 @@ Field Values
      - TID
      - Gets the ID for two generators to share the same prime mover.
    * - Float
-     - PMaxMW
+     - PMaxMW *or* PMaxOutMW
      - Maximum machine real power.
    * - Float
-     - QMaxMVAr
+     - QMaxOutMVAr
      - Maximum machine reactive power.
    * - Float
-     - SMaxMVA
+     - SMaxMVA *or* SMaxOutMVA
      - Maximum machine apparent power.
+   * - Float
+     - QMaxAbsMVAr
+     - Maximum reactive power the machine can absorb.
    * - Float
      - SatDAxisXPU
      - Saturated d-axis synchronous reactance.
@@ -223,9 +226,6 @@ Field Values
      - Harmonic polynomial constants XC0, XC1, XC2, XC3, XCEX and XEX in:
 
        :math:`X_{h} = X[XC0 + XC1.h + XC2.h^2 + XC3.h^3 + XCEX.h^{XEX}]`
-   * - Float
-     - QMinMVAr
-     - Maximum reactive power the machine can absorb.
    * - Float
      - DistFactor
      - Distribution factor.

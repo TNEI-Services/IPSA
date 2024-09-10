@@ -23,7 +23,7 @@ Field Values
      - Gets the busbar name.
    * - String
      - Name
-     - Gets the synchronous machine name.
+     - Gets the harmonic filter name.
    * - Integer
      - Status
      - Status:

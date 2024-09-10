@@ -584,6 +584,28 @@ class IscAnalysisAF:
         """
         pass
 
+    def GetListIValue(self, nFieldIndex: int) -> List[int]:
+        """
+        Returns a list of integer values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the integer value for the enumerated field.
@@ -631,6 +653,35 @@ class IscAnalysisAF:
         :type nFieldIndex: int
         :param bValue: The boolean value that will be set.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListIValue(self, nFieldIndex: int, lIValue: List[int]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of integers.
+        
+        Note, when setting ProPlotOCDevices, UIDs which do not correspond to protection containers or protection devices 
+        *will be ignored*.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lIValue: The given list of values.
+        :type lIValue:  list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
@@ -3305,6 +3356,15 @@ class IscBusbar:
         """
         pass
 
+    def GetFaultDCPercentage(self) -> float:
+        """
+        Returns the DC component % of fault level.
+
+        :return: The DC component % of fault level.
+        :rtype: float
+        """
+        pass
+
     def GetFaultRedComponentMVA(self) -> float:
         """
         Returns the red phase component of fault level in MVA.
@@ -5639,7 +5699,7 @@ class IscDiagram:
         :type nLineUID: int
         :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
         :type bRefreshLine: bool
-        :return: Boolean denoting whether the knee point was added.
+        :return: Boolean denoting whether all the knee points were deleted.
         :rtype: bool
         """
         pass
@@ -6968,7 +7028,7 @@ class IscGroup:
         pass
 
     @overload
-    def NonDefaultExtensionField(self, nFieldIndex: int) -> int:
+    def NonDefaultExtensionInstanceCount(self, nFieldIndex: int) -> int:
         """
         Returns the number of groups of the same type where the extension field identified by nFieldIndex is set to
         a non-default value. That is, the count of the components where data will be destroyed by calling
@@ -6982,7 +7042,7 @@ class IscGroup:
         pass
 
     @overload
-    def NonDefaultExtensionField(self, strName: str) -> int:
+    def NonDefaultExtensionInstanceCount(self, strName: str) -> int:
         """
         Returns the number of groups of the same type where the extension field identified by strName is set to
         a non-default value. That is, the count of the components where data will be destroyed by calling
@@ -6995,7 +7055,7 @@ class IscGroup:
         """
         pass
 
-    def NonDefaultExtensionField(self, strName: str) -> int:
+    def NonDefaultExtensionInstanceCount(self, strName: str) -> int:
         """
         Returns the number of groups of the same type where the extension field identified by strName or nFieldIndex is
         set to a non-default value. That is, the count of the components where data will be destroyed by calling
@@ -7430,14 +7490,14 @@ class IscHarmonic:
         """
         pass
 
-    def SetOrder(self, nOrderIndex: int, h: float) -> None:
+    def SetOrder(self, nOrderIndex: int, dOrderValue: float) -> None:
         """
         Sets the harmonic order index to the selected harmonic order.
 
         :param nOrderIndex: The order index.
         :type nOrderIndex: int
-        :param nOrderIndex: The selected harmonic order.
-        :type nOrderIndex: float
+        :param dOrderValue: The selected harmonic order.
+        :type dOrderValue: float
         """
         pass
 
@@ -7555,6 +7615,12 @@ class IscHarmonic:
 
         :param dicHarmonic: The harmonic reactances.
         :type dicHarmonic: dict(int,float)
+        """
+        pass
+    
+    def ClearAllOrders() -> None:
+        """
+        Clears all the values for Orders, Magnitudes, Angles, VImpedanceRList and VImpedanceXList.
         """
         pass
 
@@ -9911,6 +9977,7 @@ class IscNetComponent:
     def GetFromBusbarUID(self) -> int:
         """
         Returns the FROM busbar UID of the component. For busbars this will return 0.
+        For circuit breakers this will return 0 - the user is encouraged to use the NearBusName/FarBusName properties.
 
         :return: The FROM busbar UID.
         :rtype: int
@@ -9920,7 +9987,8 @@ class IscNetComponent:
     def GetToBusbarUID(self, nBranchUID: int) -> int:
         """
         Returns the TO busbar UID of the component. For busbars and radials this will return 0, for shunts,
-        this value will match the from busbar UID.
+        this value will match the from busbar UID. For circuit breakers this will return 0 - 
+        the user is encouraged to use the NearBusName/FarBusName properties.
 
         :return: The TO busbar UID.
         :rtype: int
@@ -10058,7 +10126,7 @@ class IscNetComponent:
         pass
 
     @overload
-    def NonDefaultExtensionField(self, nFieldIndex: int) -> int:
+    def NonDefaultExtensionInstanceCount(self, nFieldIndex: int) -> int:
         """
         Returns the number of components of the same type where the extension field identified by nFieldIndex is set to
         a non-default value. That is, the count of the components where data will be destroyed by calling
@@ -10072,7 +10140,7 @@ class IscNetComponent:
         pass
 
     @overload
-    def NonDefaultExtensionField(self, strName: str) -> int:
+    def NonDefaultExtensionInstanceCount(self, strName: str) -> int:
         """
         Returns the number of components of the same type where the extension field identified by strName is set to
         a non-default value. That is, the count of the components where data will be destroyed by calling
@@ -10085,7 +10153,7 @@ class IscNetComponent:
         """
         pass
 
-    def NonDefaultExtensionField(self, strName: str) -> int:
+    def NonDefaultExtensionInstanceCount(self, strName: str) -> int:
         """
         Returns the number of components of the same type where the extension field identified by strName or nFieldIndex is
         set to a non-default value. That is, the count of the components where data will be destroyed by calling
@@ -13629,13 +13697,13 @@ class IscNetwork:
     def GetPluginUIDs(self, bFetchFromSystem: bool = True) :
         """
         Returns a dictionary of all Plugin UIDs in the network.
-        The keys are the integer UIDs and the values are the IscIntertrip instances.
+        The keys are the integer UIDs and the values are the IscPlugin instances.
 
         :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
             If set to False, it only rebuilds if a new component has been built since last Get() function.
         :type bFetchFromSystem: bool
         :return: Dictionary of all Plugin UIDs.
-        :rtype: dict(int,IscIntertrip)
+        :rtype: dict(int,IscPlugin)
         """
         pass
 

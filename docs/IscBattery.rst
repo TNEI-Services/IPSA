@@ -52,10 +52,10 @@ Field Values
      - InductancePU
      - Sets and gets the internal battery inductance in per unit.
    * - Float
-     - SwitchTime1Sec
+     - Switch1Sec
      - Battery switching time 1.
    * - Float
-     - SwitchTime2Sec
+     - Switch2Sec
      - Battery switching time 2.
    * - String
      - DbType

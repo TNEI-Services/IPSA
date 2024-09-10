@@ -68,19 +68,37 @@ Field Values
      - Sets and gets the reactance for the harmonic impedance if ``ImpedanceType`` is 2.
    * - List[Float]
      - Orders
-     - The list of orders of the harmonic injection to be modelled.
+     - Gets the list of orders of the harmonic injection to be modelled.
    * - List[Float]
      - Magnitudes
-     - The list of magnitudes associated with each order of harmonic injection.
+     - Gets the list of magnitudes associated with each order of harmonic injection.
    * - List[Float]
      - Angles
-     - The list of angles associated with each order of harmonic injection.
+     - Gets the list of angles associated with each order of harmonic injection.
    * - List[Float]
      - VImpedanceRList
-     - The list of resistances for the harmonic impedance if ``ImpedanceType`` is 3.
+     - Gets the list of resistances for the harmonic impedance if ``ImpedanceType`` is 3.
    * - List[Float]
      - VImpedanceXList
-     - The list of reactances for the harmonic impedance if ``ImpedanceType`` is 3.
+     - Gets the list of reactances for the harmonic impedance if ``ImpedanceType`` is 3.
+   * - Integer
+     - Element
+     - The element number.
+   * - Integer
+     - Parameter
+     - The parameter index.
+   * - Float
+     - MaxVoltageUnbalancePC
+     - The maximum unbalance between line-to-line voltages, as percent of RMS value.
+   * - Float
+     - MaxFiringAngleErrorDeg
+     - The maximum firing angle error.
+   * - Float
+     - MaxTotHarmDistortionPC
+     - The maximum total harmonic distortion for this area as a %.
+   * - Float
+     - MaxIndHarmDistortionPC
+     - The maximum individual harmonic distortion for this area as a %.
    * - String
      - DbType
      - Gets and sets the database type.

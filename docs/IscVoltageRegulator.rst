@@ -2,6 +2,7 @@ IscVoltageRegulator
 ====================
 
 The ``IscVoltageRegulator`` class provides access to a series voltage regulator to get and set data values.
+Note the voltage regulator must always lie on the to end of a branch.
 
 Field Values
 -------------
@@ -56,7 +57,7 @@ Field Values
      - Maximum tap position, normally positive or zero.
    * - Integer
      - ControlsUID
-     - Returns the UID of the branch that the voltage regulator is located on.
+     - Gets the UID of the branch that the voltage regulator is located on.
    * - Integer
      - ControlMode
      - Gets or sets the control mode of the voltage regulator as defined by:

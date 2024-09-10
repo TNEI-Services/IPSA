@@ -64,6 +64,9 @@ Field Values
    * - Float
      - NomCurrentkA
      - Sets and gets the nominal current rating in kA
+   * - Boolean
+     - FeederCB
+     - True if this breaker is a feeder breaker
    * - String
      - DbType
      - Gets the database type.
