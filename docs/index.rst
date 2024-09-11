@@ -72,3 +72,4 @@ The following actions are possible:
    IscUnbalancedTransformer
    IscAnnotation
    IscProtectionDevice
+   IscNetworkCapacity

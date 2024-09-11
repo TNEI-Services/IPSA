@@ -118,7 +118,7 @@ Below is a list of the field values for IscNetComponent which map each derived c
    * - SQL
      - (Not mapped to PyIPSA)
    * - NetworkCapacity
-     - (Not mapped to PyIPSA)
+     - IscNetworkCapacity
    * - DrawTools
      - (Not mapped to PyIPSA)
    * - Staging

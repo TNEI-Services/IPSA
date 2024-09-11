@@ -17108,6 +17108,260 @@ class IscNetwork:
         :type nRatingIndex: int
         """
         pass
+    
+    def GetNetworkCapacity(self):
+        """
+        Returns an IscNetworkCapacity object which can be used to get and set the Network Capacity parameters and results.
+
+        :return: IscNetworkCapacity object.
+        :rtype: IscNetworkCapacity
+        """
+        pass
+    
+    def DoNetworkCapacity(self) ->  bool:
+        """
+        Performs a Network Capacity analysis.
+
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+class IscNetworkCapacity:
+    """
+    Class providing access to the Network Capacity functionality.
+    """
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The integer value for the field.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a float value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The float value for the field.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The string value for the field.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The boolean value for the field.
+        :rtype: bool
+        """
+        pass
+
+    def GetListIValue(self, nFieldIndex: int) -> List[int]:
+        """
+        Returns a list of integer values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[int]
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the integer value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param nValue: The integer value that will be set.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the float value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param dValue: The float value that will be set.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Sets the string value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param strValue: The string value that will be set.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets the integer value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param bValue: The boolean value that will be set.
+        :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetFieldType(self, nFieldIndex: int) -> str:
+        """
+        Returns the field type as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The field type.
+        :rtype: str
+        """
+        pass
+
+    def GetFieldName(self, nFieldIndex: int) -> str:
+        """
+        Returns the field name as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The field name.
+        :rtype: str
+        """
+        pass
+    
+    def SetSelectedBusbars(self, lBusbarNames: List[str]) -> bool:
+        """
+        Sets the selected busbars for the Network Capacity analysis from a list of Busbar names.
+
+        :param lBusbarNames: List of names of busbars to be selected.
+        :type lBusbarNames: list[str]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+    
+    def SetSelectedBusbarUIDs(self, lBusbarUIDs: List[int]) -> bool:
+        """
+        Sets the selected busbars for the Network Capacity analysis from a list of Busbar UIDs.
+
+        :param lBusbarNames: List of UIDs of busbars to be selected.
+        :type lBusbarNames: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetAvailableCapacityMVAs(self) -> List[float]:
+        """
+        Returns the list of the busbar available capacity calculated from the Network Capacity in MVA.
+        
+        :return: List of the busbar available capacity in MVA.
+        :rtype: list[float]
+        """
+        pass
+
+    def GetActiveStudyTypes(self) -> List[str]:
+        """
+        Returns the study types of the active power part of the calculation.
+
+        :return: List of the study types of the active power part.
+        :rtype: list[str]
+        """
+        pass
+
+    def GetReactiveStudyTypes(self) -> List[str]:
+        """
+        Returns the study types of the reactive power part of the calculation.
+
+        :return: List of the study types of the reactive power part.
+        :rtype: list[str]
+        """
+        pass
+    
+    def GetNetCapResults(self) -> List[str]:
+        """
+        Returns whether there is a pass or fail on this busbar (fail if there is a problem or violation).
+
+        :return: List of whether each busbar passes or fails.
+        :rtype: list[str]
+        """
+        pass
+    
+    def GetLimitTypeResults(self) -> List[str]:
+        """
+        Returns a list of the violations if there is a fail.
+
+        :return: List of violations if there is a fail.
+        :rtype: list[str]
+        """
+        pass
+    
+    def GetLimitCompTypes(self) -> List[str]:
+        """
+        Returns a list of the type of component that caused the fail.
+
+        :return: List of the type of component causing the fail.
+        :rtype: list[str]
+        """
+        pass
+    
+    def GetLimitCompUIDs(self) -> List[int]:
+        """
+        Returns the list of component UIDs that caused the violations.
+
+        :return: List of component UIDs that caused the violations.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetResultsBusbarNames(self) -> List[str]:
+        """
+        Returns the list of the busbars included in the calculation.
+
+        :return: List of busbars included in the calculation.
+        :rtype: list[str]
+        """
+        pass
+
+    def GetLimitPercentiles(self) -> List[str]:
+        """
+        Returns which percentile the available capacity MVA fell into for each busbar.
+
+        :return: List of which percentile the available capacity was within for each busbar.
+        :rtype: list[str]
+        """
+        pass
 
 class IscNetworkData:
     """
