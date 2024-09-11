@@ -7578,43 +7578,43 @@ class IscHarmonic:
         """
         pass
 
-    def GetHarmonicR(self) -> Dict[int, float]:
+    def GetHarmonicR(self) -> Dict[float, float]:
         """
         Returns a dictionary of harmonic resistances.
-        The dictionary key values are the order indexes and the values are the harmonic resistances in per unit.
+        The dictionary key values are the orders and the values are the harmonic resistances in per unit.
 
         :return: A dictionary of harmonic resistances.
-        :rtype: dict(int, float)
+        :rtype: dict(float, float)
         """
         pass
 
-    def GetHarmonicX(self) -> Dict[int, float]:
+    def GetHarmonicX(self) -> Dict[float, float]:
         """
         Returns a dictionary of harmonic reactances.
-        The dictionary key values are the order indexes and the values are the harmonic reactances in per unit.
+        The dictionary key values are the orders and the values are the harmonic reactances in per unit.
 
         :return: A dictionary of harmonic reactances.
-        :rtype: dict(int, float)
+        :rtype: dict(float, float)
         """
         pass
 
-    def SetHarmonicR(self, dicHarmonic: Dict[int, float]) -> None:
+    def SetHarmonicR(self, dicHarmonic: Dict[float, float]) -> None:
         """
         Sets the harmonic resistances from a dictionary.
-        The dictionary key values are the order indexes and the values are the harmonic resistances in per unit.
+        The dictionary key values are the orders and the values are the harmonic resistances in per unit.
 
         :param dicHarmonic: The harmonic resistances.
-        :type dicHarmonic: dict(int,float)
+        :type dicHarmonic: dict(float,float)
         """
         pass
 
-    def SetHarmonicX(self, dicHarmonic: Dict[int, float]) -> None:
+    def SetHarmonicX(self, dicHarmonic: Dict[float, float]) -> None:
         """
         Sets the harmonic reactances from a dictionary.
-        The dictionary key values are the order indexes and the values are the harmonic reactances in per unit.
+        The dictionary key values are the orders and the values are the harmonic reactances in per unit.
 
         :param dicHarmonic: The harmonic reactances.
-        :type dicHarmonic: dict(int,float)
+        :type dicHarmonic: dict(float,float)
         """
         pass
     
