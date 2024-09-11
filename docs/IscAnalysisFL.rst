@@ -140,9 +140,6 @@ Field Values
    * - Integer
      - IEC909TFRatingIndex
      - Identifies which rating set to use for transformers.
-   * - Integer
-     - FaultPlotSteps
-     - Fault plot steps per iteration for waveform plots.
    * - Float
      - FaultPlotMaxTime
      - Fault plot max time in seconds for waveform plots.
