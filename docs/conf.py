@@ -56,6 +56,7 @@ latex_elements = {
      'papersize': 'a4paper',
      'fontpkg': '',
      'fncychap': '',
+     'maketitle': '',
      'pointsize': '11',
      'preamble': '',
      'releasename': '',
@@ -69,10 +70,10 @@ latex_elements = {
                     'TableRowColorEven={HTML}{e6e0eb}'
 }
 latex_docclass = {
-   'howto': 'ipsa',
-   'manual': 'ipsa',
+   'howto': 'ipsa2103',
+   'manual': 'ipsa2103',
 }
-latex_additional_files = ["_static/latex/ipsa.cls", "_static/latex/Noto_Sans/NotoSans-Bold.ttf",
+latex_additional_files = ["_static/latex/ipsa2103.cls", "_static/latex/Noto_Sans/NotoSans-Bold.ttf",
                           "_static/latex/Noto_Sans/NotoSans-BoldItalic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Italic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Regular.ttf",

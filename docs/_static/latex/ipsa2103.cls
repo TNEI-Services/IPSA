@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ipsa}[2023/10/27 ipsa style class]
+\ProvidesClass{ipsa2103}[2023/10/27 ipsa style class]
 
 \LoadClass[openany,a4paper]{report}
 % Loading in packages
@@ -16,11 +16,11 @@
 
 
 \def\docversion{latest}
-\define@key{ipsa.cls}{docversion}[latest]{
+\define@key{ipsa2103.cls}{docversion}[latest]{
     \def\docversion{#1}
 }
 \def\docreference{latest}
-\define@key{ipsa.cls}{docreference}[latest]{
+\define@key{ipsa2103.cls}{docreference}[latest]{
     \def\docreference{#1}
 }
 \ExecuteOptionsX{docversion}
@@ -102,11 +102,11 @@
 
         {\hfill \huge \textcolor{pinkaccent}{Simply Powerful.}}
 
-        \includegraphics[width=0.5\textwidth]{IpsaBigLogo.png}
+        \includegraphics[width=1.0\textwidth]{IpsaBigLogo.png}
         \vspace{2mm}
 
         {\fontsize{34}{38}\selectfont {\bf \textcolor{purpleaccent}{PyIPSA Reference Manual}}}
-        \vspace{3mm}
+        \vspace{2mm}
 
         {\Large \textcolor{purpleaccent}{Version:} \textcolor{pinkaccent}{IPSA \docversion} }
 
@@ -119,7 +119,7 @@
 
         \textcolor{grey_colour}{IPSA Power, Bainbridge House, 86-90 London Road, Manchester, M1 2PW}
 
-        \hfill\textcolor{grey_colour}{Phone: +44 (0)161 233 4800 | Email: support@ipsa-power.com}\hfill
+        \textcolor{grey_colour}{Phone: +44 (0)161 233 4800 | Email: support@ipsa-power.com}
         }
 }
 

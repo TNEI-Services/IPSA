@@ -6,7 +6,7 @@ Key features of IPSA 2.10.3
 Network Capacity tool
 --------------------------------
 New module available to license in IPSA to run numerous load flows and find the violation capacity (over/under voltages, 
-thermal overloads) caused by the addition of new capacity at every busbar. 
+thermal overloads) caused by the addition of new capacity at every busbar.  
 New ``IscNetworkCapacity`` class added to facilitate both modifying the run settings the network capacity tool (callable with 
 ``IscNetwork.DoNetworkCapacity``) and accessing the results of the tool. 
 
