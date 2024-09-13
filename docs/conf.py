@@ -70,10 +70,10 @@ latex_elements = {
                     'TableRowColorEven={HTML}{e6e0eb}'
 }
 latex_docclass = {
-   'howto': 'ipsa2103',
-   'manual': 'ipsa2103',
+   'howto': 'ipsa2.10.3',
+   'manual': 'ipsa2.10.3',
 }
-latex_additional_files = ["_static/latex/ipsa2103.cls", "_static/latex/Noto_Sans/NotoSans-Bold.ttf",
+latex_additional_files = ["_static/latex/ipsa2.10.3.cls", "_static/latex/Noto_Sans/NotoSans-Bold.ttf",
                           "_static/latex/Noto_Sans/NotoSans-BoldItalic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Italic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Regular.ttf",

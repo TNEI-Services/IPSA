@@ -8,7 +8,7 @@ Network Capacity tool
 New module available to license in IPSA to run numerous load flows and find the violation capacity (over/under voltages, 
 thermal overloads) caused by the addition of new capacity at every busbar.  
 New ``IscNetworkCapacity`` class added to facilitate both modifying the run settings the network capacity tool (callable with 
-``IscNetwork.DoNetworkCapacity``) and accessing the results of the tool. 
+``IscNetwork.DoNetworkCapacity``) and accessing the results. 
 
 DC Load flow enhancement in PyIPSA
 -------------------------------------------
