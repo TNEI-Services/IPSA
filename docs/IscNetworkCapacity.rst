@@ -1,11 +1,11 @@
 IscNetworkCapacity
-============
+===================
 
 The ``IscNetworkCapacity`` class provides access to the IPSA Network Capacity settings, to set and get data values and to 
 retrieve the Network Capacity results
 
 Field Values
--------------
+---------------
 
 .. tabularcolumns:: |\Y{0.15}|\Y{0.25}|\Y{0.6}|
 .. list-table:: **IscNetworkCapacity Field Values**
@@ -59,7 +59,7 @@ Field Values
 
 
 IscNetworkCapacity Class
---------------------
+--------------------------------
 
 .. autoclass:: ipsa.IscNetworkCapacity
    :members:

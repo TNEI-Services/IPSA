@@ -1,15 +1,18 @@
+Key features of the IPSA 2.10 Series
+======================================
+
 Key features of IPSA 2.10.3
-=========================
+-------------------------------
 Network Capacity tool
 --------------------------------
 New module available to license in IPSA to run numerous load flows and find the violation capacity (over/under voltages, 
 thermal overloads) caused by the addition of new capacity at every busbar. 
-New ``IscNetworkCapacity`` class added to facilitate both modifying the run settings ``IscNetwork.DoNetworkCapacity`` and 
-accessing the results of the tool. 
+New ``IscNetworkCapacity`` class added to facilitate both modifying the run settings the network capacity tool (callable with 
+``IscNetwork.DoNetworkCapacity``) and accessing the results of the tool. 
 
 DC Load flow enhancement in PyIPSA
---------------------------------
-Optimised and increased performance of the DC load flow functionality in PyIPSA has been implemented.
+-------------------------------------------
+Optimised and increased performance of the DC load flow functionality in PyIPSA.
 
 Intertrips in PyIPSA
 --------------------------------
@@ -23,15 +26,14 @@ Can now delete Extended data from PyIPSA. Additionally, can now add Boolean exte
 to IscGroup extended data. 
 
 Changing component connectivity in PyIPSA
---------------------------------
-Functionality has been added to PyIPSA to allow for changes to be made to radial/branch connectivity in IPSA analogously to that 
+----------------------------------------------
+Functionality has been added to PyIPSA to allow for changes to be made to radial/branch connectivity analogously to that 
 permitted through the IPSA UI. In particular, the new functions ``IscNetwork.ReverseBranch``, ``IscNetwork.SplitBranch`` and 
 ``IscNetwork.ChangeConnectivity`` have been added with documentation to explain the details of their functionality.
 
 Additional Fixes
 --------------------------------
-Multiple new miscellaneous methods have been added to PyIPSA. These include, but are not limited to:
-
+Multiple new miscellaneous methods have been added to PyIPSA. These include, but are not limited to:  
     - IscNetwork.DeleteAllItems function to delete all components from a network from PyIPSA.
     - Get and Set List functions for components with field values corresponding to lists.
     - The ability to get components as dicts with the component UID as the key - e.g., ``IscNetwork.GetLoadUIDs``.
@@ -39,7 +41,7 @@ Multiple new miscellaneous methods have been added to PyIPSA. These include, but
 
 
 Key features of IPSA 2.10.2
-=========================
+------------------------------
 
 Converter driven plant functionality
 --------------------------------------------
