@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ipsa2.10.3}[2023/10/27 ipsa style class]
+\ProvidesClass{ipsa_2103}[2023/10/27 ipsa style class]
 
 \LoadClass[openany,a4paper]{report}
 % Loading in packages
@@ -16,11 +16,11 @@
 
 
 \def\docversion{latest}
-\define@key{ipsa2.10.3.cls}{docversion}[latest]{
+\define@key{ipsa_2103.cls}{docversion}[latest]{
     \def\docversion{#1}
 }
 \def\docreference{latest}
-\define@key{ipsa2.10.3.cls}{docreference}[latest]{
+\define@key{ipsa_2103.cls}{docreference}[latest]{
     \def\docreference{#1}
 }
 \ExecuteOptionsX{docversion}
@@ -119,7 +119,7 @@
 
         \textcolor{grey_colour}{IPSA Power, Bainbridge House, 86-90 London Road, Manchester, M1 2PW}
 
-        \hspace\textcolor{grey_colour}{Phone: +44 (0)161 233 4800 | Email: support@ipsa-power.com}\hspace
+        \hfill\textcolor{grey_colour}{Phone: +44 (0)161 233 4800 | Email: support@ipsa-power.com}\hfill
         }
 }
 
