@@ -17111,7 +17111,7 @@ class IscNetwork:
     
     def GetNetworkCapacity(self):
         """
-        Returns an IscNetworkCapacity object which can be used to get and set the Network Capacity parameters and results.
+        Returns an IscNetworkCapacity object, which can be used to get and set the Network Capacity parameters and results.
 
         :return: IscNetworkCapacity object.
         :rtype: IscNetworkCapacity
@@ -17120,10 +17120,34 @@ class IscNetwork:
     
     def DoNetworkCapacity(self) ->  bool:
         """
-        Performs a Network Capacity analysis.
+        Performs the Network Capacity tool on the network.
 
         :return: True if successful.
         :rtype: bool
+        """
+        pass
+
+    def SetBranchOverloadIndex(self, nRatingIndex: int):
+        """
+        Sets the branch index rating only and doesn't change the percentages (branch percentages not useful in 
+        Network Capacity).
+
+        :param nRatingIndex: The given rating index.
+        :type nRatingIndex: int
+        """
+        pass
+    
+    def SetNetworkCapacityLimits(self, dHighVPU: float, dLowVPU: float, nRatingIndex: int):
+        """
+        Sets the over and under voltages and the branch index - three limit factors that are important to customise before 
+        using the Network Capacity tool.
+
+        :param dHighVPU: The defined overvoltage in per unit.
+        :type nRatingIndex: float
+        :param dLowVPU: The defined undervoltage in per unit.
+        :type nRatingIndex: float
+        :param nRatingIndex: The given rating index.
+        :type nRatingIndex: int
         """
         pass
 
@@ -17311,7 +17335,7 @@ class IscNetworkCapacity:
     
     def GetNetCapResults(self) -> List[str]:
         """
-        Returns whether there is a pass or fail on this busbar (fail if there is a problem or violation).
+        Returns whether there is a pass or fail on each busbar (fail if there is a problem or violation).
 
         :return: List of whether each busbar passes or fails.
         :rtype: list[str]
