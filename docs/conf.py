@@ -56,7 +56,6 @@ latex_elements = {
      'papersize': 'a4paper',
      'fontpkg': '',
      'fncychap': '',
-     'maketitle': '',
      'pointsize': '11',
      'preamble': '',
      'releasename': '',
