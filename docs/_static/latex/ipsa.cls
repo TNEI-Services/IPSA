@@ -102,7 +102,7 @@
 
         {\hfill \huge \textcolor{pinkaccent}{Simply Powerful.}}
 
-        \includegraphics[width=1.0\textwidth]{IpsaBigLogo.png}
+        \includegraphics[width=0.9\textwidth]{IpsaBigLogo.png}
         \vspace{4mm}
 
         {\fontsize{34}{38}\selectfont {\bf \textcolor{purpleaccent}{PyIPSA Reference Manual}}}
