@@ -6,7 +6,7 @@ Welcome to PyIPSA's documentation!
 This guide provides a full reference to all the IPSA objects and their callable functions exposed through Python.
 This reference guide refers to 
 
-      - IPSA version 2.10.2
+      - IPSA version 2.10.3
       - Sentinel EMS v9.0
       - Python 3.11
 
@@ -35,7 +35,7 @@ The following actions are possible:
    :caption: Contents
    :hidden:
 
-   Changes from previous versions
+   Key Features - IPSA 2.10 Series
    IPSA and Python
    Coding Requirements
    IscInterface

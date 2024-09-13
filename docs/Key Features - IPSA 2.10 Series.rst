@@ -1,4 +1,44 @@
-Changes from IPSA 2.10.1
+Key features of IPSA 2.10.3
+=========================
+Network Capacity tool
+--------------------------------
+New module available to license in IPSA to run numerous load flows and find the violation capacity (over/under voltages, 
+thermal overloads) caused by the addition of new capacity at every busbar. 
+New ``IscNetworkCapacity`` class added to facilitate both modifying the run settings ``IscNetwork.DoNetworkCapacity`` and 
+accessing the results of the tool. 
+
+DC Load flow enhancement in PyIPSA
+--------------------------------
+Optimised and increased performance of the DC load flow functionality in PyIPSA has been implemented.
+
+Intertrips in PyIPSA
+--------------------------------
+New ``IscIntertrip`` class has been added. This allows users to create and modify intertrips from PyIPSA. Breakers that are part of 
+intertrips will now obey the intertrip restrictions when their statuses are modified from PyIPSA. The documentation for all new PyIPSA
+intertrip functionality can be found in the ``IscIntertrip`` part of the scripting reference.
+
+Extended Data in PyIPSA
+--------------------------------
+Can now delete Extended data from PyIPSA. Additionally, can now add Boolean extended data fields from PyIPSA, and have increased access
+to IscGroup extended data. 
+
+Changing component connectivity in PyIPSA
+--------------------------------
+Functionality has been added to PyIPSA to allow for changes to be made to radial/branch connectivity in IPSA analogously to that 
+permitted through the IPSA UI. In particular, the new functions ``IscNetwork.ReverseBranch``, ``IscNetwork.SplitBranch`` and 
+``IscNetwork.ChangeConnectivity`` have been added with documentation to explain the details of their functionality.
+
+Additional Fixes
+--------------------------------
+Multiple new miscellaneous methods have been added to PyIPSA. These include, but are not limited to:
+
+    - IscNetwork.DeleteAllItems function to delete all components from a network from PyIPSA.
+    - Get and Set List functions for components with field values corresponding to lists.
+    - The ability to get components as dicts with the component UID as the key - e.g., ``IscNetwork.GetLoadUIDs``.
+    - Numerous field values exposed to PyIPSA to allow for a wider range of component data to be accessed comparably to the UI data tables.
+
+
+Key features of IPSA 2.10.2
 =========================
 
 Converter driven plant functionality
@@ -32,7 +72,7 @@ Additional fixes
 Multiple new methods added in PyIPSA for access functions (inc. CreateBranch()).
 
 
-Changes from IPSA 2.10.0
+Key features of IPSA 2.10.1
 --------------------------------
 
 Choppers in PyIPSA
