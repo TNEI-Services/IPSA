@@ -102,7 +102,7 @@
 
         {\hfill \huge \textcolor{pinkaccent}{Simply Powerful.}}
 
-        \includegraphics[width=0.90\textwidth]{IpsaBigLogo.png}
+        \includegraphics[width=1.0\textwidth]{IpsaBigLogo.png}
         \vspace{4mm}
 
         {\fontsize{34}{38}\selectfont {\bf \textcolor{purpleaccent}{PyIPSA Reference Manual}}}
@@ -113,7 +113,6 @@
         {\Large \textcolor{purpleaccent}{Document Reference:} \textcolor{pinkaccent}{\docreference} }
 
         \textcolor{purpleaccent}{Date Modified:} \textcolor{pinkaccent}{ \@date }
-        \vspace{2mm}
 
         {\color{grey_colour}\hrule}
         \vspace{2mm}

@@ -34,7 +34,6 @@ permitted through the IPSA UI. In particular, the new functions ``IscNetwork.Rev
 Additional Fixes
 --------------------------------
 Multiple new miscellaneous methods have been added to PyIPSA. These include, but are not limited to:  
-
     - IscNetwork.DeleteAllItems function to delete all components from a network from PyIPSA.
     - Get and Set List functions for components with field values corresponding to lists.
     - The ability to get components as dicts with the component UID as the key - e.g., ``IscNetwork.GetLoadUIDs``.
