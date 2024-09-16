@@ -17368,6 +17368,15 @@ class IscNetworkCapacity:
         :rtype: list[int]
         """
         pass
+        
+    def GetLimitCompNames(self) -> List[int]:
+        """
+        Returns the list of names of the components that caused the violations.
+
+        :return: List of component names that caused the violations.
+        :rtype: list[int]
+        """
+        pass
 
     def GetResultsBusbarNames(self) -> List[str]:
         """
