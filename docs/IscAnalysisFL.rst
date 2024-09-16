@@ -56,8 +56,8 @@ Field Values
         - SymRMS
         - AsymPeak
         - AsymRMS
-        - BusWave
-        - BranchWave
+        - BusWave : Note, Plot waveform is currently not supported from PyIPSA
+        - BranchWave : Note, Plot waveform is currently not supported from PyIPSA
    * - Integer
      - MaxFaultIterations
      - Maximum number of iterations to run the fault level.
