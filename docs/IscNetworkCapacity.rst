@@ -49,13 +49,13 @@ Field Values
      - List of busbar UIDs that are selected for the network capacity. If empty all will be selected.
    * - Boolean
      - DisplayCapacityPointInfo
-     - Boolean option to show the capacity point information through the simulation.
+     - Boolean option to output the flat start and capacity point information during the simulation.
    * - Boolean
      - DisplayBusbarTestInfo
-     - Boolean option to show the information for each busbar capacity limit test through the simulation.
+     - Boolean option to show the busbar constraint information for each test through the simulation.
    * - Boolean
      - DisplayLineTestInfo
-     - Boolean option to show the information for each branch capacity limit test through the simulation.
+     - Boolean option to show the branch constraint information for each test through the simulation.
    * - Boolean
      - UsePercentiles
      - Boolean option on whether to use and render the percentiles.
