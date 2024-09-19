@@ -31,6 +31,12 @@ Functionality has been added to PyIPSA to allow for changes to be made to radial
 permitted through the IPSA UI. In particular, the new functions ``IscNetwork.ReverseBranch``, ``IscNetwork.SplitBranch`` and 
 ``IscNetwork.ChangeConnectivity`` have been added with documentation to explain the details of their functionality.
 
+PyIPSA diagram enhancements
+--------------------------------
+From PyIPSA users may now draw all components on diagrams, move components and flexibly add and delete kneepoints. 
+Additionally, functionality has been added to allow for more fluid diagram creation, and for diagram deletion from PyIPSA.
+
+
 Additional Fixes
 --------------------------------
 Multiple new miscellaneous methods have been added to PyIPSA. These include, but are not limited to:  
