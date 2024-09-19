@@ -65,7 +65,7 @@ Field Values
 
 
 IscNetworkCapacity Class
------------------
+--------------------------
 
 .. autoclass:: ipsa.IscNetworkCapacity
    :members:
