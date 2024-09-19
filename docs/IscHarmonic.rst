@@ -81,24 +81,6 @@ Field Values
    * - List[Float]
      - VImpedanceXList
      - Gets the list of reactances for the harmonic impedance if ``ImpedanceType`` is 3.
-   * - Integer
-     - Element
-     - The element number.
-   * - Integer
-     - Parameter
-     - The parameter index.
-   * - Float
-     - MaxVoltageUnbalancePC
-     - The maximum unbalance between line-to-line voltages, as percent of RMS value.
-   * - Float
-     - MaxFiringAngleErrorDeg
-     - The maximum firing angle error.
-   * - Float
-     - MaxTotHarmDistortionPC
-     - The maximum total harmonic distortion for this area as a %.
-   * - Float
-     - MaxIndHarmDistortionPC
-     - The maximum individual harmonic distortion for this area as a %.
    * - String
      - DbType
      - Gets and sets the database type.
