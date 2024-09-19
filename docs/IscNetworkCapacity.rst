@@ -17,7 +17,7 @@ Field Values
      - Field Name
      - Description
    * - Float
-     - DemandPowerFactor
+     - PowerFactor
      - The power factor of capacity type for busbar.
    * - Float
      - MaximumCapacityMVA
