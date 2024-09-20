@@ -5677,8 +5677,7 @@ class IscDiagram:
     def DeleteKneepoint(self, nLineUID: int, dX: float, dY: float) -> bool:
         """
         Deletes a specific knee point from the line identified by the unique ID. If no kneepoint is found at the
-        provided coordinates, nothing will occur. By default, this function will fully redraw the line the knee point
-        has been deleted from. This can be disabled by setting bRefreshLine to False.
+        provided coordinates, nothing will occur.
 
         :param nLineUID: The line UID.
         :type nLineUID: int
@@ -5693,8 +5692,7 @@ class IscDiagram:
 
     def DeleteAllKneepoints(self, nLineUID: int) -> bool:
         """
-        Deletes all the knee points from the line identified by the unique ID. By default, this function will fully
-        redraw the line the knee point has been deleted from. This can be disabled by setting bRefreshLine to False.
+        Deletes all the knee points from the line identified by the unique ID. 
 
         :param nLineUID: The line UID.
         :type nLineUID: int
