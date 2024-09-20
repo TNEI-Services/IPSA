@@ -5606,7 +5606,8 @@ class IscDiagram:
     def AddPointToLine(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
         """
         Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
-        the knee point has been added to. This can be disabled by setting bRefreshLine to False.
+        the knee point has been added to. This can be disabled by setting bRefreshLine to False. The kneepoint will be 
+        added nearest to the line centrepoint on the from or to end.
 
         *Deprecated in IPSA 2.10.3 instead use AddKneepoint*
 
@@ -5629,7 +5630,8 @@ class IscDiagram:
     def AddKneepoint(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
         """
         Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
-        the knee point has been added to. This can be disabled by setting bRefreshLine to False.
+        the knee point has been added to. This can be disabled by setting bRefreshLine to False. The kneepoint will be 
+        added nearest to the line centrepoint on the from or to end.
 
         :param nLineUID: The line UID.
         :type nLineUID: int
@@ -5651,7 +5653,8 @@ class IscDiagram:
                       bRefreshLine: bool) -> bool:
         """
         Adds multiple knee points to the line identified by the unique ID. By default, this function will fully redraw
-        the line the knee point has been added to. This can be disabled by setting bRefreshLine to False.
+        the line the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
+        The kneepoints will be added in order of from end to to end.
 
         If listX and listY are not of the same length, no kneepoints will be added.
 
@@ -5671,7 +5674,7 @@ class IscDiagram:
         """
         pass
 
-    def DeleteKneepoint(self, nLineUID: int, dX: float, dY: float, bRefreshLine: bool) -> bool:
+    def DeleteKneepoint(self, nLineUID: int, dX: float, dY: float) -> bool:
         """
         Deletes a specific knee point from the line identified by the unique ID. If no kneepoint is found at the
         provided coordinates, nothing will occur. By default, this function will fully redraw the line the knee point
@@ -5683,22 +5686,18 @@ class IscDiagram:
         :type dX: float
         :param dY: The knee point y coordinate.
         :type dY: float
-        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
-        :type bRefreshLine: bool
         :return: Boolean denoting whether the knee point was added.
         :rtype: bool
         """
         pass
 
-    def DeleteAllKneepoints(self, nLineUID: int, bRefreshLine: bool) -> bool:
+    def DeleteAllKneepoints(self, nLineUID: int) -> bool:
         """
         Deletes all the knee points from the line identified by the unique ID. By default, this function will fully
         redraw the line the knee point has been deleted from. This can be disabled by setting bRefreshLine to False.
 
         :param nLineUID: The line UID.
         :type nLineUID: int
-        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
-        :type bRefreshLine: bool
         :return: Boolean denoting whether all the knee points were deleted.
         :rtype: bool
         """
