@@ -14,7 +14,7 @@ Note the PyIPSA documentation can now be |pdf_location_link| from the Read the D
 
 .. |pdf_location_link| raw:: html
 
-   <a href="https://ipsa.readthedocs.io/_/downloads/en/latest/pdf/" target="_blank">downloaded in an offline version</a>
+   <a href="https://ipsa.readthedocs.io/_/downloads/en/2.10.2/pdf/" target="_blank">downloaded in an offline version</a>
 
 
 Current Features
