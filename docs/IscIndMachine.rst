@@ -203,6 +203,9 @@ Field Values
    * - Boolean
      - ExcludeFromTransient
      - If ``True`` then the induction machine is excluded from transient stability studies.
+   * - String
+     - Comment
+     - Gets and sets the comments.
 
 IscIndMachine Class
 --------------------
