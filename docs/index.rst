@@ -36,7 +36,7 @@ The following actions are possible:
    :hidden:
 
    Key Features - IPSA 2.10 Series
-   IPSA and Python
+   Using Python with IPSA
    Coding Requirements
    IscInterface
    IscDiagram
