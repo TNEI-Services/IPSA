@@ -10465,6 +10465,17 @@ class IscNetwork:
         """
         pass
 
+    def GetScenarioID(self, strScenarioName: str) -> int:
+        """
+        Returns the ID of the scenario identified by strScenarioName.
+
+        :param strScenarioName: The name of the selected scenario.
+        :type strScenarioName: str
+        :return: The ID of the selected scenario.
+        :rtype: int
+        """
+        pass
+
     def GetScenarioName(self, nScenarioID: int) -> str:
         """
         Returns the name of the scenario identified by nScenarioID.
@@ -10558,6 +10569,8 @@ class IscNetwork:
         """
         Sets the network to the identified scenario.
 
+        Note, IsScenarioChanged should be called first to ensure that no changes to the network will be lost in switching scenario.
+
         :param nScenarioID: The selected scenario.
         :type nScenarioID: int
         :return: Denoting whether the scenario is successfully set or whether it does not exist.
@@ -10577,15 +10590,15 @@ class IscNetwork:
         """
         pass
 
-    def CreateChangeFile(self, strMergeName: str, nScenario1: int, nScenario2: int = 0) -> bool:
+    def CreateChangeFile(self, strFileName: str, nScenario1: int, nScenario2: int = 0) -> bool:
         """
         Creates an IPSA difference file based on the network differences between the two provided scenarios.
         If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
 
-        Note, strMerge name should include the .i2f extension.
+        Note, strFileName name should include both the path and the .i2f extension.
 
-        :param strMergeName: The merged file name.
-        :type strMergeName: str
+        :param strFileName: The path of the new change file name.
+        :type strFileName: str
         :param nScenario1: The first selected scenario ID.
         :type nScenario1: int
         :param nScenario2: The second selected scenario ID. If omited, the current network is used.
@@ -10595,40 +10608,40 @@ class IscNetwork:
         """
         pass
 
-    def GetEnableAutosaveBeforeScenario(this) -> bool:
+    def GetEnableAutocreateScenarioFile(this) -> bool:
         """
-        Returns if the network will automatically save a copy of each scenario as they are created.
+        Returns if the network will automatically save each scenario as a single scenario file as they are created.
 
-        :return: If the network will autosave before scenarios.
+        :return: If the network will autocreate single scenario files.
         :rtype: bool
         """
         pass
 
-    def GetScenarioAutosaveDirectory(this) -> str:
+    def GetScenarioAutocreateDirectory(this) -> str:
         """
-        Returns the path to the directory where the autosaves will be placed.
+        Returns the path to the directory where the autocreated single scenario files will be placed.
 
-        :return: The path to the autosave directory.
+        :return: The path to the autocreate directory.
         :rtype: str
         """
         pass
 
-    def SetEnableAutosaveBeforeScenario(this, bEnableAutosave: bool) -> bool:
+    def SetEnableAutocreateScenarioFile(this, bEnableAutosave: bool) -> bool:
         """
-        Sets if the network should automatically save a copy of each scenario as they are created.
+        Sets if the network should automatically save each scenario as a single scenario file as they are created.
 
-        :param bEnableAutosave: If the network should autosave before scenarios.
+        :param bEnableAutosave: If the network should autocreate single scenario files.
         :type bEnableAutosave: bool
         :return: True if the value is successfully set.
         :rtype: bool
         """
         pass
 
-    def SetScenarioAutosaveDirectory(this, strAutosaveDirectory: str) -> bool:
+    def SetScenarioAutocreateDirectory(this, strAutosaveDirectory: str) -> bool:
         """
-        Sets the directory where the autosaves will be placed.
+        Sets the directory where the autocreated single scenario files will be placed.
 
-        :param strAutosaveDirectory: The path to the autosave directory.
+        :param strAutosaveDirectory: The path to the autocreate directory.
         :param strAutosaveDirectory: str
         :return: True if the value is successfully set.
         :rtype: bool
