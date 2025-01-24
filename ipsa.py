@@ -6232,8 +6232,71 @@ class IscDiagram:
         """
         Removes the tiled geographic map from the diagram if there is one.
 
-        :return: True if the map is successfully removed
+        :return: True if the map is successfully removed.
         :rtype: bool
+        """
+        pass
+
+    def GetGeographicTileUrl(self) -> str:
+        """
+        Gets the URL of the server from which the geographic map tiles are being requested.
+
+        :return: The URL of the server the map tiles are requested from.
+        :rtype: str
+        """
+        pass
+
+    def SetGeographicTileUrl(self, strUrl: str) -> bool:
+        """
+        Sets the URL of the server from which the geographic map tiles should be requested.
+
+        :param strUrl: The URL of the server the map tiles should be requested from.
+        :type strUrl: str
+        :return: True if the URL is set successfully.
+        :rtype: bool
+        """
+        pass
+
+    def SetGeographicTileApiKey(self, bUseKey: bool, strKey: str = "") -> bool:
+        """
+        Sets the API key that should be used in conjunction with the geographic map tile server requests.
+
+        If bUseKey is False, strKey is ignored, and no API key will be used with the tile request.
+        If bUseKey is True and strKey is not provided, the default IPSA API key will be used.
+        Otherwise, if bUseKey is True and strKey is provided, strKey will be used as a user provided API key 
+        for the geographic map tile server requests.
+
+        :param bUseKey: True if an API key should be used in the map tile requests.
+        :type bUseKey: bool
+        :param strKey: The User provided API key to be used. If this is omitted, the default IPSA API key will be used instead.
+        :type strKey: str
+        :return: True if the API ket settings are successfully changed.
+        :rtype: bool
+        """
+        pass
+
+    def SetGeographicStadiaTileType(self, nTileType: int) -> bool:
+        """
+        Set which, if any, Stadia tile type should be used out of the IPSA default Stadia map styles. 
+        This function will overwrite the geographic map tile server URL. nTileType should be one of
+
+            - 1 = Toner
+            - 2 = Terrain
+            - 3 = Watercolor
+
+        :param nTileType: The enumeration indicating which default IPSA tile type should be used.
+        :type nTileType: int
+        :return: True if the tile type has been set successfully
+        :rtype: bool
+        """
+        pass
+
+    def GetLastGeographicTileRequestInfo(self) -> str:
+        """
+        Returns the most recent geographic map tile request message or warning.
+
+        :return: The most recent geographic map tile requst information.
+        :rtype: str
         """
         pass
 
