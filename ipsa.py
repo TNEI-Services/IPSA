@@ -7178,6 +7178,8 @@ class IscGroup:
         """
         Get a single integer value from the list within the given enumerated field.
 
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param nIndex: The index of the selected element.
@@ -7191,6 +7193,8 @@ class IscGroup:
         """
         Get a single float value from the list within the given enumerated field.
 
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param nIndex: The index of the selected element.
@@ -7203,6 +7207,8 @@ class IscGroup:
     def GetListStrExtensionValue(self, nFieldIndex: int, nIndex: int) -> str:
         """
         Get a single string value from the list within the given enumerated field.
+
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -7303,7 +7309,8 @@ class IscGroup:
         Sets the value of a specified element in a list of integers within the given enumerated field.
 
         Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
-        GetListIntSize) must be larger than nIndex.
+        GetListIntSize) must be larger than nIndex. 
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -7322,6 +7329,7 @@ class IscGroup:
 
         Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
         GetListDblSize) must be larger than nIndex.
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -7340,6 +7348,7 @@ class IscGroup:
 
         Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
         GetListStrSize) must be larger than nIndex.
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -10236,6 +10245,8 @@ class IscNetComponent:
         """
         Get a single integer value from the list for the enumerated field.
 
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param nIndex: The index of the selected element.
@@ -10249,6 +10260,8 @@ class IscNetComponent:
         """
         Get a single float value from the list for the enumerated field.
 
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param nIndex: The index of the selected element.
@@ -10261,6 +10274,8 @@ class IscNetComponent:
     def GetListStrExtensionValue(self, nFieldIndex: int, nIndex: int) -> str:
         """
         Get a single string value from the list for the enumerated field.
+
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -10310,6 +10325,7 @@ class IscNetComponent:
 
         Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
         GetListIntSize) must be larger than nIndex.
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -10328,6 +10344,7 @@ class IscNetComponent:
 
         Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
         GetListDblSize) must be larger than nIndex.
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -10346,6 +10363,7 @@ class IscNetComponent:
 
         Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
         GetListStrSize) must be larger than nIndex.
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
