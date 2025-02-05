@@ -6257,12 +6257,29 @@ class IscDiagram:
         """
         pass
 
+    def GetGeographicTileApiStatus(self) -> int:
+        """
+        Returns an integer indicating the API status of the diagram. The value will be one of
+
+            - -1 = No Geographic map found
+            - 0 = No API key in use
+            - 1 = Using the IPSA API key
+            - 2 = Using the user-provided API key
+
+        :return: A number indicating the Geographic tile API settings in use.
+        :rtype: int
+        """
+        pass
+
     def SetGeographicTileApiKey(self, bUseKey: bool, strKey: str = "") -> bool:
         """
         Sets the API key that should be used in conjunction with the geographic map tile server requests.
 
         If bUseKey is False, strKey is ignored, and no API key will be used with the tile request.
-        If bUseKey is True and strKey is not provided, the default IPSA API key will be used.
+
+        If bUseKey is True and strKey is not provided, the default IPSA API key will be used. Note, if the User does
+        not have the license to use the IPSA API key, the settings will not change and the function will return False.
+
         Otherwise, if bUseKey is True and strKey is provided, strKey will be used as a user provided API key 
         for the geographic map tile server requests.
 
@@ -6270,7 +6287,16 @@ class IscDiagram:
         :type bUseKey: bool
         :param strKey: The User provided API key to be used. If this is omitted, the default IPSA API key will be used instead.
         :type strKey: str
-        :return: True if the API ket settings are successfully changed.
+        :return: True if the API settings are successfully changed.
+        :rtype: bool
+        """
+        pass
+
+    def ClearUserGeographicTileApiKey(self) -> bool:
+        """
+        Sets the user defined API key to be used in conjunction with the geographic map tile server requests to an empty string.
+
+        :return: True if the user defined API key is successfully cleared.
         :rtype: bool
         """
         pass
