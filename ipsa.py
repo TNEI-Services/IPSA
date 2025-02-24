@@ -8821,43 +8821,7 @@ class IscInterface:
         :rtype: bool
         """
         pass
-
-    def HasStaticCon(self) -> bool:
-        """
-        Returns True if a static converter license is present.
-
-        :return: Boolean denoting whether a static converter license is presented.
-        :rtype: bool
-        """
-        pass
-
-    def HasTandemGen(self) -> bool:
-        """
-        Returns True if a tandem generator license is present.
-
-        :return: Boolean denoting whether a tandem generator license is presented.
-        :rtype: bool
-        """
-        pass
-
-    def HasNonLinDevs(self) -> bool:
-        """
-        Returns True if a non-linear devices license is present.
-
-        :return: Boolean denoting whether a non-linear devices license is presented.
-        :rtype: bool
-        """
-        pass
-
-    def HasAutomation(self) -> bool:
-        """
-        Returns True if an automation analysis license is present.
-
-        :return: Boolean denoting whether an automation analysis license is presented.
-        :rtype: bool
-        """
-        pass
-
+    
     def IsLimitedSize(self) -> bool:
         """
         Returns True if the current license imposes a limit on the maximum number of busbars.
