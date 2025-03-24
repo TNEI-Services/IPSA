@@ -10920,7 +10920,7 @@ class IscNetwork:
         """
         pass
 
-    def GetScenarioDiffSettingsText(self, nDataType: int, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
+    def GetScenarioDiffMiscText(self, nDataType: int, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
         """
         Returns a string description of the changes made to the miscellaneous object identified by nDataType 
         and nUID between the two provided scenarios.
