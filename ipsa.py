@@ -6883,40 +6883,49 @@ class IscGroup:
         """
         pass
 
-    def SetMembers(self, nUIDs: List[int]) -> None:
+    def SetMembers(self, nUIDs: List[int]) -> bool:
         """
         Overwrites the current list of group members with the given list of component UIDs.
         This replaces any existing members with the supplied list of UIDs.
 
         :param nUIDs: List of component integers.
         :type nUIDs: list(int)
+        :return: True if the members have been set.
+        :rtype: bool
         """
         pass
 
-    def ClearMembers(self) -> None:
+    def ClearMembers(self) -> bool:
         """
         Sets the group members to an empty list.
         This clears any existing members.
+
+        :return: True if the members have been set.
+        :rtype: bool
         """
         pass
 
-    def AddMember(self, nUID: int) -> None:
+    def AddMember(self, nUID: int) -> bool:
         """
         Appends the component with the given UID to the list of component UIDs if the UID is not present.
         All existing group member UIDs are unaffected.
 
         :param nUID: Component UID.
         :type nUID: int
+        :return: True if the members have been set.
+        :rtype: bool
         """
         pass
 
-    def RemoveMember(self, nUID: int) -> None:
+    def RemoveMember(self, nUID: int) -> bool:
         """
         Removes the component with the given UID from the list of component UIDs if the UID is present.
         All other existing group member UIDs are unaffected.
 
         :param nUID: Component UID.
         :type nUID: int
+        :return: True if the members have been set.
+        :rtype: bool
         """
         pass
 
@@ -6949,7 +6958,7 @@ class IscGroup:
         """
         pass
 
-    def MergeGroups(self, nGroupUID: int, bDeleteGroup: bool = False) -> None:
+    def MergeGroups(self, nGroupUID: int, bDeleteGroup: bool = False) -> bool:
         """
         Appends the list of component UIDs from the group with the given UID onto the current group's UID list.
         By default the group with the given UID will be unnaffected, unless bDeleteGroup is True, in which case it will be deleted.
@@ -6958,6 +6967,8 @@ class IscGroup:
         :type nGroupUID: int
         :param bDeleteGroup: If True deletes the group with nGroupUID, otherwise the group is unnaffected.
         :type bDeleteGroup: bool
+        :return: True if the merge has occurred succesfully.
+        :rtype: bool
         """
         pass
 
