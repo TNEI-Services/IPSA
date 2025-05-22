@@ -4204,6 +4204,86 @@ class IscBusbar:
         """
         pass
 
+class IscBoundary:
+    """
+    Provides access to a network boundary.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def IsBoundaryValidated(self) -> bool:
+        """
+        Returns whether the boundary is validated.
+
+        :return: True if validated.
+        :rtype: bool
+        """
+        pass
+
+    def IsBoundaryStale(self) -> bool:
+        """
+        Returns whether the boundary is stale. That is whether the topology of the network
+        has been changed since the boundary busbars were set.
+
+        :return: True if stale.
+        :rtype: bool
+        """
+        pass
+
+    def IsBoundaryModeActivated(self) -> bool:
+        """
+        Returns whether the boundary direction mode is activated. This will be true when using the 
+        direction method and false when using the reduced area method.
+
+        :return: True if using directions method, False if using reduced area method.
+        :rtype: bool
+        """
+        pass
+
+    def GetBoundaryBusbars(self) -> list[int]:
+        """
+        Returns the list of boundary busbars.
+
+        :return: The list of boundary busbar UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetReducedBusbars(self) -> list[int]:
+        """
+        Returns the list of reduced busbars.
+
+        :return: the list of reduced busbar UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def SetBoundaryBusbars(self, lBusbars: list[int]):
+        """
+        Sets the boundary busbars to be the list provided.
+
+        :param lBusbars: The busbar UIDs to set as boundaries
+        :type lBusbars: list[int]
+        """
+        pass
+
+    def SetReducedBusbars(self, lBusbars: list[int]):
+        """
+        Sets the reduced busbars to be the list provided.
+
+        :param lBusbars: The busbar UIDs to set as boundaries
+        :type lBusbars: list[int]
+        """
+        pass
+
 class IscChopper:
     """
     Provides access to a DC/DC Converter.
@@ -11943,6 +12023,19 @@ class IscNetwork:
         """
         pass
 
+    def GetBoundaries(self, bFetchFromSystem: bool = True):
+        """
+        Returns a dictionary of IscBoundary instances.
+        Keys (sPyName) are the Python names and the associated values are IscBoundary instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of boundaries.
+        :rtype: dict(str,IscBoundary)
+        """
+        pass
+
     def TraceBusbarUIDs(self, nBranchUID: int, bOpenBreakers: bool, nGroupUID: int) -> List[int]:
         """
         Performs a network trace to identify all busbars that are connected to the selected branch.
@@ -13070,6 +13163,47 @@ class IscNetwork:
         :rtype: IscUnbalancedTransformer
         """
         pass
+
+    @overload
+    def GetBoundary(self, nUID: int):
+        """
+        Returns an IscBoundary instance for the boundary identified by
+        the UID.
+
+        :param nUID: The selected boundary UID.
+        :type nUID: int
+        :return: The boundary instance or None if such is not found.
+        :rtype: IscBoundary
+        """
+        pass
+
+    @overload
+    def GetBoundary(self, strName: str):
+        """
+        Returns an IscBoundary instance for the boundary identified by
+        the name.
+
+        :param strName: The selected boundary name.
+        :type strName: str
+        :return: The boundary instance or None if such is not found.
+        :rtype: IscBoundary
+        """
+        pass
+
+    def GetBoundary(self, nUID: int):
+        """
+        Returns an IscBoundary instance for the boundary identified by
+        the UID or the  name.
+
+        :param nUID: The selected boundary UID.
+        :type nUID: int
+        :param strName: The selected boundary name.
+        :type strName: str
+        :return: The boundary instance or None if such is not found.
+        :rtype: IscBoundary
+        """
+        pass
+
 
     def GetNetworkData(self):
         """
@@ -14670,6 +14804,19 @@ class IscNetwork:
         """
         pass
 
+    def GetBoundaryUIDs(self, bFetchFromSystem: bool = True) :
+        """
+        Returns a dictionary of all boundaries in the network.
+        The keys are the integer UIDs and the values are the IscBoundary instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all boundary UIDs.
+        :rtype: dict(int,IscBoundary)
+        """
+        pass
+
     def CreateBusbar(self, strName: str) -> int:
         """
         Returns the UID for the newly created busbar.
@@ -15896,6 +16043,41 @@ class IscNetwork:
         """
         pass
 
+    def CreateBoundary(self, strName: str) -> int:
+        """
+        Create a new empty boundary and returns the boundary UID.
+
+        :param strName: The boundary name.
+        :type strName: str
+        :return: The boundary UID, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    def CreateBoundaryNoGraphics(self, strName: str):
+        """
+        Create a new empty boundary and returns the IscBoundary object.
+
+        :param strName: The boundary name.
+        :type strName: str
+        :return: The IscBoundary object or None on failure.
+        :rtype: IscBoundary
+        """
+        pass
+
+    def ValidateBoundary(self, pBoundary: IscBoundary) -> bool:
+        """
+        Validation routine for the boundary, pBoundary. Returns True if
+        the validation is successful, returns False otherwise, leaving the 
+        boundary unmodified.
+
+        :param pBoundary: The IscBoundary object to validate.
+        :type pBoundary: IscBoundary
+        :return: True if the validation is successful.
+        :rtype: bool
+        """
+        pass
+
     def ReverseBranch(self, nBranchUID: int) -> bool:
         """
         Reverses the connection of branch or transformer supplied.
@@ -16224,7 +16406,7 @@ class IscNetwork:
 
     def DeleteIntertrip(self, pIntertrip) -> bool:
         """
-        Deletes a group by passing the IscIntertrip object for deletion.
+        Deletes an intertrip by passing the IscIntertrip object for deletion.
 
         :param pIntertrip: The IscIntertrip object for deletion.
         :type pIntertrip: IscIntertrip
@@ -16239,6 +16421,17 @@ class IscNetwork:
 
         :param pPlugin: The IscPlugin object for deletion.
         :type pPlugin: IscPlugin
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteBoundary(self, pBoundary) -> bool:
+        """
+        Deletes an boundary by passing the IscBoundary object for deletion.
+
+        :param pBoundary: The IscBoundary object for deletion.
+        :type pBoundary: IscBoundary
         :return: True if successful.
         :rtype: bool
         """
