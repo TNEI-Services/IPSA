@@ -8854,7 +8854,7 @@ class IscInterface:
         """
         Returns True if a load flow license is present.
 
-        :return: Boolean denoting whether a load flow license is presented.
+        :return: Boolean denoting whether a load flow license is present.
         :rtype: bool
         """
         pass
@@ -8863,7 +8863,7 @@ class IscInterface:
         """
         Returns True if a fault level license is present.
 
-        :return: Boolean denoting whether a fault level license is presented.
+        :return: Boolean denoting whether a fault level license is present.
         :rtype: bool
         """
         pass
@@ -8872,7 +8872,7 @@ class IscInterface:
         """
         Returns True if a transient stability license is present.
 
-        :return: Boolean denoting whether a transient stability license is presented.
+        :return: Boolean denoting whether a transient stability license is present.
         :rtype: bool
         """
         pass
@@ -8881,7 +8881,7 @@ class IscInterface:
         """
         Returns True if a protection analysis license is present.
 
-        :return: Boolean denoting whether a protection analysis license is presented.
+        :return: Boolean denoting whether a protection analysis license is present.
         :rtype: bool
         """
         pass
@@ -8890,7 +8890,16 @@ class IscInterface:
         """
         Returns True if a harmonics analysis license is present.
 
-        :return: Boolean denoting whether a harmonics analysis license is presented.
+        :return: Boolean denoting whether a harmonics analysis license is present.
+        :rtype: bool
+        """
+        pass
+
+    def HasNetworkReduction(self) -> bool:
+        """
+        Returns True if a network reduction license is present.
+
+        :return: Boolean denoting whether a network reduction license is present.
         :rtype: bool
         """
         pass
@@ -8899,7 +8908,7 @@ class IscInterface:
         """
         Returns True if a UDM (User Defined Modelling) license is present.
 
-        :return: Boolean denoting whether a UDM license is presented.
+        :return: Boolean denoting whether a UDM license is present.
         :rtype: bool
         """
         pass
@@ -8908,7 +8917,7 @@ class IscInterface:
         """
         Returns True if a DC component license is present.
 
-        :return: Boolean denoting whether a DC component license is presented.
+        :return: Boolean denoting whether a DC component license is present.
         :rtype: bool
         """
         pass
