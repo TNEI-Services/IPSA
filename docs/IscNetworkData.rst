@@ -37,6 +37,9 @@ Field Values
    * - Float
      - Frequency
      - Gets or sets the system base frequency in hertz for the network.
+   * - Boolean
+     - SetNewAggregatesTrue
+     - Gets or sets the default aggregate value for new components.
 
 IscNetworkData Class
 ====================

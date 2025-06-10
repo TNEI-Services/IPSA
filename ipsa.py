@@ -18230,6 +18230,24 @@ class IscNetwork:
         """
         pass
 
+    def SetDefaultAggregateValue(self, bAggregateValue: bool):
+        """
+        Sets the default aggregate value of new components to be bAggregateValue.
+
+        :param bAggregateValue: The default aggregate value.
+        :type bAggegrateValue: bool
+        """
+        pass
+
+    def GetDefaultAggregateValue(self) -> bool:
+        """
+        Gets the default aggregate value of new components.
+
+        :return: The default aggregate value.
+        :rtype: bool
+        """
+        pass
+
 class IscNetworkCapacity:
     """
     Class providing access to the Network Capacity functionality.

@@ -70,6 +70,9 @@ Field Values
    * - String
      - DbType
      - Gets the database type.
+   * - Boolean
+     - Aggregate
+     - An equivalent for a collection of the same object.
 
 IscCircuitBreaker Class
 ------------------------

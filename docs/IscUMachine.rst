@@ -140,6 +140,9 @@ Field Values
    * - List[Float]
      - CDPReactiveCurrentSubTransientPU
      - The list of reactive (sub-transient) current values in per unit for the CDP current injection (advanced method only).
+   * - Boolean
+     - Aggregate
+     - An equivalent for a collection of the same object.
 
 IscUMachine Class
 ------------------
