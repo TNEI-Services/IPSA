@@ -318,6 +318,22 @@ class Isc3WTransformer:
         """
         pass
 
+    def GetLineLoadingPC(self, nRatingIndex: int, bRatingMVA: bool) -> List[float]:
+        """
+        Returns the line loading result for the specified rating as a percentage for the from and to end of the 3W transformer.
+        Note, this will return -1 if the specified ratings aren't set or can't be found.
+        NB. currently there are no kA ratings for 3W transformers.
+        The list returned will be empty if there are no load flow results found.
+
+        :param nRatingIndex: Specifies which rating set is used in the calculation.
+        :type nRatingIndex: int
+        :param bRatingMVA: If True, the MVA rating is used, if False the kA send and recieve ratings are used.
+        :type bRatingMVA: bool
+        :return: The line loading percentage for the from end, to end and three end in order.
+        :rtype: list[float]
+        """
+        pass
+
     def GetFaultRedComponentMVA(self, nWinding: int) -> float:
         """
         Returns the red phase fault level component in MVA for the specified winding of the 3-winding transformer.
@@ -2438,6 +2454,21 @@ class IscBranch:
 
         :return: The branch capacity headroom as a percentage.
         :rtype: float
+        """
+        pass
+
+    def GetLineLoadingPC(self, nRatingIndex: int, bRatingMVA: bool) -> List[float]:
+        """
+        Returns the line loading result for the specified rating as a percentage for the from and to end of the branch.
+        Note, this will return -1 if the specified ratings aren't set or can't be found.
+        The list returned will be empty if there are no load flow results found.
+
+        :param nRatingIndex: Specifies which rating set is used in the calculation.
+        :type nRatingIndex: int
+        :param bRatingMVA: If True, the MVA rating is used, if False the kA send and recieve ratings are used.
+        :type bRatingMVA: bool
+        :return: The line loading percentage for the from end and to end in order.
+        :rtype: list[float]
         """
         pass
 
@@ -5929,10 +5960,9 @@ class IscDiagram:
     def GetLineLength(self, nUID: int) -> float:
         """
         Returns the component length for the graphic symbol on the current diagram.
-        On geographic diagrams this function returns the actual line length,
-        assuming that the diagram is correctly scaled.
+        On geographic diagrams it is safer to use the GetGeoLineLength function.
 
-        :param nUID: The line UID.
+        :param nUID: The branch item UID.
         :type nUID: int
         :return: The component length for the graphic symbol.
         :rtype: float
@@ -5943,11 +5973,10 @@ class IscDiagram:
     def GetLineLength(self, pComponent) -> float:
         """
         Returns the component length for the graphic symbol on the current diagram.
-        On geographic diagrams this function returns the actual line length,
-        assuming that the diagram is correctly scaled.
+        On geographic diagrams it is safer to use the GetGeoLineLength function.
 
-        :param pComponent: The line IscBranch instance.
-        :type pComponent: IscBranch
+        :param pComponent: The branch item IscBranch/IscTransformer instance.
+        :type pComponent: IscNetComponent
         :return: The component length for the graphic symbol.
         :rtype: float
         """
@@ -5956,14 +5985,78 @@ class IscDiagram:
     def GetLineLength(self, pComponent) -> float:
         """
         Returns the component length for the graphic symbol on the current diagram.
-        On geographic diagrams this function returns the actual line length,
-        assuming that the diagram is correctly scaled.
+        On geographic diagrams it is safer to use the GetGeoLineLength function.
 
-        :param nUID: The line UID.
+        :param nUID: The branch item UID.
         :type nUID: int
-        :param pComponent: The line IscBranch instance.
-        :type pComponent: IscBranch
+        :param pComponent: The branch item IscBranch/IscTransformer instance.
+        :type pComponent: IscNetComponent
         :return: The component length for the graphic symbol.
+        :rtype: float
+        """
+        pass
+
+    @overload
+    def GetGeoLineLength(self, nUID: int, bUseBusCoord: bool, bCrowFlies: bool) -> float:
+        """
+        Returns the length in km of the branch item (nUID) on the diagram. 
+        Note this will only work for geographic diagrams.
+        If the diagram has a map, the length will calculate distance using the lat-long coordinates, otherwise the distance
+        will be based off the geographic map scale.
+
+        :param nUID: The branch item UID.
+        :type nUID: int
+        :param bUseBusCoord: If True, this will use the central coordinate of the busbar as the terminal position.
+                    If False, it will use the edge coordinate as drawn on the diagram.
+        :type bUseBusCoord: bool
+        :param bCrowFlies: If True, this will calculate the point to point length between the two terminal positions.
+                    If False, the distance will be calculated following the kneepoints on the branch item.
+        :type bCrowFlies: bool
+        :return: The branch item length in km.
+        :rtype: float
+        """
+        pass
+    
+
+    @overload
+    def GetGeoLineLength(self, nUID: int, bUseBusCoord: bool, bCrowFlies: bool) -> float:
+        """
+        Returns the length in km of the branch item (pComponent) on the diagram. 
+        Note this will only work for geographic diagrams.
+        If the diagram has a map, the length will calculate distance using the lat-long coordinates, otherwise the distance
+        will be based off the geographic map scale.
+
+        :param pComponent: The branch item IscBranch/IscTransformer instance.
+        :type pComponent: IscNetComponent
+        :param bUseBusCoord: If True, this will use the central coordinate of the busbar as the terminal position.
+                    If False, it will use the edge coordinate as drawn on the diagram.
+        :type bUseBusCoord: bool
+        :param bCrowFlies: If True, this will calculate the point to point length between the two terminal positions.
+                    If False, the distance will be calculated following the kneepoints on the branch item.
+        :type bCrowFlies: bool
+        :return: The branch item length in km.
+        :rtype: float
+        """
+        pass
+    
+    def GetGeoLineLength(self, nUID: int, bUseBusCoord: bool, bCrowFlies: bool) -> float:
+        """
+        Returns the length in km of the branch item (pComponent) on the diagram. 
+        Note this will only work for geographic diagrams.
+        If the diagram has a map, the length will calculate distance using the lat-long coordinates, otherwise the distance
+        will be based off the geographic map scale.
+
+        :param nUID: The branch item UID.
+        :type nUID: int
+        :param pComponent: The branch item IscBranch/IscTransformer instance.
+        :type pComponent: IscNetComponent
+        :param bUseBusCoord: If True, this will use the central coordinate of the busbar as the terminal position.
+                    If False, it will use the edge coordinate as drawn on the diagram.
+        :type bUseBusCoord: bool
+        :param bCrowFlies: If True, this will calculate the point to point length between the two terminal positions.
+                    If False, the distance will be calculated following the kneepoints on the branch item.
+        :type bCrowFlies: bool
+        :return: The branch item length in km.
         :rtype: float
         """
         pass
@@ -6948,6 +7041,7 @@ class IscGroup:
             - 8 = Generator scaling group
             - 9 = Region group
             - 10 = Transformer group (master slave operation)
+            - 11 = Feeder group
 
         :return: The group type.
         :rtype: int
@@ -6968,6 +7062,8 @@ class IscGroup:
         Overwrites the current list of group members with the given list of component UIDs.
         This replaces any existing members with the supplied list of UIDs.
 
+        NB. The user may not set the members of a Feeder group.
+
         :param nUIDs: List of component integers.
         :type nUIDs: list(int)
         :return: True if the members have been set.
@@ -6980,6 +7076,8 @@ class IscGroup:
         Sets the group members to an empty list.
         This clears any existing members.
 
+        NB. The user may not clear the members of a Feeder group.
+
         :return: True if the members have been set.
         :rtype: bool
         """
@@ -6989,6 +7087,8 @@ class IscGroup:
         """
         Appends the component with the given UID to the list of component UIDs if the UID is not present.
         All existing group member UIDs are unaffected.
+
+        NB. The user may not add members to a Feeder group.
 
         :param nUID: Component UID.
         :type nUID: int
@@ -7001,6 +7101,8 @@ class IscGroup:
         """
         Removes the component with the given UID from the list of component UIDs if the UID is present.
         All other existing group member UIDs are unaffected.
+
+        NB. The user may not remove members from a Feeder group.
 
         :param nUID: Component UID.
         :type nUID: int
@@ -7054,30 +7156,123 @@ class IscGroup:
 
     def GetLoadScalingReal(self) -> float:
         """
-        Returns the per unit scaling factor for the active power load.
+        Returns the per unit scaling factor on the active power for the loads in the group.
+        NB. This will only work for load scaling groups.
 
-        :return: The per unit scaling factor for the active power load.
+        :return: The per unit scaling factor for the load active power.
         :rtype: float
         """
         pass
 
     def GetLoadScalingReactive(self) -> float:
         """
-        Returns the per unit scaling factor for the reactive power load.
+        Returns the per unit scaling factor on the reactive power for the loads in the group.
+        NB. This will only work for load scaling groups.
 
-        :return: The per unit scaling factor for the reactive power load.
+        :return: The per unit scaling factor for the load reactive power.
         :rtype: float
         """
         pass
 
-    def SetLoadScaling(self, fMW: float, fMVAr: float) -> bool:
+    def SetLoadScaling(self, fRealScale: float, fReactiveScale: float) -> bool:
         """
-        Sets the per unit scaling factors for the active and reactive parts of the load.
+        Sets the per unit scaling factors for the active and reactive parts of the loads in the group.
+        NB. This will only work for load scaling groups.
 
-        :param fMW: The active part of the load.
-        :type fMW: float
-        :param fMVAr: The reactive part of the load.
-        :type fMVAr: float
+        :param fRealScale: The new per unit scaling factor for the load active power.
+        :type fRealScale: float
+        :param fReactiveScale: The new per unit scaling factor for the load reactive power.
+        :type fReactiveScale: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetGeneratorScalingReal(self) -> float:
+        """
+        Returns the per unit scaling factor on the active power for the generators in the group.
+        NB. This will only work for generator scaling groups.
+
+        :return: The per unit scaling factor for the generator active power.
+        :rtype: float
+        """
+        pass
+
+    def GetGeneratorScalingReactive(self) -> float:
+        """
+        Returns the per unit scaling factor on the reactive power for the generators in the group.
+        NB. This will only work for generator scaling groups.
+
+        :return: The per unit scaling factor for the generator reactive power.
+        :rtype: float
+        """
+        pass
+
+    def SetGeneratorScaling(self, fRealScale: float, fReactiveScale: float) -> bool:
+        """
+        Sets the per unit scaling factors for the active and reactive parts of the generators in the group.
+        NB. This will only work for generator scaling groups.
+
+        :param fRealScale: The new per unit scaling factor for the generator active power.
+        :type fRealScale: float
+        :param fReactiveScale: The new per unit scaling factor for the generator reactive power.
+        :type fReactiveScale: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetFeederScalingActive(self) -> bool:
+        """
+        Returns whether the group feeder active and reactive scaling is in use.
+        NB. This will only work for feeder groups.
+
+        :return: True if the group feeder scaling is active.
+        :rtype: bool
+        """
+        pass
+
+    def SetFeederScalingActive(self, bUseFeederScaling) -> bool:
+        """
+        Sets whether the group feeder active and reactive scaling is in use.
+        NB. This will only work for feeder groups.
+
+        :param bUseFeederScaling: If True the feeder scaling will be made active.
+        :type bUseFeederScaling: bool
+        :return: True if successful
+        :rtype: bool
+        """
+        pass
+
+    def GetFeederScalingReal(self) -> float:
+        """
+        Returns the per unit scaling factor on the active power for the feeder group.
+        NB. This will only work for feeder groups.
+
+        :return: The per unit scaling factor for the active power.
+        :rtype: float
+        """
+        pass
+
+    def GetFeederScalingReactive(self) -> float:
+        """
+        Returns the per unit scaling factor on the reactive power for the feeder group.
+        NB. This will only work for feeder groups.
+
+        :return: The per unit scaling factor for the reactive power.
+        :rtype: float
+        """
+        pass
+
+    def SetFeederScaling(self, fRealScale: float, fReactiveScale: float) -> bool:
+        """
+        Sets the per unit scaling factors for the active and reactive parts for the feeder group.
+        NB. This will only work for feeder groups.
+
+        :param fRealScale: The new per unit scaling factor for the active power.
+        :type fRealScale: float
+        :param fReactiveScale: The new per unit scaling factor for the reactive power.
+        :type fReactiveScale: float
         :return: True if successful.
         :rtype: bool
         """
@@ -18257,6 +18452,89 @@ class IscNetwork:
         """
         pass
 
+    def RunFeederTrace(self) -> bool:
+        """
+        Performs the feeder trace analysis on the network.
+
+        :return: True if Successful. NB. This will fail if there are no in-service feeder CBs in the network.
+        :rtype: bool
+        """
+        pass
+
+    def ClearExistingFeederGroups(self) -> bool:
+        """
+        Removes all extant feeder groups from the network.
+
+        :return: True if there were feeder groups and they have all been removed.
+        :rtype: bool
+        """
+        pass
+
+    def GetFeederGroupUIDs(self) -> List[int]:
+        """
+        Returns the UIDs of all the feeder groups in the network.
+
+        :return: The list of feeder group UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetFeederBreakersInService(self) -> List[int]:
+        """
+        Returns the UIDs of all the in-service feeder breakers in the network.
+        That is, the feeder breakers that will be used as the starting points for the feeder trace in RunFeederTrace.
+
+        :return: The list of in-service feeder breaker UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def HasAllFeederBreakersInService(self) -> bool:
+        """
+        Returns whether all the feeder breakers in the network are currently switched in.
+
+        :return: True if all the feeder breakers are in-service.
+        :rtype: bool        
+        """
+        pass
+
+    @overload
+    def GetFeederCustomerCalculation(self, nGroupUID: int) -> int:
+        """
+        Returns the customer calculation result for the feeder group specified by nGroupUID.
+
+        :param nGroupUID: The UID for the specified feeder group.
+        :type nGroupUID: int
+        :return: The customer calculation result.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def GetFeederCustomerCalculation(self, pGroup: IscGroup) -> int:
+        """
+        Returns the customer calculation result for the feeder group, pGroup.
+
+        :param pGroup: The feeder group IscGroup instance.
+        :type pGroup: IscGroup
+        :return: The customer calculation result.
+        :rtype: int
+        """
+        pass
+
+    def GetFeederCustomerCalculation(self, pGroup: IscGroup) -> int:
+        """
+        Returns the customer calculation result for the feeder group specified by nGroupUID.
+
+        :param nGroupUID: The UID for the specified feeder group.
+        :type nGroupUID: int
+        :param pGroup: The feeder group IscGroup instance.
+        :type pGroup: IscGroup
+        :return: The customer calculation result.
+        :rtype: int
+        """
+        pass
+
 class IscNetworkCapacity:
     """
     Class providing access to the Network Capacity functionality.
@@ -20476,6 +20754,21 @@ class IscTransformer:
 
         :return: The transformer capacity headroom as a percentage.
         :rtype: float
+        """
+        pass
+
+    def GetLineLoadingPC(self, nRatingIndex: int, bRatingMVA: bool) -> List[float]:
+        """
+        Returns the line loading result for the specified rating as a percentage for the from and to end of the transformer.
+        Note, this will return -1 if the specified ratings aren't set or can't be found.
+        The list returned will be empty if there are no load flow results found.
+
+        :param nRatingIndex: Specifies which rating set is used in the calculation.
+        :type nRatingIndex: int
+        :param bRatingMVA: If True, the MVA rating is used, if False the kA send and recieve ratings are used.
+        :type bRatingMVA: bool
+        :return: The line loading percentage for the from end and to end in order.
+        :rtype: list[float]
         """
         pass
 
@@ -22817,6 +23110,22 @@ class IscUnbalancedLine:
         """
         pass
 
+    def GetLineLoadingPC(self, nRatingIndex: int, bRatingMVA: bool) -> List[float]:
+        """
+        Returns the line loading result for the specified rating as a percentage for each phase for 
+        the from and to end of the unbalanced line.
+        Note, this will return -1 if the specified ratings aren't set or can't be found.
+        The list returned will be empty if there are no load flow results found.
+
+        :param nRatingIndex: Specifies which rating set is used in the calculation.
+        :type nRatingIndex: int
+        :param bRatingMVA: If True, the MVA rating is used, if False the kA send and recieve ratings are used.
+        :type bRatingMVA: bool
+        :return: The line loading percentage for the from end A, B and C phase and then to end A, B and C phase in order.
+        :rtype: list[float]
+        """
+        pass
+
 class IscUnbalancedLoad:
     """
     Provides access to the three phase unbalanced load components.
@@ -24308,6 +24617,22 @@ class IscUnbalancedTransformer:
 
         :return: The zero branch phase sequence receive end power in kVA.
         :rtype: float
+        """
+        pass
+
+    def GetLineLoadingPC(self, nRatingIndex: int, bRatingMVA: bool) -> List[float]:
+        """
+        Returns the line loading result for the specified rating as a percentage for each phase for 
+        the from and to end of the unbalanced transformer.
+        Note, this will return -1 if the specified ratings aren't set or can't be found. 
+        The list returned will be empty if there are no load flow results found.
+
+        :param nRatingIndex: Specifies which rating set is used in the calculation.
+        :type nRatingIndex: int
+        :param bRatingMVA: If True, the MVA rating is used, if False the kA send and recieve ratings are used.
+        :type bRatingMVA: bool
+        :return: The line loading percentage for the from end A, B and C phase and then to end A, B and C phase in order.
+        :rtype: list[float]
         """
         pass
 
