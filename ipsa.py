@@ -400,6 +400,138 @@ class Isc3WTransformer:
         """
         pass
 
+    def GetFaultRedMagnitudekA(self, nWinding: int) -> float:
+        """
+        Returns the red phase fault level component in kA for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The red phase fault level component in kA for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowComponentkA(self, nWinding: int) -> float:
+        """
+        Returns the yellow phase fault level component in kA for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The yellow phase fault level component in kA for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueComponentkA(self, nWinding: int) -> float:
+        """
+        Returns the blue phase fault level component in kA for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The blue phase fault level component in kA for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveComponenkA(self, nWinding: int) -> float:
+        """
+        Returns the positive sequence fault level component in kA for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The positive sequence fault level component in kA for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeComponentkA(self, nWinding: int) -> float:
+        """
+        Returns the negative sequence fault level component in kA for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The negative sequence fault level component in kA for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroComponentkA(self, nWinding: int) -> float:
+        """
+        Returns the zero sequence fault level component in kA for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The zero sequence fault level component in kA for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultRedAngleDeg(self, nWinding: int) -> float:
+        """
+        Returns the red phase fault level angle in degrees for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The red phase fault level angle in degrees for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowAngleDeg(self, nWinding: int) -> float:
+        """
+        Returns the yellow phase fault level angle in degrees for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The yellow phase fault level angle in degrees for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueAngleDeg(self, nWinding: int) -> float:
+        """
+        Returns the blue phase fault level angle in degrees for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The blue phase fault level angle in degrees for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveAngleDeg(self, nWinding: int) -> float:
+        """
+        Returns the positive sequence fault level angle in degrees for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The positive sequence fault level angle in degrees for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeAngleDeg(self, nWinding: int) -> float:
+        """
+        Returns the negative sequence fault level angle in degrees for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The negative sequence fault level angle in degrees for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroAngleDeg(self, nWinding: int) -> float:
+        """
+        Returns the zero sequence fault level angle in degrees for the specified winding of the 3-winding transformer.
+
+        :param nWinding: The winding number.
+        :type nWinding: int
+        :return: The zero sequence fault level angle in degrees for the specified winding of the 3-winding transformer.
+        :rtype: float
+        """
+        pass
+
     def GetCurrentMagnitude(self, nWinding: int, dOrder: float) -> float:
         """
         Returns the current magnitude for the specified winding in per unit on the network base for the harmonic order.
@@ -3373,7 +3505,7 @@ class IscBusbar:
         """
         Returns the inductive/capacitive component of the DC X/R ratio.
 
-        :return: The inductive/capacitive component of the DC X/R ratio.
+        :return: The inductive/capacitive component of the DC X/R ratio in per unit.
         :rtype: float
         """
         pass
@@ -3382,7 +3514,16 @@ class IscBusbar:
         """
         Returns the resistive component of the DC X/R ratio.
 
-        :return: The resistive component of the DC X/R ratio.
+        :return: The resistive component of the DC X/R ratio in per unit.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultDCXoverR(self) -> float:
+        """
+        Returns the DC thevenin X/R ratio.
+
+        :return: The DC X/R ratio.
         :rtype: float
         """
         pass
@@ -6920,6 +7061,42 @@ class IscGridInfeed:
         """
         pass
 
+    def GetFaultACMagnitudekA(self) -> float:
+        """
+        Returns the AC Magnitude of fault level in kA.
+
+        :return: The AC Magnitude of fault level in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultDCMagnitudekA(self) -> float:
+        """
+        Returns the DC Magnitude of fault level in kA.
+
+        :return: The DC Magnitude of fault level in kA.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultDCPC(self) -> float:
+        """
+        Returns the fault level DC percentage.
+
+        :return: The fault level DC percentage.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultSecondHarmonickA(self) -> float:
+        """
+        Returns the second harmonic of the fault level in kA.
+
+        :return: The second harmonic of the fault level in kA.
+        :rtype: float
+        """
+        pass
+
     def GetFaultRedComponentMVA(self) -> float:
         """
         Returns the red phase component of fault level in MVA.
@@ -6970,6 +7147,114 @@ class IscGridInfeed:
         Returns the zero sequence component of fault level in MVA.
 
         :return: The zero sequence component of fault level in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultRedMagnitudekA(self) -> float:
+        """
+        Returns the red phase fault level component in kA.
+
+        :return: The red phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowComponentkA(self) -> float:
+        """
+        Returns the yellow phase fault level component in kA.
+
+        :return: The yellow phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueComponentkA(self) -> float:
+        """
+        Returns the blue phase fault level component in kA.
+
+        :return: The blue phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveComponenkA(self) -> float:
+        """
+        Returns the positive sequence fault level component in kA.
+
+        :return: The positive sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeComponentkA(self) -> float:
+        """
+        Returns the negative sequence fault level component in kA.
+
+        :return: The negative sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroComponentkA(self) -> float:
+        """
+        Returns the zero sequence fault level component in kA.
+
+        :return: The zero sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultRedAngleDeg(self) -> float:
+        """
+        Returns the red phase fault level angle in degrees.
+
+        :return: The red phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowAngleDeg(self) -> float:
+        """
+        Returns the yellow phase fault level angle in degrees.
+
+        :return: The yellow phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueAngleDeg(self) -> float:
+        """
+        Returns the blue phase fault level angle in degrees.
+
+        :return: The blue phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveAngleDeg(self) -> float:
+        """
+        Returns the positive sequence fault level angle in degrees.
+
+        :return: The positive sequence fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeAngleDeg(self) -> float:
+        """
+        Returns the negative sequence fault level angle in degrees.
+
+        :return: The negative sequence fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroAngleDeg(self) -> float:
+        """
+        Returns the zero sequence fault level angle in degrees.
+
+        :return: The zero sequence fault level angle in degrees.
         :rtype: float
         """
         pass
@@ -8327,6 +8612,33 @@ class IscIndMachine:
         """
         pass
 
+    def GetFaultACMagnitudekA(self) -> float:
+        """
+        Returns the AC Magnitude of fault level in kA.
+
+        :return: The AC Magnitude of fault level in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultDCMagnitudekA(self) -> float:
+        """
+        Returns the DC Magnitude of fault level in kA.
+
+        :return: The DC Magnitude of fault level in kA.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultDCPC(self) -> float:
+        """
+        Returns the fault level DC percentage.
+
+        :return: The fault level DC percentage.
+        :rtype: float
+        """
+        pass
+
     def GetFaultRedComponentMVA(self) -> float:
         """
         Returns the red phase component of fault level in MVA.
@@ -8381,6 +8693,114 @@ class IscIndMachine:
         """
         pass
 
+    def GetFaultRedMagnitudekA(self) -> float:
+        """
+        Returns the red phase fault level component in kA.
+
+        :return: The red phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowComponentkA(self) -> float:
+        """
+        Returns the yellow phase fault level component in kA.
+
+        :return: The yellow phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueComponentkA(self) -> float:
+        """
+        Returns the blue phase fault level component in kA.
+
+        :return: The blue phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveComponenkA(self) -> float:
+        """
+        Returns the positive sequence fault level component in kA.
+
+        :return: The positive sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeComponentkA(self) -> float:
+        """
+        Returns the negative sequence fault level component in kA.
+
+        :return: The negative sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroComponentkA(self) -> float:
+        """
+        Returns the zero sequence fault level component in kA.
+
+        :return: The zero sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultRedAngleDeg(self) -> float:
+        """
+        Returns the red phase fault level angle in degrees.
+
+        :return: The red phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowAngleDeg(self) -> float:
+        """
+        Returns the yellow phase fault level angle in degrees.
+
+        :return: The yellow phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueAngleDeg(self) -> float:
+        """
+        Returns the blue phase fault level angle in degrees.
+
+        :return: The blue phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveAngleDeg(self) -> float:
+        """
+        Returns the positive sequence fault level angle in degrees.
+
+        :return: The positive sequence fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeAngleDeg(self) -> float:
+        """
+        Returns the negative sequence fault level angle in degrees.
+
+        :return: The negative sequence fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroAngleDeg(self) -> float:
+        """
+        Returns the zero sequence fault level angle in degrees.
+
+        :return: The zero sequence fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+    
     def GetCurrentMagnitude(self, dOrder: float) -> float:
         """
         Returns the current magnitude in per unit on the network base for the harmonic order.
@@ -20122,6 +20542,42 @@ class IscSynMachine:
         """
         pass
 
+    def GetFaultACMagnitudekA(self) -> float:
+        """
+        Returns the AC Magnitude of fault level in kA.
+
+        :return: The AC Magnitude of fault level in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultDCMagnitudekA(self) -> float:
+        """
+        Returns the DC Magnitude of fault level in kA.
+
+        :return: The DC Magnitude of fault level in kA.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultDCPC(self) -> float:
+        """
+        Returns the fault level DC percentage.
+
+        :return: The fault level DC percentage.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultSecondHarmonickA(self) -> float:
+        """
+        Returns the second harmonic of the fault level in kA.
+
+        :return: The second harmonic of the fault level in kA.
+        :rtype: float
+        """
+        pass
+
     def GetFaultRedComponentMVA(self) -> float:
         """
         Returns the red phase component of fault level in MVA.
@@ -20172,6 +20628,114 @@ class IscSynMachine:
         Returns the zero sequence component of fault level in MVA.
 
         :return: The zero sequence component of fault level in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultRedMagnitudekA(self) -> float:
+        """
+        Returns the red phase fault level component in kA.
+
+        :return: The red phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowComponentkA(self) -> float:
+        """
+        Returns the yellow phase fault level component in kA.
+
+        :return: The yellow phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueComponentkA(self) -> float:
+        """
+        Returns the blue phase fault level component in kA.
+
+        :return: The blue phase fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveComponenkA(self) -> float:
+        """
+        Returns the positive sequence fault level component in kA.
+
+        :return: The positive sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeComponentkA(self) -> float:
+        """
+        Returns the negative sequence fault level component in kA.
+
+        :return: The negative sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroComponentkA(self) -> float:
+        """
+        Returns the zero sequence fault level component in kA.
+
+        :return: The zero sequence fault level component in kA.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultRedAngleDeg(self) -> float:
+        """
+        Returns the red phase fault level angle in degrees.
+
+        :return: The red phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+    
+    def GetFaultYellowAngleDeg(self) -> float:
+        """
+        Returns the yellow phase fault level angle in degrees.
+
+        :return: The yellow phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultBlueAngleDeg(self) -> float:
+        """
+        Returns the blue phase fault level angle in degrees.
+
+        :return: The blue phase fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultPositiveAngleDeg(self) -> float:
+        """
+        Returns the positive sequence fault level angle in degrees.
+
+        :return: The positive sequence fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultNegativeAngleDeg(self) -> float:
+        """
+        Returns the negative sequence fault level angle in degrees.
+
+        :return: The negative sequence fault level angle in degrees.
+        :rtype: float
+        """
+        pass
+
+    def GetFaultZeroAngleDeg(self) -> float:
+        """
+        Returns the zero sequence fault level angle in degrees.
+
+        :return: The zero sequence fault level angle in degrees.
         :rtype: float
         """
         pass
