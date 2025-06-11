@@ -6086,6 +6086,259 @@ class IscDiagram:
         """
         pass
 
+    def DrawLoadNormal(self, nUID: int, X: float, dY: float) -> bool:
+        """
+        Draws the load object (nUID) with the normal smaller icon at the location dX,dY and connected to its busbar.
+
+        Note this function will return false if the provided UID is not a load or is already drawn.
+
+        :param nUID: The load UID.
+        :type nUID: int
+        :param dX: The x coordinate of the load symbol.
+        :type dX: float
+        :param dY: The y coordinate of the load symbol.
+        :type dY: float
+        :return: The function returns True if the load was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawLoadLarge(self, nUID: int, X: float, dY: float) -> bool:
+        """
+        Draws the load object (nUID) with the large icon at the location dX,dY and connected to its busbar.
+
+        Note this function will return false if the provided UID is not a load or is already drawn.
+
+        :param nUID: The load UID.
+        :type nUID: int
+        :param dX: The x coordinate of the load symbol.
+        :type dX: float
+        :param dY: The y coordinate of the load symbol.
+        :type dY: float
+        :return: The function returns True if the load was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBranchLine(self, nUID: int) -> bool:
+        """
+        Draws the branch object (nUID) in the plain line style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a branch or is already drawn.
+
+        :param nUID: The branch UID.
+        :type nUID: int
+        :return: The function returns True if the branch was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBranchCapacitor(self, nUID: int) -> bool:
+        """
+        Draws the branch object (nUID) in the capacitor style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a branch or is already drawn.
+
+        :param nUID: The branch UID.
+        :type nUID: int
+        :return: The function returns True if the branch was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBranchInductor(self, nUID: int) -> bool:
+        """
+        Draws the branch object (nUID) in the inductor style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a branch or is already drawn.
+
+        :param nUID: The branch UID.
+        :type nUID: int
+        :return: The function returns True if the branch was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBranchResistor(self, nUID: int) -> bool:
+        """
+        Draws the branch object (nUID) in the resistor style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a branch or is already drawn.
+
+        :param nUID: The branch UID.
+        :type nUID: int
+        :return: The function returns True if the branch was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBranchRectangle(self, nUID: int) -> bool:
+        """
+        Draws the branch object (nUID) in the rectangle style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a branch or is already drawn.
+
+        :param nUID: The branch UID.
+        :type nUID: int
+        :return: The function returns True if the branch was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawTransformerCircles(self, nUID: int) -> bool:
+        """
+        Draws the transformer object (nUID) in the tapped circles style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a transformer or is already drawn.
+
+        :param nUID: The transformer UID.
+        :type nUID: int
+        :return: The function returns True if the transformer was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawTransformerAuto(self, nUID: int) -> bool:
+        """
+        Draws the transformer object (nUID) in the autotransformer style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a transformer or is already drawn.
+
+        :param nUID: The transformer UID.
+        :type nUID: int
+        :return: The function returns True if the transformer was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawTransformerUS(self, nUID: int) -> bool:
+        """
+        Draws the transformer object (nUID) in the US style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a transformer or is already drawn.
+
+        :param nUID: The transformer UID.
+        :type nUID: int
+        :return: The function returns True if the transformer was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawTransformerUSAlt(self, nUID: int) -> bool:
+        """
+        Draws the transformer object (nUID) in the US alternate style as a straight line between its busbars.
+
+        Note this function will return false if the provided UID is not a transformer or is already drawn.
+
+        :param nUID: The transformer UID.
+        :type nUID: int
+        :return: The function returns True if the transformer was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBreakerSquare(self, nUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the breaker object (nUID) in the square style on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not a breaker or is already drawn.
+
+        :param nUID: The breaker UID.
+        :type nUID: int
+        :param dX: The x coordinate of the breaker symbol.
+        :type dX: float
+        :param dY: The y coordinate of the breaker symbol.
+        :type dY: float
+        :return: The function returns True if the breaker was drawn
+        :rtype: bool
+        """
+        pass
+
+    def DrawBreakerT(self, nUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the breaker object (nUID) in the T style on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not a breaker or is already drawn.
+
+        :param nUID: The breaker UID.
+        :type nUID: int
+        :param dX: The x coordinate of the breaker symbol.
+        :type dX: float
+        :param dY: The y coordinate of the breaker symbol.
+        :type dY: float
+        :return: The function returns True if the breaker was drawn
+        :rtype: bool
+        """
+        pass
+    
+    def DrawBreakerCross(self, nUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the breaker object (nUID) in the cross style on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not a breaker or is already drawn.
+
+        :param nUID: The breaker UID.
+        :type nUID: int
+        :param dX: The x coordinate of the breaker symbol.
+        :type dX: float
+        :param dY: The y coordinate of the breaker symbol.
+        :type dY: float
+        :return: The function returns True if the breaker was drawn
+        :rtype: bool
+        """
+        pass
+    
+    def DrawBreakerEnclosed(self, nUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the breaker object (nUID) in the enclosed style on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not a breaker or is already drawn.
+
+        :param nUID: The breaker UID.
+        :type nUID: int
+        :param dX: The x coordinate of the breaker symbol.
+        :type dX: float
+        :param dY: The y coordinate of the breaker symbol.
+        :type dY: float
+        :return: The function returns True if the breaker was drawn
+        :rtype: bool
+        """
+        pass
+    
+    def DrawBreakerLarge(self, nUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the breaker object (nUID) in the large switch style on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not a breaker or is already drawn.
+
+        :param nUID: The breaker UID.
+        :type nUID: int
+        :param dX: The x coordinate of the breaker symbol.
+        :type dX: float
+        :param dY: The y coordinate of the breaker symbol.
+        :type dY: float
+        :return: The function returns True if the breaker was drawn
+        :rtype: bool
+        """
+        pass
+    
+    def DrawBreakerPlus(self, nUID: int, dX: float, dY: float) -> bool:
+        """
+        Draws the breaker object (nUID) in the plus style on its branch at the nearest point to the location dx,dY.
+
+        Note this function will return false if the provided UID is not a breaker or is already drawn.
+
+        :param nUID: The breaker UID.
+        :type nUID: int
+        :param dX: The x coordinate of the breaker symbol.
+        :type dX: float
+        :param dY: The y coordinate of the breaker symbol.
+        :type dY: float
+        :return: The function returns True if the breaker was drawn
+        :rtype: bool
+        """
+        pass
+
     def DeleteItem(self, nUID: int) -> bool:
         """
         Deletes the graphic item identified by the UID. This may be a line, radial component or busbar.
@@ -8800,7 +9053,7 @@ class IscIndMachine:
         :rtype: float
         """
         pass
-    
+
     def GetCurrentMagnitude(self, dOrder: float) -> float:
         """
         Returns the current magnitude in per unit on the network base for the harmonic order.
