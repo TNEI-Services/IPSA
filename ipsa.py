@@ -5858,8 +5858,10 @@ class IscDiagram:
     def AddPointToLine(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
         """
         Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
-        the knee point has been added to. This can be disabled by setting bRefreshLine to False. The kneepoint will be 
-        added nearest to the line centrepoint on the from or to end.
+        the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
+        
+        The kneepoint will be added on the side of the branch specified by bFromEnd as the new nearest kneepoint 
+        to the centre of the branch.
 
         *Deprecated in IPSA 2.10.3 instead use AddKneepoint*
 
@@ -5869,8 +5871,7 @@ class IscDiagram:
         :type dX: float
         :param dY: The knee point y coordinate.
         :type dY: float
-        :param bFromEnd: If True then the knee point is added to the last segment, i.e. furthest from the From end.
-            If False then the knee point is added to the first segment.
+        :param bFromEnd: If True then the knee point is added on the from end if False it is added on the to end.
         :type bFromEnd: float
         :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
         :type bRefreshLine: bool
@@ -5882,8 +5883,10 @@ class IscDiagram:
     def AddKneepoint(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
         """
         Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
-        the knee point has been added to. This can be disabled by setting bRefreshLine to False. The kneepoint will be 
-        added nearest to the line centrepoint on the from or to end.
+        the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
+        
+        The kneepoint will be added on the side of the branch specified by bFromEnd as the new nearest kneepoint 
+        to the centre of the branch.
 
         :param nLineUID: The line UID.
         :type nLineUID: int
@@ -5891,8 +5894,7 @@ class IscDiagram:
         :type dX: float
         :param dY: The knee point y coordinate.
         :type dY: float
-        :param bFromEnd: If True then the knee point is added to the last segment, i.e. furthest from the From end.
-            If False then the knee point is added to the first segment.
+        :param bFromEnd: If True then the knee point is added on the from end if False it is added on the to end.
         :type bFromEnd: float
         :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
         :type bRefreshLine: bool
@@ -5908,6 +5910,8 @@ class IscDiagram:
         the line the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
         The kneepoints will be added in order of from end to to end.
 
+        All the kneepoints will be added to the _same side_ of the line as specified by bFromEnd.
+
         If listX and listY are not of the same length, no kneepoints will be added.
 
         :param nLineUID: The line UID.
@@ -5916,8 +5920,7 @@ class IscDiagram:
         :type listX: list(float)
         :param listY: A corresponding list of y coordinates for each knee point to be added.
         :type listY: list(float)
-        :param bFromEnd: If True then the knee point is added to the last segment, i.e. furthest from the From end.
-            If False then the knee point is added to the first segment.
+        :param bFromEnd: If True then the knee points are added on the from end if False they are added on the to end.
         :type bFromEnd: float
         :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
         :type bRefreshLine: bool
@@ -6807,6 +6810,7 @@ class IscDiagram:
     def GetGeographicTileUrl(self) -> str:
         """
         Gets the URL of the server from which the geographic map tiles are being requested.
+        This function will return an empty string if the diagram does not have a tiled geographic map.
 
         :return: The URL of the server the map tiles are requested from.
         :rtype: str
@@ -6816,6 +6820,9 @@ class IscDiagram:
     def SetGeographicTileUrl(self, strUrl: str) -> bool:
         """
         Sets the URL of the server from which the geographic map tiles should be requested.
+        Note that the user may need to set an associated geographic tile API key after setting the URL.
+
+        This function will return False if the diagram does not have a tiled geographic map.
 
         :param strUrl: The URL of the server the map tiles should be requested from.
         :type strUrl: str
@@ -6849,6 +6856,8 @@ class IscDiagram:
 
         Otherwise, if bUseKey is True and strKey is provided, strKey will be used as a user provided API key 
         for the geographic map tile server requests.
+        
+        This function will return False if the diagram does not have a tiled geographic map.
 
         :param bUseKey: True if an API key should be used in the map tile requests.
         :type bUseKey: bool
@@ -6862,6 +6871,8 @@ class IscDiagram:
     def ClearUserGeographicTileApiKey(self) -> bool:
         """
         Sets the user defined API key to be used in conjunction with the geographic map tile server requests to an empty string.
+        
+        This function will return False if the diagram does not have a tiled geographic map.
 
         :return: True if the user defined API key is successfully cleared.
         :rtype: bool
@@ -6876,6 +6887,8 @@ class IscDiagram:
             - 1 = Toner
             - 2 = Terrain
             - 3 = Watercolor
+        
+        This function will return False if the diagram does not have a tiled geographic map.
 
         :param nTileType: The enumeration indicating which default IPSA tile type should be used.
         :type nTileType: int
@@ -6887,6 +6900,8 @@ class IscDiagram:
     def GetLastGeographicTileRequestInfo(self) -> str:
         """
         Returns the most recent geographic map tile request message or warning.
+        
+        This function will return an empty string if the diagram does not have a tiled geographic map.
 
         :return: The most recent geographic map tile requst information.
         :rtype: str
