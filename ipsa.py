@@ -4410,22 +4410,25 @@ class IscBoundary:
         """
         pass
 
-    def IsBoundaryModeActivated(self) -> bool:
+    def IsDirectionsActivated(self) -> bool:
         """
-        Returns whether the boundary direction mode is activated. This will be true when using the 
-        direction method and false when using the reduced area method.
+        Returns whether the boundary direction mode is activated. This will be True when using the 
+        direction method and False when using the reduced area method.
 
         :return: True if using directions method, False if using reduced area method.
         :rtype: bool
         """
         pass
 
-    def GetBoundaryBusbars(self) -> list[int]:
+    def SetDirectionsActivated(self, bDirections: bool) -> bool:
         """
-        Returns the list of boundary busbars.
+        Sets whether the boundary direction mode is activated. bDirections should be true to use the 
+        direction method and False to use the reduced area method.
 
-        :return: The list of boundary busbar UIDs.
-        :rtype: list[int]
+        :param bDirections: True to use the directions method, False to use the reduced area method.
+        :type bDirections: bool
+        :return: True if successful.
+        :rtype: bool
         """
         pass
 
@@ -4438,21 +4441,198 @@ class IscBoundary:
         """
         pass
 
-    def SetBoundaryBusbars(self, lBusbars: list[int]):
+    def GetBoundaryBusbars(self) -> list[int]:
         """
-        Sets the boundary busbars to be the list provided.
+        Returns the list of boundary busbars.
 
-        :param lBusbars: The busbar UIDs to set as boundaries
-        :type lBusbars: list[int]
+        :return: The list of boundary busbar UIDs.
+        :rtype: list[int]
         """
         pass
 
-    def SetReducedBusbars(self, lBusbars: list[int]):
+    def GetBoundaryBranchDirections(self) -> dict[int, int]:
         """
-        Sets the reduced busbars to be the list provided.
+        Returns a dict of the boundary branch UIDs and their associated directions.
+        The directions will be one of:
 
-        :param lBusbars: The busbar UIDs to set as boundaries
-        :type lBusbars: list[int]
+            - 0 = ipsa.IscBoundary.BoundaryIn : The branch is in the intact direction
+            - 1 = ipsa.IscBoundary.BoundaryOut : The branch is in the reduced direction
+
+        :return: A dict of the boundary branch UIDs to their boundary directions.
+        :rtype: dict[int, int]
+        """
+        pass
+
+    def SetReducedBusbars(self, lBusbarUIDs: list[int]) -> bool:
+        """
+        Sets the reduced busbars to be the list provided. 
+        This will fail if the boundary is not in reduced area mode.
+
+        :param lBusbarUIDs: The busbar UIDs to set as boundaries
+        :type lBusbarUIDs: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBoundaryBusbars(self, lBusbarUIDs: list[int], bForceReloadBranches: bool = False) -> bool:
+        """
+        Sets the boundary busbars to be the list provided.
+        This will fail if the boundary is not in directions mode. 
+        
+        If the network topology has changed but the list of boundary busbars has not changed, setting 
+        bForceReloadBranches to True will ensure that the boundary branches are consistent with the current topology. 
+
+        :param lBusbarUIDs: The busbar UIDs to set as boundaries
+        :type lBusbarUIDs: list[int]
+        :param bForceReloadBranches: An optional bool to force the boundary to reevaluate the potential boundary branches even 
+            when the list of boundary busbars is unchanged.
+        :type bForceReloadBranches: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass    
+
+    def SetBoundaryBranchDirections(self, mBranchDirections: dict[int, int]) -> bool:
+        """
+        Set the boundary branch directions from a dict of the boundary branch UIDs and their associated directions.
+        This will fail if the boundary is not in directions mode, or if any keys are not recognised boundary branches.
+
+        The directions must be one of:
+
+            - 0 = ipsa.IscBoundary.BoundaryIn : The branch is in the intact direction
+            - 1 = ipsa.IscBoundary.BoundaryOut : The branch is in the reduced direction
+
+        :param mBranchDirections: A dict of the boundary branch UIDs to their boundary directions.
+        :type mBranchDirections: dict[int, int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBoundaryBranchDirection(self, nBranchUID: int, nDirection: int) -> bool:
+        """
+        Set the boundary branch direction to nDirection for a specific branch specified by nBranchUID.
+        This will fail if the boundary is not in directions mode, or if the branch is not a recognised boundary branch.
+
+        The direction, nDirection, must be one of:
+
+            - 0 = ipsa.IscBoundary.BoundaryIn : The branch is in the intact direction
+            - 1 = ipsa.IscBoundary.BoundaryOut : The branch is in the reduced direction
+
+        :param nBranchUID: The UID of the specified boundary branch.
+        :type nBranchUID: int
+        :param nDirection: The direction that the branch should have.
+        :type nDirection: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a float value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The float value for the field.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The string value for the field.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The boolean value for the field.
+        :rtype: bool
+        """
+        pass
+
+    def GetListIValue(self, nFieldIndex: int) -> List[int]:
+        """
+        Returns a list of integer values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[int]
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the integer value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param nValue: The integer value that will be set.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the float value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param dValue: The float value that will be set.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Sets the string value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param strValue: The string value that will be set.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets the boolean value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param bValue: The boolean value that will be set.
+        :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
         """
         pass
 
