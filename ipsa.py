@@ -5903,14 +5903,14 @@ class IscDiagram:
         """
         pass
 
-    def AddKneepoints(self, nLineUID: int, listX: List[float], listY: List[float], bFromEnd: bool,
+    def AddKneepoints(self, nLineUID: int, listX: List[float], listY: List[float], bFromEnd: bool, 
                       bRefreshLine: bool) -> bool:
         """
         Adds multiple knee points to the line identified by the unique ID. By default, this function will fully redraw
         the line the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
         The kneepoints will be added in order of from end to to end.
 
-        All the kneepoints will be added to the _same side_ of the line as specified by bFromEnd.
+        All the kneepoints will be added to the *same side* of the line as specified by bFromEnd.
 
         If listX and listY are not of the same length, no kneepoints will be added.
 
