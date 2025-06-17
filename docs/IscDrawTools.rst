@@ -1,7 +1,7 @@
 IscDrawTools
 ================
 
-The IscDrawTools class provides access to settings used when running the PolyDraw or TreeDraw algorithms.
+The ``IscDrawTools`` class provides access to settings used when running the PolyDraw or TreeDraw algorithms.
 
 Field Values
 -------------
@@ -29,7 +29,7 @@ Field Values
         - 1 = Vertical
         - 2 = Junction
         - 3 = Circular
-        - 4 = Haxagonal
+        - 4 = Hexagonal
    * - Integer
      - PolyDrawBusbarSize
      - The size of drawn busbars in the PolyDraw algorithm.
@@ -59,7 +59,7 @@ Field Values
         - 1 = Vertical
         - 2 = Junction
         - 3 = Circular
-        - 4 = Haxagonal
+        - 4 = Hexagonal
    * - Integer
      - TreeDrawBusbarSize
      - The size of drawn busbars in the TreeDraw algorithm.
