@@ -108,7 +108,7 @@ Field Values
      - If True, all other inlines on drawn branch items will be drawn by both algorithms, otherwise they will be ignored.
 	
 IscDrawTools Class
------------------
+---------------------
 
 .. autoclass:: ipsa.IscDrawTools
    :members:

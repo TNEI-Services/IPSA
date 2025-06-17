@@ -73,3 +73,5 @@ The following actions are possible:
    IscAnnotation
    IscProtectionDevice
    IscNetworkCapacity
+   IscDrawTools
+   IscBoundary
