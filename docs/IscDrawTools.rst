@@ -1,5 +1,5 @@
 IscDrawTools
-==============
+================
 
 The IscDrawTools class provides access to settings used when running the PolyDraw or TreeDraw algorithms.
 
