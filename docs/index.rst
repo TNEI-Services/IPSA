@@ -35,6 +35,7 @@ The following actions are possible:
    :caption: Contents
    :hidden:
 
+   Key Features - IPSA 3 Series
    Key Features - IPSA 2.10 Series
    IPSA and Python
    Coding Requirements
