@@ -34,9 +34,9 @@ class IscNetwork:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group UID as a new Ipsa i2f network file.
+        Saves the area group UID as a new Ipsa i3f network file.
         The file is saved in the current working directory.
-        The file name should include the .i2f extension.
+        The file name should include the .i3f extension.
 
         :param nAreaUID: The area group UID. nAreaUID can be obtained using the IscGroup functions.
         :type strName: int
@@ -60,7 +60,7 @@ class IscNetwork:
 
     def ValidatedMergeFile(self, strMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the Ipsa I2F file can be merged into the current network.
+        Performs a consistency check to determine if the Ipsa i3f/i2f file can be merged into the current network.
         Use the GetFilingErrors() function to get details of the merge errors.
 
         :param strMergeName: The merged file name.

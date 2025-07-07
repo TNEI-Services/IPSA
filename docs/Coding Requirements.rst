@@ -7,14 +7,14 @@ Importing IPSA
 
 All IPSA scripts should import the IPSA interface (``IscInterface``) using the import command near the start of the script.
 
-Starting from IPSA 2.3.2 there are two ways of launching IPSA 2, either from within IPSA 2 itself or from a separate Python process. The following code demonstrates how scripts should be written when launched from within IPSA 2. Refer to section 2.2.2 for details of running IPSA 2 from a separate Python process.
+There are two ways of launching IPSA 3, either from within IPSA 3 itself or from a separate Python process.
 
 ::
 
     # Initialise Scripting interface into IPSA+
     import ipsa
     # Get IPSA scripting instance
-    ipsascript = ipsa.GetScriptInterface()
+    ipsascript = ipsa.GetInterface()
 
     print("Welcome to IPSA")
 
@@ -23,7 +23,7 @@ It is important to ensure that there is only one ``import ipsa`` statement in th
 IPSA unique identifiers and names
 ==================================
 
-IPSA assigns all components and graphical objects a unique integer number called a UID, which is used for referencing the individual component. These UIDs can be seen in the IPSA i2f files and can also be used by scripts. Component classes include functions to obtain the UID and to perform operations, such as filtering results, using them.
+IPSA assigns all components and graphical objects a unique integer number called a UID, which is used for referencing the individual component. These UIDs can be seen in the IPSA i3f files and can also be used by scripts. Component classes include functions to obtain the UID and to perform operations, such as filtering results, using them.
 
 The component UIDs provide the best method of referring to individual components in a script. The UID of an individual component will never change during the execution of the script. Since it is an integer it is also passed efficiently between different functions in the script. The component UIDs are normally obtained from functions such as ``GetBusbarUID()``.
 
@@ -48,7 +48,7 @@ When IPSA encounters an error in a script a traceback message is usually produce
 ::
 
     [Nov 6 12 22:53:23] Traceback(most recent call last):
-    File "C:/Program Files/IpsaPower/Ipsa 2.2/scripts/PyTester.py", line 18, in <module>
+    File "C:/Program Files/IPSA Software/Ipsa 3.0/scripts/PyTester.py", line 18, in <module>
     gens = ipsa_network.GetIndMachines()
     AttributeError: 'NoneType' object has no attribute 'GetIndMachines'
 
@@ -57,13 +57,9 @@ This provides details of the line number and file name where the error was found
 Debugging with an IDE
 ----------------------
 
-IPSA 2 scripts can be debugged using an Integrated Development Environment such as Wing© available from `wingware.com`_. This allows developers to step through code line by line and examine variables as the script is run.
+IPSA 3 scripts can be debugged using an Integrated Development Environment. This allows developers to step through code line by line and examine variables as the script is run.
 
-.. _wingware.com : http://wingware.com/
-
-It is recommended that more complex scripts are developed using PyIPSA. This allows the users' script to be started from the IDE and code can then be stepped through as required.
-
-Once the code has been debugged it can then be quickly converted to run from normal IPSA by changing the original IscInterface loading function.
+It is recommended that more complex scripts are developed outside of IPSA 3 itself. This allows the users' script to be started from the IDE and code can then be stepped through as required.
 
 Coding Methods
 ===============
@@ -132,12 +128,12 @@ The sample code below provides some simple examples.
 
 ::
 
-    # Initialise Scripting interface into IPSA 2
+    # Initialise Scripting interface into IPSA 3
     import ipsa
-    ipsascript = ipsa.IscInterface()
+    ipsascript = ipsa.GetInterface()
 
     # load or create a new network
-    ipsascript.ReadFile('Refinery.i2f')
+    ipsascript.ReadFile('Refinery.i3f')
     # return an IscNetwork instance representing the new network
     ipsa_network = ipsascript.GetNetwork()
 
@@ -167,7 +163,7 @@ For clarity no error checking is included in this example. For robust code, it i
     import ipsa
 
     # create a new network
-    ipsascript = ipsa.IscInterface()
+    ipsascript = ipsa.GetInterface()
     ipsascript.CreateNewNetwork(100.0, 50.0, True, True, 1.0, 1)
 
     # return an IscNetwork instance representing the new network

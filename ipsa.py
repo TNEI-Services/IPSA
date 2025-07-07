@@ -3133,8 +3133,7 @@ class IscBusbar:
     def GetFaultDValue(self, nFaultFieldIndex: int) -> float:
         """
         Returns a float value for the circuit breaker field.
-        In IPSA 2.10.2, nFaultFieldIndex should be one of FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC,
-        FaultBreakTimemS or FaultNomCurrentkA.
+        nFaultFieldIndex should be one of FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC, FaultBreakTimemS or FaultNomCurrentkA.
         nFaultFieldIndex can also be one of the IscCircuitBreaker field indexes MakePeakkA, BreakRMSkA, BreakDCPC,
         BreakTimemS or NomCurrentkA.
         This function is used to get fault (breaker) ratings for a busbar.
@@ -3150,8 +3149,7 @@ class IscBusbar:
     def SetFaultDValue(self, nFaultFieldIndex: int) -> bool:
         """
         Sets the value for the circuit breaker field.
-        In IPSA 2.10.2, nFaultFieldIndex should be one of FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC,
-        FaultBreakTimemS or FaultNomCurrentkA.
+        nFaultFieldIndex should be one of FaultMakePeakkA, FaultBreakRMSkA, FaultBreakDCPC, FaultBreakTimemS or FaultNomCurrentkA.
         nFaultFieldIndex can also be one of the IscCircuitBreaker field indexes MakePeakkA, BreakRMSkA, BreakDCPC,
         BreakTimemS or NomCurrentkA.
         This function is used to set fault (breaker) ratings for a busbar.
@@ -9462,9 +9460,9 @@ class IscInterface:
     """
     def ReadFile(self, strName: str):
         """
-        Opens an IPSA i2f file strName and returns an IscNetwork instance for that file.
+        Opens an IPSA i3f/i2f file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The IPSA i2f file that is going to be opened.
+        :param strName: The IPSA i3f file that is going to be opened.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -9475,7 +9473,7 @@ class IscInterface:
         """
         Imports an IPSA 1 (\*.iif) file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The IPSA i2f file that is going to be imported.
+        :param strName: The IPSA file that is going to be imported.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -9584,7 +9582,7 @@ class IscInterface:
 
     def MergeFile(self, sMergeName: str) -> bool:
         """
-        Merges the IPSA I2F file sMergeName into the current network.
+        Merges the IPSA i3f/i2f file sMergeName into the current network.
 
         :param sMergeName: The name of the file being merged.
         :type sMergeName: str
@@ -9595,7 +9593,7 @@ class IscInterface:
 
     def ValidatedMergeFile(self, sMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the IPSA I2F file sMergeName can be merged into
+        Performs a consistency check to determine if the IPSA i3f/i2f file sMergeName can be merged into
         the current network. Use the GetFilingErrors() function to get details of the merge errors.
 
         :param sMergeName: The name of the file being merged.
@@ -9628,11 +9626,11 @@ class IscInterface:
 # Fixing gaps in documentation EL 11/2023
     def WriteFile(self, strName: str) -> bool:
         """
-        Saves the IscNetwork instance as a new IPSA i2f network file with the file name strName.
+        Saves the IscNetwork instance as a new IPSA i3f network file with the file name strName.
         The file is saved in the current working directory unless the path is defined in the file name.
-        The file name should include the .i2f extension
+        The file name should include the .i3f extension
 
-        :param strName: The name of the output file containing the i2f network.
+        :param strName: The name of the output file containing the i3f extension and path.
         :type strName: str
         :return: True if successful.
         :rtype: bool
@@ -9641,14 +9639,14 @@ class IscInterface:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group specified by the UID, nAreaUID, as a new IPSA i2f network file with the file name strName.
+        Saves the area group specified by the UID, nAreaUID, as a new IPSA i3f network file with the file name strName.
         The integer nAreaUID can be obtained using the IscGroup functions.
         The file is saved in the current working directory unless the path is defined in the file name.
-        The file name should include the .i2f extension
+        The file name should include the .i3f extension
 
         :param nAreaUID: The area group UID.
         :type nAreaUID: int
-        :param strName: The name of the output file containing the i2f network.
+        :param strName: The name of the output file containing the i3f extension and path.
         :type strName: str
         :return: True if successful.
         :rtype: bool
@@ -11759,13 +11757,13 @@ class IscNetwork:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group UID as a new IPSA i2f network file.
+        Saves the area group UID as a new IPSA i3f network file.
         The file is saved in the current working directory.
-        The file name should include the .i2f extension.
+        The file name should include the .i3f extension.
 
         :param nAreaUID: The area group UID. nAreaUID can be obtained using the IscGroup functions.
         :type strName: int
-        :param strName: The file name.
+        :param strName: The name of the output file containing the i3f extension and path.
         :type strName: str
         :return: Denoting whether the file is saved.
         :rtype: bool
@@ -11785,7 +11783,7 @@ class IscNetwork:
 
     def ValidatedMergeFile(self, strMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the IPSA I2F file can be merged into the current network.
+        Performs a consistency check to determine if the IPSA i3f/i2f file can be merged into the current network.
         Use the GetFilingErrors() function to get details of the merge errors.
 
         :param strMergeName: The merged file name.
@@ -11988,7 +11986,7 @@ class IscNetwork:
         Creates an IPSA difference file based on the network differences between the two provided scenarios.
         If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
 
-        Note, strFileName name should include both the path and the .i2f extension.
+        Note, strFileName name should include both the path and the .i3f extension.
 
         :param strFileName: The path of the new change file name.
         :type strFileName: str

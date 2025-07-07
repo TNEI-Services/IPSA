@@ -7,9 +7,9 @@ class IscInterface:
     """
     def ReadFile(self, strName: str):
         """
-        Opens an Ipsa i2f file strName and returns an IscNetwork instance for that file.
+        Opens an Ipsa i3f/i2f file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The Ipsa i2f file that is going to be opened.
+        :param strName: The Ipsa i3f file that is going to be opened.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -20,7 +20,7 @@ class IscInterface:
         """
         Imports an Ipsa 1 (\*.iif) file strName and returns an IscNetwork instance for that file.
 
-        :param strName: The Ipsa i2f file that is going to be imported.
+        :param strName: The Ipsa file that is going to be imported.
         :type strName: str
         :return: The IscNetwork instance for the strName file
         :rtype: IscNetwork
@@ -100,7 +100,7 @@ class IscInterface:
 
     def MergeFile(self, sMergeName: str) -> bool:
         """
-        Merges the Ipsa I2F file sMergeName into the current network.
+        Merges the Ipsa i3f/i2f file sMergeName into the current network.
 
         :param sMergeName: The name of the file being merged.
         :type sMergeName: str
@@ -111,7 +111,7 @@ class IscInterface:
 
     def ValidatedMergeFile(self, sMergeName: str) -> bool:
         """
-        Performs a consistency check to determine if the Ipsa I2F file sMergeName can be merged into
+        Performs a consistency check to determine if the Ipsa i3f/i2f file sMergeName can be merged into
         the current network. Use the GetFilingErrors() function to get details of the merge errors.
 
         :param sMergeName: The name of the file being merged.
@@ -143,13 +143,13 @@ class IscInterface:
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group nAreaUID as a new Ipsa i2f network file with the file name strName.
+        Saves the area group nAreaUID as a new Ipsa i3f network file with the file name strName.
         The integer nAreaUID can be obtained using the IscGroup functions.
-        The file is saved in the current working directory. The file name should include the .i2f extension
+        The file is saved in the current working directory. The file name should include the .i3f extension
 
         :param nAreaUID: The area group UID.
         :type nAreaUID: int
-        :param strName: The name of the output file containing the i2f network.
+        :param strName: The name of the output file containing the i3f network.
         :type strName: str
         :return: True if successful.
         :rtype: bool

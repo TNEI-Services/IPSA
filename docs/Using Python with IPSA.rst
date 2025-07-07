@@ -17,7 +17,7 @@ Python is a high level, general-purpose programming language. It has a simple sy
 •	**Free:** Python is available under an open source license and is free to both download and include in an application.
 
 Python is a versatile programming language for power system engineers as they can clearly coordinate instructions for their analysis software, especially for computationally intensive tasks. For example, embedding power systems software with additional economical analysis data requires iterative and recursive tool design. 
-IPSA 2 contains application programming interfaces to Python making Python a good choice to automate analysis using power systems analysis software. 
+IPSA 3 contains application programming interfaces to Python making Python a good choice to automate analysis using power systems analysis software. 
  
 If you're interested in finding out about more sophisticated tools and applications of IPSA with embedding Python, please contact the Solutions team at `support@ipsa-power.com`_.
 
@@ -27,8 +27,8 @@ Configuration
 --------------
 This guide provides a full reference to IPSA objects and their methods that are exposed through the Python API. Our Python engine API is referred to as PyIPSA. All Python scripts run through IPSA internally benefit from IPSA's internal Python interpreter.
 
-PyIPSA 2.10.3 uses Python 3.11 and we only offer a 64 bit application as of 2023. Note that since Python developed Python 3.9, embedded C applications have to be constructed for Python with the version that is required for users. 
-Therefore if you use an alternative version of Python 3, the PyIPSA 2.10.3 installation will not work. 
+PyIPSA 3.0.0 uses Python 3.11 and we only offer a 64 bit application as of 2023. Note that since Python developed Python 3.9, embedded C applications have to be constructed for Python with the version that is required for users. 
+Therefore if you use an alternative version of Python 3, the PyIPSA 3.0.0 installation will not work. 
 Please contact `support@ipsa-power.com`_ if there are serious problems with this configuration.
 
 .. _support@ipsa-power.com: mailto:support@ipsa-power.com

@@ -32,7 +32,7 @@ Setting ``bFetchFromSystem`` to ``True`` forces IPSA to rebuild its internal com
 Component Ratings
 ==================
 
-Rating sets determine the thermal limits that branches and transformers can tolerate. Each component can be given a set of MVA or kA values which are checked after a load flow calculation to identify if the component is overloaded. In IPSA 1.x four rating sets were provided, namely Standard, Summer, Winter and Short. In IPSA 2 these rating sets are provided by default but users can add additional rating sets. The ratings sets defined by the user, either through the IPSA interface or via scripting, are stored with the network model.
+Rating sets determine the thermal limits that branches and transformers can tolerate. Each component can be given a set of MVA or kA values which are checked after a load flow calculation to identify if the component is overloaded. In IPSA 1.x four rating sets were provided, namely Standard, Summer, Winter and Short. In IPSA 3 these rating sets are provided by default but users can add additional rating sets. The ratings sets defined by the user, either through the IPSA interface or via scripting, are stored with the network model.
 
 The functions used to access the rating data have therefore been changed from IPSA 1.x in order to address the user-defined rating sets.
 

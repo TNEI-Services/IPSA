@@ -47,7 +47,7 @@ To aid the development of scripted applications a number of debugging functions 
 Database Functionality
 -----------------------
 
-Starting with version 2.10.1, the database functionality is now accessible within PyIPSA. The user simply has to open a database and populate an item with a database entry using the string as a reference. There is even added functionality to support item names returned to the user as well.
+The database functionality is accessible within PyIPSA. The user simply has to open a database and populate an item with a database entry using the string as a reference. There is even added functionality to support item names returned to the user as well.
 
 IscInterface Class
 -------------------
