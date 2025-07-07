@@ -4380,7 +4380,7 @@ class IscBoundary:
     """
     def SetName(self, strName: str) -> bool:
         """
-        Sets the name as a string.
+        Sets the name as a string. If the boundary name is not unique, the name will not be set.
 
         :param strName: The selected string name.
         :type strName: str
@@ -5623,6 +5623,8 @@ class IscDiagram:
         Creates a new busbar component on the diagram.
         A point busbar symbol is a small dot which does not resize as the diagram zoom level is changed.
 
+        If the provided busbar name is not unique, the busbar name will be modified (with an appended number in brackets) until the name is unique.
+
         :param strName: The busbar name.
         :type strName: str
         :param dX: The busbar x coordinate.
@@ -5639,6 +5641,8 @@ class IscDiagram:
         Creates a new busbar component on the diagram.
         A junction busbar symbol is the circular junction symbol.
 
+        If the provided busbar name is not unique, the busbar name will be modified (with an appended number in brackets) until the name is unique.
+
         :param strName: The busbar name.
         :type strName: str
         :param dX: The busbar x coordinate.
@@ -5654,6 +5658,8 @@ class IscDiagram:
         """
         Creates a new busbar component on the diagram.
         A hexagonal busbar symbol has six sides.
+        
+        If the provided busbar name is not unique, the busbar name will be modified (with an appended number in brackets) until the name is unique.
 
         :param strName: The busbar name.
         :type strName: str
@@ -5670,6 +5676,8 @@ class IscDiagram:
         """
         Creates a new busbar component on the diagram.
         A circular busbar symbol is a circle.
+        
+        If the provided busbar name is not unique, the busbar name will be modified (with an appended number in brackets) until the name is unique.
 
         :param strName: The busbar name.
         :type strName: str
@@ -5686,6 +5694,8 @@ class IscDiagram:
         """
         Creates a new busbar component on the diagram.
         The rectangular symbol is the standard horizontal or vertical busbar.
+        
+        If the provided busbar name is not unique, the busbar name will be modified (with an appended number in brackets) until the name is unique.
 
         :param strName: The busbar name.
         :type strName: str
@@ -9975,7 +9985,7 @@ class IscInterface:
 
     def GetOrganisation(self) -> str:
         """
-        Returns the company organisation data as set in network properties.
+        Returns the company organisation data as set in IPSA preferences.
 
         :return: The company organisation data.
         :rtype: str
@@ -12101,16 +12111,21 @@ class IscNetwork:
         """
         pass
 
-    def GetMergeScenarioConflictsText(self, nMergeScenario: int, nCompareScenario: int) -> str:
+    def GetMergeScenarioConflictsText(self, nMergeScenario: int, nCompareScenario: int, bShowNameConflicts: bool = False) -> str:
         """
         Returns a description of the conflicts that would occur in merging the changes between 
         nMergeScenario and nCompareScenario into the current network. 
         If nCompareScenario is set to 0, the base scenario of the network will be used instead.
 
+        Some components may not share names with items of the same type, and these will be renamed in the merge process.
+        If bShowNameConflicts is True, these will be detailed in the returned description.
+
         :param nMergeScenario: The selected scenario ID from which the changes would be merged.
         :type nMergeScenario: int
         :param nCompareScenario: The selected scenario ID which is used to determine *what* changes would be merged.
         :type nCompareScenario: int
+        :param bShowNameConflicts: Whether to include details of items that may be renamed in the merge to stop forbidden duplicate names.
+        :type bShowNameConflicts: bool
         :return: A description of all the conflicts that may occur in merging the scenario
         :rtype: str
         """
@@ -16021,9 +16036,8 @@ class IscNetwork:
     def CreateBusbar(self, strName: str) -> int:
         """
         Returns the UID for the newly created busbar.
-
-        **Warning: It is up to the script to ensure that the busbar name is unique.**
-
+        
+        If the provided busbar name is not unique, the busbar name will be modified (with an appended number in brackets) until the name is unique.
 
         :param strName: The branch name string if required.
         :type strName: str
@@ -16035,9 +16049,8 @@ class IscNetwork:
     def CreateBusbarNoGraphics(self, strName: str):
         """
         Returns an IscBusbar object for the newly created busbar.
-
-        **Warning: It is up to the script to ensure that the busbar name is unique.**
-
+        
+        If the provided busbar name is not unique, the busbar name will be modified (with an appended number in brackets) until the name is unique.
 
         :param strName: The busbar name string if required.
         :type strName: str
@@ -17246,7 +17259,8 @@ class IscNetwork:
 
     def CreateBoundary(self, strName: str) -> int:
         """
-        Create a new empty boundary and returns the boundary UID.
+        Create a new empty boundary and returns the boundary UID. 
+        The boundary name must be unique or the creation will fail.
 
         :param strName: The boundary name.
         :type strName: str
@@ -17258,6 +17272,7 @@ class IscNetwork:
     def CreateBoundaryNoGraphics(self, strName: str):
         """
         Create a new empty boundary and returns the IscBoundary object.
+        The boundary name must be unique or the creation will fail.
 
         :param strName: The boundary name.
         :type strName: str
@@ -17681,6 +17696,15 @@ class IscNetwork:
         :type nIndex: int
         :return: The rating set name, or empty set if no rating set with that index exists in the network.
         :rtype: str
+        """
+        pass
+
+    def GetBranchRatingNames(self) -> Dict[int, str]:
+        """
+        Returns a dictionary of all the branch ratings in the current network with the rating index as the key and the rating name as the value.
+
+        :return: A dictionary of rating indices to the rating names.
+        :rtype: dict(int,str)
         """
         pass
 
@@ -18822,10 +18846,10 @@ class IscNetwork:
         """
         pass
 
-    def DoFlatStart(self, bSetBuses: bool, bSetTransformerTaps: bool, bSetIMSlips: bool) -> None:
+    def DoFlatStart(self, bSetBuses: bool = True, bSetTransformerTaps: bool = True, bSetIMSlips: bool = True, bSetMSCTaps: bool = True) -> None:
         """
         Runs a flatstart preparation for load flow depending on whether the user wants to flat start the busbar voltages,
-        transformer tap positions, induction machine rotor slips or a combination of all 3.
+        transformer tap positions, induction machine rotor slips, MSC taps or a combination of all 4.
 
         :param bSetBuses: Enabling flat start for the busbar voltages.
         :type bSetBuses: bool
@@ -18833,6 +18857,8 @@ class IscNetwork:
         :type bSetTransformerTaps: bool
         :param bSetIMSlips: Enabling flat start for the induction machine rotor slips.
         :type bSetIMSlips: bool
+        :param bSetMSCTaps: Enabling flat start for the mechanically switch capacitor tap positions.
+        :type bSetMSCTaps: bool
         """
         pass
 
