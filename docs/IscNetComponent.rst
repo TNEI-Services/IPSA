@@ -15,7 +15,7 @@ It is possible to add extension data to an object of any type. The definitions o
 
 All extension data is handled transparently by the IPSA filing modules and is not currently used for analysis by IPSA. All extension data fields are persistent when filed.
 
-It is strongly recommended that the field names for extended data fields **do not** contain spaces. Only alphanumeric characters and underscores are permitted.
+The field names for extended data fields **must not** contain spaces. Only alphanumeric characters and underscores are permitted.
 
 Field Values
 -------------
