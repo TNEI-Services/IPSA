@@ -22,5 +22,5 @@ sphinx:
    fail_on_warning: true
 
 # Enabling a pdf conversion
-formats:
- - pdf
+# formats:
+#  - pdf

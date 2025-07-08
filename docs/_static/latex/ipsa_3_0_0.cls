@@ -68,43 +68,43 @@
 \AtBeginDocument{
   \makeatletter
 
-  % \fancypagestyle{plain}{
-  %   \fancyhead{}
-  %   \fancyhfoffset[LO,RE]{2.6cm}
-  %   \fancyhfoffset[LO,RE]{2.6cm}
-  %   \fancyhfoffset[LE,RO]{1.8cm}
-  %   \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
-  %   \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
-  %   \fancyfoot{} % clear all footer fields
-  %   \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
-  %   \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
-  %   \renewcommand{\headrulewidth}{0pt}
-  %   \renewcommand{\footrulewidth}{0pt}
-  % }
-  % \fancypagestyle{normal}{
-  %   \fancyhead{}
-  %   \fancyhfoffset[LO,RE]{2.6cm}
-  %   \fancyhfoffset[LO,RE]{2.6cm}
-  %   \fancyhfoffset[LE,RO]{1.8cm}
-  %   \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
-  %   \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
-  %   \fancyfoot{} % clear all footer fields
-  %   \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
-  %   \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
-  %   \renewcommand{\headrulewidth}{0pt}
-  %   \renewcommand{\footrulewidth}{0pt}
-  % }
-  % \fancypagestyle{firstpage}{
-  %   \fancyhead{}
-  %   \fancyhfoffset[LO,RE]{2.6cm}
-  %   \fancyhfoffset[LO,RE]{2.6cm}
-  %   \fancyhfoffset[LE,RO]{1.8cm}
-  %   \fancyhead[L]{\includegraphics[width=0.6\textwidth]{titlepage_topcorner.pdf}}
-  %   \fancyfoot{} % clear all footer fields
-  %   \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{titlepage_bottomimage.pdf}}}
-  %   \renewcommand{\headrulewidth}{0pt}
-  %   \renewcommand{\footrulewidth}{0pt}  
-  % }
+  \fancypagestyle{plain}{
+    \fancyhead{}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LE,RO]{1.8cm}
+    \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
+    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
+    \fancyfoot{} % clear all footer fields
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
+    \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+  }
+  \fancypagestyle{normal}{
+    \fancyhead{}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LE,RO]{1.8cm}
+    \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
+    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
+    \fancyfoot{} % clear all footer fields
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
+    \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+  }
+  \fancypagestyle{firstpage}{
+    \fancyhead{}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LE,RO]{1.8cm}
+    \fancyhead[L]{\includegraphics[width=0.6\textwidth]{titlepage_topcorner.pdf}}
+    \fancyfoot{} % clear all footer fields
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{titlepage_bottomimage.pdf}}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}  
+  }
   \makeatother
 }
 
@@ -134,7 +134,7 @@
         }
 }
 
-% \AtBeginDocument{\thispagestyle{firstpage}}
+\AtBeginDocument{\thispagestyle{firstpage}}
 \AtBeginDocument{\maketitle}
 
 % Formatting the section headings
