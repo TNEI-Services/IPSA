@@ -30,6 +30,7 @@ The following actions are possible:
     •	Perform Harmonic Analysis and get all the results
     •	Draw components on the diagram
 
+BUILD TEST
 
 .. toctree::
    :caption: Contents
