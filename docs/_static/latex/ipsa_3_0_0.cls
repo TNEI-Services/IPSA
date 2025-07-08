@@ -5,7 +5,6 @@
 % Loading in packages
 \RequirePackage{xcolor}
 \RequirePackage{listings}
-\RequirePackage{hyperref}
 \RequirePackage{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{microtype}
@@ -13,6 +12,7 @@
 \RequirePackage{xkeyval}
 \RequirePackage{fontspec}
 \RequirePackage[nobottomtitles*]{titlesec}
+\RequirePackage{hyperref}
 
 
 \def\docversion{latest}
