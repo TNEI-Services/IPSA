@@ -76,11 +76,11 @@ latex_additional_files = ["_static/latex/ipsa_3_0_0.cls", "_static/latex/Noto_Sa
                           "_static/latex/Noto_Sans/NotoSans-BoldItalic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Italic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Regular.ttf",
-                          "_static/latex/footer.pdf",
-                          "_static/latex/header.pdf",
-                          "_static/latex/ipsalogo.pdf",
-                          "_static/latex/titlepage_bottomimage.pdf",
-                          "_static/latex/titlepage_topcorner.pdf"]
+                          "_static/latex/footer.png",
+                          "_static/latex/header.png",
+                          "_static/latex/ipsalogo.png",
+                          "_static/latex/titlepage_bottomimage.png",
+                          "_static/latex/titlepage_topcorner.png"]
 
 
 autosummary_generate = True

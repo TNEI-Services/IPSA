@@ -73,23 +73,22 @@
     \fancyhfoffset[LO,RE]{2.6cm}
     \fancyhfoffset[LO,RE]{2.6cm}
     \fancyhfoffset[LE,RO]{1.8cm}
-    \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
-    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
+    \fancyhead[L]{\raisebox{0.3cm}{\includegraphics[width=1.33\textwidth]{header.png}}}
+    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=1.33\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
   }
   \fancypagestyle{normal}{
-    \fancyhead{}
     \fancyhfoffset[LO,RE]{2.6cm}
     \fancyhfoffset[LO,RE]{2.6cm}
     \fancyhfoffset[LE,RO]{1.8cm}
-    \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
-    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
+    \fancyhead[L]{\raisebox{0.3cm}{\includegraphics[width=1.33\textwidth]{header.png}}}
+    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=1.33\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
@@ -99,7 +98,7 @@
     \fancyhfoffset[LO,RE]{2.6cm}
     \fancyhfoffset[LO,RE]{2.6cm}
     \fancyhfoffset[LE,RO]{1.8cm}
-    \fancyhead[L]{\includegraphics[width=0.6\textwidth]{titlepage_topcorner.pdf}}
+    \fancyhead[L]{\includegraphics[width=0.6\textwidth]{titlepage_topcorner.png}}
     \fancyfoot{} % clear all footer fields
     \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{titlepage_bottomimage.pdf}}}
     \renewcommand{\headrulewidth}{0pt}
@@ -113,7 +112,7 @@
         {\raggedleft
         
         \hspace*{4.8cm}
-        \includegraphics[width=0.8\textwidth]{ipsalogo.pdf}
+        \includegraphics[width=0.8\textwidth]{ipsalogo.png}
         
 
         {\Large \bf \textcolor{pinkaccent}{IPSA Software}}
