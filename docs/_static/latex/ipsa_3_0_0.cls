@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ipsa_2103}[2023/10/27 ipsa style class]
+\ProvidesClass{ipsa_3_0_0}[2025/07/07 ipsa style class]
 
 \LoadClass[openany,a4paper]{report}
 % Loading in packages
@@ -16,20 +16,21 @@
 
 
 \def\docversion{latest}
-\define@key{ipsa_2103.cls}{docversion}[latest]{
+\define@key{ipsa_3_0_0.cls}{docversion}[latest]{
     \def\docversion{#1}
 }
 \def\docreference{latest}
-\define@key{ipsa_2103.cls}{docreference}[latest]{
+\define@key{ipsa_3_0_0.cls}{docreference}[latest]{
     \def\docreference{#1}
 }
 \ExecuteOptionsX{docversion}
 \ProcessOptionsX
 
 % Pulling the colours from the docx file
-\definecolor{pinkaccent}{HTML}{b94775}
-\definecolor{headeraccent}{HTML}{c76b90}
-\definecolor{purpleaccent}{HTML}{534264}
+\definecolor{pinkaccent}{HTML}{B84775}
+\definecolor{purpleaccent}{HTML}{5F497A}
+\definecolor{headeraccent}{HTML}{88456E}
+
 \definecolor{linkcolour}{HTML}{2A567A}
 \definecolor{code_comment}{HTML}{008000}
 \definecolor{code_keyword}{HTML}{000080}
@@ -51,9 +52,9 @@
 \setlength{\paperwidth}{21cm}
 \setlength{\paperheight}{29.7cm}
 \setlength{\oddsidemargin}{0pt}
-\setlength{\topmargin}{-1.27cm}
+\setlength{\topmargin}{-2.6cm}
 \setlength{\headheight}{13pt}
-\setlength{\headsep}{1.27cm}
+\setlength{\headsep}{2.6cm}
 \addtolength{\headsep}{-13pt}
 \setlength{\footskip }{2cm}
 \setlength{\textwidth}{15.92cm}
@@ -62,86 +63,97 @@
 \renewcommand{\footrulewidth}{1pt}
 \raggedbottom
 
+
 % Setting the header and footer
 \AtBeginDocument{
   \makeatletter
+
   \fancypagestyle{plain}{
     \fancyhead{}
-    \fancyhead[R]{\textcolor{headeraccent}{\fontsize{7}{8}\selectfont \addfontfeature{LetterSpace=42.9} {\MakeUppercase{\rightmark}}}}
-    \fancyhead[L]{\textcolor{headeraccent}{\fontsize{7}{8}\selectfont \thepage}}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LE,RO]{1.8cm}
+    \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
+    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\includegraphics[width=0.2\textwidth]{ipsalogo_dimmed.pdf}}
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
+    \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{1pt}
-    \renewcommand{\footrule}{\hbox to\headwidth{%
-        \color{grey_colour}\leaders\hrule height \footrulewidth\hfill}}
+    \renewcommand{\footrulewidth}{0pt}
   }
   \fancypagestyle{normal}{
     \fancyhead{}
-    \fancyhead[R]{\textcolor{headeraccent}{\fontsize{7}{8}\selectfont \addfontfeature{LetterSpace=42.9} {\MakeUppercase{\rightmark}}}}
-    \fancyhead[L]{\textcolor{headeraccent}{\fontsize{7}{8}\selectfont \thepage}}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LE,RO]{1.8cm}
+    \fancyhead[L]{\raisebox{0.15cm}{\includegraphics[width=\pagewidth]{header.pdf}}}
+    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.pdf}}
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\includegraphics[width=0.2\textwidth]{ipsalogo_dimmed.pdf}}
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{footer.pdf}}}
+    \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{1pt}
-    \renewcommand{\footrule}{\hbox to\headwidth{%
-        \color{grey_colour}\leaders\hrule height \footrulewidth\hfill}}
+    \renewcommand{\footrulewidth}{0pt}
+  }
+  \fancypagestyle{firstpage}{
+    \fancyhead{}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LE,RO]{1.8cm}
+    \fancyhead[L]{\includegraphics[width=0.6\textwidth]{titlepage_topcorner.pdf}}
+    \fancyfoot{} % clear all footer fields
+    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{titlepage_bottomimage.pdf}}}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}  
   }
   \makeatother
 }
 
 % Formatting the title
 \renewcommand{\maketitle}{
-        {\vfill
-        \centering
-        {\huge \textcolor{purpleaccent}{{\bf IPSA} SOFTWARE} \hfill}
-        \vspace{3mm}
+        {\raggedleft
+        
+        \hspace*{4.8cm}
+        \includegraphics[width=0.8\textwidth]{ipsalogo.pdf}
+        
 
-        {\color{black}\hrule}
-        \vspace{3mm}
+        {\Large \bf \textcolor{pinkaccent}{IPSA Software}}
+        \vspace{5mm}
+        
+        {\Large \bf \textcolor{pinkaccent}{PyIPSA Reference Manual (\docversion)}}
+        \vfill
 
-        {\hfill \huge \textcolor{pinkaccent}{Simply Powerful.}}
-
-        \includegraphics[width=1.0\textwidth]{IpsaBigLogo.png}
+        {\large \textcolor{purpleaccent}{\docreference -- 000 -- R0}}
         \vspace{2mm}
 
-        {\fontsize{34}{38}\selectfont {\bf \textcolor{purpleaccent}{PyIPSA Reference Manual}}}
-        \vspace{2mm}
-
-        {\Large \textcolor{purpleaccent}{Version:} \textcolor{pinkaccent}{IPSA \docversion} }
-
-        {\Large \textcolor{purpleaccent}{Document Reference:} \textcolor{pinkaccent}{\docreference} }
-
-        \textcolor{purpleaccent}{Date Modified:} \textcolor{pinkaccent}{ \@date }
-        \vspace{2mm}
-        {\color{grey_colour}\hrule}
-        \vspace{2mm}
-
-        \textcolor{grey_colour}{IPSA Power, Bainbridge House, 86-90 London Road, Manchester, M1 2PW}
-
-        \hfill\textcolor{grey_colour}{Phone: +44 (0)161 233 4800 | Email: support@ipsa-power.com}\hfill
+        {\small \textcolor{purpleaccent}{\@date}}
+        \vspace{10mm}
+        
+        {\Large \textcolor{pinkaccent}{PUBLISHED}}
+        \vfill
+        \vfill
         }
 }
 
-\AtBeginDocument{\thispagestyle{empty}}
+\AtBeginDocument{\thispagestyle{firstpage}}
 \AtBeginDocument{\maketitle}
 
 % Formatting the section headings
-\titleformat{\chapter}[display]
-  {\huge\bfseries\color{purpleaccent}}
-  {\chaptertitlename \thechapter}{10pt}{\Huge}[{\titlerule[0.8pt]}]
-
+  
 \AtBeginDocument{
-    \titleformat{\section}
+    \titleformat{\chapter}[hang]
       {\huge\color{pinkaccent}}
+      {\thechapter}{10pt}{\huge}[{\titlerule[0.8pt]}]
+  
+    \titleformat{\section}
+      {\Large\bfseries\color{pinkaccent}}
       {\thesection}{1em}{}
 
     \titleformat{\subsection}
-      {\Large\color{purpleaccent}}
+      {\large\bfseries\color{pinkaccent}}
       {\thesubsection}{1em}{}
 
     \titleformat{\subsubsection}
-      {\Large\color{pinkaccent}}
+      {\large\color{pinkaccent}}
       {\thesubsubsection}{1em}{}
 
     \renewcommand{\normalsize}{\fontsize{11}{13}\selectfont}

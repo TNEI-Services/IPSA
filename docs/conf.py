@@ -66,19 +66,21 @@ latex_elements = {
      'inputenc': '',
      'classoptions': ',docversion='+version+',docreference='+reference,
      'utf8extra': '',
-     'sphinxsetup': 'VerbatimColor={white},TableRowColorHeader={HTML}{e3b5c7},TableRowColorOdd={white},'
-                    'TableRowColorEven={HTML}{e6e0eb}'
+     'sphinxsetup': 'VerbatimColor={white},TableRowColorHeader={HTML}{88456E}'
 }
 latex_docclass = {
-   'howto': 'ipsa_2103',
-   'manual': 'ipsa_2103',
+   'howto': 'ipsa_3_0_0',
+   'manual': 'ipsa_3_0_0',
 }
-latex_additional_files = ["_static/latex/ipsa_2103.cls", "_static/latex/Noto_Sans/NotoSans-Bold.ttf",
+latex_additional_files = ["_static/latex/ipsa_3_0_0.cls", "_static/latex/Noto_Sans/NotoSans-Bold.ttf",
                           "_static/latex/Noto_Sans/NotoSans-BoldItalic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Italic.ttf",
                           "_static/latex/Noto_Sans/NotoSans-Regular.ttf",
-                          "_static/latex/IpsaBigLogo.png",
-                          "_static/latex/ipsalogo_dimmed.pdf"]
+                          "_static/latex/footer.pdf",
+                          "_static/latex/header.pdf",
+                          "_static/latex/ipsalogo.pdf",
+                          "_static/latex/titlepage_bottomimage.pdf",
+                          "_static/latex/titlepage_topcorner.pdf"]
 
 
 autosummary_generate = True
