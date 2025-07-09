@@ -66,7 +66,8 @@ latex_elements = {
      'inputenc': '',
      'classoptions': ',docversion='+version+',docreference='+reference,
      'utf8extra': '',
-     'sphinxsetup': 'VerbatimColor={white},TableRowColorHeader={HTML}{88456E}'
+     'sphinxsetup': 'VerbatimColor={white},TableRowColorHeader={HTML}{88456E},TableRowColorOdd={white},'
+                    'TableRowColorEven={white}'
 }
 latex_docclass = {
    'howto': 'ipsa_3_0_0',
