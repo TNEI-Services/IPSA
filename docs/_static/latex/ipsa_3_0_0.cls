@@ -70,37 +70,37 @@
 
   \fancypagestyle{plain}{
     \fancyhead{}
-    \fancyhfoffset[LO,RE]{2.6cm}
-    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.55cm}
+    \fancyhfoffset[LO,RE]{2.55cm}
     \fancyhfoffset[LE,RO]{1.8cm}
-    \fancyhead[L]{\raisebox{0.3cm}{\includegraphics[width=1.33\textwidth]{header.png}}}
+    \fancyhead[L]{\raisebox{0.35cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
     \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=1.33\textwidth]{footer.png}}}
+    \fancyfoot[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
   }
   \fancypagestyle{normal}{
-    \fancyhfoffset[LO,RE]{2.6cm}
-    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhead{}
+    \fancyhfoffset[LO,RE]{2.55cm}
+    \fancyhfoffset[LO,RE]{2.55cm}
     \fancyhfoffset[LE,RO]{1.8cm}
-    \fancyhead[L]{\raisebox{0.3cm}{\includegraphics[width=1.33\textwidth]{header.png}}}
+    \fancyhead[L]{\raisebox{0.35cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
     \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=1.33\textwidth]{footer.png}}}
+    \fancyfoot[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
   }
   \fancypagestyle{firstpage}{
     \fancyhead{}
-    \fancyhfoffset[LO,RE]{2.6cm}
-    \fancyhfoffset[LO,RE]{2.6cm}
+    \fancyhfoffset[LO,RE]{2.5cm}
+    \fancyhfoffset[LO,RE]{2.5cm}
     \fancyhfoffset[LE,RO]{1.8cm}
     \fancyhead[L]{\includegraphics[width=0.6\textwidth]{titlepage_topcorner.png}}
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\raisebox{-0.9cm}{\includegraphics[width=\pagewidth]{titlepage_bottomimage.pdf}}}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}  
   }
@@ -129,6 +129,10 @@
         
         {\Large \textcolor{pinkaccent}{PUBLISHED}}
         \vfill
+        
+        \raggedright
+        \hspace*{-2.7cm}
+        \makebox[0pt][l]{\raisebox{-6.75cm}[0pt][0pt]{            \includegraphics[width=1.315\textwidth]{titlepage_bottomimage.png}}}
         \vfill
         }
 }
