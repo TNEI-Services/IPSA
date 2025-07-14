@@ -28,7 +28,7 @@
 
 % Pulling the colours from the docx file
 \definecolor{pinkaccent}{HTML}{B84775}
-\definecolor{purpleaccent}{HTML}{5F497A}
+\definecolor{purpleaccent}{HTML}{534264}
 \definecolor{headeraccent}{HTML}{88456E}
 
 \definecolor{linkcolour}{HTML}{2A567A}
@@ -66,38 +66,42 @@
 
 % Setting the header and footer
 \AtBeginDocument{
-  \makeatletter
-
+    \makeatletter
+  \newcommand{\doctitle}{PyIPSA Reference Manual}  
+  \newcommand{\headertitle}{P\:y\:I\:P\:S\:A \:\: R\:E\:F\:E\:R\:E\:N\:C\:E \:\: M\:A\:N\:U\:A\:L} % Manually Kern this text to expanded because latex (textls) hates this font
+    
   \fancypagestyle{plain}{
     \fancyhead{}
-    \fancyhfoffset[LO,RE]{2.55cm}
-    \fancyhfoffset[LO,RE]{2.55cm}
+    \fancyhfoffset[LO,RE]{2.56cm}
+    \fancyhfoffset[LO,RE]{2.56cm}
     \fancyhfoffset[LE,RO]{1.8cm}
-    \fancyhead[L]{\raisebox{0.35cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
-    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}
+    \fancyhead[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
+    \fancyhead[R]{\raisebox{-1cm}{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}}
+    \fancyhead[C]{{\textcolor{white}{\scriptsize {\bf {\headertitle}}}} \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\ } % whitespace to left align text :')
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{footer.png}}}
+    \fancyfoot[L]{\raisebox{-0.81cm}{\includegraphics[width=1.322\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
   }
   \fancypagestyle{normal}{
     \fancyhead{}
-    \fancyhfoffset[LO,RE]{2.55cm}
-    \fancyhfoffset[LO,RE]{2.55cm}
+    \fancyhfoffset[LO,RE]{2.56cm}
+    \fancyhfoffset[LO,RE]{2.56cm}
     \fancyhfoffset[LE,RO]{1.8cm}
-    \fancyhead[L]{\raisebox{0.35cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
-    \fancyhead[R]{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}
+    \fancyhead[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
+    \fancyhead[R]{\raisebox{-1cm}{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}}
+    \fancyhead[C]{{\textcolor{white}{\scriptsize {\bf {\headertitle}}}} \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad} % whitespace to left align text :')
     \fancyfoot{} % clear all footer fields
-    \fancyfoot[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{footer.png}}}
+    \fancyfoot[L]{\raisebox{-0.81cm}{\includegraphics[width=1.322\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
     \renewcommand{\headrulewidth}{0pt}
     \renewcommand{\footrulewidth}{0pt}
   }
   \fancypagestyle{firstpage}{
     \fancyhead{}
-    \fancyhfoffset[LO,RE]{2.5cm}
-    \fancyhfoffset[LO,RE]{2.5cm}
+    \fancyhfoffset[LO,RE]{2.52cm}
+    \fancyhfoffset[LO,RE]{2.52cm}
     \fancyhfoffset[LE,RO]{1.8cm}
     \fancyhead[L]{\includegraphics[width=0.6\textwidth]{titlepage_topcorner.png}}
     \fancyfoot{} % clear all footer fields
@@ -114,25 +118,22 @@
         \hspace*{4.8cm}
         \includegraphics[width=0.8\textwidth]{ipsalogo.png}
         
-
-        {\Large \bf \textcolor{pinkaccent}{IPSA Software}}
-        \vspace{5mm}
         
-        {\Large \bf \textcolor{pinkaccent}{PyIPSA Reference Manual (\docversion)}}
+        {\fontsize{48}{56}\selectfont \textcolor{pinkaccent}{\doctitle}}
         \vfill
 
-        {\large \textcolor{purpleaccent}{\docreference -- 000 -- R0}}
+        {Version: \textcolor{pinkaccent}{IPSA \docversion}}
         \vspace{2mm}
 
-        {\small \textcolor{purpleaccent}{\@date}}
-        \vspace{10mm}
+        {Document Reference: \textcolor{pinkaccent}{\docreference}}
+        \vspace{2mm}
         
-        {\Large \textcolor{pinkaccent}{PUBLISHED}}
+        {\textcolor{pinkaccent}{\@date}}
         \vfill
         
         \raggedright
-        \hspace*{-2.7cm}
-        \makebox[0pt][l]{\raisebox{-6.75cm}[0pt][0pt]{            \includegraphics[width=1.315\textwidth]{titlepage_bottomimage.png}}}
+        \hspace*{-2.71cm}
+        \makebox[0pt][l]{\raisebox{-6.75cm}[0pt][0pt]{            \includegraphics[width=1.317\textwidth]{titlepage_bottomimage.png}}}
         \vfill
         }
 }
@@ -143,20 +144,20 @@
 % Formatting the section headings
   
 \AtBeginDocument{
-    \titleformat{\chapter}[hang]
+   \titleformat{\chapter}[hang]
       {\huge\color{pinkaccent}}
-      {\thechapter}{10pt}{\huge}[{\titlerule[0.8pt]}]
+      {\thechapter}{10pt}{\huge}[{\titlerule[0pt]}]
   
     \titleformat{\section}
-      {\Large\bfseries\color{pinkaccent}}
+      {\Large\color{pinkaccent}}
       {\thesection}{1em}{}
 
     \titleformat{\subsection}
-      {\large\bfseries\color{pinkaccent}}
+      {\Large\color{purpleaccent}}
       {\thesubsection}{1em}{}
 
     \titleformat{\subsubsection}
-      {\large\color{pinkaccent}}
+      {\Large\color{pinkaccent}}
       {\thesubsubsection}{1em}{}
 
     \renewcommand{\normalsize}{\fontsize{11}{13}\selectfont}
@@ -173,6 +174,9 @@
 
     \let\oldliteralemphasis\sphinxstyleliteralemphasis
     \renewcommand{\sphinxstyleliteralemphasis}[1]{\textit{\textcolor{linkcolour}{{\textnormal \oldliteralemphasis{#1}}}}}
+
+    \let\oldstyletheadfamily\sphinxstyletheadfamily 
+    \renewcommand{\sphinxstyletheadfamily}[1]{\textbf\textcolor{white}{\textnormal \sphinxstyletheadfamily{#1}}}
 }
 
 % Formatting hyperrefs
