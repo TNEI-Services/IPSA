@@ -128,7 +128,7 @@
         {Document Reference: \textcolor{pinkaccent}{\docreference}}
         \vspace{2mm}
         
-        {\textcolor{pinkaccent}{\@date}}
+        {\textcolor{pinkaccent}{\@date\:}}
         \vfill
         
         \raggedright
@@ -176,7 +176,7 @@
     \renewcommand{\sphinxstyleliteralemphasis}[1]{\textit{\textcolor{linkcolour}{{\textnormal \oldliteralemphasis{#1}}}}}
 
     \let\oldstyletheadfamily\sphinxstyletheadfamily 
-    \renewcommand{\sphinxstyletheadfamily}[1]{\textbf\textcolor{white}{\textnormal \sphinxstyletheadfamily{#1}}}
+    \renewcommand{\sphinxstyletheadfamily}{\bfseries\leavevmode\color{white}}
 }
 
 % Formatting hyperrefs
