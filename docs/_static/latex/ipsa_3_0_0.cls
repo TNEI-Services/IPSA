@@ -175,8 +175,7 @@
     \let\oldliteralemphasis\sphinxstyleliteralemphasis
     \renewcommand{\sphinxstyleliteralemphasis}[1]{\textit{\textcolor{linkcolour}{{\textnormal \oldliteralemphasis{#1}}}}}
 
-    \let\oldstyletheadfamily\sphinxstyletheadfamily 
-    \renewcommand{\sphinxstyletheadfamily}{\bfseries\leavevmode\color{white}}
+    \renewcommand*{\sphinxstyletheadfamily}{\bfseries\leavevmode\color{white}}
 }
 
 % Formatting hyperrefs

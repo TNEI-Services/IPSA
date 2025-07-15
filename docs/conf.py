@@ -45,7 +45,7 @@ autodoc_member_order = 'bysource'
 
 # -- Options for HTML output
 html_theme = 'sphinx_rtd_theme'
-html_logo = 'ipsa_wo_small.png'#'ipsa_circle_glow_small.png'
+html_logo = '_static/css/ipsalogo_wt.png'#'ipsa_wo_small.png'#'ipsa_circle_glow_small.png'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
