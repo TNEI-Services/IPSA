@@ -67,6 +67,14 @@ Below is a list of the field values for IscNetComponent which map each derived c
      - IscChopper
    * - MGset
      - IscMGset
+   * - UniversalBranch
+     - (Not mapped to PyIPSA)
+   * - UnbalancedLoad
+     - IscUnbalancedLoad
+   * - UnbalancedLine
+     - IscUnbalancedLine
+   * - UnbalancedTransformer
+     - IscUnbalancedTransformer
    * - AVR
      - (Not mapped to PyIPSA)
    * - Governor
@@ -85,6 +93,16 @@ Below is a list of the field values for IscNetComponent which map each derived c
      - IscVoltageRegulator
    * - ProtectionContainer
      - (Not mapped to PyIPSA)
+   * - ProtectionMonitorCT
+     - (Not mapped to PyIPSA)
+   * - ProtectionDevice
+     - IscProtectionDevice
+   * - EquivalentBoundary
+     - IscBoundary
+   * - EquivalentBranch
+     - (Not mapped to PyIPSA)
+   * - EquivalentRadial
+     - (Not mapped to PyIPSA)
    * - Annotation
      - IscAnnotation
    * - AnalysisLF
@@ -100,6 +118,16 @@ Below is a list of the field values for IscNetComponent which map each derived c
    * - AnalysisHM
      - IscAnalysisHM
    * - AnalysisProt
+     - (Not mapped to PyIPSA)
+   * - AnalysisNR
+     - (Not mapped to PyIPSA)
+   * - AnalysisAF
+     - (Not mapped to PyIPSA)
+   * - AnalysisUnb
+     - (Not mapped to PyIPSA)
+   * - AnalysisDCLF
+     - (Not mapped to PyIPSA)
+   * - AnalysisRel
      - (Not mapped to PyIPSA)
    * - Automation
      - (Not mapped to PyIPSA)
