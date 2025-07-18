@@ -169,6 +169,9 @@ Field Values
    * - String
      - Comment
      - Gets and sets the comments.
+   * - Boolean
+     - Aggregate
+     - An equivalent for a collection of the same object.
 
 IscBranch Class
 ----------------
