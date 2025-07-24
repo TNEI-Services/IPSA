@@ -19502,6 +19502,17 @@ class IscNetwork:
         """
         pass
 
+    def GetAllFeederBreakers(self) -> List[int]:
+        """
+        Returns the UIDs of all the feeder breakers in the network.
+
+        Note, only *in-service* breakers will be used as the starting point for the feeder trace in RunFeederTrace.
+
+        :return: The list of feeder breaker UIDs.
+        :rtype: list[int]
+        """
+        pass
+
     def GetFeederBreakersInService(self) -> List[int]:
         """
         Returns the UIDs of all the in-service feeder breakers in the network.

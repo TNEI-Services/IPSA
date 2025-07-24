@@ -106,6 +106,9 @@ Field Values
    * - Boolean
      - DrawIncludeOtherInlines
      - If True, all other inlines on drawn branch items will be drawn by both algorithms, otherwise they will be ignored.
+   * - Boolean
+     - DeleteAllAnnotations
+     - If True, all annotations will be removed during both algorithms.
 	
 IscDrawTools Class
 ---------------------
