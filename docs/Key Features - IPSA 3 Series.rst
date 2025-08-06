@@ -10,7 +10,8 @@ New tool in IPSA to run a network reduction on the network based on a predefined
 new boundaries can created and validated to define areas either from a predefined reduced area or by
 explicitly definining the boundary busbars, validated to ensure no leakages will occur in the 
 reduction. The ``IscBoundary`` class has been created to facilitate the creation, modification and 
-validation of boundaries from PyIPSA.
+validation of boundaries from PyIPSA. The ``IscEquivalentRadial`` and ``IscEquivalentBranch`` classes 
+have been created to allow access to the equivalents created in the network reduction.
 
 Scenarios
 ------------

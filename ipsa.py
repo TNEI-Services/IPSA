@@ -6043,6 +6043,26 @@ class IscDiagram:
         """
         pass
 
+    def CreateEquivalentBranch(self, strName: str, dXFrom: float, dYFrom: float, dXTo: float, dYTo: float) -> int:
+        """
+        Creates a new equivalent branch component on the diagram.
+
+        :param strName: The equivalent branch name.
+        :type strName: str
+        :param dXFrom: The x coordinate of the busbar where the equivalent branch starts.
+        :type dXFrom: float
+        :param dYFrom: The y coordinate of the busbar where the equivalent branch starts.
+        :type dYFrom: float
+        :param dXTo: The x coordinate of the busbar where the equivalent branch ends.
+        :type dXTo: float
+        :param dYTo: The y coordinate of the busbar where the equivalent branch ends.
+        :type dYTo: float
+        :return: The unique positive ID of the new equivalent branch component.
+            If the equivalent branch cannot be drawn, the return value is 0.
+        :rtype: int
+        """
+        pass
+
     def AddPointToLine(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
         """
         Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
@@ -7215,6 +7235,571 @@ class IscDrawTools:
         :type nFieldIndex: int
         :return: The field name.
         :rtype: str
+        """
+        pass
+
+class IscEquivalentBranch:
+    """
+    Provides access to the IPSA equivalent branch.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a double value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The boolean value.
+        :rtype: bool
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from an integer.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The given integer value.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the value for the enumerated field from a double.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The given double value.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from a string.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The given string value.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets the value for the enumerated field from boolean.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given boolean value.
+        :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetSendPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the equivalent branch sending end power in MVA.
+
+        :return: The equivalent branch sending end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetSendPowerMagnitudekVA(self) -> float:
+        """
+        Returns the equivalent branch sending end power in kVA.
+
+        :return: The equivalent branch sending end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetSendRealPowerMW(self) -> float:
+        """
+        Returns the equivalent branch sending end power in MW.
+
+        :return: The equivalent branch sending end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetSendReactivePowerMVAr(self) -> float:
+        """
+        Returns the equivalent branch sending end power in MVAr.
+
+        :return: The equivalent branch sending end power in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetSendRealPowerkW(self) -> float:
+        """
+        Returns the equivalent branch sending end power in kW.
+
+        :return: The equivalent branch sending end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetSendReactivePowerkVAr(self) -> float:
+        """
+        Returns the equivalent branch sending end power in kVAr.
+
+        :return: The equivalent branch sending end power in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetReceivePowerMagnitudeMVA(self) -> float:
+        """
+        Returns the equivalent branch receiving end power in MVA.
+
+        :return: The equivalent branch receiving end power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetReceivePowerMagnitudekVA(self) -> float:
+        """
+        Returns the equivalent branch receiving end power in kVA.
+
+        :return: The equivalent branch receiving end power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveRealPowerMW(self) -> float:
+        """
+        Returns the equivalent branch receiving end power in MW.
+
+        :return: The equivalent branch receiving end power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveReactivePowerMVAr(self) -> float:
+        """
+        Returns the equivalent branch receiving end power in MVAr.
+
+        :return: The equivalent branch receiving end power in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveRealPowerkW(self) -> float:
+        """
+        Returns the equivalent branch receiving end power in kW.
+
+        :return: The equivalent branch receiving end power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetReceiveReactivePowerkVAr(self) -> float:
+        """
+        Returns the equivalent branch receiving end power in kVAr.
+
+        :return: The equivalent branch receiving end power in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the highest equivalent branch power in MVA.
+
+        :return: The highest equivalent branch power in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestPowerMagnitudekVA(self) -> float:
+        """
+        Returns the highest equivalent branch power in kVA.
+
+        :return: The highest equivalent branch power in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestRealPowerMW(self) -> float:
+        """
+        Returns the highest equivalent branch power in MW.
+
+        :return: The highest equivalent branch power in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestReactivePowerMVAr(self) -> float:
+        """
+        Returns the highest equivalent branch power in MVAr.
+
+        :return: The highest equivalent branch power in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestRealPowerkW(self) -> float:
+        """
+        Returns the highest equivalent branch power in kW.
+
+        :return: The highest equivalent branch power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetLargestReactivePowerkVAr(self) -> float:
+        """
+        Returns the highest equivalent branch power in kVAr.
+
+        :return: The highest equivalent branch power in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetLossesMW(self) -> float:
+        """
+        Returns the equivalent branch losses in MW.
+
+        :return: The equivalent branch losses in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetLossesMVAr(self) -> float:
+        """
+        Returns the equivalent branch losses in MVAr.
+
+        :return: The equivalent branch losses in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetLosseskW(self) -> float:
+        """
+        Returns the equivalent branch losses in kW.
+
+        :return: The equivalent branch losses in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetLosseskVAr(self) -> float:
+        """
+        Returns the equivalent branch losses in kVAr.
+
+        :return: The equivalent branch losses in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetCapacityHeadroomPC(self) -> float:
+        """
+        Returns the equivalent branch capacity headroom as a percentage.
+
+        :return: The equivalent branch capacity headroom as a percentage.
+        :rtype: float
+        """
+        pass
+        """
+        Returns the branch losses in kW.
+
+        :return: The branch losses in kW.
+        :rtype: float
+        """
+        pass
+
+class IscEquivalentRadial:
+    """
+    Provides access to an IPSA equivalent radial.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a double value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The boolean value.
+        :rtype: bool
+        """
+        pass
+
+    def GetListIValue(self, nFieldIndex: int) -> List[int]:
+        """
+        Returns a list of integer values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from an integer.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The given integer value.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the value for the enumerated field from a double.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The given double value.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from a string.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The given string value.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets the value for the enumerated field from boolean.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given boolean value.
+        :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListIValue(self, nFieldIndex: int, lIValue: List[int]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of integers.
+        
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lIValue: The given list of values.
+        :type lIValue:  list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetVoltageMagnitudePU(self) -> float:
+        """
+        Returns the equivalent radial voltage magnitude in per unit.
+
+        :return: The equivalent radial voltage magnitude in per unit.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageAngleRad(self) -> float:
+        """
+        Returns the voltage angle in radians.
+
+        :return: The voltage angle.
+        :rtype: float
+        """
+        pass
+
+    def GetVoltageAngleDeg(self) -> float:
+        """
+        Returns the voltage angle in degrees.
+
+        :return: The voltage angle.
+        :rtype: float
+        """
+        pass
+
+    def GetPowerMagnitudeMVA(self) -> float:
+        """
+        Returns the equivalent radial output in MVA.
+
+        :return: The equivalent radial output in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetPowerMagnitudekVA(self) -> float:
+        """
+        Returns the equivalent radial output in kVA.
+
+        :return: The equivalent radial output in kVA.
+        :rtype: float
+        """
+        pass
+
+    def GetRealPowerMW(self) -> float:
+        """
+        Returns the equivalent radial output in MW.
+
+        :return: The equivalent radial output in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetReactivePowerMVAr(self) -> float:
+        """
+        Returns the equivalent radial output in MVAr.
+
+        :return: The equivalent radial output in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetRealPowerkW(self) -> float:
+        """
+        Returns the equivalent radial output in kW.
+
+        :return: The equivalent radial output in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetReactivePowerkVAr(self) -> float:
+        """
+        Returns the equivalent radial output in kVAr.
+
+        :return: The equivalent radial output in kVAr.
+        :rtype: float
         """
         pass
 
@@ -13243,6 +13828,32 @@ class IscNetwork:
         """
         pass
 
+    def GetEquivalentRadials(self, bFetchFromSystem: bool = True):
+        """
+        Returns a dictionary of IscEquivalentRadials instances.
+        Keys (sPyName) are the Python names and the associated values are IscEquivalentRadials instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of equivalent radials.
+        :rtype: dict(str,IscEquivalentRadials)
+        """
+        pass
+
+    def GetEquivalentBranches(self, bFetchFromSystem: bool = True):
+        """
+        Returns a dictionary of IscEquivalentBranch instances.
+        Keys (sPyName) are the Python names and the associated values are IscEquivalentBranch instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of equivalent branches.
+        :rtype: dict(str,IscEquivalentBranch)
+        """
+        pass
+
     def TraceBusbarUIDs(self, nBranchUID: int, bOpenBreakers: bool, nGroupUID: int) -> List[int]:
         """
         Performs a network trace to identify all busbars that are connected to the selected branch.
@@ -14408,6 +15019,80 @@ class IscNetwork:
         :type strName: str
         :return: The boundary instance or None if such is not found.
         :rtype: IscBoundary
+        """
+        pass
+
+    @overload
+    def GetEquivalentRadial(self, nUID: int):
+        """
+        Returns an IscEquivalentRadial instance for the equivalent radial identified by the UID.
+
+        :param nUID: The selected equivalent radial UID.
+        :type nUID: int
+        :return: The equivalent radial instance or None if such is not found.
+        :rtype: IscEquivalentRadial
+        """
+        pass
+
+    @overload
+    def GetEquivalentRadial(self, strPythonName: str):
+        """
+        Returns an IscEquivalentRadial instance for the equivalent radial identified by the Python name.
+
+        :param strPythonName: The selected equivalent radial name.
+        :type strPythonName: str
+        :return: The equivalent radial instance or None if such is not found.
+        :rtype: IscEquivalentRadial
+        """
+        pass
+
+    def GetEquivalentRadial(self, strPythonName: str):
+        """
+        Returns an IscEquivalentRadial instance for the equivalent radial identified by the UID or the Python name.
+
+        :param nUID: The selected equivalent radial UID.
+        :type nUID: int
+        :param strPythonName: The selected equivalent radial name.
+        :type strPythonName: str
+        :return: The equivalent radial instance or None if such is not found.
+        :rtype: IscEquivalentRadial
+        """
+        pass
+
+    @overload
+    def GetEquivalentBranch(self, nUID: int):
+        """
+        Returns an IscEquivalentBranch instance for the equivalent branch identified by the UID.
+
+        :param nUID: The selected equivalent branch UID.
+        :type nUID: int
+        :return: The equivalent branch instance or None if such is not found.
+        :rtype: IscEquivalentBranch
+        """
+        pass
+
+    @overload
+    def GetEquivalentBranch(self, strPythonName: str):
+        """
+        Returns an IscEquivalentBranch instance for the equivalent branch identified by the Python name.
+
+        :param strPythonName: The selected equivalent branch name.
+        :type strPythonName: str
+        :return: The equivalent branch instance or None if such is not found.
+        :rtype: IscEquivalentBranch
+        """
+        pass
+
+    def GetEquivalentBranch(self, strPythonName: str):
+        """
+        Returns an IscEquivalentBranch instance for the equivalent branch identified by the UID or the Python name.
+
+        :param nUID: The selected equivalent branch UID.
+        :type nUID: int
+        :param strPythonName: The selected equivalent branch name.
+        :type strPythonName: str
+        :return: The equivalent branch instance or None if such is not found.
+        :rtype: IscEquivalentBranch
         """
         pass
 
@@ -15854,6 +16539,140 @@ class IscNetwork:
         """
         pass
 
+    def GetEquivalentRadialUID(self, nBusID: int, strName: str) -> int:
+        """
+        Returns the UID of an equivalent radial with specified name at busbar specified by its UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param strName: The selected equivalent radial name.
+        :type strName: str
+        :return: The equivalent radial UID, 0 if no matches or -N if we have N matches.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def GetEquivalentRadialUIDs(self, nBusID: int) -> List[int]:
+        """
+        Returns all equivalent radial connected to the busbars specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of equivalent radial UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetEquivalentRadialUIDs(self, bFetchFromSystem: bool = True):
+        """
+        Returns a dictionary of all equivalent radial UIDs in the network.
+        The keys are the integer UIDs and the values are the IscEquivalentRadial instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all equivalent radials.
+        :rtype: dict(int,IscEquivalentRadial)
+        """
+        pass
+
+    def GetEquivalentRadialUIDs(self, bFetchFromSystem: bool = True):
+        """
+        Returns either a dictionary of all equivalent radial UIDs in the network or a list of equivalent radials
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscEquivalentRadial instances.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of equivalent radial UIDs connected to the items specified by the given UID.
+        :rtype: list(int)
+        :return: Dictionary of all equivalent radials.
+        :rtype: dict(int,IscEquivalentRadial)
+        """
+        pass
+
+    def GetEquivalentBranchUID(self, nFromID: int, nToID: int, strName: str) -> int:
+        """
+        Returns the UID of an equivalent branch with the given name between two busbars that are specified by their UIDs.
+
+        :param nFromID: The UID of the From busbar.
+        :type nFromID: int
+        :param nToID: The UID of the To busbar.
+        :type nToID: int
+        :param strName: The selected equivalent branch name.
+        :type strName: str
+        :return: The equivalent branch UID, 0 if no matches or -N if we have N matches.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def GetEquivalentBranchUIDs(self, nFirstBusID: int) -> List[int]:
+        """
+        Returns all equivalent branches connected to the busbar specified by the given UID.
+
+        :param nBusID: The UID of the busbar.
+        :type nBusID: int
+        :return: List of equivalent branch UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetEquivalentBranchUIDs(self, nFirstBusID: int, nSecondBusID: int) -> List[int]:
+        """
+        Returns all equivalent branches connected to both busbars specified by the given UIDs.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :return: List of equivalent branch UIDs.
+        :rtype: list(int)
+        """
+        pass
+
+    @overload
+    def GetEquivalentBranchUIDs(self, bFetchFromSystem: bool = True) :
+        """
+        Returns a dictionary of all equivalent branch UIDs in the network.
+        The keys are the integer UIDs and the values are the IscEquivalentBranch instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all unbalanced lines.
+        :rtype: dict(int,IscEquivalentBranch)
+        """
+        pass
+
+    def GetEquivalentBranchUIDs(self, bFetchFromSystem: bool = True) :
+        """
+        Returns either a dictionary of all equivalent branch UIDs in the network or a list of equivalent branches
+        connected to the busbars specified by the given UIDs.
+
+        If a dictionary is returned, the keys are the integer UIDs and the values are the IscEquivalentBranch instances.
+
+        :param nFirstBusID: The UID of the first busbar.
+        :type nFirstBusID: int
+        :param nSecondBusID: The UID of the second busbar.
+        :type nSecondBusID: int
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: List of equivalent branch UIDs connected to the items specified by the given UIDs.
+        :rtype: list(int)
+        :return: Dictionary of all equivalent branches.
+        :rtype: dict(int,IscEquivalentBranch)
+        """
+        pass
+
     def GetVoltageRegulatorUID(self, nBranchID: int) -> int:
         """
         Returns the UID of a voltage regulator at branch specified by its UID.
@@ -17257,6 +18076,104 @@ class IscNetwork:
         """
         pass
 
+    @overload
+    def CreateEquivalentRadial(self, nAtBusbarUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created equivalent radial.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param strName: The equivalent radial name string if required.
+        :type strName: str
+        :return: The UID for the newly created equivalent radial, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateEquivalentRadial(self, pAtBusbar, strName: str):
+        """
+        Returns an IscEquivalentRadial object for the newly created equivalent radial.
+
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The equivalent radial name string if required.
+        :type strName: str
+        :return: The IscEquivalentRadial object for the newly created equivalent radial.
+        :rtype: IscEquivalentRadial
+        """
+        pass
+
+    def CreateEquivalentRadial(self, pAtBusbar, strName: str):
+        """
+        Returns the UID or an IscEquivalentRadial object for the newly created equivalent radial.
+
+        :param nAtBusbarUID: The busbar UID.
+        :type nAtBusbarUID: int
+        :param pAtBusbar: The busbar.
+        :type pAtBusbar: IscBusbar
+        :param strName: The equivalent radial name string if required.
+        :type strName: str
+        :return: The UID for the newly created equivalent radial, 0 on failure.
+        :rtype: int
+        :return: The IscEquivalentRadial object for the newly created equivalent radial.
+        :rtype: IscEquivalentRadial
+        """
+        pass
+
+    @overload
+    def CreateEquivalentBranch(self, nFromBusbarUID: int, nToBusbarUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created equivalent branch.
+
+        :param nFromBusbarUID: The "From" busbar UID.
+        :type nFromBusbarUID: int
+        :param nToBusbarUID: The "To" busbar UID.
+        :type nToBusbarUID: int
+        :param strName: The equivalent branch name string if required.
+        :type strName: str
+        :return: The UID for the newly created equivalent branch, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateEquivalentBranch(self, pFromBusbar, pToBusbar, strName: str):
+        """
+        Returns an IscEquivalentBranch object for the newly created equivalent branch.
+
+        :param pFromBusbar: The "From" busbar.
+        :type pFromBusbar: IscBusbar
+        :param pToBusbar: The "To" busbar.
+        :type pToBusbar: IscBusbar
+        :param strName: The equivalent branch name string if required.
+        :type strName: str
+        :return: The IscEquivalentBranch object for the newly created equivalent branch.
+        :rtype: IscEquivalentBranch
+        """
+        pass
+
+    def CreateEquivalentBranch(self, pFromBusbar, pToBusbar, strName: str):
+        """
+        Returns the UID or an IscEquivalentBranch object for the newly created equivalent branch.
+
+        :param nFromBusbarUID: The "From" busbar UID.
+        :type nFromBusbarUID: int
+        :param nToBusbarUID: The "To" busbar UID.
+        :type nToBusbarUID: int
+        :param pFromBusbar: The "From" busbar.
+        :type pFromBusbar: IscBusbar
+        :param pToBusbar: The "To" busbar.
+        :type pToBusbar: IscBusbar
+        :param strName: The equivalent branch name string if required.
+        :type strName: str
+        :return: The UID for the newly created equivalent branch, 0 on failure.
+        :rtype: int
+        :return: The IscEquivalentBranch object for the newly created equivalent branch.
+        :rtype: IscEquivalentBranch
+        """
+        pass
+
     def CreateBoundary(self, strName: str) -> int:
         """
         Create a new empty boundary and returns the boundary UID. 
@@ -17648,6 +18565,28 @@ class IscNetwork:
 
         :param pBoundary: The IscBoundary object for deletion.
         :type pBoundary: IscBoundary
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteEquivalentRadial(self, pEquivalentRadial) -> bool:
+        """
+        Deletes an equivalent radial by passing the IscEquivalentRadial object for deletion.
+
+        :param pEquivalentRadial: The IscEquivalentRadial object for deletion.
+        :type pEquivalentRadial: IscEquivalentRadial
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteEquivalentBranch(self, pEquivalentBranch) -> bool:
+        """
+        Deletes an equivalent branch by passing the IscEquivalentBranch object for deletion.
+
+        :param pEquivalentBranch: The IscEquivalentBranch object for deletion.
+        :type pEquivalentBranch: IscEquivalentBranch
         :return: True if successful.
         :rtype: bool
         """
