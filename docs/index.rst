@@ -75,3 +75,5 @@ The following actions are possible:
    IscNetworkCapacity
    IscDrawTools
    IscBoundary
+   IscEquivalentBranch
+   IscEquivalentRadial
