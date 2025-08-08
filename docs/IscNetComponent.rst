@@ -100,9 +100,9 @@ Below is a list of the field values for IscNetComponent which map each derived c
    * - EquivalentBoundary
      - IscBoundary
    * - EquivalentBranch
-     - (Not mapped to PyIPSA)
+     - IscEquivalentBranch
    * - EquivalentRadial
-     - (Not mapped to PyIPSA)
+     - IscEquivalentRadial
    * - Annotation
      - IscAnnotation
    * - AnalysisLF
