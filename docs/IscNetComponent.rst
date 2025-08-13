@@ -120,9 +120,9 @@ Below is a list of the field values for IscNetComponent which map each derived c
    * - AnalysisProt
      - (Not mapped to PyIPSA)
    * - AnalysisNR
-     - (Not mapped to PyIPSA)
+     - IscAnalysisNR
    * - AnalysisAF
-     - (Not mapped to PyIPSA)
+     - IscAnalysisAF
    * - AnalysisUnb
      - (Not mapped to PyIPSA)
    * - AnalysisDCLF
