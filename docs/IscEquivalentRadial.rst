@@ -38,10 +38,10 @@ Field Values
      - Gets and sets the reactive power output.
    * - Float
      - EquivResistancePU
-     - Gets and sets the equivalent resistance in per unit.
+     - Gets the equivalent resistance in per unit.
    * - Float
      - EquivReactancePU
-     - Gets and sets the equivalent reactance in per unit.
+     - Gets the equivalent reactance in per unit.
    * - Float
      - TargetVoltagePU
      - Gets and sets the target voltage in per unit.
