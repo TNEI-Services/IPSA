@@ -45,9 +45,6 @@ Field Values
    * - Float
      - TargetVoltagePU
      - Gets and sets the target voltage in per unit.
-   * - Float
-     - NomVoltagekV
-     - Gets and sets the nominal bus voltage in kV.
    * - Boolean
      - IncludesReducedSlack
      - Gets whether the equivalent radial includes a reduced slack busbar.
