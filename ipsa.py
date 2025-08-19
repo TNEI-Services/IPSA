@@ -411,7 +411,7 @@ class Isc3WTransformer:
         """
         pass
     
-    def GetFaultYellowComponentkA(self, nWinding: int) -> float:
+    def GetFaultYellowMagnitudekA(self, nWinding: int) -> float:
         """
         Returns the yellow phase fault level component in kA for the specified winding of the 3-winding transformer.
 
@@ -422,7 +422,7 @@ class Isc3WTransformer:
         """
         pass
 
-    def GetFaultBlueComponentkA(self, nWinding: int) -> float:
+    def GetFaultBlueMagnitudekA(self, nWinding: int) -> float:
         """
         Returns the blue phase fault level component in kA for the specified winding of the 3-winding transformer.
 
@@ -433,7 +433,7 @@ class Isc3WTransformer:
         """
         pass
 
-    def GetFaultPositiveComponenkA(self, nWinding: int) -> float:
+    def GetFaultPositiveMagnitudekA(self, nWinding: int) -> float:
         """
         Returns the positive sequence fault level component in kA for the specified winding of the 3-winding transformer.
 
@@ -444,7 +444,7 @@ class Isc3WTransformer:
         """
         pass
 
-    def GetFaultNegativeComponentkA(self, nWinding: int) -> float:
+    def GetFaultNegativeMagnitudekA(self, nWinding: int) -> float:
         """
         Returns the negative sequence fault level component in kA for the specified winding of the 3-winding transformer.
 
@@ -455,7 +455,7 @@ class Isc3WTransformer:
         """
         pass
 
-    def GetFaultZeroComponentkA(self, nWinding: int) -> float:
+    def GetFaultZeroMagnitudekA(self, nWinding: int) -> float:
         """
         Returns the zero sequence fault level component in kA for the specified winding of the 3-winding transformer.
 
@@ -6746,7 +6746,7 @@ class IscDiagram:
     
 
     @overload
-    def GetGeoLineLength(self, nUID: int, bUseBusCoord: bool, bCrowFlies: bool) -> float:
+    def GetGeoLineLength(self, pComponent, bUseBusCoord: bool, bCrowFlies: bool) -> float:
         """
         Returns the length in km of the branch item (pComponent) on the diagram. 
         Note this will only work for geographic diagrams.
@@ -8445,7 +8445,7 @@ class IscGridInfeed:
         """
         pass
     
-    def GetFaultYellowComponentkA(self) -> float:
+    def GetFaultYellowMagnitudekA(self) -> float:
         """
         Returns the yellow phase fault level component in kA.
 
@@ -8454,7 +8454,7 @@ class IscGridInfeed:
         """
         pass
 
-    def GetFaultBlueComponentkA(self) -> float:
+    def GetFaultBlueMagnitudekA(self) -> float:
         """
         Returns the blue phase fault level component in kA.
 
@@ -8463,7 +8463,7 @@ class IscGridInfeed:
         """
         pass
 
-    def GetFaultPositiveComponenkA(self) -> float:
+    def GetFaultPositiveMagnitudekA(self) -> float:
         """
         Returns the positive sequence fault level component in kA.
 
@@ -8472,7 +8472,7 @@ class IscGridInfeed:
         """
         pass
 
-    def GetFaultNegativeComponentkA(self) -> float:
+    def GetFaultNegativeMagnitudekA(self) -> float:
         """
         Returns the negative sequence fault level component in kA.
 
@@ -8481,7 +8481,7 @@ class IscGridInfeed:
         """
         pass
 
-    def GetFaultZeroComponentkA(self) -> float:
+    def GetFaultZeroMagnitudekA(self) -> float:
         """
         Returns the zero sequence fault level component in kA.
 
@@ -9987,7 +9987,7 @@ class IscIndMachine:
         """
         pass
     
-    def GetFaultYellowComponentkA(self) -> float:
+    def GetFaultYellowMagnitudekA(self) -> float:
         """
         Returns the yellow phase fault level component in kA.
 
@@ -9996,7 +9996,7 @@ class IscIndMachine:
         """
         pass
 
-    def GetFaultBlueComponentkA(self) -> float:
+    def GetFaultBlueMagnitudekA(self) -> float:
         """
         Returns the blue phase fault level component in kA.
 
@@ -10005,7 +10005,7 @@ class IscIndMachine:
         """
         pass
 
-    def GetFaultPositiveComponenkA(self) -> float:
+    def GetFaultPositiveMagnitudekA(self) -> float:
         """
         Returns the positive sequence fault level component in kA.
 
@@ -10014,7 +10014,7 @@ class IscIndMachine:
         """
         pass
 
-    def GetFaultNegativeComponentkA(self) -> float:
+    def GetFaultNegativeMagnitudekA(self) -> float:
         """
         Returns the negative sequence fault level component in kA.
 
@@ -10023,7 +10023,7 @@ class IscIndMachine:
         """
         pass
 
-    def GetFaultZeroComponentkA(self) -> float:
+    def GetFaultZeroMagnitudekA(self) -> float:
         """
         Returns the zero sequence fault level component in kA.
 
@@ -20453,7 +20453,7 @@ class IscNetwork:
 
     def GetAnalysisNR(self):
         """
-        Returns an IscAnalysisNR object which can be used to get and set the ArcFlash analysis parameters.
+        Returns an IscAnalysisNR object which can be used to get and set the network reduction parameters.
 
         :return: IscAnalysisNR object.
         :rtype: IscAnalysisNR
@@ -22325,7 +22325,7 @@ class IscSynMachine:
         """
         pass
     
-    def GetFaultYellowComponentkA(self) -> float:
+    def GetFaultYellowMagnitudekA(self) -> float:
         """
         Returns the yellow phase fault level component in kA.
 
@@ -22334,7 +22334,7 @@ class IscSynMachine:
         """
         pass
 
-    def GetFaultBlueComponentkA(self) -> float:
+    def GetFaultBlueMagnitudekA(self) -> float:
         """
         Returns the blue phase fault level component in kA.
 
@@ -22343,7 +22343,7 @@ class IscSynMachine:
         """
         pass
 
-    def GetFaultPositiveComponenkA(self) -> float:
+    def GetFaultPositiveMagnitudekA(self) -> float:
         """
         Returns the positive sequence fault level component in kA.
 
@@ -22352,7 +22352,7 @@ class IscSynMachine:
         """
         pass
 
-    def GetFaultNegativeComponentkA(self) -> float:
+    def GetFaultNegativeMagnitudekA(self) -> float:
         """
         Returns the negative sequence fault level component in kA.
 
@@ -22361,7 +22361,7 @@ class IscSynMachine:
         """
         pass
 
-    def GetFaultZeroComponentkA(self) -> float:
+    def GetFaultZeroMagnitudekA(self) -> float:
         """
         Returns the zero sequence fault level component in kA.
 
