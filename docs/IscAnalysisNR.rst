@@ -32,12 +32,11 @@ Field Values
      - ImpedanceCutOffPU
      - The maximum branch impedence allowed in per unit.
    * - Integer
-     - BranchPowerMode
-     - The mode for the branch admittance:
+     - BoundaryRetentionMode
+     - The mode for managing the boundary elements:
 
-        - 0 = Send only
-        - 1 = Receive only
-        - 2 = Largest value
+        - 0 = Retain boundary elements
+        - 1 = Remove radial elements
    * - Integer
      - ACDCConversionMode
      - The mode of conversion for the AC/DC interface:
