@@ -12,7 +12,7 @@ author = 'IPSA'
 
 release = '1.0'
 version = 'v3.0.0'
-reference = 'RG003'
+reference = 'RG002'
 
 html_css_files = ['css/custom.css']
 # -- General configuration
