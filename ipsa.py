@@ -6672,14 +6672,12 @@ class IscDiagram:
         """
         pass
 
-    def DeleteItem(self, nUID: int) -> bool:
+    def DeleteItem(self, nUID: int) -> None:
         """
         Deletes the graphic item identified by the UID. This may be a line, radial component or busbar.
 
         :param nUID: The graphical item UID.
         :type nUID: int
-        :return: ``True`` if deletion is successful.
-        :rtype: bool
         """
         pass
 
