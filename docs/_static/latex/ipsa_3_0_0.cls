@@ -70,7 +70,7 @@
   \newcommand{\doctitle}{PyIPSA Reference Manual}    
   \newcommand*{\shifttext}[2]{%
     \settowidth{\@tempdima}{#2}%
-    \makebox[\@tempdima]{\hspace*{#1}#2}%
+    \hspace*{\@tempdima}\makebox[\@tempdima]{\hspace*{#1}#2}%
   }
 
   \fancypagestyle{plain}{
@@ -80,7 +80,7 @@
     \fancyhfoffset[LE,RO]{1.8cm}
     \fancyhead[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
     \fancyhead[R]{\raisebox{-1cm}{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}}
-    \fancyhead[C]{\shifttext{-0.65\textwidth}{\textcolor{white}{\scriptsize {\bf \MakeUppercase{\rightmark}}}}}
+    \fancyhead[C]{\shifttext{-0.96\textwidth}{\textcolor{white}{\scriptsize {\bf \MakeUppercase{\rightmark}}}}}
     \fancyfoot{} % clear all footer fields
     \fancyfoot[L]{\raisebox{-0.81cm}{\includegraphics[width=1.322\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
@@ -94,7 +94,7 @@
     \fancyhfoffset[LE,RO]{1.8cm}
     \fancyhead[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
     \fancyhead[R]{\raisebox{-1cm}{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}}
-    \fancyhead[C]{\shifttext{-0.65\textwidth}{\textcolor{white}{\scriptsize {\bf \MakeUppercase{\rightmark}}}}}
+    \fancyhead[C]{\shifttext{-0.96\textwidth}{\textcolor{white}{\scriptsize {\bf \MakeUppercase{\rightmark}}}}}
     \fancyfoot{} % clear all footer fields
     \fancyfoot[L]{\raisebox{-0.81cm}{\includegraphics[width=1.322\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}

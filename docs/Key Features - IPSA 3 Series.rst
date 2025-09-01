@@ -16,7 +16,7 @@ have been created to allow access to the equivalents created in the network redu
 Scenarios
 ------------
 A large expansion and enhancement of the previous "Versions" functionality of IPSA to Scenarios has 
-been undergone. A full PyIPSA interface has been created within ``IscNetwork`` to allow the creation, 
+occured. A full PyIPSA interface has been created within ``IscNetwork`` to allow the creation, 
 deletion and modification of Scenarios as well as the comparison of Scenarios in the network. Scenarios 
 have additionally been given description and date fields and brand new functionality has been included 
 to Update scenarios, Merge scenarios and revert individual item modifications between one scenario and 

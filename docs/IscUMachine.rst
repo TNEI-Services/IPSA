@@ -45,7 +45,7 @@ Field Values
    * - Float
      - ThresholdVoltpu
      - Gets and sets the threshold voltage above which the machine will drop out of "defined fault" mode and contribute
-        nothing to the fault.
+       nothing to the fault.
    * - Float
      - FinalRealFaultCurrentpu
      - Gets and sets the real component of the target symmetric fault current output in pu.
