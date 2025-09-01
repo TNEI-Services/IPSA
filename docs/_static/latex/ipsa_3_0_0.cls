@@ -67,9 +67,12 @@
 % Setting the header and footer
 \AtBeginDocument{
     \makeatletter
-  \newcommand{\doctitle}{PyIPSA Reference Manual}  
-  \newcommand{\headertitle}{P\:y\:I\:P\:S\:A \:\: R\:E\:F\:E\:R\:E\:N\:C\:E \:\: M\:A\:N\:U\:A\:L} % Manually Kern this text to expanded because latex (textls) hates this font
-    
+  \newcommand{\doctitle}{PyIPSA Reference Manual}    
+  \newcommand*{\shifttext}[2]{%
+    \settowidth{\@tempdima}{#2}%
+    \makebox[\@tempdima]{\hspace*{#1}#2}%
+  }
+
   \fancypagestyle{plain}{
     \fancyhead{}
     \fancyhfoffset[LO,RE]{2.56cm}
@@ -77,7 +80,7 @@
     \fancyhfoffset[LE,RO]{1.8cm}
     \fancyhead[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
     \fancyhead[R]{\raisebox{-1cm}{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}}
-    \fancyhead[C]{{\textcolor{white}{\scriptsize {\bf {\headertitle}}}} \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad\ } % whitespace to left align text :')
+    \fancyhead[C]{\shifttext{-0.65\textwidth}{\textcolor{white}{\scriptsize {\bf \MakeUppercase{\rightmark}}}}}
     \fancyfoot{} % clear all footer fields
     \fancyfoot[L]{\raisebox{-0.81cm}{\includegraphics[width=1.322\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
@@ -91,7 +94,7 @@
     \fancyhfoffset[LE,RO]{1.8cm}
     \fancyhead[L]{\raisebox{-0.8cm}{\includegraphics[width=1.32\textwidth]{header.png}}}
     \fancyhead[R]{\raisebox{-1cm}{\includegraphics[width=0.2\textwidth]{ipsalogo.png}}}
-    \fancyhead[C]{{\textcolor{white}{\scriptsize {\bf {\headertitle}}}} \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\quad} % whitespace to left align text :')
+    \fancyhead[C]{\shifttext{-0.65\textwidth}{\textcolor{white}{\scriptsize {\bf \MakeUppercase{\rightmark}}}}}
     \fancyfoot{} % clear all footer fields
     \fancyfoot[L]{\raisebox{-0.81cm}{\includegraphics[width=1.322\textwidth]{footer.png}}}
     \fancyfoot[C] {{\bf \textcolor{white}{\small \thepage}}}
