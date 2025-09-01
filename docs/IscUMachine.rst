@@ -102,11 +102,11 @@ Field Values
      - CDPMaxISubTrans
      - Maximum subtransient value for the current injected given the time domains.
    * - Float
-     - CDPTimeConstantTransientMs
-     - Time constant value in ms for the transient window duration.
+     - CDPTimeConstantTransientSec
+     - Time constant value in seconds for the transient window duration.
    * - Float
-     - CDPTimeConstantSubTransientMs
-     - Time constant value in ms for the subtransient window duration.
+     - CDPTimeConstantSubTransientSec
+     - Time constant value in seconds for the subtransient window duration.
    * - Boolean
      - CDPPhaseCorrections
      - Switch for the CDP functionality of the universal machine that forces the phase correction of the injected current to be in
