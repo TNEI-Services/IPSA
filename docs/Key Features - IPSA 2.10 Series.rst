@@ -1,8 +1,9 @@
+**************************************
 Key features of the IPSA 2.10 Series
-======================================
+**************************************
 
 Key features of IPSA 2.10.3
--------------------------------
+==============================
 Network Capacity tool
 --------------------------------
 New module available to license in IPSA to run numerous load flows and find the violation capacity (over/under voltages, 
@@ -48,7 +49,7 @@ Multiple new miscellaneous methods have been added to PyIPSA. These include, but
 
 
 Key features of IPSA 2.10.2
-------------------------------
+==============================
 
 Converter driven plant functionality
 --------------------------------------------
@@ -82,7 +83,7 @@ Multiple new methods added in PyIPSA for access functions (inc. CreateBranch()).
 
 
 Key features of IPSA 2.10.1
---------------------------------
+===============================
 
 Choppers in PyIPSA
 --------------------------------
