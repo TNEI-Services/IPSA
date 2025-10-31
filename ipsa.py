@@ -12569,18 +12569,18 @@ class IscNetwork:
 
     def GetScenarioDate(self, nScenarioID: int) -> Tuple[int]:
         """
-        Returns the date set for the scenario as a tuple of [MM, YYYY].
+        Returns the date set for the scenario as a tuple of [DD, MM, YYYY].
 
         :param nScenarioID: The ID of the selected scenario.
         :type nScenarioID: int
-        :return: The month and year set for the selected scenario.
+        :return: The day, month and year set for the selected scenario.
         :rtype: tuple(int)
         """
         pass
 
     def GetScenarioDateStr(self, nScenarioID: int) -> str:
         """
-        Returns the date set for the scenario as a string "MM/YYYY".
+        Returns the date set for the scenario as a string "DD/MM/YYYY".
 
         :param nScenarioID: The ID of the selected scenario.
         :type nScenarioID: int
@@ -12615,12 +12615,14 @@ class IscNetwork:
         """
         pass
 
-    def SetScenarioDate(self, nScenarioID: int, nMonth: int, nYear: int) -> bool:
+    def SetScenarioDate(self, nScenarioID: int, nDay: int, nMonth: int, nYear: int) -> bool:
         """
         Sets the date for the scenario identified by nScenarioID to the month and year provided.
         
         :param nScenarioID: The ID of the selected scenario.
         :type nScenarioID: int
+        :param nDay: The new day for the scenario.
+        :type nDay: int
         :param nMonth: The new month for the scenario.
         :type nMonth: int
         :param nYear: The new year for the scenario.
