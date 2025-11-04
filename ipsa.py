@@ -7869,56 +7869,164 @@ class IscEquivalentRadial:
         """
         pass
 
-    def GetPowerMagnitudeMVA(self) -> float:
+    def GetInjectionRealPowerMW(self) -> float:
         """
-        Returns the equivalent radial output in MVA.
+        Returns the current injection real power output in MW.
 
-        :return: The equivalent radial output in MVA.
+        :return: The current injection real power output in MW.
         :rtype: float
         """
         pass
 
-    def GetPowerMagnitudekVA(self) -> float:
+    def GetInjectionReactivePowerMVAr(self) -> float:
         """
-        Returns the equivalent radial output in kVA.
+        Returns the current injection reactive power output in MVAr.
 
-        :return: The equivalent radial output in kVA.
+        :return: The current injection reactive power output in MVAr.
         :rtype: float
         """
         pass
 
-    def GetRealPowerMW(self) -> float:
+    def GetInjectionRealPowerkW(self) -> float:
         """
-        Returns the equivalent radial output in MW.
+        Returns the current injection real power output in kW.
 
-        :return: The equivalent radial output in MW.
+        :return: The current injection real power output in kW.
         :rtype: float
         """
         pass
 
-    def GetReactivePowerMVAr(self) -> float:
+    def GetInjectionReactivePowerkVAr(self) -> float:
         """
-        Returns the equivalent radial output in MVAr.
+        Returns the current injection reactive power output in kVAr.
 
-        :return: The equivalent radial output in MVAr.
+        :return: The current injection reactive power output in kVAr.
         :rtype: float
         """
         pass
 
-    def GetRealPowerkW(self) -> float:
+    def GetShuntRealPowerMW(self) -> float:
         """
-        Returns the equivalent radial output in kW.
+        Returns the real shunt power in MW.
 
-        :return: The equivalent radial output in kW.
+        :return: The real shunt power in MW.
         :rtype: float
         """
         pass
 
-    def GetReactivePowerkVAr(self) -> float:
+    def GetShuntReactivePowerMVAr(self) -> float:
         """
-        Returns the equivalent radial output in kVAr.
+        Returns the reactive shunt power in MVAr.
 
-        :return: The equivalent radial output in kVAr.
+        :return: The reactive shunt power in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetShuntRealPowerkW(self) -> float:
+        """
+        Returns the real shunt power in kW.
+
+        :return: The real shunt power in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetShuntReactivePowerkVAr(self) -> float:
+        """
+        Returns the reactive shunt power in kVAr.
+
+        :return: The reactive shunt power in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetFictBranchRealPowerMW(self) -> float:
+        """
+        Returns the real power injection from the fictitious branch component of the Extended Ward in MW.
+
+        :return: The real power injection from the fictitious branch component of the Extended Ward in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetFictBranchReactivePowerMVAr(self) -> float:
+        """
+        Returns the reactive power injection from the fictitious branch component of the Extended Ward in MVAr.
+
+        :return: The reactive power injection from the fictitious branch component of the Extended Ward in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetFictBranchRealPowerkW(self) -> float:
+        """
+        Returns the real power injection from the fictitious branch component of the Extended Ward in kW.
+
+        :return: The real power injection from the fictitious branch component of the Extended Ward in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetFictBranchReactivePowerkVAr(self) -> float:
+        """
+        Returns the reactive power injection from the fictitious branch component of the Extended Ward in kVAr.
+
+        :return: The reactive power injection from the fictitious branch component of the Extended Ward in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalRealPowerMW(self) -> float:
+        """
+        Returns the total real power output from the equivalent radial in MW.
+
+        :return: The total real power output from the equivalent radial in MW.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalReactivePowerMVAr(self) -> float:
+        """
+        Returns the total reactive power output from the equivalent radial in MVAr.
+
+        :return: The total reactive power output from the equivalent radial in MVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalRealPowerkW(self) -> float:
+        """
+        Returns the total real power output from the equivalent radial in kW.
+
+        :return: The total real power output from the equivalent radial in kW.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalReactivePowerkVAr(self) -> float:
+        """
+        Returns the total reactive power output from the equivalent radial in kVAr.
+
+        :return: The total reactive power output from the equivalent radial in kVAr.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalApparentPowerMVA(self) -> float:
+        """
+        Returns the total apparent power output from equivalent radial in MVA.
+
+        :return: The total apparent power output from equivalent radial in MVA.
+        :rtype: float
+        """
+        pass
+
+    def GetTotalApparentPowerkVA(self) -> float:
+        """
+        Returns the total apparent power output from equivalent radial in kVA.
+
+        :return: The total apparent power output from equivalent radial in kVA.
         :rtype: float
         """
         pass

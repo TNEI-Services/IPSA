@@ -37,11 +37,17 @@ Field Values
      - ReactivePowerMVAr
      - Gets and sets the reactive power output.
    * - Float
-     - EquivResistancePU
-     - Gets the equivalent resistance in per unit.
+     - ResistancePU
+     - Gets the resistance from the shunt equivalent in per unit.
    * - Float
-     - EquivReactancePU
-     - Gets the equivalent reactance in per unit.
+     - ReactancePU
+     - Gets the reactance from the shunt equivalent in per unit.
+   * - Float
+     - ExtResistancePU
+     - Gets the resistance in per unit from the diagonal shunt component generated in the Extended Ward method.
+   * - Float
+     - ExtReactancePU
+     - Gets the reactance in per unit from the diagonal shunt component generated in the Extended Ward method.
    * - Float
      - TargetVoltagePU
      - Gets and sets the target voltage in per unit.
