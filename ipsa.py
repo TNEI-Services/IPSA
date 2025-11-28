@@ -15049,7 +15049,7 @@ class IscNetwork:
         pass
 
     def GetIntertripFromBreaker(self, nBreakerUID: int) -> int:
-        """"
+        """
         Returns the UID of the intertrip the breaker identified by nBreakerUID belongs to.
         Returns 0 if no intertrip is found.
 
