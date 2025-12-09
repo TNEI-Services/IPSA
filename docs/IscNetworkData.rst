@@ -40,6 +40,9 @@ Field Values
    * - Boolean
      - SetNewAggregatesTrue
      - Gets or sets the default aggregate value for new components.
+   * - Boolean
+     - DoGroupsTriggerIntertrips
+     - Gets or sets whether switching groups should trigger intertrips.
 
 IscNetworkData Class
 ====================
