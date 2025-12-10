@@ -64,6 +64,7 @@ Field Values
      - The maximum equivalent branch impedence in per unit.
    * - Integer
      - DrawEquivalents:
+     - Logic for which equivalents are drawn:
 
         - 0 = Don't draw the equivalents
         - 1 = Draw the equivalent branches
