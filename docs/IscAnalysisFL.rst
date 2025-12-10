@@ -45,19 +45,19 @@ Field Values
      - FaultEngineType
      - Type of fault to be applied. Should be one of:
 
-        - LineGround
-        - LineLine
-        - LineLineGround
-        - LineLineLine
+        - ``LineGround``
+        - ``LineLine``
+        - ``LineLineGround``
+        - ``LineLineLine``
    * - Integer
      - FaultEngineResultType
      - Type of fault result obtained. Should be one of:
 
-        - SymRMS
-        - AsymPeak
-        - AsymRMS
-        - BusWave : Note, Plot waveform is currently not supported from PyIPSA
-        - BranchWave : Note, Plot waveform is currently not supported from PyIPSA
+        - ``SymRMS``
+        - ``AsymPeak``
+        - ``AsymRMS``
+        - ``BusWave`` : Note, Plot waveform is currently not supported from PyIPSA
+        - ``BranchWave`` : Note, Plot waveform is currently not supported from PyIPSA
    * - Integer
      - MaxFaultIterations
      - Maximum number of iterations to run the fault level.
@@ -110,6 +110,18 @@ Field Values
         - 0 = Machine specific settings
         - 1 = Globally use linear interpolation
         - 2 = Globally use cubic interpolation
+   * - Boolean
+     - ShowCDPWarnings
+     - If ``True`` the warnings of the CDP engine will be shown.
+   * - Boolean
+     - FaultCDPDefined
+     - If ``True`` use defined fault with CDPs in the fault engine.
+   * - Boolean
+     - FaultCDPDefaultRatedI
+     - If ``True`` use the default rating of universal machine.
+   * - Integer
+     - FaultCDPNumIterations
+     - Specifies the number of iterations for CDP-G74 voltages.
    * - Float
      - IEC909DefaultPhaseAngle
      - Specifies the default synchronous machine power factor. ``IEC909UseDefaultPF`` should be set to ``True`` to use this value.
@@ -176,6 +188,36 @@ Field Values
    * - Integer
      - MotorToStart
      - The motor calculation is started for the motor UID.
+   * - Boolean
+     - FaultUseMotorLoad
+     - Set to ``True`` to consider the equivalent motor parameters from the static loads.
+   * - Boolean
+     - FaultUseMinTfZ
+     -  Set to ``True`` to use the minimum transformer impedance (currently using max tap position).
+   * - List[Float]
+     - MotorLoadVoltageskV
+     - The nominal voltages in kV from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadStatorRPU
+     - The stator resistance values in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadStatorXPU
+     - The stator reactance values in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadMagXPU
+     - The magnetising reactance values in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorInnerRPU
+     - The  rotor (inner) resistances in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorInnerXPU
+     - The rotor (inner) reactances in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorOuterRPU
+     - The rotor (outer) resistances in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorOuterXPU
+     - The rotor (outer) reactances in PU from the tabulated motor fault data for the entire network.
 
 IscAnalysisFL Class
 --------------------

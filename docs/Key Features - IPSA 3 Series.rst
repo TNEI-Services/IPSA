@@ -2,6 +2,31 @@
 Key features of the IPSA 3 Series
 *************************************
 
+Key Features of IPSA 3.1
+=============================
+G74 fault modelling
+----------------------------------
+Loads are now coupled with a fault mode that emulates induction machines based either on global settings
+in ``IscAnalysisFL`` or individual impedence information in ``IscLoad``. Additionally a new option in 
+``IscAnalysisFL`` allows the transformers to be forced to a maximum tap position to garner minimimum 
+impedence for fault events.
+
+Scenarios
+-------------
+New scenarios functionality has been added in ``IscNetwork`` to allow users to merge multiple scenarios 
+simultaneously either by providing a list of scenarios to merge, or by setting a maximum date/scenario 
+ID to merge up to. 
+Additional functionality has been added to allow users to cascade changes to update not only the current 
+scenario but also all of the current scenarios child scenarios.
+Finally functionality to set the default "Fast Merge" options within the UI can be accessed through PyIPSA.
+
+Additional features
+-----------------------
+- Users can now run network reduction through PyIPSA (using ``IscNetwork.RunNetworkReduction`` in 
+    conjunction with ``IscAnalysisNR``).
+- Users can now set/unset the global override on data display styles through PyIPSA - selecting which 
+    diagram should provide the data display styles to be used across all diagrams.
+
 Key features of IPSA 3.0
 =============================
 

@@ -12926,6 +12926,229 @@ class IscNetwork:
         """
         pass
 
+    def MergeScenarios(self, lMergeScenarioIDs: List[int], nCompareScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                       nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merges the changes between each of the lMergeScenarioIDS and nCompareScenario into the current network in order. 
+        If nCompareScenario is set to 0, the base scenario of the network will be used instead.
+        
+        bForceAddIncoming and bForceKeepCurrent allow the user to define how conflicts should be resolved. 
+        Conflicts that might arise in the merge can be determined by calling GetMergeScenarioConflictsText.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+
+        :param lMergeScenario: The selected scenario ID from which the changes will be merged.
+        :type lMergeScenario: list[int]
+        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
+        :type nCompareScenario: int
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    def MergeAllScenarios(self, bForceAddIncoming: bool, bForceKeepCurrent: bool, nDiagramUpdateStyle: int, 
+                          bAsNewScenario: bool, strNewScenarioName: str = "", bSortByDate: bool = False) -> bool:
+        """
+        Merge all the scenarios into the current network. bSortByDate determines whether they are merged in date order or creation order.
+
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge all scenarios".
+
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def MergeScenariosBefore(self, strMaxDate: str, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merge all scenarios with dates before strMaxDate into the current network. Scenarios will be merged in date order.
+
+        strMaxDate must be provided in either "dd/MM/yyyy" format or ISODate format.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+        
+        :param strMaxDate: The date before which all scenarios should be merged provided in "dd/MM/yyyy" or ISODate format
+        :type strMaxDate: str
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+    
+    @overload
+    def MergeScenariosBefore(self, nMaxScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merge all scenarios with IDs before (and including) nMaxScenario into the current network. Scenarios will be merged in creation (that is ID) order.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+        
+        :param nMaxScenario: The scenario up to which (inclusive) the scenarios should be merged.
+        :type nMaxScenario: int
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    def MergeScenariosBefore(self, nMaxScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merge all scenarios with IDs before (and including) nMaxScenario or dates before strMaxDate into the current network. 
+        Scenarios will be merged in creation (that is ID) order if nMaxScenario is provided, and date order if strMaxDate is provided.
+
+        strMaxDate must be provided in either "dd/MM/yyyy" format or ISODate format.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+        
+        :param nMaxScenario: The scenario up to which (inclusive) the scenarios should be merged.
+        :type nMaxScenario: int
+        :param strMaxDate: The date before which all scenarios should be merged provided in "dd/MM/yyyy" or ISODate format
+        :type strMaxDate: str
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    def CascadeUpdateScenarios(self, bAsCopy: bool, bPrioritiseChildren: bool, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                               nDiagramUpdateStyle: int):
+        """
+        Update the current scenario to match the current network, and cascade this change down through all the current 
+        scenario's child scenarios.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        :param bAsCopy: If True, create a copy of the current scenario and all its children containing the update, otherwise
+                it will update the current scenario and all of its children in place.
+        :type bAsCopy: bool
+        :param bPrioritiseChildren: If True, when there is ambiguity from the same component being modified in both a child
+                scenario and the cascading changes, prioritise the changes in the child scenario. If False, prioritise the 
+                cascading changes.
+        :type bPrioritiseChildren: bool
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes.
+        :type nDiagramUpdateStyle: int
+        :return: True if the cascade occurs successfully.
+        :rtype: bool
+        """
+        pass
+
     def GetMergeScenarioConflictsText(self, nMergeScenario: int, nCompareScenario: int, bShowNameConflicts: bool = False) -> str:
         """
         Returns a description of the conflicts that would occur in merging the changes between 
@@ -12942,6 +13165,46 @@ class IscNetwork:
         :param bShowNameConflicts: Whether to include details of items that may be renamed in the merge to stop forbidden duplicate names.
         :type bShowNameConflicts: bool
         :return: A description of all the conflicts that may occur in merging the scenario
+        :rtype: str
+        """
+        pass
+
+    def SetScenarioFastMergeOptions(self, nCompareScenario: int, bSortByDate: bool, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                                    nDiagramUpdateStyle: int, bOutputSummary: bool):
+        """
+        Set the merge options to be used in fast merge.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+
+        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
+        :type nCompareScenario: int
+        :param bSortByDate: True if multiple scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes.
+        :type nDiagramUpdateStyle: int
+        :param bOutputSummary: If True, a summary of the fast merge events will be printed to the progress window.
+        :type bOutputSummary: bool
+        :return: True if the values are set successfully.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarioFastMergeOptionsSummary(self) -> str:
+        """
+        Returns a string containing a summary of all the fast merge options.
+        
+        :return: A string containing a summary of all the fast merge options.
         :rtype: str
         """
         pass
@@ -19607,6 +19870,26 @@ class IscNetwork:
         """
         pass
 
+    def SetDiagramDataStyleGlobalOverride(self, nDiagramID: int) -> bool:
+        """
+        Use the data style from the specified diagram in all diagrams (enabling global override).
+        
+        :param nDiagramID: The ID of the diagram to use as the override.
+        :type nDiagramID: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def StopDataStyleGlobalOverride(self) -> bool:
+        """
+        Disable the global override to use the same data style in all diagrams.
+        
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
     def GetAnalysisLF(self):
         """
         Returns an IscAnalysisLF object which can be used to get and set the load flow analysis parameters.
@@ -19665,7 +19948,6 @@ class IscNetwork:
         :rtype: IscAnalysisDCLF
         """
         pass
-
 
     def DoDCLoadFlow(self):
         """
@@ -20565,6 +20847,15 @@ class IscNetwork:
 
         :return: IscAnalysisNR object.
         :rtype: IscAnalysisNR
+        """
+        pass
+
+    def RunNetworkReduction(self) -> bool:
+        """
+        Performs a network reduction based on the current IscAnalysisNR settings.
+        
+        :return: True if successful.
+        :rtype: bool
         """
         pass
 

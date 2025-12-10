@@ -62,24 +62,25 @@ Field Values
    * - Float
      - EquivalentBrZCutoffPU
      - The maximum equivalent branch impedence in per unit.
-   * - Boolean
-     - AutoDrawRadials
-     - If ``True``, automatically draw the equivalent radials.
+   * - Integer
+     - DrawEquivalents:
+
+        - 0 = Don't draw the equivalents
+        - 1 = Draw the equivalent branches
+        - 2 = Draw the equivalent branches and radials
    * - Boolean
      - DeleteBoundaryPostReduction
      - If ``True``, delete the used boundary after the reduction.
    * - Boolean
      - ExportNetworkPreReduction
      - If ``True``, export the existing network before the reduction.
-   * - Boolean
-     - ObfuscateCatalogObjects
-     - If ``True``, hide the generation information from the catalog.
    * - Integer
-     - CatalogDistributionMode
+     - CatalogMode
      - The mode of the catalog distribution:
 
-        - 0 = Distribute catalog generation equally
-        - 1 = Weight catalog items by equivalent MW
+        - 0 = Do not expose the catalog
+        - 1 = Distribute catalog generation equally
+        - 2 = Weight catalog items by equivalent MW
 
 IscAnalysisNR Class
 --------------------
