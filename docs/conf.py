@@ -11,7 +11,7 @@ copyright = 'IPSA'
 author = 'IPSA'
 
 release = '1.0'
-version = 'v3.0.0'
+version = 'v3.1.0'
 reference = 'RG002'
 
 html_css_files = ['css/custom.css']
