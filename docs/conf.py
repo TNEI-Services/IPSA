@@ -45,6 +45,7 @@ autodoc_member_order = 'bysource'
 # -- Options for HTML output
 html_theme = 'sphinx_rtd_theme'
 html_logo = 'ipsa_wo_small.png'#'ipsa_circle_glow_small.png'
+html_title = 'PyIPSA 2.10.1 Documentation'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
