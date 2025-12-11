@@ -22,10 +22,8 @@ Finally functionality to set the default "Fast Merge" options within the UI can 
 
 Additional features
 -----------------------
-- Users can now run network reduction through PyIPSA (using ``IscNetwork.RunNetworkReduction`` in 
-    conjunction with ``IscAnalysisNR``).
-- Users can now set/unset the global override on data display styles through PyIPSA - selecting which 
-    diagram should provide the data display styles to be used across all diagrams.
+    - Users can now run network reduction through PyIPSA (using ``IscNetwork.RunNetworkReduction`` in conjunction with ``IscAnalysisNR``).
+    - Users can now set/unset the global override on data display styles through PyIPSA - selecting which diagram should provide the data display styles to be used across all diagrams.
 
 Key features of IPSA 3.0
 =============================
