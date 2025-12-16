@@ -1028,6 +1028,17 @@ class IscAnalysisFL:
         """
         pass
 
+    def GetListDValue(self, nFieldIndex: int) -> List[float]:
+        """
+        Returns a list of double values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[float]
+        """
+        pass
+
     def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
         """
         Sets the integer value for the enumerated field.
@@ -1075,6 +1086,19 @@ class IscAnalysisFL:
         :type nFieldIndex: int
         :param bValue: The boolean value that will be set.
         :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListDValue(self, nFieldIndex: int, lDValue: List[float]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of doubles.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lDValue: The given list of double values.
+        :type lDValue: list[float]
         :return: True if successful.
         :rtype: bool
         """
