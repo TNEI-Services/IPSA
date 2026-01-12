@@ -56,6 +56,57 @@ Field Values
         - 1 = Accepted
         - 2 = Completed
         - 3 = Energised (default, in service)
+   * - Float
+     - RatedPowerMW
+     - Gets and sets the real power rating value for the load in MW.
+   * - Float
+     - RatedPowerMVA
+     - Gets and sets the apparent power rating value for the load in MVA.
+   * - Boolean
+     - EquivalentMotorFault
+     - Gets and sets boolean on whether this load has a motor fault contribution.
+   * - Integer
+     - FaultPowerMode
+     - Gets and sets whether the power used is:
+
+        - 0 = Rated Power (MVA)
+        - 1 = Actual Power (MVA)
+   * - Float
+     - FaultScaling
+     - Gets and sets the scale factor for rescaling the chosen power to divide through the equivalent impedance parameters.
+   * - Integer
+     - EquivalentMotorModel
+     - Gets and sets the motor model:
+
+        - 0 = Inner/Outer
+        - 1 = Running/Standstill
+   * - Float
+     - EquivalentStatorRPU
+     - Gets and sets the motor equivalent stator resistance in PU.
+   * - Float
+     - EquivalentStatorXPU
+     - Gets and sets the motor equivalent stator reactance in PU.
+   * - Float
+     - EquivalentMagXPU
+     - Gets and sets the motor equivalent magnetising reactance in PU.
+   * - Float
+     - EquivInnerRPU
+     - Gets and sets the motor equivalent inner resistance in PU.
+   * - Float
+     - EquivInnerXPU
+     - Gets and sets the motor equivalent inner reactance in PU.
+   * - Float
+     - EquivOuterRPU
+     - Gets and sets the motor equivalent outer resistance in PU.
+   * - Float
+     - EquivOuterXPU
+     - Gets and sets the motor equivalent outer reactance in PU.
+   * - Boolean
+     - EquivUseManual
+     - Gets and sets  whether to give the equivalent parameters with a manual override.
+   * - Float
+     - ActualPowerMVA
+     - Gets the load flow result power that arises from the load flow and scaling and profile selection.
    * - String
      - Comment
      - Gets and sets the comments.

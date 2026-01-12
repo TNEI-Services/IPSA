@@ -188,6 +188,36 @@ Field Values
    * - Integer
      - MotorToStart
      - The motor calculation is started for the motor UID.
+   * - Boolean
+     - FaultUseMotorLoad
+     - Set to ``True`` to consider the equivalent motor parameters from the static loads.
+   * - Boolean
+     - FaultUseMinTfZ
+     -  Set to ``True`` to use the minimum transformer impedance (currently using max tap position).
+   * - List[Float]
+     - MotorLoadVoltageskV
+     - The nominal voltages in kV from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadStatorRPU
+     - The stator resistance values in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadStatorXPU
+     - The stator reactance values in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadMagXPU
+     - The magnetising reactance values in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorInnerRPU
+     - The  rotor (inner) resistances in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorInnerXPU
+     - The rotor (inner) reactances in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorOuterRPU
+     - The rotor (outer) resistances in PU from the tabulated motor fault data for the entire network.
+   * - List[Float]
+     - MotorLoadRotorOuterXPU
+     - The rotor (outer) reactances in PU from the tabulated motor fault data for the entire network.
 
 IscAnalysisFL Class
 --------------------

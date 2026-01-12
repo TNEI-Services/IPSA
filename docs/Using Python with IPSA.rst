@@ -27,8 +27,8 @@ Configuration
 --------------
 This guide provides a full reference to IPSA objects and their methods that are exposed through the Python API. Our Python engine API is referred to as PyIPSA. All Python scripts run through IPSA internally benefit from IPSA's internal Python interpreter.
 
-PyIPSA 3.0.0 uses Python 3.11 and we only offer a 64 bit application as of 2023. Note that since Python developed Python 3.9, embedded C applications have to be constructed for Python with the version that is required for users. 
-Therefore if you use an alternative version of Python 3, the PyIPSA 3.0.0 installation will not work. 
+PyIPSA 3.1.0 uses Python 3.11 and we only offer a 64 bit application as of 2023. Note that since Python developed Python 3.9, embedded C applications have to be constructed for Python with the version that is required for users. 
+Therefore if you use an alternative version of Python 3, the PyIPSA 3.1.0 installation will not work. 
 Please contact `support@ipsa-power.com`_ if there are serious problems with this configuration.
 
 .. _support@ipsa-power.com: mailto:support@ipsa-power.com
