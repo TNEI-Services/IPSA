@@ -43,6 +43,13 @@ Field Values
    * - Boolean
      - DoGroupsTriggerIntertrips
      - Gets or sets whether switching groups should trigger intertrips.
+   * - Boolean
+     - ScenariosIgnoreStudyChanges
+     - Gets or sets whether scenarios/undo should ignore changes caused by analysis results.
+   * - Boolean
+     - ScenariosIgnoreViewChanges
+     - Gets or sets whether scenarios/undo should ignore changes made to the diagram views.
+
 
 IscNetworkData Class
 ====================

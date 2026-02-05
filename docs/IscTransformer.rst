@@ -122,6 +122,9 @@ Field Values
    * - Float
      - RBWidthPC
      - Full bandwidth of the voltage sensing relay. This should be larger than tap step size.
+   * - Boolean
+     - IgnoreReverseLDCFlow
+     - Set to ``True`` if the transfomer should ignore LDC contributions while the transformer flow is in reverse (e.g., To Busbar to From Busbar).
    * - Float
      - CompRPC
      - Line drop compensation resistance in percentage on the compensation rating base.

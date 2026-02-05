@@ -136,6 +136,9 @@ Field Values
    * - Float
      - ProfileTimeSliceHrs
      - Pass a float representing the number of hours in each profile category.
+   * - Boolean
+     - BlockLDCReverse
+     - Set ``True`` to globally block LDC for reverse flowing transformers in the load flow calculation.
 
 IscAnalysisLF Class
 --------------------

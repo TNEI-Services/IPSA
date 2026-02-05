@@ -11214,6 +11214,32 @@ class IscInterface:
         """
         pass
 
+    def GetOptimiseSaveFileSize(self) -> bool:
+        """
+        Returns a int determining how the save file will be adjusted for size:
+            
+            - ipsa.IscInterface.StandardSave = The save file is unoptimised
+            - ipsa.IscInterface.OptimisedSave = The save file is optimised on save
+            - ipsa.IscInterface.ReducedSave = The save file is further reduced (but will not open in IPSA 3.1.0 and earlier)
+
+        :return: Returns the type for how the save file will be optimised
+        :rtype: int
+        """
+        pass
+
+    def SetOptimiseSaveFileSize(self, nSaveFileType: bool):
+        """
+        Sets how the save file will be adjusted for size. nSaveFileType should be one of::
+            
+            - ipsa.IscInterface.StandardSave = The save file is unoptimised
+            - ipsa.IscInterface.OptimisedSave = The save file is optimised on save
+            - ipsa.IscInterface.ReducedSave = The save file is further reduced (but will not open in IPSA 3.1.0 and earlier)
+
+        :param nSaveFileType: The type for how the save file should be optimised
+        :type nSaveFileType: int
+        """
+        pass
+
     def HasPSSEIO(self) -> bool:
         """
         *Deprecated.*
@@ -11269,6 +11295,62 @@ class IscInterface:
         :type strName: str
         :return: True if successful.
         :rtype: bool
+        """
+        pass
+
+    def ImportFromCIM(self, nVersion: int = 0, strExePath: str = "", strLogPath: str = "") -> int:
+        """
+        Imports a CIM Network into IPSA. This will prompt the user for information as required and 
+        return a code to indicate whether the action was successful:
+
+            - -1 : The CIM import license is not active.
+            - 0 : The network has been imported successfully
+            - 1 : The specified standards version is not valid
+            - 2 : The cim2ipsa.exe cannot be found or is missing components
+            - 3 : The user temp directory has not been found
+            - 4 : An unknown python error has occurred
+            - 5 : The designated log folder has not been found or is inaccessible
+            - 6 : The log file was not found or is inaccessible
+        
+        
+        :param nVersion: If "0", this will use the CIM100 standards, if "1" the GB-CIM standards will be used.
+        :type nVersion: int
+        :param strExePath: The path to the cim2ipsa.exe to be used. If left blank, IPSA will attempt to use the 
+                            one associated with the active PyIPSA installation.
+        :type strExePath: str
+        :param strLogPath: The path to the directory where the log file should be generated. If left blank the log
+                            will only be generated in the users temp directory.
+        :type strLogPath: str
+        :return: A return code specified above.
+        :rtype: int
+        """
+        pass
+
+    def ExportToCIM(self, nVersion: int = 0, strExePath: str = "", strLogPath: str = "") -> int:
+        """
+        Exports an IPSA network to CIM. This will prompt the user for information as required and 
+        return a code to indicate whether the action was successful:
+
+            - -1 : The CIM export license is not active.
+            - 0 : The network has been exported successfully
+            - 1 : The specified standards version is not valid
+            - 2 : The cim2ipsa.exe cannot be found or is missing components
+            - 3 : The user temp directory has not been found
+            - 4 : An unknown python error has occurred
+            - 5 : The designated log folder has not been found or is inaccessible
+            - 6 : The log file was not found or is inaccessible
+        
+        
+        :param nVersion: If "0", this will use the CIM100 standards, if "1" the GB-CIM standards will be used.
+        :type nVersion: int
+        :param strExePath: The path to the cim2ipsa.exe to be used. If left blank, IPSA will attempt to use the 
+                            one associated with the active PyIPSA installation.
+        :type strExePath: str
+        :param strLogPath: The path to the directory where the log file should be generated. If left blank the log
+                            will only be generated in the users temp directory.
+        :type strLogPath: str
+        :return: A return code specified above.
+        :rtype: int
         """
         pass
 
@@ -12905,6 +12987,38 @@ class IscNetwork:
 
         :param bEnableRealTimeDiffs: True if real time differencing should be active.
         :type bEnableRealTimeDiffs: bool
+        :return: True if the value is successfully set.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarioUpdatesChangeHierarchy(self) -> bool:
+        """
+        Returns whether performing "Update Scenario" should change the scenario hierarchy.
+
+        If ``True``, all scenarios descending from the updating scenario will have their hierarchy modified
+        to descend from the updating scenarios parent. If ``False``, the hierarchy will be unmodified.
+
+        Note: these descendant scenarios will never be modified in the standard "Update" process 
+        and are only modified in "Cascade updates".
+
+        :return: True if updating a scenario will change the hierarchy.
+        :rtype: bool
+        """
+        pass
+
+    def SetScenarioUpdatesChangeHierarchy(self, bUpdatesChangeHierarchy) -> bool:
+        """
+        Sets whether performing "Update Scenario" should change the scenario hierarchy.
+
+        If ``True``, all scenarios descending from the updating scenario will have their hierarchy modified
+        to descend from the updating scenarios parent. If ``False``, the hierarchy will be unmodified.
+
+        Note: these descendant scenarios will never be modified in the standard "Update" process 
+        and are only modified in "Cascade updates".
+
+        :param bUpdatesChangeHierarchy: True if updating a scenario should change the hierarchy.
+        :type bUpdatesChangeHierarchy: bool
         :return: True if the value is successfully set.
         :rtype: bool
         """
