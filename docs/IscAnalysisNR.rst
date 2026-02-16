@@ -23,9 +23,6 @@ Field Values
      - BoundaryUID
      - UID of the boundary that defines the reduction.
    * - Boolean
-     - AutomaticallySelectSlacks
-     - If ``True`` automatically select slack busbars if equivalenced.
-   * - Boolean
      - UseImpedanceCutOff
      - If ``True``, use the branch impedence cut off for reduction.
    * - Float
@@ -47,9 +44,9 @@ Field Values
      - YBusMatrixDecompositionRoutine
      - The matrix decomposition method used for the reduction:
 
-        - 0 = LLT (simplicial)
-        - 1 = LLDT (simplicial)
-        - 2 = LU
+        - 0 = LU (most common)
+        - 1 = QR (accurate, but slow)
+        - 2 = BiCGSTAB (iterative solver)
    * - Boolean
      - EquivalentInjectionCutoff
      - If ``True``, filter out low MVA equivalent injections.
@@ -82,6 +79,7 @@ Field Values
         - 0 = Do not expose the catalog
         - 1 = Distribute catalog generation equally
         - 2 = Weight catalog items by equivalent MW
+		
 
 IscAnalysisNR Class
 --------------------
