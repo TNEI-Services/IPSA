@@ -11,7 +11,7 @@ copyright = 'IPSA'
 author = 'IPSA'
 
 release = '1.0'
-version = 'v3.1.0'
+version = 'v3.2.0'
 reference = 'RG002'
 
 html_css_files = ['css/custom.css']
@@ -46,7 +46,7 @@ autodoc_member_order = 'bysource'
 # -- Options for HTML output
 html_theme = 'sphinx_rtd_theme'
 html_logo = '_static/css/ipsalogo_wt.png'#'ipsa_wo_small.png'#'ipsa_circle_glow_small.png'
-html_title = 'PyIPSA 3.1 Documentation'
+html_title = 'PyIPSA 3.2 Documentation'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
