@@ -192,7 +192,7 @@ Field Values
      - FaultUseMotorLoad
      - Set to ``True`` to consider the equivalent motor parameters from the static loads.
    * - Boolean
-     - FaultUseMinTfZ
+     - FaultTransformerTap
      -  Set to ``True`` to use the minimum transformer impedance (currently using max tap position).
    * - List[Float]
      - MotorLoadVoltageskV
