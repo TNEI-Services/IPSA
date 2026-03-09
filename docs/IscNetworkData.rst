@@ -47,8 +47,17 @@ Field Values
      - ScenariosIgnoreStudyChanges
      - Gets or sets whether scenarios/undo should ignore changes caused by analysis results.
    * - Boolean
-     - ScenariosIgnoreViewChanges
-     - Gets or sets whether scenarios/undo should ignore changes made to the diagram views.
+     - ScenariosUseSameView
+     - Gets or sets whether the same diagram views should be used in all scenarios/undo.
+   * - Boolean
+     - ScenariosUseSameAnalysisData
+     - Gets or sets whether the same analysis data values (e.g., the IscAnalysis class values) should be used in all scenarios/undo.
+   * - Boolean
+     - ScenariosUseSameDiagramData
+     - Gets or sets whether the same diagram properties should be used in all scenarios/undo.
+   * - Boolean
+     - ScenariosUseSameDisplayStyles
+     - Gets or sets whether the same data and results display styles should be used in all scenarios/undo.
 
 
 IscNetworkData Class

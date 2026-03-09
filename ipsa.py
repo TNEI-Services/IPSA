@@ -11240,6 +11240,30 @@ class IscInterface:
         """
         pass
 
+    def GetFilterAreaScenariosOnSave(self) -> bool:
+        """
+        Gets whether the scenarios in a network should be filtered when saving areas/regions.
+
+        Note: when saving areas/regions through PyIPSA, when this is True, only scenarios with either component or diagram
+        changes associated with the area/region components will be saved.
+
+        :return: True if the scenarios should be filtered on save.
+        :rtype: bool
+        """
+        pass
+
+    def SetFilterAreaScenariosOnSave(self, bFilterScenarios: bool):
+        """
+        Sets whether the scenarios in a network should be filtered when saving areas/regions.
+
+        Note: when saving areas/regions through PyIPSA, when this is True, only scenarios with either component or diagram
+        changes associated with the area/region components will be saved.
+
+        :param bFilterScenarios: True if the scenarios should be filtered on save.
+        :type bFilterScenarios: bool
+        """
+        pass
+
     def HasPSSEIO(self) -> bool:
         """
         *Deprecated.*
@@ -11303,7 +11327,6 @@ class IscInterface:
         Imports a CIM Network into IPSA. This will prompt the user for information as required and 
         return a code to indicate whether the action was successful:
 
-            - -1 : The CIM import license is not active.
             - 0 : The network has been imported successfully
             - 1 : The specified standards version is not valid
             - 2 : The cim2ipsa.exe cannot be found or is missing components
@@ -11311,6 +11334,8 @@ class IscInterface:
             - 4 : An unknown python error has occurred
             - 5 : The designated log folder has not been found or is inaccessible
             - 6 : The log file was not found or is inaccessible
+            - 7 : The CIM files were not found
+            - 9 : The CIM import license is not active
         
         
         :param nVersion: If 0, this will use the CIM100 standards, if 1 the GB-CIM standards will be used.
@@ -11331,7 +11356,6 @@ class IscInterface:
         Exports an IPSA network to CIM. This will prompt the user for information as required and 
         return a code to indicate whether the action was successful:
 
-            - -1 : The CIM export license is not active.
             - 0 : The network has been exported successfully
             - 1 : The specified standards version is not valid
             - 2 : The cim2ipsa.exe cannot be found or is missing components
@@ -11339,6 +11363,8 @@ class IscInterface:
             - 4 : An unknown python error has occurred
             - 5 : The designated log folder has not been found or is inaccessible
             - 6 : The log file was not found or is inaccessible
+            - 7 : The CIM files were not found
+            - 9 : The CIM export license is not active
         
         
         :param nVersion: If 0, this will use the CIM100 standards, if 1 the GB-CIM standards will be used.
@@ -11352,6 +11378,87 @@ class IscInterface:
         :return: A return code specified above.
         :rtype: int
         """
+        pass
+
+    def GenerateMRIDs(self, nVersion: int = 0, strExePath: str = "", bForceSave: bool = False) -> int:
+        """
+        Populates a mapping of generated mRIDs for CIM for an objects that currently do not have assigned mRIDs.
+        Note: this requires a CIM export license. This will return one of the following codes to indicate whether
+        the action was successful:
+
+            - 0 : The network has been imported successfully
+            - 1 : The specified standards version is not valid
+            - 2 : The cim2ipsa.exe cannot be found or is missing components
+            - 3 : The user temp directory has not been found
+            - 4 : An unknown python error has occurred
+            - 5 : The designated log folder has not been found or is inaccessible
+            - 6 : The log file was not found or is inaccessible
+            - 7 : The CIM files were not found
+            - 8 : Some aspect of the CIM differencing failed
+            - 9 : The CIM export license is not active
+
+        :param nVersion: If 0, this will use the CIM100 standards, if 1 the GB-CIM standards will be used.
+        :type nVersion: int
+        :param strExePath: The path to the cim2ipsa.exe to be used. If left blank, IPSA will attempt to use the 
+                            one associated with the active PyIPSA installation.
+        :type strExePath: str
+        :param bForceSave: If True, saves the current network before generating the mRIDs. Note this function will 
+                            close and reopen the current IPSA file.
+        :type bForceSave: bool
+        :return: A return code specified above.
+        :rtype: int
+        """    
+        pass
+    
+    def GetAddedMRIDMap(self) -> Dict[int,Dict[str,str]]:
+        """
+        Returns a mapping of all the newly generated mRIDs ready to be incorporated into the network.
+
+        Note, this requires the GenerateMRIDs function to be called first.
+
+        :return: A dict of the component UID to a map of the extended data field name to the generated mRID.
+        :rtype: dict[int,dict[str,str]]
+        """    
+        pass
+    
+    def GetChangedMRIDMap(self) -> Dict[int,Dict[str,str]]:
+        """
+        Returns a mapping of all the modified mRIDs ready to be incorporated into the network.
+
+        Note, this requires the GenerateMRIDs function to be called first.
+
+        :return: A dict of the component UID to a map of the extended data field name to the generated mRID.
+        :rtype: dict[int,dict[str,str]]
+        """    
+        pass
+
+    def GetmRIDGeneratorExceptions(self) -> set[int]:
+        """
+        Returns a list of the UIDs of all the components that caused exceptions while attempting to generate mRIDs.
+
+        Note, this requires the GenerateMRIDs function to be called first.
+
+        :return: A set of the UIDs for all the components that had exceptions.
+        :rtype: set[int]
+        """    
+        pass
+
+    def UpdateWithAddedMRIDs(self):
+        """
+        Updates the network to add all the missing mRIDs in the network - 
+        that is, it incorporate all the changes listed by the GetAddedMRIDMap.
+
+        Note, this requires the GenerateMRIDs function to be called first.
+        """    
+        pass
+
+    def UpdateWithChangedMRIDs(self):
+        """
+        Updates the network to add all the mRIDs necessary to modify in the network - 
+        that is, it incorporate all the changes listed by the GetChangedMRIDMap.
+
+        Note, this requires the GenerateMRIDs function to be called first.
+        """    
         pass
 
 class IscIntertrip:

@@ -48,6 +48,30 @@ Field Values
    * - Float
      - BreakTimemS
      - Sets and gets the time for the break rating in milliseconds.
+   * - Float
+     - MakePeakSinglekA
+     - Sets and gets the make peak rated current for single phase in kA.
+   * - Float
+     - BreakRMSSinglekA
+     - Sets and gets the break RMS rated current for single phase in kA.
+   * - Float
+     - BreakDCSinglePC
+     - Sets and gets the break DC rated percentage for single phase.
+   * - Float
+     - BreakTimeSinglemS
+     - Sets and gets the break rated current time for single phase in milliseconds.
+   * - Float
+     - WithstandRMSkA
+     - Sets and gets the withstand RMS rated current as part of STWC in kA.
+   * - Float
+     - WithstandRMSSinglekA
+     - Sets and gets the withstand RMS single phase rated current as part of STWC in kA.
+   * - Float
+     - WithstandBreakTimeMs
+     - Sets and gets the time for withstand RMS rated current as part of STWC in milliseconds.
+   * - Float
+     - WithstandBreakTimeSingleMs
+     - Sets and gets the time for withstand RMS rated current (single phase) in milliseconds.
    * - Integer
      - BreakerType
      - Sets and gets the circuit breaker type:

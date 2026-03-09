@@ -80,6 +80,9 @@ Field Values
      - ZeroSequence
      - ``True`` if treated as a zero sequence only line.
    * - Float
+     - RatedVoltkV
+     - The rated voltage of the conductor in kV.
+   * - Float
      - SwitchTime1Sec
      - Line switching time 1.
    * - Float

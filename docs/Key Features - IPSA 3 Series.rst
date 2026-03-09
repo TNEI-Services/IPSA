@@ -2,6 +2,36 @@
 Key features of the IPSA 3 Series
 *************************************
 
+Key Features of IPSA 3.2
+=============================
+CIM integration to PyIPSA
+----------------------------
+CIM import and export has now been exposed to PyIPSA in ``IscInterface``. Additionally a new
+CIM mRID generator has been created to populate the mRIDs for components currently lacking a CIM mRID mapping.
+These generation functions are also accessible in PyIPSA in ``IscInterface``.
+
+Scenarios
+-----------
+More scenarios functionality has been introduced. In particular, additional save file optimisations have been 
+added in ``IscInterface`` to attempt to minimise the file size overhead of scenarios, and to allow areas/regions 
+to be saved with only the relevant scenarios for that area.
+
+Additionally, the scenarios interface is now more flexible, with a suite of new options in ``IscNetworkData`` to 
+customise what information is tracked in scenarios and a new option in ``IscNetwork`` to set whether 
+updating scenarios should change the scenario hierarchy.
+
+Switchgear rating enhancements
+--------------------------------
+As part of a broader expansion to switchgear ratings and their integration into IPSA, circuit breakers 
+(``IscCircuitBreaker``) now have accessible single phase ratings and short-time withstand current values that
+can can be used in fault analyses.
+
+Line drop compensation 
+-----------------------
+Users can now block the LDC contributions to load flow while the transformer flow is in reverse (through 
+``IscTransformer`` and ``IscAnalysisLF``)
+
+
 Key Features of IPSA 3.1
 =============================
 G74 fault modelling
