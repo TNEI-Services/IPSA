@@ -28,7 +28,7 @@ Field Values
         - 0 = No voltage control at bus
         - 1 = Slack busbar
         - 2 = Real power and voltage control by generator
-        - 3 = No longer used
+        - 3 = Has connected real and reactive power generation
         - 4 = No longer used
         - 5 = Voltage controlled by transformer
         - 6 = No longer used
