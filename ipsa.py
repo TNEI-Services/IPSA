@@ -11338,7 +11338,7 @@ class IscInterface:
             - 9 : The CIM import license is not active
         
         
-        :param nVersion: If 0, this will use the CIM100 standards, if 1 the GB-CIM standards will be used.
+        :param nVersion: If 0, this will use the CGMES 3.0 standards, if 1 the GB-CIM standards will be used.
         :type nVersion: int
         :param strExePath: The path to the cim2ipsa.exe to be used. If left blank, IPSA will attempt to use the 
                             one associated with the active PyIPSA installation.
@@ -11367,7 +11367,7 @@ class IscInterface:
             - 9 : The CIM export license is not active
         
         
-        :param nVersion: If 0, this will use the CIM100 standards, if 1 the GB-CIM standards will be used.
+        :param nVersion: If 0, this will use the CGMES 3.0 standards, if 1 the GB-CIM standards will be used.
         :type nVersion: int
         :param strExePath: The path to the cim2ipsa.exe to be used. If left blank, IPSA will attempt to use the 
                             one associated with the active PyIPSA installation.
@@ -11382,7 +11382,8 @@ class IscInterface:
 
     def GenerateMRIDs(self, nVersion: int = 0, strExePath: str = "", bForceSave: bool = False) -> int:
         """
-        Populates a mapping of generated mRIDs for CIM for an objects that currently do not have assigned mRIDs.
+        Populates a mapping of generated mRIDs for CIM for objects that either currently do not have assigned mRIDs, 
+        or have no-longer-valid mRIDs assigned.
         Note: this requires a CIM export license. This will return one of the following codes to indicate whether
         the action was successful:
 
@@ -11397,10 +11398,10 @@ class IscInterface:
             - 8 : Some aspect of the CIM differencing failed
             - 9 : The CIM export license is not active
 
-        :param nVersion: If 0, this will use the CIM100 standards, if 1 the GB-CIM standards will be used.
+        :param nVersion: If 0, this will use the CGMES 3.0 standards, if 1 the GB-CIM standards will be used.
         :type nVersion: int
-        :param strExePath: The path to the cim2ipsa.exe to be used. If left blank, IPSA will attempt to use the 
-                            one associated with the active PyIPSA installation.
+        :param strExePath: The path to the cim2ipsa.exe to be used. If left blank, PyIPSA will attempt to use the
+                            one associated with the IPSA installation with the same version as itself.
         :type strExePath: str
         :param bForceSave: If True, saves the current network before generating the mRIDs. Note this function will 
                             close and reopen the current IPSA file.
@@ -11445,7 +11446,7 @@ class IscInterface:
 
     def UpdateWithAddedMRIDs(self):
         """
-        Updates the network to add all the missing mRIDs in the network - 
+        Updates the network to add all the missing mRIDs into the network -
         that is, it incorporate all the changes listed by the GetAddedMRIDMap.
 
         Note, this requires the GenerateMRIDs function to be called first.
@@ -11454,7 +11455,7 @@ class IscInterface:
 
     def UpdateWithChangedMRIDs(self):
         """
-        Updates the network to add all the mRIDs necessary to modify in the network - 
+        Updates the network to add all the mRIDs necessary to modify into the network -
         that is, it incorporate all the changes listed by the GetChangedMRIDMap.
 
         Note, this requires the GenerateMRIDs function to be called first.
