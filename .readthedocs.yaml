@@ -18,8 +18,12 @@ python:
 
 # Build documentation in the docs/ directory with Sphinx
 sphinx:
-   configuration: docs/conf.py
-   fail_on_warning: true
+  configuration: docs/conf.py
+  fail_on_warning: true
+
+# Allowing a css override
+extra_css:
+  - css/custom.css
 
 # Enabling a pdf conversion
 formats:
