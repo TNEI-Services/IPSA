@@ -30,6 +30,13 @@ Field Values
 
         - 0 = Switched in
         - -1 = Switched out
+   * - Integer
+     - EquivalentType
+     - The type of equivalent used in network reduction:
+
+        - 0 = Manual/none (allows users to enforce voltage control)
+        - 1 = Ward equivalent
+        - 2 = Extended ward equivalent (must be set to include EWE effects)
    * - Float
      - RealPowerMW
      - Gets and sets the active power output.
