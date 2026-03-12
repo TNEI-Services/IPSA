@@ -14,6 +14,7 @@ release = '1.0'
 version = 'v3.2.0'
 reference = 'RG002'
 
+html_static_path = ['_static']
 html_css_files = ['css/custom.css']
 # -- General configuration
 
@@ -29,7 +30,7 @@ extensions = [
 ]
 
 def setup(app):
-   app.add_css_file('css/custom.css')
+   app.add_css_file('_static/css/custom.css')
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3/', None),
