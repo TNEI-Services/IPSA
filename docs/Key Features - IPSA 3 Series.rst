@@ -14,7 +14,8 @@ Scenarios
 -----------
 More scenarios functionality has been introduced. In particular, additional save file optimisations have been 
 added in ``IscInterface`` to attempt to minimise the file size overhead of scenarios, and to allow areas/regions 
-to be saved with only the relevant scenarios for that area.
+to be saved with only the relevant scenarios for that area. Additionally, users can now export selected 
+scenarios into their own i3f files through overloads to the WriteFile and WriteArea functions.
 
 Additionally, the scenarios interface is now more flexible, with a suite of new options in ``IscNetworkData`` to 
 customise what information is tracked in scenarios and a new option in ``IscNetwork`` to set whether 

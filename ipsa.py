@@ -10471,6 +10471,7 @@ class IscInterface:
         pass
 
 # Fixing gaps in documentation EL 11/2023
+    @overload
     def WriteFile(self, strName: str) -> bool:
         """
         Saves the IscNetwork instance as a new IPSA i3f network file with the file name strName.
@@ -10484,6 +10485,48 @@ class IscInterface:
         """
         pass
 
+    @overload
+    def WriteFile(self, strName: str, lScenarios: list[int]) -> bool:
+        """
+        Saves the the selected scenarios from IscNetwork instance as a new IPSA i3f network file 
+        with the file name strName.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        If only one scenario is provided, a single scenario file will be created, otherwise the save
+        file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+    
+    def WriteFile(self, strName: str) -> bool:
+        """
+        Saves the IscNetwork instance as a new IPSA i3f network file with the file name strName.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        If a list of scenarios is provided, only these scenarios will be exported. 
+        If only one scenario is provided, a single scenario file will be created, otherwise the save
+        file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    @overload
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
         Saves the area group specified by the UID, nAreaUID, as a new IPSA i3f network file with the file name strName.
@@ -10491,10 +10534,109 @@ class IscInterface:
         The file is saved in the current working directory unless the path is defined in the file name.
         The file name should include the .i3f extension
 
+        Note if GetFilterAreaScenariosOnSave is True, and this script is not running through IPSA, then this function 
+        will automatically filter the saved scenarios to be only those with component & diagram changes to the area 
+        components and the scenarios hierarchy above them.
+
         :param nAreaUID: The area group UID.
         :type nAreaUID: int
         :param strName: The name of the output file containing the i3f extension and path.
         :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def WriteArea(self, nAreaUID: int, strName: str, lScenarios: list[int]) -> bool:
+        """
+        Saves the area group specified by the UID, nAreaUID, in the selected scenarios
+        as a new IPSA i3f network file with the file name strName.
+        The integer nAreaUID can be obtained using the IscGroup functions.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        Note, the save file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        :param nAreaUID: The area group UID.
+        :type nAreaUID: int
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def WriteArea(self, nAreaUID: int, strName: str, bOnlyComponentChanges: bool, bIncludeAncestors: bool) -> bool:
+        """
+        Saves the area group specified by the UID, nAreaUID, with the scenarios filtered according to the provided 
+        options as a new IPSA i3f network file with the file name strName.
+        The integer nAreaUID can be obtained using the IscGroup functions.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        Note the save file will always include the current network configuration and the base scenario of the network.
+        bOnlyComponentChanges determines whether the scenarios are filtered according to whether they have
+        component with intrinsic changes (to e.g., voltage, resistance) or also for diagramatic changes 
+        (e.g., has one of the component been moved or drawn). 
+        bIncludeAncestors determines whether the scenarios are filtered to only those having components with changes, 
+        or also to maintain the hierarchy of the scenarios that are the "parents" of the scenarios with changes.
+
+        :param nAreaUID: The area group UID.
+        :type nAreaUID: int
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param bOnlyComponentChanges: If True, only scenarios with component changes are included; if False, those with
+                    only diagram changes are also included.
+        :type bOnlyComponentChanges: bool
+        :param bIncludeAncestors: If True, the hierarchy above all the scenarios with changes are included; if False, 
+                    only the scenarios with changes themselves are included.
+        :type bIncludeAncestors: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def WriteArea(self, nAreaUID: int, strName: str) -> bool:
+        """
+        Saves the area group specified by the UID, nAreaUID, as a new IPSA i3f network file with the file name strName.
+        The integer nAreaUID can be obtained using the IscGroup functions.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        If a list of scenarios is provided, only these scenarios will be exported. The save
+        file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        If bOnlyComponentChanges and bIncludeAncestors are provided, the scenarios will be automatically filtered 
+        by IPSA and only those "relevant" to the area will be saved. 
+        The save file will always include the current network configuration and the base scenario of the network.
+        bOnlyComponentChanges determines whether the scenarios are filtered according to whether they have
+        component with intrinsic changes (to e.g., voltage, resistance) or also for diagramatic changes 
+        (e.g., has one of the component been moved or drawn). 
+        bIncludeAncestors determines whether the scenarios are filtered to only those having components with changes, 
+        or also to maintain the hierarchy of the scenarios that are the "parents" of the scenarios with changes.
+
+        Note if GetFilterAreaScenariosOnSave is True, and the script is not running through IPSA, then this function 
+        will automatically filter the saved scenarios equivalently to setting bOnlyComponentChanges = False and 
+        bIncludeAncestors = True.
+
+        :param nAreaUID: The area group UID.
+        :type nAreaUID: int
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :param bOnlyComponentChanges: If True, only scenarios with component changes are included; if False, those with
+                    only diagram changes are also included.
+        :type bOnlyComponentChanges: bool
+        :param bIncludeAncestors: If True, the hierarchy above all the scenarios with changes are included; if False, 
+                    only the scenarios with changes themselves are included.
+        :type bIncludeAncestors: bool
         :return: True if successful.
         :rtype: bool
         """
@@ -11380,7 +11522,7 @@ class IscInterface:
         """
         pass
 
-    def GenerateMRIDs(self, nVersion: int = 0, strExePath: str = "", bForceSave: bool = False) -> int:
+    def GenerateMRIDs(self, nVersion: int = 0, strExePath: str = "", bForceSave: bool = True) -> int:
         """
         Populates a mapping of generated mRIDs for CIM for objects that either currently do not have assigned mRIDs, 
         or have no-longer-valid mRIDs assigned.
@@ -12781,28 +12923,172 @@ class IscNetwork:
         """
         pass
 
+    @overload
     def WriteFile(self, strName: str) -> bool:
         """
-        Saves the current network file at the path and the file name.
+        Saves this network as a new IPSA i3f file with the file name strName.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
 
-        :param strName: The file name.
+        :param strName: The name of the output file containing the i3f extension and path.
         :type strName: str
-        :return: Denoting whether the file is saved.
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def WriteFile(self, strName: str, lScenarios: list[int]) -> bool:
+        """
+        Saves the the selected scenarios from this network as a new IPSA i3f file with the file name strName.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        If only one scenario is provided, a single scenario file will be created, otherwise the save
+        file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+    
+    def WriteFile(self, strName: str) -> bool:
+        """
+        Saves the IscNetwork instance as a new IPSA i3f network file with the file name strName.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        If a list of scenarios is provided, only these scenarios will be exported. 
+        If only one scenario is provided, a single scenario file will be created, otherwise the save
+        file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def WriteArea(self, nAreaUID: int, strName: str) -> bool:
+        """
+        Saves the area group specified by the UID, nAreaUID, as a new IPSA i3f network file with the file name strName.
+        The integer nAreaUID can be obtained using the IscGroup functions.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        Note if GetFilterAreaScenariosOnSave is True, and this script is not running through IPSA, then this function 
+        will automatically filter the saved scenarios to be only those with component & diagram changes to the area 
+        components and the scenarios hierarchy above them.
+        
+        :param nAreaUID: The area group UID.
+        :type nAreaUID: int
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def WriteArea(self, nAreaUID: int, strName: str, lScenarios: list[int]) -> bool:
+        """
+        Saves the area group specified by the UID, nAreaUID, in the selected scenarios
+        as a new IPSA i3f network file with the file name strName.
+        The integer nAreaUID can be obtained using the IscGroup functions.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        Note, the save file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        :param nAreaUID: The area group UID.
+        :type nAreaUID: int
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def WriteArea(self, nAreaUID: int, strName: str, bOnlyComponentChanges: bool, bIncludeAncestors: bool) -> bool:
+        """
+        Saves the area group specified by the UID, nAreaUID, with the scenarios filtered according to the provided 
+        options as a new IPSA i3f network file with the file name strName.
+        The integer nAreaUID can be obtained using the IscGroup functions.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
+
+        Note the save file will always include the current network configuration and the base scenario of the network.
+        bOnlyComponentChanges determines whether the scenarios are filtered according to whether they have
+        component with intrinsic changes (to e.g., voltage, resistance) or also for diagramatic changes 
+        (e.g., has one of the component been moved or drawn). 
+        bIncludeAncestors determines whether the scenarios are filtered to only those having components with changes, 
+        or also to maintain the hierarchy of the scenarios that are the "parents" of the scenarios with changes.
+
+        :param nAreaUID: The area group UID.
+        :type nAreaUID: int
+        :param strName: The name of the output file containing the i3f extension and path.
+        :type strName: str
+        :param bOnlyComponentChanges: If True, only scenarios with component changes are included; if False, those with
+                    only diagram changes are also included.
+        :type bOnlyComponentChanges: bool
+        :param bIncludeAncestors: If True, the hierarchy above all the scenarios with changes are included; if False, 
+                    only the scenarios with changes themselves are included.
+        :type bIncludeAncestors: bool
+        :return: True if successful.
         :rtype: bool
         """
         pass
 
     def WriteArea(self, nAreaUID: int, strName: str) -> bool:
         """
-        Saves the area group UID as a new IPSA i3f network file.
-        The file is saved in the current working directory.
-        The file name should include the .i3f extension.
+        Saves the area group specified by the UID, nAreaUID, as a new IPSA i3f network file with the file name strName.
+        The integer nAreaUID can be obtained using the IscGroup functions.
+        The file is saved in the current working directory unless the path is defined in the file name.
+        The file name should include the .i3f extension
 
-        :param nAreaUID: The area group UID. nAreaUID can be obtained using the IscGroup functions.
-        :type strName: int
+        If a list of scenarios is provided, only these scenarios will be exported. The save
+        file will also contain the current network configuration. If none of the provided scenarios IDs
+        are valid, the operation will fail.
+
+        If bOnlyComponentChanges and bIncludeAncestors are provided, the scenarios will be automatically filtered 
+        by IPSA and only those "relevant" to the area will be saved. 
+        The save file will always include the current network configuration and the base scenario of the network.
+        bOnlyComponentChanges determines whether the scenarios are filtered according to whether they have
+        component with intrinsic changes (to e.g., voltage, resistance) or also for diagramatic changes 
+        (e.g., has one of the component been moved or drawn). 
+        bIncludeAncestors determines whether the scenarios are filtered to only those having components with changes, 
+        or also to maintain the hierarchy of the scenarios that are the "parents" of the scenarios with changes.
+
+        Note if GetFilterAreaScenariosOnSave is True, and the script is not running through IPSA, then this function 
+        will automatically filter the saved scenarios equivalently to setting bOnlyComponentChanges = False and 
+        bIncludeAncestors = True.
+
+        :param nAreaUID: The area group UID.
+        :type nAreaUID: int
         :param strName: The name of the output file containing the i3f extension and path.
         :type strName: str
-        :return: Denoting whether the file is saved.
+        :param lScenarios: The list of scenario IDs to save.
+        :type lScenarios: list[int]
+        :param bOnlyComponentChanges: If True, only scenarios with component changes are included; if False, those with
+                    only diagram changes are also included.
+        :type bOnlyComponentChanges: bool
+        :param bIncludeAncestors: If True, the hierarchy above all the scenarios with changes are included; if False, 
+                    only the scenarios with changes themselves are included.
+        :type bIncludeAncestors: bool
+        :return: True if successful.
         :rtype: bool
         """
         pass
