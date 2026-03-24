@@ -38,10 +38,16 @@ Field Values
         - -1 = Switched out
    * - Float
      - ResistancePU
-     - Gets and sets the positive sequence resistance in per unit.
+     - Gets and sets the positive sequence from-to resistance in per unit.
    * - Float
      - ReactancePU
-     - Gets and sets the positive sequence reactance in per unit.
+     - Gets and sets the positive sequence from-to reactance in per unit.
+   * - Float
+     - ResistanceReversePU
+     - Gets and sets the positive sequence to-from resistance in per unit.
+   * - Float
+     - ReactanceReversePU
+     - Gets and sets the positive sequence to-from reactance in per unit.
    * - Boolean
      - HideLabel
      - ``True`` if the branch label (usually the name and any results) should be hidden on the diagram.
