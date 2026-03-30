@@ -21,16 +21,11 @@ Additionally, the scenarios interface is now more flexible, with a suite of new 
 customise what information is tracked in scenarios and a new option in ``IscNetwork`` to set whether 
 updating scenarios should change the scenario hierarchy.
 
-Switchgear rating enhancements
---------------------------------
-As part of a broader expansion to switchgear ratings and their integration into IPSA, circuit breakers 
-(``IscCircuitBreaker``) now have accessible single phase ratings and short-time withstand current values that
-can can be used in fault analyses.
-
-Line drop compensation 
+Additional features
 -----------------------
-Users can now block the LDC contributions to load flow while the transformer flow is in reverse (through 
-``IscTransformer`` and ``IscAnalysisLF``)
+    - As part of a broader expansion to switchgear ratings and their integration into IPSA, circuit breakers (``IscCircuitBreaker``) now have accessible single phase ratings and short-time withstand current values that can can be used in fault analyses.
+    - Users can now block the LDC contributions to load flow while the transformer flow is in reverse (through ``IscTransformer`` and ``IscAnalysisLF``).
+    - Ability to parametrise asymmetric equivalent branches using ``ResistanceReversePU`` and ``ReactanceReversePU``.
 
 
 Key Features of IPSA 3.1
