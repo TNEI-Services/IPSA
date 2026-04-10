@@ -8728,6 +8728,28 @@ class IscGroup:
         """
         pass
 
+    def GetFieldType(self, nFieldIndex: int) -> str:
+        """
+        Returns the field type as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The field type. The possible return values are ‘String’, ‘Integer’, ‘Float’ and ‘Boolean’.
+        :rtype: str
+        """
+        pass
+
+    def GetFieldName(self, nFieldIndex: int) -> str:
+        """
+        Returns the field name as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The field name.
+        :rtype: str
+        """
+        pass
+
     def GetGroupType(self) -> int:
         """
         Returns the type of the group where:
@@ -8974,6 +8996,164 @@ class IscGroup:
         :param fReactiveScale: The new per unit scaling factor for the reactive power.
         :type fReactiveScale: float
         :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetDemandGroupDValue(self, nFieldIndex: int) -> float:
+        """
+        Gets double value by field index for demand groups.
+        NB. This will only work for demand groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value. Returns -99999999.0 if the field value is not successfully retrieved.
+        :rtype: double
+        """
+        pass
+    
+    def GetDemandGroupSValue(self, nFieldIndex: int) -> str:
+        """
+        Gets string value by field index for demand groups.
+        NB. This will only work for demand groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value. Returns an empty string if the field value is not successfully retrieved.
+        :rtype: str
+        """
+        pass
+
+    def SetDemandGroupDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets double value by field index for demand groups.
+        NB. This will only work for demand groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The given double value to set.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDemandGroupSValue(self, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Sets string value by field index for demand groups.
+        NB. This will only work for demand groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The given string value to set.
+        :type strValue: string
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDemandGroupByDataMaps(self, mNumericData: dict[int, float], mStrData: dict[int, str]) -> bool:
+        """
+        Update demand group data attributes with two dicts of numerical values and string values.
+        NB. This will only work for demand groups.
+
+        :param mNumericData: Dict of data to be set into demand group properties that are of type double. The dict key represents the field index to set data into, and the dict value represents the double value to be set.
+        :type mNumericData: dict(int, float)
+        :param mStrData: The given string value to set. Dict of data to be set into demand group properties that are of type string. The dict key represents the field index to set data into, and the dict value represents the string value to be set.
+        :type mStrData: dict(int, float)
+        :return: True if successful. False if any field in either dict has failed to be set.
+        :rtype: bool
+        """
+        pass
+
+    def GetFaultLevelGroupIValue(self, nFieldIndex: int) -> float:
+        """
+        Gets integer value by field index for fault level groups.
+        NB. This will only work for fault level groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value. Returns -9999999 if the field value is not successfully retrieved.
+        :rtype: Integer
+        """
+        pass
+
+    def GetFaultLevelGroupDValue(self, nFieldIndex: int) -> float:
+        """
+        Gets double value by field index for fault level groups.
+        NB. This will only work for fault level groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value. Returns -99999999.0 if the field value is not successfully retrieved.
+        :rtype: double
+        """
+        pass
+    
+    def GetFaultLevelGroupSValue(self, nFieldIndex: int) -> str:
+        """
+        Gets string value by field index for fault level groups.
+        NB. This will only work for fault level groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value. Returns an empty string if the field value is not successfully retrieved.
+        :rtype: str
+        """
+        pass
+
+    def SetFaultLevelGroupIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets integer value by field index for fault level groups.
+        NB. This will only work for fault level groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The given integer value to set.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetFaultLevelGroupDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets double value by field index for fault level groups.
+        NB. This will only work for fault level groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The given double value to set.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetFaultLevelGroupSValue(self, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Sets string value by field index for fault level groups.
+        NB. This will only work for fault level groups.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The given string value to set.
+        :type strValue: string
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetFaultLevelGroupByDataMaps(self, mNumericData: dict[int, float], mStrData: dict[int, str]) -> bool:
+        """
+        Update fault level group data attributes with two dicts of numerical values and string values.
+        NB. This will only work for fault level groups.
+
+        :param mNumericData: Dict of data to be set into fault level group properties that are numeric (double or int). The dict key represents the field index to set data into, and the dict value represents the numeric value to be set. NB. The numeric data is presented with float type. When setting into a field with the type int, the float value will be truncacted to the integer part.
+        :type mNumericData: dict(int, float)
+        :param mStrData: The given string value to set. Dict of data to be set into fault level group properties that are of type string. The dict key represents the field index to set data into, and the dict value represents the string value to be set.
+        :type mStrData: dict(int, float)
+        :return: True if successful. False if any field in either dict has failed to be set.
         :rtype: bool
         """
         pass
