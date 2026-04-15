@@ -63,19 +63,39 @@ Field Values
      - Gets whether the equivalent radial includes a reduced slack busbar.
    * - List[Int]
      - CatalogTypes
-     - Gets a list of the type of objects in the catalog (generator, load, motor).
+     - Gets a list of the type of objects in the catalog (generator, load).
    * - List[Int]
      - CatalogTechs
-     - Gets a list of the technology for the objects in the catalog.
+     - Gets a list of the technology for the objects in the catalog. The generator technnologies are:
+     
+        - 0 = Synchronous machine (default)
+        - 1 = Energy storage
+        - 2 = Solar
+        - 3 = Wind
+        - 4 = Hydroelectric
+        - 5 = Nuclear
+        - 6 = Gas
+        - 7 = Coal
+        - 8 = Diesel
+        - 9 = Geothermal
+        - 10 = Tidal
+        - 11 = Future generation (TBC)
    * - List[Int]
      - CatalogStagings
-     - Gets a list of the development stage for the objects in the catalog.
+     - Gets a list of the development stage for the objects in the catalog. The stages are:
+
+        - 0 = Proposed
+        - 1 = Accepted
+        - 2 = Completed
+        - 3 = Energized (default, in service)
    * - List[Float]
      - CatalogPowersMW
      - Gets a list of the real power in MW for the objects in the catalog.
    * - String
      - Comment
      - Gets and sets the comments.
+
+Note, the indices of the catalog lists map to the same item, e.g., CatalogTechs[1] refers to the staging in CatalogStaging[1].
 
 
 IscEquivalentRadial Class
