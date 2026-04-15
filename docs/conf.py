@@ -11,7 +11,7 @@ copyright = 'IPSA'
 author = 'IPSA'
 
 release = '1.0'
-version = 'v3.2.0'
+version = 'v3.2.1'
 reference = 'RG002'
 
 html_static_path = ['_static']

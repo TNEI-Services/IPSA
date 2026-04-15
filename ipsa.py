@@ -8764,6 +8764,8 @@ class IscGroup:
             - 9 = Region group
             - 10 = Transformer group (master slave operation)
             - 11 = Feeder group
+            - 12 = Demand group
+            - 13 = Fault level group
 
         :return: The group type.
         :rtype: int
@@ -19166,6 +19168,11 @@ class IscNetwork:
             - 3 = Load scaling group
             - 4 = Load transfer group
             - 5 = Protection device group
+            - 8 = Generator scaling group
+            - 9 = Region group
+            - 10 = Transformer group (master slave operation)
+            - 12 = Demand group
+            - 13 = Fault level group
 
         :param strName: The group name.
         :type strName: str
@@ -19187,6 +19194,11 @@ class IscNetwork:
             - 3 = Load scaling group
             - 4 = Load transfer group
             - 5 = Protection device group
+            - 8 = Generator scaling group
+            - 9 = Region group
+            - 10 = Transformer group (master slave operation)
+            - 12 = Demand group
+            - 13 = Fault level group
 
         :param strName: The group name.
         :type strName: str
