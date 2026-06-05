@@ -11069,6 +11069,17 @@ class IscInterface:
         """
         pass
 
+    def CloseDiagram(self, nUID: int) -> bool:
+        """
+        Closes (in the UI) the diagram identified by ID nUID in the current network.
+
+        :param nUID: The diagram ID to be closed.
+        :type nUID: int
+        :return: True if the diagram is closed.
+        :rtype: bool
+        """
+        pass
+
     def PrintPDF(self, diagram, strFileName) -> None:
         """
         Print the IscDiagram instance to a PDF format file with name strFileName.
@@ -13295,1213 +13306,6 @@ class IscNetwork:
         :type strMergeName: str
         :return: Denoting whether the file is successfully saved.
         :rtype: bool
-        """
-        pass
-
-    def SaveScenario(self, strName: str, strDescription: str) -> int:
-        """
-        Creates a new scenario which contains all the changes to the current network.
-
-        :param strName: The new scenario name.
-        :type strName: str
-        :param strDescription: The new scenario description.
-        :type strDescription: str
-        :return: The scenario ID.
-        :rtype: int
-        """
-        pass
-
-    def DeleteScenario(self, nScenarioID: int) -> bool:
-        """
-        Deletes the scenario identified by nScenarioID. This leaves the current network unchanged.
-
-        Note the Base scenario may not be deleted if there are more than two scenarios in the network.
-        
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :return: True if the scenario has been successfully deleted.
-        :rtype: bool
-        """
-        pass
-
-    def GetScenarioID(self, strScenarioName: str) -> int:
-        """
-        Returns the ID of the scenario identified by strScenarioName.
-
-        :param strScenarioName: The name of the selected scenario.
-        :type strScenarioName: str
-        :return: The ID of the selected scenario.
-        :rtype: int
-        """
-        pass
-
-    def GetScenarioName(self, nScenarioID: int) -> str:
-        """
-        Returns the name of the scenario identified by nScenarioID.
-
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :return: The name of the selected scenario.
-        :rtype: str
-        """
-        pass
-
-    def GetScenarioDescription(self, nScenarioID: int) -> str:
-        """
-        Returns the description of the scenario identified by nScenarioID.
-
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :return: The description of the selected scenario.
-        :rtype: str
-        """
-        pass
-
-    def GetScenarioDate(self, nScenarioID: int) -> Tuple[int]:
-        """
-        Returns the date set for the scenario as a tuple of [DD, MM, YYYY].
-
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :return: The day, month and year set for the selected scenario.
-        :rtype: tuple(int)
-        """
-        pass
-
-    def GetScenarioDateStr(self, nScenarioID: int) -> str:
-        """
-        Returns the date set for the scenario as a string "DD/MM/YYYY".
-
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :return: The date set for the selected scenario.
-        :rtype: str
-        """
-        pass
-
-    def SetScenarioName(self, nScenarioID: int, strName: str) -> bool:
-        """
-        Sets the name of the scenario identified by nScenarioID to strName.
-
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :param strName: The new name of the scenario.
-        :type strName: str
-        :return: True if the scenario has been successfully renamed.
-        :rtype: bool
-        """
-        pass
-
-    def SetScenarioDescription(self, nScenarioID: int, strDescription: str) -> bool:
-        """
-        Sets the description of the scenario identified by nScenarioID to strDescription.
-
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :param strDescription: The new description of the scenario.
-        :type strDescription: str
-        :return: True if the scenario description has been successfully changed.
-        :rtype: bool
-        """
-        pass
-
-    def SetScenarioDate(self, nScenarioID: int, nDay: int, nMonth: int, nYear: int) -> bool:
-        """
-        Sets the date for the scenario identified by nScenarioID to the month and year provided.
-        
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :param nDay: The new day for the scenario.
-        :type nDay: int
-        :param nMonth: The new month for the scenario.
-        :type nMonth: int
-        :param nYear: The new year for the scenario.
-        :type nYear: int
-        :return: True if the scenario date has been successfully changed.
-        :rtype: bool
-        """
-        pass
-
-    def GetScenarios(self) -> Dict[int, str]:
-        """
-        Returns a dict of all the scenarios in the network with the scenario IDs as keys
-        and the scenario names as values.
-
-        :return: A dict of all the scenarios in the network.
-        :rtype: Dict[int, str]
-        """
-        pass
-
-    def GetCurrentScenario(self) -> int:
-        """
-        Returns the Scenario ID of the current scenario.
-
-        :return: The current scenario ID.
-        :rtype: int
-        """
-        pass
-
-    def GetParentScenario(self, nScenarioID: int) -> int:
-        """
-        Returns the parent scenario of the scenario identified by nScenarioID.
-
-        :param nScenarioID: The ID of the selected scenario.
-        :type nScenarioID: int
-        :return: The parent scenario ID.
-        :rtype: int
-        """
-        pass
-    
-    def IsScenarioChanged(self) -> bool:
-        """
-        Returns whether any data in the network has changed compared to the current version.
-
-        Note, this will not flag any graphical changes.
-
-        :return: True if there have been any changes to the network or component data.
-        :rtype: bool
-        """
-        pass
-
-    def SwitchToScenario(self, nScenarioID: int) -> bool:
-        """
-        Sets the network to the identified scenario.
-
-        Note, IsScenarioChanged should be called first to ensure that no changes to the network will be lost in switching scenario.
-
-        :param nScenarioID: The selected scenario.
-        :type nScenarioID: int
-        :return: Denoting whether the scenario is successfully set or whether it does not exist.
-        :rtype: bool
-        """
-        pass
-
-    def UpdateScenario(self) -> bool:
-        """
-        Updates the current scenario to match the current network.
-
-        Note any children of this scenario are now children of this scenarios' parent.
-        Additionally, the base scenario may not be updated if there are any other scenarios in the network.
-
-        :return: True if the update is successful.
-        :rtype: bool
-        """
-        pass
-
-    def CreateChangeFile(self, strFileName: str, nScenario1: int, nScenario2: int = 0) -> bool:
-        """
-        Creates an IPSA difference file based on the network differences between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        Note, strFileName name should include both the path and the .i3f extension.
-
-        :param strFileName: The path of the new change file name.
-        :type strFileName: str
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: True if the difference file is successfully created.
-        :rtype: bool
-        """
-        pass
-
-    def GetEnableAutocreateScenarioFile(self) -> bool:
-        """
-        Returns if the network will automatically save each scenario as a single scenario file as they are created.
-
-        :return: If the network will autocreate single scenario files.
-        :rtype: bool
-        """
-        pass
-
-    def GetScenarioAutocreateDirectory(self) -> str:
-        """
-        Returns the path to the directory where the autocreated single scenario files will be placed.
-
-        :return: The path to the autocreate directory.
-        :rtype: str
-        """
-        pass
-
-    def SetEnableAutocreateScenarioFile(self, bEnableAutosave: bool) -> bool:
-        """
-        Sets if the network should automatically save each scenario as a single scenario file as they are created.
-
-        :param bEnableAutosave: If the network should autocreate single scenario files.
-        :type bEnableAutosave: bool
-        :return: True if the value is successfully set.
-        :rtype: bool
-        """
-        pass
-
-    def SetScenarioAutocreateDirectory(self, strAutosaveDirectory: str) -> bool:
-        """
-        Sets the directory where the autocreated single scenario files will be placed.
-
-        :param strAutosaveDirectory: The path to the autocreate directory.
-        :param strAutosaveDirectory: str
-        :return: True if the value is successfully set.
-        :rtype: bool
-        """
-        pass
-
-    def GetEnableRealTimeDifferences(self) -> bool:
-        """
-        Returns whether real time differences are being calculated within the UI.
-
-        :return: True if real time differencing is active.
-        :rtype: bool
-        """
-        pass
-
-    def SetEnableRealTimeDifferences(self, bEnableRealTimeDiffs) -> bool:
-        """
-        Sets whether real time differences should be calculated within the UI. 
-
-        Note, this will determing the state following the completion of the script.
-
-        :param bEnableRealTimeDiffs: True if real time differencing should be active.
-        :type bEnableRealTimeDiffs: bool
-        :return: True if the value is successfully set.
-        :rtype: bool
-        """
-        pass
-
-    def GetScenarioUpdatesChangeHierarchy(self) -> bool:
-        """
-        Returns whether performing "Update Scenario" should change the scenario hierarchy.
-
-        If True, all scenarios descending from the updating scenario will have their hierarchy modified
-        to descend from the updating scenarios parent. If False, the hierarchy will be unmodified.
-
-        Note: these descendant scenarios will never be modified in the standard "Update" process 
-        and are only modified in "Cascade updates".
-
-        :return: True if updating a scenario will change the hierarchy.
-        :rtype: bool
-        """
-        pass
-
-    def SetScenarioUpdatesChangeHierarchy(self, bUpdatesChangeHierarchy) -> bool:
-        """
-        Sets whether performing "Update Scenario" should change the scenario hierarchy.
-
-        If True, all scenarios descending from the updating scenario will have their hierarchy modified
-        to descend from the updating scenarios parent. If False, the hierarchy will be unmodified.
-
-        Note: these descendant scenarios will never be modified in the standard "Update" process 
-        and are only modified in "Cascade updates".
-
-        :param bUpdatesChangeHierarchy: True if updating a scenario should change the hierarchy.
-        :type bUpdatesChangeHierarchy: bool
-        :return: True if the value is successfully set.
-        :rtype: bool
-        """
-        pass
-
-    def MergeScenario(self, nMergeScenario: int, nCompareScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
-                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
-        """
-        Merges the changes between nMergeScenario and nCompareScenario into the current network. 
-        If nCompareScenario is set to 0, the base scenario of the network will be used instead.
-        
-        bForceAddIncoming and bForceKeepCurrent allow the user to define how conflicts should be resolved. 
-        Conflicts that might arise in the merge can be determined by calling GetMergeScenarioConflictsText.
-        
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-        
-        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
-        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
-        "Merge [name of the merging scenario]".
-
-        :param nMergeScenario: The selected scenario ID from which the changes will be merged.
-        :type nMergeScenario: int
-        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
-        :type nCompareScenario: int
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
-        :type nDiagramUpdateStyle: int
-        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
-        :type bAsNewScenario: bool
-        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
-        :type strNewScenarioName: str
-        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
-        :rtype: bool
-        """
-        pass
-
-    def MergeScenarios(self, lMergeScenarioIDs: List[int], nCompareScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
-                       nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
-        """
-        Merges the changes between each of the lMergeScenarioIDS and nCompareScenario into the current network in order. 
-        If nCompareScenario is set to 0, the base scenario of the network will be used instead.
-        
-        bForceAddIncoming and bForceKeepCurrent allow the user to define how conflicts should be resolved. 
-        Conflicts that might arise in the merge can be determined by calling GetMergeScenarioConflictsText.
-        
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-        
-        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
-        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
-        "Merge scenarios".
-
-        :param lMergeScenario: The selected scenario ID from which the changes will be merged.
-        :type lMergeScenario: list[int]
-        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
-        :type nCompareScenario: int
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
-        :type nDiagramUpdateStyle: int
-        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
-        :type bAsNewScenario: bool
-        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
-        :type strNewScenarioName: str
-        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
-        :rtype: bool
-        """
-        pass
-
-    def MergeAllScenarios(self, bForceAddIncoming: bool, bForceKeepCurrent: bool, nDiagramUpdateStyle: int, 
-                          bAsNewScenario: bool, strNewScenarioName: str = "", bSortByDate: bool = False) -> bool:
-        """
-        Merge all the scenarios into the current network. bSortByDate determines whether they are merged in date order or creation order.
-
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-        
-        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
-        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
-        "Merge all scenarios".
-
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
-        :type nDiagramUpdateStyle: int
-        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
-        :type bAsNewScenario: bool
-        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
-        :type strNewScenarioName: str
-        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
-        :type bSortByDate: bool 
-        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
-        :rtype: bool
-        """
-        pass
-
-    @overload
-    def MergeScenariosBefore(self, strMaxDate: str, bForceAddIncoming: bool, bForceKeepCurrent: bool,
-                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
-        """
-        Merge all scenarios with dates before strMaxDate into the current network. Scenarios will be merged in date order.
-
-        strMaxDate must be provided in either "dd/MM/yyyy" format or ISODate format.
-        
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-        
-        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
-        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
-        "Merge scenarios".
-        
-        :param strMaxDate: The date before which all scenarios should be merged provided in "dd/MM/yyyy" or ISODate format
-        :type strMaxDate: str
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
-        :type nDiagramUpdateStyle: int
-        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
-        :type bAsNewScenario: bool
-        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
-        :type strNewScenarioName: str
-        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
-        :type bSortByDate: bool 
-        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
-        :rtype: bool
-        """
-        pass
-    
-    @overload
-    def MergeScenariosBefore(self, nMaxScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
-                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
-        """
-        Merge all scenarios with IDs before (and including) nMaxScenario into the current network. Scenarios will be merged in creation (that is ID) order.
-        
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-        
-        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
-        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
-        "Merge scenarios".
-        
-        :param nMaxScenario: The scenario up to which (inclusive) the scenarios should be merged.
-        :type nMaxScenario: int
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
-        :type nDiagramUpdateStyle: int
-        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
-        :type bAsNewScenario: bool
-        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
-        :type strNewScenarioName: str
-        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
-        :type bSortByDate: bool 
-        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
-        :rtype: bool
-        """
-        pass
-
-    def MergeScenariosBefore(self, nMaxScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
-                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
-        """
-        Merge all scenarios with IDs before (and including) nMaxScenario or dates before strMaxDate into the current network. 
-        Scenarios will be merged in creation (that is ID) order if nMaxScenario is provided, and date order if strMaxDate is provided.
-
-        strMaxDate must be provided in either "dd/MM/yyyy" format or ISODate format.
-        
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-        
-        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
-        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
-        "Merge scenarios".
-        
-        :param nMaxScenario: The scenario up to which (inclusive) the scenarios should be merged.
-        :type nMaxScenario: int
-        :param strMaxDate: The date before which all scenarios should be merged provided in "dd/MM/yyyy" or ISODate format
-        :type strMaxDate: str
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
-        :type nDiagramUpdateStyle: int
-        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
-        :type bAsNewScenario: bool
-        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
-        :type strNewScenarioName: str
-        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
-        :type bSortByDate: bool 
-        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
-        :rtype: bool
-        """
-        pass
-
-    def CascadeUpdateScenarios(self, bAsCopy: bool, bPrioritiseChildren: bool, bForceAddIncoming: bool, bForceKeepCurrent: bool,
-                               nDiagramUpdateStyle: int):
-        """
-        Update the current scenario to match the current network, and cascade this change down through all the current 
-        scenario's child scenarios.
-        
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-        
-        :param bAsCopy: If True, create a copy of the current scenario and all its children containing the update, otherwise
-                it will update the current scenario and all of its children in place.
-        :type bAsCopy: bool
-        :param bPrioritiseChildren: If True, when there is ambiguity from the same component being modified in both a child
-                scenario and the cascading changes, prioritise the changes in the child scenario. If False, prioritise the 
-                cascading changes.
-        :type bPrioritiseChildren: bool
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes.
-        :type nDiagramUpdateStyle: int
-        :return: True if the cascade occurs successfully.
-        :rtype: bool
-        """
-        pass
-
-    def GetMergeScenarioConflictsText(self, nMergeScenario: int, nCompareScenario: int, bShowNameConflicts: bool = False) -> str:
-        """
-        Returns a description of the conflicts that would occur in merging the changes between 
-        nMergeScenario and nCompareScenario into the current network. 
-        If nCompareScenario is set to 0, the base scenario of the network will be used instead.
-
-        Some components may not share names with items of the same type, and these will be renamed in the merge process.
-        If bShowNameConflicts is True, these will be detailed in the returned description.
-
-        :param nMergeScenario: The selected scenario ID from which the changes would be merged.
-        :type nMergeScenario: int
-        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes would be merged.
-        :type nCompareScenario: int
-        :param bShowNameConflicts: Whether to include details of items that may be renamed in the merge to stop forbidden duplicate names.
-        :type bShowNameConflicts: bool
-        :return: A description of all the conflicts that may occur in merging the scenario
-        :rtype: str
-        """
-        pass
-
-    def SetScenarioFastMergeOptions(self, nCompareScenario: int, bSortByDate: bool, bForceAddIncoming: bool, bForceKeepCurrent: bool,
-                                    nDiagramUpdateStyle: int, bOutputSummary: bool):
-        """
-        Set the merge options to be used in fast merge.
-        
-        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
-
-            - 0 : only deleted components will be removed
-            - 1 : deleted components will be removed and new components will be drawn
-            - 2 : all modified items will reflect their graphic changes
-
-        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
-        :type nCompareScenario: int
-        :param bSortByDate: True if multiple scenarios should be merged in date order, False if they should be merged in their creation order.
-        :type bSortByDate: bool If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
-                for the merge will be recreated. If False, the conflicting changes will be ignored.
-        :type bForceAddIncoming: bool
-        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
-                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
-        :type bForceKeepCurrent: bool
-        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes.
-        :type nDiagramUpdateStyle: int
-        :param bOutputSummary: If True, a summary of the fast merge events will be printed to the progress window.
-        :type bOutputSummary: bool
-        :return: True if the values are set successfully.
-        :rtype: bool
-        """
-        pass
-
-    def GetScenarioFastMergeOptionsSummary(self) -> str:
-        """
-        Returns a string containing a summary of all the fast merge options.
-        
-        :return: A string containing a summary of all the fast merge options.
-        :rtype: str
-        """
-        pass
-
-    def ScenarioRevertItem(self, nScenario: int, nUID: int) -> bool:
-        """
-        Revert the IscNetComponent specified by nUID to how it was found in the scenario identified by nScenario.
-
-        This may fail if the scenario or component can not be identified; if there are no changes to the component
-        between the scenario and the current network; or if the reversion depends on other changes that have not occured 
-        (e.g., reverting the creation of a branch when a necessary busbar has not been created).
-
-        :param nScenario: The selected scenario ID the component will be reverted to.
-        :type nScenario: int
-        :param nUID: The selected component UID.
-        :type nUID: int
-        :return: True if the revert successfully occurs.
-        :rtype: bool
-        """
-        pass
-
-    def ScenarioRevertGroup(self, nScenario: int, nUID: int) -> bool:
-        """
-        Revert the IscGroup specified by nUID to how it was found in the scenario identified by nScenario.
-
-        This may fail if the scenario or group can not be identified; if there are no changes to the group
-        between the scenario and the current network; or if the reversion depends on other changes that have not occured 
-        (e.g., the group would refer to an item that has not been created).
-
-        :param nScenario: The selected scenario ID the group will be reverted to.
-        :type nScenario: int
-        :param nUID: The selected group UID.
-        :type nUID: int
-        :return: True if the revert successfully occurs.
-        :rtype: bool
-        """
-        pass
-
-    def ScenarioRevertSettings(self, nScenario: int, nDataType: int) -> bool:
-        """
-        Revert the IscAnalysis or IscNetworkCapacity class identified by nDataType specified by nUID to 
-        how it was found in the scenario identified by nScenario.
-
-        This may fail if the scenario or setting can not be identified or if there are no changes to the settings
-        between the scenario and the current network.
-
-        nDataType should be found from the IscNetComponent field values.
-
-        :param nScenario: The selected scenario ID the setting will be reverted to.
-        :type nScenario: int
-        :param nDataType: The setting datatype.
-        :type nDataType: int
-        :return: True if the revert successfully occurs.
-        :rtype: bool
-        """
-        pass
-
-    def ScenarioRevertMisc(self, nScenario: int, nDataType: int, nUID: int) -> bool:
-        """
-        Revert the miscellaneous object specified by nDataType and nUID to how it was found in the scenario identified by nScenario.
-        
-        Currently the miscellaneous objects in IPSA are: Intertrips, Automations, Contingencies and studies.
-        nDataType should be found from the IscNetComponent field values.
-
-        This may fail if the scenario or object can not be identified; if there are no changes to the object
-        between the scenario and the current network; or if the reversion depends on other changes that have not occured 
-        (e.g., the object would refer to an item that has not been created).
-
-        :param nScenario: The selected scenario ID the object will be reverted to.
-        :type nScenario: int
-        :param nDataType: The selected object datatype.
-        :type nDataType: int
-        :param nUID: The selected object UID.
-        :type nUID: int
-        :return: True if the revert successfully occurs.
-        :rtype: bool
-        """
-        pass
-
-    def ScenarioRevertExtData(self, nScenario: int, nDataType: int, bGroup: bool, bAdded: bool):
-        """
-        Revert the extended data field changes for the specified data type compared to those found in the scenario identified by nScenario.
-        
-        If the extended data fields are on a component, bGroup should be False, and the nDatatype can be 
-        found from the IscNetComponent field values. Else, if they are on a group, bGroup should be true
-        and nDataType should match those found in IscGroup.GetGroupType().
-
-        If bAdded is True, the fields created in the current network compared to nScenario will be removed, else
-        if False the fields present in nScenario but missing in the current network will be added.
-
-        :param nScenario: The selected scenario ID the object will be reverted to.
-        :type nScenario: int
-        :param nDataType: The group or component data type.
-        :type nDataType: int
-        :param bGroup: True if the datatype is a group datatype, false if it is a component datatype.
-        :type bGroup: bool
-        :param bAdded: Determines whether the added or deleted fields are to be reverted
-        :type bAdded: bool
-        :return: True if the revert successfully occurs.
-        :rtype: bool
-        """
-        pass
-
-    def GetScenarioDiffAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of IscNetComponent UIDs which have been added between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of component UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffChanged(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of IscNetComponent UIDs which have been changed between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of component UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of IscNetComponent UIDs which have been deleted between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of component UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffGroupAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of IscGroup UIDs which have been added between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of group UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffGroupChanged(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of IscGroup UIDs which have been changed between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of group UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffGroupDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of IscGroup UIDs which have been deleted between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of group UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffAllAdded(self, nScenario1: int, nScenario2: int = 0) -> List[str]:
-        """
-        Returns a list of the names of all objects which have been added between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of object names.
-        :rtype: list[str]
-        """
-        pass
-
-    def GetScenarioDiffAllChanged(self, nScenario1: int, nScenario2: int = 0) ->List[str]:
-        """
-        Returns a list of the names of all objects which have been changed between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of object names.
-        :rtype: list[str]
-        """
-        pass
-
-    def GetScenarioDiffAllDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[str]:
-        """
-        Returns a list of the names of all objects which have been deleted between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of object names.
-        :rtype: list[str]
-        """
-        pass
-
-    def GetScenarioDiffText(self, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
-        """
-        Returns a string description of the changes made to the IscNetComponent identified by nUID between 
-        the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
-
-        :param nUID: The component UID.
-        :type nUID: int
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: A description of the changes made to the component.
-        :rtype: str
-        """
-        pass
-
-    def GetScenarioDiffGroupText(self, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
-        """
-        Returns a string description of the changes made to the IscGroup identified by nUID between 
-        the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
-
-        :param nUID: The group UID.
-        :type nUID: int
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: A description of the changes made to the group.
-        :rtype: str
-        """
-        pass
-
-    def GetScenarioDiffSettingsText(self, nDataType: int, nScenario1: int, nScenario2: int = 0) -> str:
-        """
-        Returns a string description of the changes made to the IscAnalysis or 
-        IscNetworkCapacity class identified by nDataType between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
-
-        nDataType should be found from the IscNetComponent field values.
-
-        :param nDataType: The setting datatype.
-        :type nDataType: int
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: A description of the changes made to the analysis/network capacity object.
-        :rtype: str
-        """
-        pass
-
-    def GetScenarioDiffMiscText(self, nDataType: int, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
-        """
-        Returns a string description of the changes made to the miscellaneous object identified by nDataType 
-        and nUID between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
-
-        Currently the miscellaneous objects in IPSA are: Intertrips, Automations, Contingencies and studies.
-        nDataType should be found from the IscNetComponent field values.
-
-        :param nDataType: The object datatype.
-        :type nDataType: int
-        :param nUID: The object UID.
-        :type nUID: int
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: A description of the changes made to the miscellaneous object.
-        :rtype: str
-        """
-        pass
-
-    def GetScenarioDiffExtDataItemAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of the component types which have new extended data fields between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        Note, the component datatypes can be found from the IscNetComponent field values.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of component datatypes.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffExtDataItemDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of the component types which have deleted extended data fields between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        Note, the component datatypes can be found from the IscNetComponent field values.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of component datatypes.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffExtDataGroupAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of the group types which have new extended data fields between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        Note, the group datatypes match those found in IscGroup.GetGroupType().
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of group datatypes.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffExtDataGroupDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of the group types which have deleted extended data fields between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        Note, the group datatypes match those found in IscGroup.GetGroupType().
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of group datatypes.
-        :rtype: list[int]
-        """
-        pass
-    
-    def GetScenarioDiffExtDataFieldsAdded(self, nDataType: int, bGroup: bool, 
-                nScenario1: int, nScenario2: int = 0) -> Dict [int, str]:
-        """
-        Returns the extended data fields (value and name) which have been added to the specified data type 
-        between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        If the extended data fields are on a component, bGroup should be False, and the nDatatype can be 
-        found from the IscNetComponent field values. Else, if they are on a group, bGroup should be true
-        and nDataType should match those found in IscGroup.GetGroupType().
-        
-        :param nDataType: The group or component data type.
-        :type nDataType: int
-        :param bGroup: True if the datatype is a group datatype, false if it is a component datatype.
-        :type bGroup: bool
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: Dict of field values to the field names.
-        :rtype: dict[int, str]
-        """
-        pass
-    
-    def GetScenarioDiffExtDataFieldsDeleted(self, nDataType: int, bGroup: bool, 
-                nScenario1: int, nScenario2: int = 0) -> Dict [int, str]:
-        """
-        Returns the extended data fields (value and name) which have been deleted from the specified data type 
-        between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        If the extended data fields are on a component, bGroup should be False, and the nDatatype can be 
-        found from the IscNetComponent field values. Else, if they are on a group, bGroup should be true
-        and nDataType should match those found in IscGroup.GetGroupType().
-        
-        :param nDataType: The group or component data type.
-        :type nDataType: int
-        :param bGroup: True if the datatype is a group datatype, false if it is a component datatype.
-        :type bGroup: bool
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: Dict of field values to the field names.
-        :rtype: dict[int, str]
-        """
-        pass
-
-    def GetScenarioDiffDiagramAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of the IDs of the diagrams which have been added between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of diagram IDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffDiagramChanged(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of the IDs of the diagrams which have been changed between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of diagram IDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffDiagramDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
-        """
-        Returns a list of the IDs of the diagrams which have been deleted between the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
-
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: List of diagram IDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetScenarioDiffDiagramText(self, nID: int, nScenario1: int, nScenario2: int = 0) -> str:
-        """
-        Returns a string description of the changes made to the diagram identified by nID between 
-        the two provided scenarios.
-        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
-
-        :param nID: The diagram ID.
-        :type nID: int
-        :param nScenario1: The first selected scenario ID.
-        :type nScenario1: int
-        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
-        :type nScenario2: int
-        :return: A description of the changes made to the diagram.
-        :rtype: str
-        """
-        pass
-
-    def CommitVersion(self, strName: str) -> int:
-        """
-        *Deprecated in IPSA 3.*
-        Creates a new network scenario which includes all network changes.
-
-        :param strName: The new network scenario name.
-        :type strName: str
-        :return: An integer representing the scenario ID.
-        :rtype: int
-        """
-        pass
-
-    def GetVersionUuid(self, nScenarioID: int) -> str:
-        """
-        *Deprecated in IPSA 3.*
-        Returns a unique string (UUID) representing the scenario.
-
-        :param nScenarioID: The selected scenario.
-        :type nScenarioID: int
-        :return: The scenario UUID.
-        :rtype: str
-        """
-        pass
-
-    def SetToVersion(self, nScenarioID: int) -> bool:
-        """
-        *Deprecated in IPSA 3.*
-        Sets the network to the identified scenario.
-
-        :param nScenarioID: The selected scenario.
-        :type nScenarioID: int
-        :return: Denoting whether the scenario is successfully set or whether it does not exist.
-        :rtype: bool
-        """
-        pass
-
-    def CreateChangeFile(self, nVersion: int, strMergeName: str) -> bool:
-        """
-        *Deprecated in IPSA 3.*
-        Creates an IPSA merge file based on the network differences between the given scenario and the current network.
-
-        :param nVersion: The selected scenario.
-        :type nVersion: int
-        :param strMergeName: The merged file name.
-        :type strMergeName: str
-        :return: Denoting whether the file is successfully created.
-        :rtype: bool
-        """
-        pass
-
-    def GetCurrentVersion(self) -> int:
-        """
-        *Deprecated in IPSA 3.*
-        Returns the current scenario ID.
-
-        :return: The current scenario ID.
-        :rtype: int
-        """
-        pass
-
-    def GetParentVersion(self, nScenarioID: int) -> int:
-        """
-        *Deprecated in IPSA 3.*
-        Returns the parent scenario ID for the selected scenario.
-
-        :param nScenarioID: The selected scenario.
-        :type nScenarioID: int
-        :return: The parent scenario ID.
-        :rtype: int
-        """
-        pass
-
-    def GetVersionDiffAdded(self, nScenarioID: int) -> List[int]:
-        """
-        *Deprecated in IPSA 3.*
-        Returns a list of component UIDs which have been added to the network and
-        that were not in the selected scenario.
-
-        :param nScenarioID: The selected scenario.
-        :type nScenarioID: int
-        :return: List of component UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetVersionDiffChanged(self, nScenarioID: int) -> List[int]:
-        """
-        *Deprecated in IPSA 3.*
-        Returns a list of component UIDs which have been edited in the current network compared to
-        the selected scenario.
-
-        :param nScenarioID: The selected scenario.
-        :type nScenarioID: int
-        :return: List of component UIDs.
-        :rtype: list[int]
-        """
-        pass
-
-    def GetVersionDiffDeleted(self, nScenarioID: int) -> List[int]:
-        """
-        *Deprecated in IPSA 3.*
-        Returns a list of component UIDs which have been deleted from the network and
-        that were in the selected scenario.
-
-        :param nScenarioID: The selected scenario.
-        :type nScenarioID: int
-        :return: List of component UIDs.
-        :rtype: list[int]
         """
         pass
 
@@ -21759,6 +20563,1213 @@ class IscNetwork:
         :type pGroup: IscGroup
         :return: The customer calculation result.
         :rtype: int
+        """
+        pass
+
+    def SaveScenario(self, strName: str, strDescription: str) -> int:
+        """
+        Creates a new scenario which contains all the changes to the current network.
+
+        :param strName: The new scenario name.
+        :type strName: str
+        :param strDescription: The new scenario description.
+        :type strDescription: str
+        :return: The scenario ID.
+        :rtype: int
+        """
+        pass
+
+    def DeleteScenario(self, nScenarioID: int) -> bool:
+        """
+        Deletes the scenario identified by nScenarioID. This leaves the current network unchanged.
+
+        Note the Base scenario may not be deleted if there are more than two scenarios in the network.
+        
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :return: True if the scenario has been successfully deleted.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarioID(self, strScenarioName: str) -> int:
+        """
+        Returns the ID of the scenario identified by strScenarioName.
+
+        :param strScenarioName: The name of the selected scenario.
+        :type strScenarioName: str
+        :return: The ID of the selected scenario.
+        :rtype: int
+        """
+        pass
+
+    def GetScenarioName(self, nScenarioID: int) -> str:
+        """
+        Returns the name of the scenario identified by nScenarioID.
+
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :return: The name of the selected scenario.
+        :rtype: str
+        """
+        pass
+
+    def GetScenarioDescription(self, nScenarioID: int) -> str:
+        """
+        Returns the description of the scenario identified by nScenarioID.
+
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :return: The description of the selected scenario.
+        :rtype: str
+        """
+        pass
+
+    def GetScenarioDate(self, nScenarioID: int) -> Tuple[int]:
+        """
+        Returns the date set for the scenario as a tuple of [DD, MM, YYYY].
+
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :return: The day, month and year set for the selected scenario.
+        :rtype: tuple(int)
+        """
+        pass
+
+    def GetScenarioDateStr(self, nScenarioID: int) -> str:
+        """
+        Returns the date set for the scenario as a string "DD/MM/YYYY".
+
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :return: The date set for the selected scenario.
+        :rtype: str
+        """
+        pass
+
+    def SetScenarioName(self, nScenarioID: int, strName: str) -> bool:
+        """
+        Sets the name of the scenario identified by nScenarioID to strName.
+
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :param strName: The new name of the scenario.
+        :type strName: str
+        :return: True if the scenario has been successfully renamed.
+        :rtype: bool
+        """
+        pass
+
+    def SetScenarioDescription(self, nScenarioID: int, strDescription: str) -> bool:
+        """
+        Sets the description of the scenario identified by nScenarioID to strDescription.
+
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :param strDescription: The new description of the scenario.
+        :type strDescription: str
+        :return: True if the scenario description has been successfully changed.
+        :rtype: bool
+        """
+        pass
+
+    def SetScenarioDate(self, nScenarioID: int, nDay: int, nMonth: int, nYear: int) -> bool:
+        """
+        Sets the date for the scenario identified by nScenarioID to the month and year provided.
+        
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :param nDay: The new day for the scenario.
+        :type nDay: int
+        :param nMonth: The new month for the scenario.
+        :type nMonth: int
+        :param nYear: The new year for the scenario.
+        :type nYear: int
+        :return: True if the scenario date has been successfully changed.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarios(self) -> Dict[int, str]:
+        """
+        Returns a dict of all the scenarios in the network with the scenario IDs as keys
+        and the scenario names as values.
+
+        :return: A dict of all the scenarios in the network.
+        :rtype: Dict[int, str]
+        """
+        pass
+
+    def GetCurrentScenario(self) -> int:
+        """
+        Returns the Scenario ID of the current scenario.
+
+        :return: The current scenario ID.
+        :rtype: int
+        """
+        pass
+
+    def GetParentScenario(self, nScenarioID: int) -> int:
+        """
+        Returns the parent scenario of the scenario identified by nScenarioID.
+
+        :param nScenarioID: The ID of the selected scenario.
+        :type nScenarioID: int
+        :return: The parent scenario ID.
+        :rtype: int
+        """
+        pass
+    
+    def IsScenarioChanged(self) -> bool:
+        """
+        Returns whether any data in the network has changed compared to the current version.
+
+        Note, this will not flag any graphical changes.
+
+        :return: True if there have been any changes to the network or component data.
+        :rtype: bool
+        """
+        pass
+
+    def SwitchToScenario(self, nScenarioID: int) -> bool:
+        """
+        Sets the network to the identified scenario.
+
+        Note, IsScenarioChanged should be called first to ensure that no changes to the network will be lost in switching scenario.
+
+        :param nScenarioID: The selected scenario.
+        :type nScenarioID: int
+        :return: Denoting whether the scenario is successfully set or whether it does not exist.
+        :rtype: bool
+        """
+        pass
+
+    def UpdateScenario(self) -> bool:
+        """
+        Updates the current scenario to match the current network.
+
+        Note any children of this scenario are now children of this scenarios' parent.
+        Additionally, the base scenario may not be updated if there are any other scenarios in the network.
+
+        :return: True if the update is successful.
+        :rtype: bool
+        """
+        pass
+
+    def CreateChangeFile(self, strFileName: str, nScenario1: int, nScenario2: int = 0) -> bool:
+        """
+        Creates an IPSA difference file based on the network differences between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        Note, strFileName name should include both the path and the .i3f extension.
+
+        :param strFileName: The path of the new change file name.
+        :type strFileName: str
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: True if the difference file is successfully created.
+        :rtype: bool
+        """
+        pass
+
+    def GetEnableAutocreateScenarioFile(self) -> bool:
+        """
+        Returns if the network will automatically save each scenario as a single scenario file as they are created.
+
+        :return: If the network will autocreate single scenario files.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarioAutocreateDirectory(self) -> str:
+        """
+        Returns the path to the directory where the autocreated single scenario files will be placed.
+
+        :return: The path to the autocreate directory.
+        :rtype: str
+        """
+        pass
+
+    def SetEnableAutocreateScenarioFile(self, bEnableAutosave: bool) -> bool:
+        """
+        Sets if the network should automatically save each scenario as a single scenario file as they are created.
+
+        :param bEnableAutosave: If the network should autocreate single scenario files.
+        :type bEnableAutosave: bool
+        :return: True if the value is successfully set.
+        :rtype: bool
+        """
+        pass
+
+    def SetScenarioAutocreateDirectory(self, strAutosaveDirectory: str) -> bool:
+        """
+        Sets the directory where the autocreated single scenario files will be placed.
+
+        :param strAutosaveDirectory: The path to the autocreate directory.
+        :param strAutosaveDirectory: str
+        :return: True if the value is successfully set.
+        :rtype: bool
+        """
+        pass
+
+    def GetEnableRealTimeDifferences(self) -> bool:
+        """
+        Returns whether real time differences are being calculated within the UI.
+
+        :return: True if real time differencing is active.
+        :rtype: bool
+        """
+        pass
+
+    def SetEnableRealTimeDifferences(self, bEnableRealTimeDiffs) -> bool:
+        """
+        Sets whether real time differences should be calculated within the UI. 
+
+        Note, this will determing the state following the completion of the script.
+
+        :param bEnableRealTimeDiffs: True if real time differencing should be active.
+        :type bEnableRealTimeDiffs: bool
+        :return: True if the value is successfully set.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarioUpdatesChangeHierarchy(self) -> bool:
+        """
+        Returns whether performing "Update Scenario" should change the scenario hierarchy.
+
+        If True, all scenarios descending from the updating scenario will have their hierarchy modified
+        to descend from the updating scenarios parent. If False, the hierarchy will be unmodified.
+
+        Note: these descendant scenarios will never be modified in the standard "Update" process 
+        and are only modified in "Cascade updates".
+
+        :return: True if updating a scenario will change the hierarchy.
+        :rtype: bool
+        """
+        pass
+
+    def SetScenarioUpdatesChangeHierarchy(self, bUpdatesChangeHierarchy) -> bool:
+        """
+        Sets whether performing "Update Scenario" should change the scenario hierarchy.
+
+        If True, all scenarios descending from the updating scenario will have their hierarchy modified
+        to descend from the updating scenarios parent. If False, the hierarchy will be unmodified.
+
+        Note: these descendant scenarios will never be modified in the standard "Update" process 
+        and are only modified in "Cascade updates".
+
+        :param bUpdatesChangeHierarchy: True if updating a scenario should change the hierarchy.
+        :type bUpdatesChangeHierarchy: bool
+        :return: True if the value is successfully set.
+        :rtype: bool
+        """
+        pass
+
+    def MergeScenario(self, nMergeScenario: int, nCompareScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merges the changes between nMergeScenario and nCompareScenario into the current network. 
+        If nCompareScenario is set to 0, the base scenario of the network will be used instead.
+        
+        bForceAddIncoming and bForceKeepCurrent allow the user to define how conflicts should be resolved. 
+        Conflicts that might arise in the merge can be determined by calling GetMergeScenarioConflictsText.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge [name of the merging scenario]".
+
+        :param nMergeScenario: The selected scenario ID from which the changes will be merged.
+        :type nMergeScenario: int
+        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
+        :type nCompareScenario: int
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    def MergeScenarios(self, lMergeScenarioIDs: List[int], nCompareScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                       nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merges the changes between each of the lMergeScenarioIDS and nCompareScenario into the current network in order. 
+        If nCompareScenario is set to 0, the base scenario of the network will be used instead.
+        
+        bForceAddIncoming and bForceKeepCurrent allow the user to define how conflicts should be resolved. 
+        Conflicts that might arise in the merge can be determined by calling GetMergeScenarioConflictsText.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+
+        :param lMergeScenario: The selected scenario ID from which the changes will be merged.
+        :type lMergeScenario: list[int]
+        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
+        :type nCompareScenario: int
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    def MergeAllScenarios(self, bForceAddIncoming: bool, bForceKeepCurrent: bool, nDiagramUpdateStyle: int, 
+                          bAsNewScenario: bool, strNewScenarioName: str = "", bSortByDate: bool = False) -> bool:
+        """
+        Merge all the scenarios into the current network. bSortByDate determines whether they are merged in date order or creation order.
+
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge all scenarios".
+
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def MergeScenariosBefore(self, strMaxDate: str, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merge all scenarios with dates before strMaxDate into the current network. Scenarios will be merged in date order.
+
+        strMaxDate must be provided in either "dd/MM/yyyy" format or ISODate format.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+        
+        :param strMaxDate: The date before which all scenarios should be merged provided in "dd/MM/yyyy" or ISODate format
+        :type strMaxDate: str
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+    
+    @overload
+    def MergeScenariosBefore(self, nMaxScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merge all scenarios with IDs before (and including) nMaxScenario into the current network. Scenarios will be merged in creation (that is ID) order.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+        
+        :param nMaxScenario: The scenario up to which (inclusive) the scenarios should be merged.
+        :type nMaxScenario: int
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    def MergeScenariosBefore(self, nMaxScenario: int, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                      nDiagramUpdateStyle: int, bAsNewScenario: bool, strNewScenarioName: str = "") -> bool:
+        """
+        Merge all scenarios with IDs before (and including) nMaxScenario or dates before strMaxDate into the current network. 
+        Scenarios will be merged in creation (that is ID) order if nMaxScenario is provided, and date order if strMaxDate is provided.
+
+        strMaxDate must be provided in either "dd/MM/yyyy" format or ISODate format.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        If bAsNewScenario is True, then the result of the merge will automatically be created as a new scenario (rather than 
+        just in the current network). If no strNewScenarioName is provided the new scenario will attempt to call itself 
+        "Merge scenarios".
+        
+        :param nMaxScenario: The scenario up to which (inclusive) the scenarios should be merged.
+        :type nMaxScenario: int
+        :param strMaxDate: The date before which all scenarios should be merged provided in "dd/MM/yyyy" or ISODate format
+        :type strMaxDate: str
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes
+        :type nDiagramUpdateStyle: int
+        :param bAsNewScenario: If True, the result of the merge will be saved as a new scenario in the network.
+        :type bAsNewScenario: bool
+        :param strNewScenarioName: The name for the new scenario. If not provided a default scenario name will be used
+        :type strNewScenarioName: str
+        :param bSortByDate: True if the scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool 
+        :return: True if the merge is successful - this can fail if one of the provided scenarios is not valid or there are no differences to merge
+        :rtype: bool
+        """
+        pass
+
+    def CascadeUpdateScenarios(self, bAsCopy: bool, bPrioritiseChildren: bool, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                               nDiagramUpdateStyle: int):
+        """
+        Update the current scenario to match the current network, and cascade this change down through all the current 
+        scenario's child scenarios.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+        
+        :param bAsCopy: If True, create a copy of the current scenario and all its children containing the update, otherwise
+                it will update the current scenario and all of its children in place.
+        :type bAsCopy: bool
+        :param bPrioritiseChildren: If True, when there is ambiguity from the same component being modified in both a child
+                scenario and the cascading changes, prioritise the changes in the child scenario. If False, prioritise the 
+                cascading changes.
+        :type bPrioritiseChildren: bool
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes.
+        :type nDiagramUpdateStyle: int
+        :return: True if the cascade occurs successfully.
+        :rtype: bool
+        """
+        pass
+
+    def GetMergeScenarioConflictsText(self, nMergeScenario: int, nCompareScenario: int, bShowNameConflicts: bool = False) -> str:
+        """
+        Returns a description of the conflicts that would occur in merging the changes between 
+        nMergeScenario and nCompareScenario into the current network. 
+        If nCompareScenario is set to 0, the base scenario of the network will be used instead.
+
+        Some components may not share names with items of the same type, and these will be renamed in the merge process.
+        If bShowNameConflicts is True, these will be detailed in the returned description.
+
+        :param nMergeScenario: The selected scenario ID from which the changes would be merged.
+        :type nMergeScenario: int
+        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes would be merged.
+        :type nCompareScenario: int
+        :param bShowNameConflicts: Whether to include details of items that may be renamed in the merge to stop forbidden duplicate names.
+        :type bShowNameConflicts: bool
+        :return: A description of all the conflicts that may occur in merging the scenario
+        :rtype: str
+        """
+        pass
+
+    def SetScenarioFastMergeOptions(self, nCompareScenario: int, bSortByDate: bool, bForceAddIncoming: bool, bForceKeepCurrent: bool,
+                                    nDiagramUpdateStyle: int, bOutputSummary: bool):
+        """
+        Set the merge options to be used in fast merge.
+        
+        nDiagramUpdateStyle determines how the diagram(s) will change to reflect the merge changes. It will take one of the following values:
+
+            - 0 : only deleted components will be removed
+            - 1 : deleted components will be removed and new components will be drawn
+            - 2 : all modified items will reflect their graphic changes
+
+        :param nCompareScenario: The selected scenario ID which is used to determine *what* changes will be merged.
+        :type nCompareScenario: int
+        :param bSortByDate: True if multiple scenarios should be merged in date order, False if they should be merged in their creation order.
+        :type bSortByDate: bool If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :param bForceAddIncoming: If True, in the event of incoming conflicts, deleted components in the current network required
+                for the merge will be recreated. If False, the conflicting changes will be ignored.
+        :type bForceAddIncoming: bool
+        :param bForceKeepCurrent: If True, in the event of incoming deletions that would cause a conflict, the incoming deletions
+                will be ignored. If False, the incoming deletion will occur, also deleting the dependent objects.
+        :type bForceKeepCurrent: bool
+        :param nDiagramUpdateStyle: Determines how the diagrams will be updated to match the merge changes.
+        :type nDiagramUpdateStyle: int
+        :param bOutputSummary: If True, a summary of the fast merge events will be printed to the progress window.
+        :type bOutputSummary: bool
+        :return: True if the values are set successfully.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarioFastMergeOptionsSummary(self) -> str:
+        """
+        Returns a string containing a summary of all the fast merge options.
+        
+        :return: A string containing a summary of all the fast merge options.
+        :rtype: str
+        """
+        pass
+
+    def ScenarioRevertItem(self, nScenario: int, nUID: int) -> bool:
+        """
+        Revert the IscNetComponent specified by nUID to how it was found in the scenario identified by nScenario.
+
+        This may fail if the scenario or component can not be identified; if there are no changes to the component
+        between the scenario and the current network; or if the reversion depends on other changes that have not occured 
+        (e.g., reverting the creation of a branch when a necessary busbar has not been created).
+
+        :param nScenario: The selected scenario ID the component will be reverted to.
+        :type nScenario: int
+        :param nUID: The selected component UID.
+        :type nUID: int
+        :return: True if the revert successfully occurs.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioRevertGroup(self, nScenario: int, nUID: int) -> bool:
+        """
+        Revert the IscGroup specified by nUID to how it was found in the scenario identified by nScenario.
+
+        This may fail if the scenario or group can not be identified; if there are no changes to the group
+        between the scenario and the current network; or if the reversion depends on other changes that have not occured 
+        (e.g., the group would refer to an item that has not been created).
+
+        :param nScenario: The selected scenario ID the group will be reverted to.
+        :type nScenario: int
+        :param nUID: The selected group UID.
+        :type nUID: int
+        :return: True if the revert successfully occurs.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioRevertSettings(self, nScenario: int, nDataType: int) -> bool:
+        """
+        Revert the IscAnalysis or IscNetworkCapacity class identified by nDataType specified by nUID to 
+        how it was found in the scenario identified by nScenario.
+
+        This may fail if the scenario or setting can not be identified or if there are no changes to the settings
+        between the scenario and the current network.
+
+        nDataType should be found from the IscNetComponent field values.
+
+        :param nScenario: The selected scenario ID the setting will be reverted to.
+        :type nScenario: int
+        :param nDataType: The setting datatype.
+        :type nDataType: int
+        :return: True if the revert successfully occurs.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioRevertMisc(self, nScenario: int, nDataType: int, nUID: int) -> bool:
+        """
+        Revert the miscellaneous object specified by nDataType and nUID to how it was found in the scenario identified by nScenario.
+        
+        Currently the miscellaneous objects in IPSA are: Intertrips, Automations, Contingencies and studies.
+        nDataType should be found from the IscNetComponent field values.
+
+        This may fail if the scenario or object can not be identified; if there are no changes to the object
+        between the scenario and the current network; or if the reversion depends on other changes that have not occured 
+        (e.g., the object would refer to an item that has not been created).
+
+        :param nScenario: The selected scenario ID the object will be reverted to.
+        :type nScenario: int
+        :param nDataType: The selected object datatype.
+        :type nDataType: int
+        :param nUID: The selected object UID.
+        :type nUID: int
+        :return: True if the revert successfully occurs.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioRevertExtData(self, nScenario: int, nDataType: int, bGroup: bool, bAdded: bool):
+        """
+        Revert the extended data field changes for the specified data type compared to those found in the scenario identified by nScenario.
+        
+        If the extended data fields are on a component, bGroup should be False, and the nDatatype can be 
+        found from the IscNetComponent field values. Else, if they are on a group, bGroup should be true
+        and nDataType should match those found in IscGroup.GetGroupType().
+
+        If bAdded is True, the fields created in the current network compared to nScenario will be removed, else
+        if False the fields present in nScenario but missing in the current network will be added.
+
+        :param nScenario: The selected scenario ID the object will be reverted to.
+        :type nScenario: int
+        :param nDataType: The group or component data type.
+        :type nDataType: int
+        :param bGroup: True if the datatype is a group datatype, false if it is a component datatype.
+        :type bGroup: bool
+        :param bAdded: Determines whether the added or deleted fields are to be reverted
+        :type bAdded: bool
+        :return: True if the revert successfully occurs.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenarioDiffAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of IscNetComponent UIDs which have been added between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of component UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffChanged(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of IscNetComponent UIDs which have been changed between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of component UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of IscNetComponent UIDs which have been deleted between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of component UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffGroupAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of IscGroup UIDs which have been added between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of group UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffGroupChanged(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of IscGroup UIDs which have been changed between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of group UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffGroupDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of IscGroup UIDs which have been deleted between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of group UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffAllAdded(self, nScenario1: int, nScenario2: int = 0) -> List[str]:
+        """
+        Returns a list of the names of all objects which have been added between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of object names.
+        :rtype: list[str]
+        """
+        pass
+
+    def GetScenarioDiffAllChanged(self, nScenario1: int, nScenario2: int = 0) ->List[str]:
+        """
+        Returns a list of the names of all objects which have been changed between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of object names.
+        :rtype: list[str]
+        """
+        pass
+
+    def GetScenarioDiffAllDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[str]:
+        """
+        Returns a list of the names of all objects which have been deleted between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of object names.
+        :rtype: list[str]
+        """
+        pass
+
+    def GetScenarioDiffText(self, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
+        """
+        Returns a string description of the changes made to the IscNetComponent identified by nUID between 
+        the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
+
+        :param nUID: The component UID.
+        :type nUID: int
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: A description of the changes made to the component.
+        :rtype: str
+        """
+        pass
+
+    def GetScenarioDiffGroupText(self, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
+        """
+        Returns a string description of the changes made to the IscGroup identified by nUID between 
+        the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
+
+        :param nUID: The group UID.
+        :type nUID: int
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: A description of the changes made to the group.
+        :rtype: str
+        """
+        pass
+
+    def GetScenarioDiffSettingsText(self, nDataType: int, nScenario1: int, nScenario2: int = 0) -> str:
+        """
+        Returns a string description of the changes made to the IscAnalysis or 
+        IscNetworkCapacity class identified by nDataType between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
+
+        nDataType should be found from the IscNetComponent field values.
+
+        :param nDataType: The setting datatype.
+        :type nDataType: int
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: A description of the changes made to the analysis/network capacity object.
+        :rtype: str
+        """
+        pass
+
+    def GetScenarioDiffMiscText(self, nDataType: int, nUID: int, nScenario1: int, nScenario2: int = 0) -> str:
+        """
+        Returns a string description of the changes made to the miscellaneous object identified by nDataType 
+        and nUID between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
+
+        Currently the miscellaneous objects in IPSA are: Intertrips, Automations, Contingencies and studies.
+        nDataType should be found from the IscNetComponent field values.
+
+        :param nDataType: The object datatype.
+        :type nDataType: int
+        :param nUID: The object UID.
+        :type nUID: int
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: A description of the changes made to the miscellaneous object.
+        :rtype: str
+        """
+        pass
+
+    def GetScenarioDiffExtDataItemAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of the component types which have new extended data fields between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        Note, the component datatypes can be found from the IscNetComponent field values.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of component datatypes.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffExtDataItemDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of the component types which have deleted extended data fields between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        Note, the component datatypes can be found from the IscNetComponent field values.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of component datatypes.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffExtDataGroupAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of the group types which have new extended data fields between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        Note, the group datatypes match those found in IscGroup.GetGroupType().
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of group datatypes.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffExtDataGroupDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of the group types which have deleted extended data fields between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        Note, the group datatypes match those found in IscGroup.GetGroupType().
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of group datatypes.
+        :rtype: list[int]
+        """
+        pass
+    
+    def GetScenarioDiffExtDataFieldsAdded(self, nDataType: int, bGroup: bool, 
+                nScenario1: int, nScenario2: int = 0) -> Dict [int, str]:
+        """
+        Returns the extended data fields (value and name) which have been added to the specified data type 
+        between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        If the extended data fields are on a component, bGroup should be False, and the nDatatype can be 
+        found from the IscNetComponent field values. Else, if they are on a group, bGroup should be true
+        and nDataType should match those found in IscGroup.GetGroupType().
+        
+        :param nDataType: The group or component data type.
+        :type nDataType: int
+        :param bGroup: True if the datatype is a group datatype, false if it is a component datatype.
+        :type bGroup: bool
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: Dict of field values to the field names.
+        :rtype: dict[int, str]
+        """
+        pass
+    
+    def GetScenarioDiffExtDataFieldsDeleted(self, nDataType: int, bGroup: bool, 
+                nScenario1: int, nScenario2: int = 0) -> Dict [int, str]:
+        """
+        Returns the extended data fields (value and name) which have been deleted from the specified data type 
+        between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        If the extended data fields are on a component, bGroup should be False, and the nDatatype can be 
+        found from the IscNetComponent field values. Else, if they are on a group, bGroup should be true
+        and nDataType should match those found in IscGroup.GetGroupType().
+        
+        :param nDataType: The group or component data type.
+        :type nDataType: int
+        :param bGroup: True if the datatype is a group datatype, false if it is a component datatype.
+        :type bGroup: bool
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: Dict of field values to the field names.
+        :rtype: dict[int, str]
+        """
+        pass
+
+    def GetScenarioDiffDiagramAdded(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of the IDs of the diagrams which have been added between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of diagram IDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffDiagramChanged(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of the IDs of the diagrams which have been changed between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of diagram IDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffDiagramDeleted(self, nScenario1: int, nScenario2: int = 0) -> List[int]:
+        """
+        Returns a list of the IDs of the diagrams which have been deleted between the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network.
+
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: List of diagram IDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetScenarioDiffDiagramText(self, nID: int, nScenario1: int, nScenario2: int = 0) -> str:
+        """
+        Returns a string description of the changes made to the diagram identified by nID between 
+        the two provided scenarios.
+        If nScenario2 is not provided (or set to 0), the comparison will be instead with the current network
+
+        :param nID: The diagram ID.
+        :type nID: int
+        :param nScenario1: The first selected scenario ID.
+        :type nScenario1: int
+        :param nScenario2: The second selected scenario ID. If omited, the current network is used.
+        :type nScenario2: int
+        :return: A description of the changes made to the diagram.
+        :rtype: str
+        """
+        pass
+
+    def CommitVersion(self, strName: str) -> int:
+        """
+        *Deprecated in IPSA 3.*
+        Creates a new network scenario which includes all network changes.
+
+        :param strName: The new network scenario name.
+        :type strName: str
+        :return: An integer representing the scenario ID.
+        :rtype: int
+        """
+        pass
+
+    def GetVersionUuid(self, nScenarioID: int) -> str:
+        """
+        *Deprecated in IPSA 3.*
+        Returns a unique string (UUID) representing the scenario.
+
+        :param nScenarioID: The selected scenario.
+        :type nScenarioID: int
+        :return: The scenario UUID.
+        :rtype: str
+        """
+        pass
+
+    def SetToVersion(self, nScenarioID: int) -> bool:
+        """
+        *Deprecated in IPSA 3.*
+        Sets the network to the identified scenario.
+
+        :param nScenarioID: The selected scenario.
+        :type nScenarioID: int
+        :return: Denoting whether the scenario is successfully set or whether it does not exist.
+        :rtype: bool
+        """
+        pass
+
+    def CreateChangeFile(self, nVersion: int, strMergeName: str) -> bool:
+        """
+        *Deprecated in IPSA 3.*
+        Creates an IPSA merge file based on the network differences between the given scenario and the current network.
+
+        :param nVersion: The selected scenario.
+        :type nVersion: int
+        :param strMergeName: The merged file name.
+        :type strMergeName: str
+        :return: Denoting whether the file is successfully created.
+        :rtype: bool
+        """
+        pass
+
+    def GetCurrentVersion(self) -> int:
+        """
+        *Deprecated in IPSA 3.*
+        Returns the current scenario ID.
+
+        :return: The current scenario ID.
+        :rtype: int
+        """
+        pass
+
+    def GetParentVersion(self, nScenarioID: int) -> int:
+        """
+        *Deprecated in IPSA 3.*
+        Returns the parent scenario ID for the selected scenario.
+
+        :param nScenarioID: The selected scenario.
+        :type nScenarioID: int
+        :return: The parent scenario ID.
+        :rtype: int
+        """
+        pass
+
+    def GetVersionDiffAdded(self, nScenarioID: int) -> List[int]:
+        """
+        *Deprecated in IPSA 3.*
+        Returns a list of component UIDs which have been added to the network and
+        that were not in the selected scenario.
+
+        :param nScenarioID: The selected scenario.
+        :type nScenarioID: int
+        :return: List of component UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetVersionDiffChanged(self, nScenarioID: int) -> List[int]:
+        """
+        *Deprecated in IPSA 3.*
+        Returns a list of component UIDs which have been edited in the current network compared to
+        the selected scenario.
+
+        :param nScenarioID: The selected scenario.
+        :type nScenarioID: int
+        :return: List of component UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetVersionDiffDeleted(self, nScenarioID: int) -> List[int]:
+        """
+        *Deprecated in IPSA 3.*
+        Returns a list of component UIDs which have been deleted from the network and
+        that were in the selected scenario.
+
+        :param nScenarioID: The selected scenario.
+        :type nScenarioID: int
+        :return: List of component UIDs.
+        :rtype: list[int]
         """
         pass
 
