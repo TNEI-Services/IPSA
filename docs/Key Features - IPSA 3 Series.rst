@@ -7,13 +7,11 @@ Key Features of IPSA 3.3
 Scenarios
 ------------
 Multiple new features have been added to allow more functionality with scenarios.
-
 Firstly, scenarios can now have extended data which can be created, modified and deleted through functions in ``IscNetwork``.
 This is data specific to the scenarios themselves, and the extended data fields are shared across all scenarios.
 
-Secondly, scenarios now have a sorting system through the new "scenario folders". These can be fully automated through
+Secondly, scenarios now have a sorting system through new "scenario folders". These can be fully automated through
 ``IscNetwork`` functionality alongside graphical functionality within the UI.
-
 Additionally, lists of scenarios obeying certain constraints can be obtained through new filtering functionality 
 (``IscNetwork.FilterScenarios``) and scenario change/difference files can be saved with only diagram containing objects
 though options in ``IscInterface``.

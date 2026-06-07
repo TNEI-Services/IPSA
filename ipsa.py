@@ -1930,13 +1930,13 @@ class IscBranch:
         Returns the multi-section equivalent double value for the enumerated field.
 
         Valid fields are: 
-        
-            - IscBranch.ResistancePU
-	        - IscBranch.ReactancePU
-	        - IscBranch.SusceptancePU
-	        - IscBranch.ZSReactancePU
-	        - IscBranch.ZSResistancePU
-	        - IscBranch.LengthKm
+
+            - IscBranch.ResistancePU 
+            - IscBranch.ReactancePU 
+            - IscBranch.SusceptancePU 
+            - IscBranch.ZSReactancePU 
+            - IscBranch.ZSResistancePU 
+            - IscBranch.LengthKm 
 
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
@@ -7332,8 +7332,7 @@ class IscDiagram:
         """
         Gets the currently active voltage colouring scheme in the diagram. The colour scheme is 
         returned as a dict of voltages to colour names. These colour names will be either a hex
-        code or an `SVG colour name`_.
-        .. _SVG colour name: https://www.w3.org/TR/SVG11/types.html#ColorKeywords 
+        colour code (i.e., "#BA4675") or an SVG colour name.
 
         :return: A dictionary of the voltages to the colours used by voltage colouring in the diagram.
         :rtype: dict[float, str]
@@ -7348,9 +7347,8 @@ class IscDiagram:
         maintained unless mVoltageColours overrides these colours.
 
         mVoltageColours is a dictionary of voltages to colour names. The colour names must be either in 
-        hex colours or one of the `SVG colour name`_. If the colour name is invalid, the component will 
+        hex colour code (i.e., "#BA4675") or one of the SVG colour name. If the colour name is invalid, the component will 
         instead be coloured black.
-        .. _SVG colour name: https://www.w3.org/TR/SVG11/types.html#ColorKeywords 
 
         :param mVoltageColours: A dictionary of the voltages to the colours used by voltage colouring in the diagram.
         :type mVoltageColours: dict[float, str]

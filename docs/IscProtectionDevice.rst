@@ -20,8 +20,7 @@ Field Values
      - Gets and sets the name of the protection device.
    * - Integer
      - Status
-     - Status (Note this is the status of the device itself and currently always should be in. 
-        The status of the protection container the device lies within can be found through the auxiliary function):
+     - Status (Note this is the status of the device itself and currently always should be in. The status of the protection container the device lies within can be found through the auxiliary function):
 
         - 0 = Switched in
         - -1 = Switched out
