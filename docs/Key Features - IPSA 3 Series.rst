@@ -2,6 +2,34 @@
 Key features of the IPSA 3 Series
 *************************************
 
+Key Features of IPSA 3.3
+=============================
+Scenarios
+------------
+Multiple new features have been added to allow more functionality with scenarios.
+
+Firstly, scenarios can now have extended data which can be created, modified and deleted through functions in ``IscNetwork``.
+This is data specific to the scenarios themselves, and the extended data fields are shared across all scenarios.
+
+Secondly, scenarios now have a sorting system through the new "scenario folders". These can be fully automated through
+``IscNetwork`` functionality alongside graphical functionality within the UI.
+
+Additionally, lists of scenarios obeying certain constraints can be obtained through new filtering functionality 
+(``IscNetwork.FilterScenarios``) and scenario change/difference files can be saved with only diagram containing objects
+though options in ``IscInterface``.
+
+
+Additional features
+---------------------
+    - Users can now programmatically close diagrams in the UI through ``IscInterface.CloseDiagram``.
+    - The ability to handle the diagram voltage colouring has been exposed to PyIPSA through new IscDiagram functions.
+    - The current network file path can be accessed through PyIPSA with ``IscInterface.GetNetworkFileNameWithPath``.
+    - Multi-section line equivalent values can be accessed for branches via ``IscBranch.GetEquivalentDValue``.
+    - Users can not access the busbar and branch overload limits as well as setting them.
+    - Various results values are better exposed to PyIPSA - e.g., the load flow iteration count and the results table text in multiply-tabbed results tables.
+    - ``IscProtectionDevice`` now has functions to allow the users to access information about the protection containers they lie within.
+
+
 Key Features of IPSA 3.2
 =============================
 CIM integration to PyIPSA
