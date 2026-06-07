@@ -91,6 +91,9 @@ Field Values
    * - List[Float]
      - CatalogPowersMW
      - Gets a list of the real power in MW for the objects in the catalog.
+   * - List[Float]
+     - CatalogReactivesMVAr
+     - Gets a list of the reactive power in MVAr for the objects in the catalog.
    * - String
      - Comment
      - Gets and sets the comments.

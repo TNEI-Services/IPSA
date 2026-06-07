@@ -1925,6 +1925,26 @@ class IscBranch:
         """
         pass
 
+    def GetEquivalentDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns the multi-section equivalent double value for the enumerated field.
+
+        Valid fields are: 
+        
+            - IscBranch.ResistancePU
+	        - IscBranch.ReactancePU
+	        - IscBranch.SusceptancePU
+	        - IscBranch.ZSReactancePU
+	        - IscBranch.ZSResistancePU
+	        - IscBranch.LengthKm
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The multi-section equivalent double value.
+        :rtype: float
+        """
+        pass
+
     @overload
     def GetSValue(self, nFieldIndex: int) -> str:
         """
@@ -7260,6 +7280,83 @@ class IscDiagram:
         """
         pass
 
+    def GetDisplayVoltageLevels(self) -> bool:
+        """
+        Returns whether the voltage colouring in the diagram is active.
+
+        :return: True if the voltage colouring is active.
+        :rtype: bool
+        """
+        pass
+
+    def SetDisplayVoltageLevels(self, bShowVoltColours: bool):
+        """
+        Sets whether the voltage colouring in the diagram should be active.
+
+        :param bShowVoltColours: True if the voltage colouring should be active.
+        :type bShowVoltColours: bool
+        """
+        pass
+
+    def GetVoltageLevelScheme(self) -> int:
+        """
+        Returns an int indicating which scheme of the voltage colouring is used in the diagram. 
+        The scheme will be one of:
+
+            - 0 : None / custom
+            - 1 : UK
+            - 2 : Europe
+            - 3 : USA
+
+        :return: An int indicating which scheme of voltage colouring is being used.
+        :rtype: int
+        """
+        pass
+
+    def SetVoltageLevelScheme(self, nVoltage : int):
+        """
+        Set which scheme of the voltage colouring should be used in the diagram. 
+        The scheme must be one of:
+
+            - 0 : None / custom
+            - 1 : UK
+            - 2 : Europe
+            - 3 : USA
+
+        :param nVoltage: An int indicating which scheme of voltage colouring is being used.
+        :type nVoltage: int
+        """
+        pass
+
+    def GetVoltageLevelColours(self) -> Dict[float, str]:
+        """
+        Gets the currently active voltage colouring scheme in the diagram. The colour scheme is 
+        returned as a dict of voltages to colour names. These colour names will be either a hex
+        code or an `SVG colour name`_.
+        .. _SVG colour name: https://www.w3.org/TR/SVG11/types.html#ColorKeywords 
+
+        :return: A dictionary of the voltages to the colours used by voltage colouring in the diagram.
+        :rtype: dict[float, str]
+        """
+        pass
+
+    def SetCustomVoltageLevelColours(self, mVoltageColours : dict[float, str]):
+        """
+        If the current voltage colouring scheme for the diagram is "None/custom", then this function
+        will set the custom colouring scheme to that defined by mVoltageColours. If there were any voltage 
+        colours already set for voltages matching components currently in the network, these colours will be
+        maintained unless mVoltageColours overrides these colours.
+
+        mVoltageColours is a dictionary of voltages to colour names. The colour names must be either in 
+        hex colours or one of the `SVG colour name`_. If the colour name is invalid, the component will 
+        instead be coloured black.
+        .. _SVG colour name: https://www.w3.org/TR/SVG11/types.html#ColorKeywords 
+
+        :param mVoltageColours: A dictionary of the voltages to the colours used by voltage colouring in the diagram.
+        :type mVoltageColours: dict[float, str]
+        """
+        pass
+
 class IscDrawTools:
     """
     Provides access to the Draw Tools settings for PolyDraw and TreeDraw.
@@ -11182,6 +11279,15 @@ class IscInterface:
         """
         pass
 
+    def GetNetworkFileNameWithPath(self) -> str:
+        """
+        Returns the filename including the full network path of the current network.
+
+        :return: The filename including the full network path of the current network.
+        :rtype: str
+        """
+        pass
+
     def GetFileName(self, strDialogTitle: str, strFileTypes: str) -> str:
         """
         Display the operating system File Open dialog to prompt the user to select a file.
@@ -11305,11 +11411,11 @@ class IscInterface:
         """
         pass
 
-    def DisplayResultsTable(self, nTableType: int) -> None:
+    def DisplayResultsTable(self, nResultsType: int) -> None:
         """
         Displays the IPSA results table which will contain the results of the last analysis.
 
-        :param nTableType: Specify the type of table displayed:
+        :param nResultsType: Specify the type of table displayed:
 
             - ipsa.IscInterface.BusbarLF = busbar load flow results
             - ipsa.IscInterface.GeneratorLF = generator load flow results
@@ -11349,13 +11455,16 @@ class IscInterface:
         """
         pass
 
-    def GetResultsTableText(self, nTableType: int) -> str:
+    def GetResultsTableText(self, nResultsType: int, nTabIndex: int = 0) -> str:
         """
-        Returns the data contained in the results' table as a comma delimited string
+        Returns the data contained in the results' table, in the specified tab, as a comma delimited string
         which can be pasted directly into a spreadsheet.
 
-        :param nTableType: The type defined for the DisplayResultsTable function.
-        :type nTableType: int
+        :param nResultsType: The type defined for the DisplayResultsTable function.
+        :type nResultsType: int
+        :param nTabIndex: The index of the tab of the results table to copy the data from. 
+            The indexes start from 0, and if invalid will return an empty string.
+        :type nTabIndex: int
         :return: Data contained in the results' table.
         :rtype: str
         """
@@ -11596,6 +11705,26 @@ class IscInterface:
 
         :param bFilterScenarios: True if the scenarios should be filtered on save.
         :type bFilterScenarios: bool
+        """
+        pass
+
+    def GetFilterEmptyDiagramsOnSaveDifferences(self) -> bool:
+        """
+        Gets whether diagrams, that would be empty in a difference/change file, should be filtered when saving that 
+        difference/change file.
+
+        :return: True if the diagrams should be filtered when creating change files/saving difference files.
+        :rtype: bool
+        """
+        pass
+
+    def SetFilterEmptyDiagramsOnSaveDifferences(self, bFilterDiagrams: bool):
+        """
+        Sets whether diagrams, that would be empty in a difference/change file, should be filtered when saving that 
+        difference/change file.
+
+        :param bFilterDiagrams: True if the diagrams should be filtered when creating change files/saving difference file.
+        :type bFilterDiagrams: bool
         """
         pass
 
@@ -19585,6 +19714,15 @@ class IscNetwork:
         """
         pass
 
+    def GetRecentLoadFlowIterationCount(self) -> int:
+        """
+        Gets the number of iterations used in the last Load Flow analysis called through PyIPSA.
+
+        :return: The number of iterations in the last Load Flow analysis called through PyIPSA.
+        :rtype: int
+        """
+        pass
+
     def GetHighestBusbarVoltagePU(self) -> float:
         """
         Returns the highest busbar voltage in per unit.
@@ -20387,6 +20525,19 @@ class IscNetwork:
         """
         pass
 
+    def GetBusbarOverloadLimits(self) -> Tuple[bool, float, float]:
+        """
+        Gets the network global high and low limits for busbar overloads as a tuple.
+        The first tuple value is whether the values have been accessed correctly,
+        the second is the high limit in per unit, and the third is the low limit
+        in per unit.
+
+        :result: A tuple of [True if the values are accessed, the high busbar overload limit in per unit, 
+            the low busbar overload in per unit].
+        :rtype: tuple[bool, float, float]
+        """
+        pass
+
     def SetBusbarOverloadLimits(self, dBusVoltHighPU: float, dBusVoltlowPU: float) -> None:
         """
         Sets the network global high and low limits for busbar overloads.
@@ -20395,6 +20546,22 @@ class IscNetwork:
         :type dBusVoltHighPU: float
         :param dBusVoltlowPU: The low limit for busbar overloads in per unit.
         :type dBusVoltlowPU: float
+        """
+        pass
+
+    def GetBranchOverloadLimits(self) -> Tuple[bool, float, float, int]:
+        """
+        Gets the network global currently used percentage ratings for branches as a tuple.
+
+        The first tuple value is whether the values have been accessed correctly,
+        the second is the high network global percentage rating limit, 
+        the third is the low network global percentage rating limit,
+        and the fourth is the rating index currently being used which will match a rating index from e.g., 
+        IscBranch.
+
+        :result: A tuple of [True if the values are accessed, the high branch rating limit in per unit, 
+            the low branch rating limit in per unit, the rating index in use].
+        :rtype: tuple[bool, float, float, int]
         """
         pass
 
@@ -21287,6 +21454,689 @@ class IscNetwork:
         :type bAdded: bool
         :return: True if the revert successfully occurs.
         :rtype: bool
+        """
+        pass
+
+    @overload
+    def GetScenarioFolderID(self, nScenario: int) -> int:
+        """
+        Get the ID of the scenario folder that the scenario, nScenario, is in. This will return 0 if the scenario isn't in 
+        no folder.
+
+        :param nScenario: The ID of the scenario.
+        :type nScenario: int
+        :return: The ID of the scenario folder containing the specified scenario.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def GetScenarioFolderID(self, strFolderName: str) -> int:
+        """
+        Get the ID of the scenario folder with name, strFolderName. This will return 0 if the folder can't be found.
+
+        :param strFolderName: The name of the scenario folder.
+        :type strFolderName: str        
+        :return: The ID of the scenario folder with the provided name.
+        :rtype: int
+        """
+        pass
+
+    def GetScenarioFolderID(self, strFolderName: str) -> int:
+        """
+        Get the ID of the scenario folder identified either by having the name, strFolderName, or by containing the 
+        scenario, nScenario. If the folder cannot be found, this function will return 0.
+
+        :param strFolderName: The name of the scenario folder.
+        :type strFolderName: str
+        :param nScenario: The ID of the scenario.
+        :type nScenario: int
+        :return: The ID of the scenario folder.
+        :rtype: int
+        """
+        pass
+
+    def GetScenarioFolders(self) -> Dict[int, str]:
+        """
+        Get a dictionary of all the scenario folders in the network. The key is the scenario folder ID and the
+        value is the folder's name.
+
+        :return: The ID and names of all the scenario folders.
+        :rtype: dict[int, str]
+        """
+        pass
+
+    def ScenarioCreateFolder(self,  strFolderName: str, lScenarios : list[int]) -> int:
+        """
+        Create a new scenario folder with the name, strFolderName, and containing the scenarios identified by lScenarios.
+        This will return the ID of the new scenario folder, if the folder is created, otherwise it will return 0.
+
+        Note, this will fail if the folder name is not unique 
+        or if lScenarios does not identify any scenarios not already in a folder. 
+        Note, also, that the newly created folder may contain extra scenarios not specified 
+        in lScenarios, so that all the scenarios in the folder share common ancestry up to (but not including) the 
+        base scenario.
+
+        :param strFolderName: The new name for the scenario folder.
+        :type strFolderName: str
+        :param lScenarios: The list of scenario IDs to be in the scenario folder.
+        :type lScenarios: list[int]
+        :return: The ID of the newly created folder, or 0 if this function fails.
+        :rtype: int
+        """
+        pass
+
+    def GetScenarioFolderName(self, nFolder: int) -> str:
+        """
+        Get the name of the scenario folder with ID, nFolder.
+
+        :param nFolder: The ID of the scenario folder.
+        :type nFolder: int
+        :return: The name of the scenario folder.
+        :rtype: str
+        """
+        pass
+
+    def SetScenarioFolderName(self, nFolder: int, strFolderName: str) -> bool:
+        """
+        Set the name of the scenario folder with ID, nFolder, to be strFolderName. 
+        This will fail if the name would not be unique.
+
+        :param nFolder: The ID of the scenario folder.
+        :type nFolder: int
+        :param strFolderName: The new name for the scenario folder.
+        :type strFolderName: str
+        :return: True if the scenario folder has been renamed.
+        :rtype: bool
+        """
+        pass
+
+    def GetScenariosInFolder(self, nFolder: int) -> List[int]:
+        """
+        Get the IDs of all the scenarios included in the scenario folder, nFolder.
+
+        :param nFolder: The ID of the scenario folder.
+        :type nFolder: int
+        :return: A list of the scenario IDs within the scenario folder.
+        :rtype: list[int]
+        """
+        pass
+
+    def SetScenariosInFolder(self, nFolder: int, lScenarios: list[int]) -> bool:
+        """
+        Set the scenario folder with ID, nFolder, to contain the scenarios lScenarios.
+        
+        This will fail if lScenarios does not identify any scenarios not already in a folder. 
+        Note, also, that this may cause the folder to contain extra scenarios not specified in lScenarios, 
+        so that all the scenarios in the folder share common ancestry up to (but not including) the base scenario.
+
+        :param nFolder: The ID of the scenario folder.
+        :type nFolder: int
+        :param lScenarios: The list of scenario IDs to be in the scenario folder.
+        :type lScenarios: list[int]
+        :return: True if the scenario folder list of scenarios has been set.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioDeleteFolder(self, nFolder: int) -> bool:
+        """
+        Deletes the scenario folder with ID, nFolder. Note this will not modify the scenarios within the
+        scenario folder.
+
+        :param nFolder: The ID of the scenario folder.
+        :type nFolder: int
+        :return: True if the scenario folder is successfully deleted.
+        :rtype: bool
+        """
+        pass
+
+    def FilterScenarios(self, strName: str = "", strDescription: str = "", strDateAfter: str = "", strDateBefore: str = "", 
+                        lFolders: list[int] = [], bIncludeAncestors : bool = False) -> List[int]:
+        """
+        Return a list of scenario IDs that match all of the provided conditions. If any conditions are not provided,
+        the returned scenario list will not be filtered by this field.
+
+        :param strName: A string that the scenarios' name must contain.
+        :type strName: str
+        :param strDescription: A string that the scenarios' description must contain.
+        :type strDescription: str 
+        :param strDateAfter: The earliest date that the scenarios may have, provided in "dd/MM/yyyy" or ISODate format.
+        :type strDateAfter: str
+        :param strDateBefore: The latest date that the scenarios may have, provided in "dd/MM/yyyy" or ISODate format.
+        :type strDateBefore: str
+        :param lFolders: A list of folders, one of which the scenarios must be within.
+        :type lFolders: list[int]
+        :param bIncludeAncestors: If True, this will also return all of the ancestors of the filtered scenarios.
+        :type bIncludeAncestors: bool
+        :return: A list of scenario IDs that match the provided conditions.
+        :rtype: list[int]
+        """
+        pass
+
+    def ScenarioAddDataExtension(self, strName: str, default: Union[int,float,str, bool]) -> int:
+        """
+        Adds an integer/float/string/double extension data field to the scenario data and returns the new field index.
+        Sets the default value.
+
+        This only has to be called once - not for every scenario!
+
+        **Note: The variable of the function is not called default.**
+
+        You can use either nDefault, dDefault, strDefault or bDefault to specify the default value depending on the
+        type of data extension being added.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nDefault: The integer default value.
+        :type nDefault: int
+        :param dDefault: The float default value.
+        :type dDefault: float
+        :param strDefault: The string default value.
+        :type strDefault: str
+        :param bDefault: The bool default value.
+        :type bDefault: bool
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioAddListIntDataExtension(self, strName: str) -> int:
+        """
+        Adds a data field to the scenario data of a list of integers and returns the new field index.
+        Sets the default value to an empty list.
+
+        This only has to be called once - not for every scenario!
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioAddListDblDataExtension(self, strName: str) -> int:
+        """
+        Adds a data field to the scenario data of a list of doubles and returns the new field index.
+        Sets the default value to an empty list.
+
+        This only has to be called once - not for every scenario!
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioAddListStrDataExtension(self, strName: str) -> int:
+        """
+        Adds a data field to the scenario data of a list of strings and returns the new field index.
+        Sets the default value to an empty list.
+
+        This only has to be called once - not for every scenario!
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The new field index.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def ScenarioDeleteDataExtensionField(self, nFieldIndex: int) -> bool:
+        """
+        Deletes the scenario data extension field identified by the index nFieldIndex. This will delete the data in 
+        this extension field from all scenarios in the network.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        This only has to be called once - not for every scenario!
+
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def ScenarioDeleteDataExtensionField(self, strName: str) -> bool:
+        """
+        Deletes the scenario data extension field identified by the name strName. This will delete the data in 
+        this extension field from all scenarios in the network.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        This only has to be called once - not for every scenario!
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioDeleteDataExtensionField(self, strName: str) -> bool:
+        """
+        Deletes the scenario data extension field identified by the name strName or index nFieldIndex. This will delete 
+        the data in this extension field from all scenarios in the network.
+        It is advised to call NonDefaultExtensionInstanceCount prior to deleting the data extension field to ensure the
+        expected amount of data shall be deleted.
+
+        This only has to be called once - not for every scenario!
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: True if the field is deleted successfully.
+        :rtype: bool
+        """
+        pass
+
+    @overload
+    def ScenarioNonDefaultExtensionInstanceCount(self, nFieldIndex: int) -> int:
+        """
+        Returns the number of scenarios where the extension field identified by nFieldIndex is set to
+        a non-default value. That is, the count of the scenarios where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: The number of scenarios with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def ScenarioNonDefaultExtensionInstanceCount(self, strName: str) -> int:
+        """
+        Returns the number of scenarios of the same type where the extension field identified by strName is set to
+        a non-default value. That is, the count of the scenarios where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :return: The number of scenarios with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioNonDefaultExtensionInstanceCount(self, strName: str) -> int:
+        """
+        Returns the number of scenarios of the same type where the extension field identified by strName or nFieldIndex is
+        set to a non-default value. That is, the count of the scenarios where data will be destroyed by calling
+        DeleteDataExtensionField.
+
+        :param strName: The name of the field.
+        :type strName: str
+        :param nFieldIndex: The index of the field.
+        :type nFieldIndex: int
+        :return: The number of scenarios with a non-default value in the extension field.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioGetIntExtensionValue(self, nScenario: int, nFieldIndex: int) -> int:
+        """
+        Get the integer value for the specified scenario from the given extension field.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioGetDblExtensionValue(self, nScenario: int, nFieldIndex: int) -> float:
+        """
+        Get the float value for the specified scenario from the given extension field.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: float
+        """
+        pass
+
+    def ScenarioGetStrExtensionValue(self, nScenario: int, nFieldIndex: int) -> str:
+        """
+        Get the string value for the specified scenario from the given extension field.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: str
+        """
+        pass
+
+    def ScenarioGetBoolExtensionValue(self, nScenario: int, nFieldIndex: int) -> bool:
+        """
+        Get the boolean value for the specified scenario from the given extension field.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The element value.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioGetListIntExtensionValue(self, nScenario: int, nFieldIndex: int, nIndex: int) -> int:
+        """
+        Get a single integer value for the specified scenario from the list within the given enumerated field.
+
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :return: The element value.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioGetListDblExtensionValue(self, nScenario: int, nFieldIndex: int, nIndex: int) -> float:
+        """
+        Get a single float value for the specified scenario from the list within the given enumerated field.
+
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :return: The element value.
+        :rtype: float
+        """
+        pass
+
+    def ScenarioGetListStrExtensionValue(self, nScenario: int, nFieldIndex: int, nIndex: int) -> str:
+        """
+        Get a single string value for the specified scenario from the list within the given enumerated field.
+
+        Note, the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :return: The element value.
+        :rtype: str
+        """
+        pass
+
+    def ScenarioGetListIntSize(self, nScenario: int, nFieldIndex: int) -> int:
+        """
+        Gets the size of the list of integers in the specified scenario for the given enumerated field.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The size of the field list.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioGetListDblSize(self, nScenario: int, nFieldIndex: int) -> int:
+        """
+        Gets the size of the list of doubles in the specified scenario for the given enumerated field.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The size of the field list.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioGetListStrSize(self, nScenario: int, nFieldIndex: int) -> int:
+        """
+        Gets the size of the list of strings in the specified scenario for the given enumerated field.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The size of the field list.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioSetIntExtensionValue(self, nScenario: int, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Set the integer value for the given extension field in the specified scenario.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The selected value.
+        :type nValue: int
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioSetDblExtensionValue(self, nScenario: int, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Set the float value for the given extension field in the specified scenario.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The selected value.
+        :type dValue: float
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioSetStrExtensionValue(self, nScenario: int, nFieldIndex: int, sValue: str) -> bool:
+        """
+        Set the string value for the given extension field in the specified scenario.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param sValue: The selected value.
+        :type sValue: str
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioSetBoolExtensionValue(self, nScenario: int, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Set the boolean value for the given extension field in the specified scenario.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The selected value.
+        :type bValue: bool
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioSetListIntExtensionValue(self, nScenario: int, nFieldIndex: int, nIndex: int, nValue: int) -> bool:
+        """
+        Sets the value of a specified element in a list of integers within the given enumerated field 
+        in the specified scenario.
+
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListIntSize) must be larger than nIndex. 
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :param nValue: The selected value.
+        :type nValue: int
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioSetListDblExtensionValue(self, nScenario: int, nFieldIndex: int, nIndex: int, dValue: float) -> bool:
+        """
+        Sets the value of a specified element in a list of doubles within the given enumerated field
+        in the specified scenario.
+
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListDblSize) must be larger than nIndex.
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :param dValue: The selected value.
+        :type dValue: float
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioSetListStrExtensionValue(self, nScenario: int, nFieldIndex: int, nIndex: int, strValue: str) -> bool:
+        """
+        Sets the value of a specific element in a list of strings within the given enumerated field
+        in the specified scenario.
+
+        Note the index within the list, nIndex, must already exist - that is, the size of the list (i.e.,
+        GetListStrSize) must be larger than nIndex.
+        Note also that the PyIPSA nIndex starts from 0, while the UI index starts from 1.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nIndex: The index of the selected element.
+        :type nIndex: int
+        :param strValue: The selected value.
+        :type strValue: str
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioPushBackListIntExtensionValue(self, nScenario: int, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Adds an item with the given value to the end of a list of integers within the given enumerated field
+        in the specified scenario.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The selected value.
+        :type nValue: int
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioPushBackListDblExtensionValue(self, nScenario: int, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Adds an item with the given value to the end of a list of doubles within the given enumerated field
+        in the specified scenario.
+        
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The selected value.
+        :type dValue: float
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioPushBackListStrExtensionValue(self, nScenario: int, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Adds an item with the given value to the end of a list of strings within the given enumerated field
+        in the specified scenario.
+
+        :param nScenario: The scenario ID.
+        :type nScenario: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The selected value.
+        :type strValue: str
+        :return: True if the operation was successful.
+        :rtype: bool
+        """
+        pass
+
+    def ScenarioGetExtensionFieldIndex(self, strName: str) -> int:
+        """
+        Returns the field index for the scenario data extended data field of a specified name.
+
+        :param strName: The name of the scenario data extended data field.
+        :type strName: str
+        :return: The field index.
+        :rtype: int
+        """
+        pass
+
+    def ScenarioGetExtensionNames(self) -> Dict[int,str]:
+        """
+        Returns a dictionary of scenario data extension field indexes and field names.
+        The dictionary keys are integers representing all the extended data fields.
+        The dictionary values are the field names of the individual extended data fields.
+        Each extended data field is therefore represented by {nIndex:strName}, where integer nIndex is the field index
+        and string strName is the field name.
+
+        :return: Dictionary of scenario data extension field indexes and field names.
+        :rtype: dict(int, str)
+        """
+        pass
+
+    def ScenarioGetFieldType(self, nFieldIndex: int) -> str:
+        """
+        Returns the scenario data field type as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The scenario data field type.
+        :rtype: str
+        """
+        pass
+
+    def ScenarioGetFieldName(self, nFieldIndex: int) -> str:
+        """
+        Returns the scenario data field name as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The scenario data field name.
+        :rtype: str
         """
         pass
 
@@ -22996,6 +23846,82 @@ class IscProtectionDevice:
         :type bValue: bool
         :return: True if successful.
         :rtype: bool
+        """
+        pass
+
+    def GetProtContainerUID(self) -> int:
+        """
+        Get the UID of the protection container that contains this device.
+
+        :return: The UID of this device's protection container.
+        :rtype: int
+        """
+        pass
+
+    def GetProtContainerName(self) -> str:
+        """
+        Get the name of the protection container that contains this device.
+
+        :return: The name of this device's protection container.
+        :rtype: str
+        """
+        pass
+
+    def GetProtContainerStatus(self) -> int:
+        """
+        Get the status of the protection container that contains this device.
+
+        :return: The status of this device's protection container.
+        :rtype: int
+        """
+        pass
+
+    def GetProtCTUID(self) -> int:
+        """
+        Get the UID of the CT associated with this device.
+
+        Note if this device is not a relay, there will be no associated CT.
+
+        :return: The UID of this device's CT (or 0 if it has none).
+        :rtype: int
+        """
+        pass
+
+    def GetProtCTName(self) -> str:
+        """
+        Get the name of the CT associated with this device.
+
+        Note if this device is not a relay, there will be no associated CT.
+
+        :return: The name of this device's CT.
+        :rtype: str
+        """
+        pass
+
+    def GetNearBusbarUID(self) -> int:
+        """
+        Get the UID of the busbar nearest to the protection device/container.
+
+        :return: The UID of the busbar nearest to the protection device/container.
+        :rtype: int
+        """
+        pass
+
+    def GetNearBusbarName(self) -> str:
+        """
+        Get the name of the busbar nearest to the protection device/container.
+
+        :return: The name of the busbar nearest to the protection device/container.
+        :rtype: str
+        """
+        pass
+
+    def GetBranchUID(self) -> int:
+        """
+        Get the UID of the branch the protection device/container lies upon.
+
+        :return: The UID of the branch the protection device/container lies upon.
+        :rtype: int
         """
         pass
 
