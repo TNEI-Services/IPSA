@@ -2227,6 +2227,26 @@ class IscBranch:
         """
         pass
 
+    def GetShuntCapXPU(self) -> float:
+        """
+        Returns the equivalent shunt cap (reactance) of a multisection line in per unit.
+
+        :return: The value of the MSL shunt  in per unit.
+        :rtype: float
+        """
+        pass
+
+    def IsShuntCapOnFromBusbar(self) -> bool:
+        """
+        Gets whether the shunt cap of a multisection line is attributable to the from 
+        busbar (rather than the to busbar). Note this will always return False if the shunt 
+        cap is 0.
+
+        :return: True if the shunt cap is > 0 and on the from busbar.
+        :rtype: bool
+        """
+        pass
+
     @overload
     def GetRatingMVA(self, nRatingIndex: int) -> float:
         """
@@ -19712,11 +19732,34 @@ class IscNetwork:
         """
         pass
 
-    def GetRecentLoadFlowIterationCount(self) -> int:
+    def GetRecentLoadFlowACIterationCount(self) -> int:
         """
-        Gets the number of iterations used in the last Load Flow analysis called through PyIPSA.
+        Gets the number of iterations used in the AC analysis of the last Load Flow analysis.
 
-        :return: The number of iterations in the last Load Flow analysis called through PyIPSA.
+        Note: if there are no AC components in the network, this will return -1.
+
+        :return: The number of iterations in the AC part of the last Load Flow analysis.
+        :rtype: int
+        """
+        pass
+
+    def GetRecentLoadFlowDCIterationCount(self) -> int:
+        """
+        Gets the number of iterations used in the DC analysis of the last Load Flow analysis.
+
+        Note: if there are no DC components in the network, this will return -1.
+
+        :return: The number of iterations in the DC part of the last Load Flow analysis.
+        :rtype: int
+        """
+        pass
+
+    def GetRecentLoadFlowTotalIterationCount(self) -> int:
+        """
+        Gets the total number of iterations used in the last Load Flow analysis.
+        This will return 0 if the load flow failed.
+
+        :return: The number of iterations in the last Load Flow analysis.
         :rtype: int
         """
         pass
