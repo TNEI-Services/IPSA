@@ -22,7 +22,7 @@ Additional features
     - Users can now programmatically close diagrams in the UI through ``IscInterface.CloseDiagram``.
     - The ability to handle the diagram voltage colouring has been exposed to PyIPSA through new IscDiagram functions.
     - The current network file path can be accessed through PyIPSA with ``IscInterface.GetNetworkFileNameWithPath``.
-    - Multi-section line equivalent values can be accessed for branches via ``IscBranch.GetEquivalentDValue``.
+    - Multi-section line equivalent values can be accessed for branches via ``IscBranch.GetEquivalentDValue`` and associated shunt cap functions.
     - Users can not access the busbar and branch overload limits as well as setting them.
     - Various results values are better exposed to PyIPSA - e.g., the load flow iteration count and the results table text in multiply-tabbed results tables.
     - ``IscProtectionDevice`` now has functions to allow the users to access information about the protection containers they lie within.
