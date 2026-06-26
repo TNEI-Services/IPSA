@@ -29,9 +29,9 @@ Field Values
      - LockTaps
      - Lock all transformer taps based on the following settings:
 
-        - 0 = Do not lock taps
-        - 1 = Lock taps during outage analysis only
-        - 2 = Lock taps
+        - 0 = By transformers
+        - 1 = During outages or automations
+        - 2 = All taps locked
    * - Boolean
      - NoPhaseShift
      - Do not apply phase shifts to load flow.
