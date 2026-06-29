@@ -52,9 +52,9 @@ Field Values
         - 1 = Switched in, sending end will be opened in transient stability.
         - 2 = Switched in, receiving end will be opened in transient stability.
         - 3 = Switched in, both ends will be opened in transient stability.
-        - -1 = Switched out, sending end will be closed in transient stability.
-        - -2 = Switched out, receiving end will be closed in transient stability.
-        - -3 = Switched out, both ends will be closed in transient stability.
+        - -1 = Switched out (From end out, To end in), sending end will be closed in transient stability.
+        - -2 = Switched out (From end in, To end out), receiving end will be closed in transient stability.
+        - -3 = Switched out (From and To ends both out), both ends will be closed in transient stability.
    * - Float
      - ResistancePU
      - Positive sequence resistance.
