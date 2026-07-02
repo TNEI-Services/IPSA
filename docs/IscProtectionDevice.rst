@@ -15,18 +15,12 @@ Field Values
    * - Type
      - Field Name
      - Description
-   * - Integer
-     - FromUID
-     - Gets the unique ID of the nearest busbar to the protection device.
-   * - String
-     - BusName
-     - Gets of the nearest busbar to the protection device.
    * - String
      - Name
      - Gets and sets the name of the protection device.
    * - Integer
      - Status
-     - Status:
+     - Status (Note this is the status of the device itself and currently always should be in. The status of the protection container the device lies within can be found through the auxiliary function):
 
         - 0 = Switched in
         - -1 = Switched out

@@ -67,9 +67,16 @@ Field Values
    * - Integer
      - UseSaturatedImpedances
      - Uses generator saturated impedances in fault calculation.
+    
+        - 0 = None
+        - 1 = G74
+        - 2 = Always
    * - Integer
      - AssumeAVRAction
      - Assumes generator impedances decay to transient rather than steady state values.
+
+        - 0 = None
+        - 1 = Decay to X
    * - Integer
      - SMSaliency
      - Sets the synchronous machine salience to either the given value or (Xq = Xd). Should be one of:
@@ -191,9 +198,13 @@ Field Values
    * - Boolean
      - FaultUseMotorLoad
      - Set to ``True`` to consider the equivalent motor parameters from the static loads.
-   * - Boolean
+   * - Integer
      - FaultTransformerTap
-     -  Set to ``True`` to use the minimum transformer impedance (currently using max tap position).
+     - Set the transformer tap position during the fault analysis:
+
+        - 0 = Default tap position from before analysis
+        - 1 = All transformers move to the minimum transformer tap
+        - 2 = All transformers move to the maximum transformer tap
    * - List[Float]
      - MotorLoadVoltageskV
      - The nominal voltages in kV from the tabulated motor fault data for the entire network.
