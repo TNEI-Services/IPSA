@@ -19726,9 +19726,19 @@ class IscNetwork:
         """
         pass
 
-    def GetLFSummaryResults(self) -> None:
+    def GetLFSummaryResults(self) -> bool:
         """
-        Call this function to obtain the load flow summary results.
+        Call this function to prepare the summary of load flow results. If a load flow has been since the last call, this must be called again to update the summary to the most recent results. The summary results contain:
+
+            - The highest and lowest busbar voltage, in PU
+            - Total active and reactive power of all generators (excluding those on slack busbar)
+            - Total active and reactive power of all loads
+            - Total active and reactive power of all induction machines
+            - Total active and reactive power of all universal machines
+            - Total active and reactive power on all slack busbars
+        
+        :return: True if load flow results exist, False if no load flow results are available.
+        :rtype: bool
         """
         pass
 
