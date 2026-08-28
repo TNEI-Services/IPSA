@@ -1,5 +1,5 @@
 IscCIMModelConfiguration
-====================
+============================
 
 The ``IscCIMModelConfiguration`` class provides access to the configurations used for CIM model import and export. The parameters can be get and set using this class.
 
@@ -64,7 +64,7 @@ Field Values
 
 
 IscCIMModelConfiguration Class
-----------------------------
+---------------------------------
 
 .. autoclass:: ipsa.IscCIMModelConfiguration
    :members:

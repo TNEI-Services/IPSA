@@ -1,5 +1,5 @@
 IscProtectionContainer
-====================
+========================
 
 The ``IscProtectionContainer`` class provides access to a protection container that is put on a branch. It contains individual protection devices, which can be managed by the ``IscProtectionDevice`` class.
 
@@ -21,7 +21,7 @@ Field Values
   
 
 IscProtectionContainer Class
---------------------------
+------------------------------
 
 .. autoclass:: ipsa.IscProtectionContainer
    :members:
