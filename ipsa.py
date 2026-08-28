@@ -20914,7 +20914,7 @@ class IscNetwork:
         and the scenario names as values.
 
         :return: A dict of all the scenarios in the network.
-        :rtype: Dict[int, str]
+        :rtype: dict[int, str]
         """
         pass
 
@@ -23789,6 +23789,410 @@ class IscPlugin:
         """
         pass
 
+class IscProtectionContainer:
+    """
+    Provides access to a protection container.
+    """
+    def SetName(self, strName: str) -> bool:
+        """
+        Sets the name as a string.
+
+        :param strName: The selected string name.
+        :type strName: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a double value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The boolean value.
+        :rtype: bool
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from an integer.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The given integer value.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the value for the enumerated field from a double.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The given double value.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: int) -> bool:
+        """
+        Sets the value for the enumerated field from a string.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The given string value.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets the value for the enumerated field from boolean.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The given boolean value.
+        :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass    
+
+    def GetBranchUID(self) -> int:
+        """
+        Get the UID of the branch the protection container lies upon.
+
+        :return: The UID of the branch the protection container lies upon.
+        :rtype: int
+        """
+        pass
+
+    def GetFromBusbarUID(self) -> int:
+        """
+        Get the UID of the FROM busbar of the branch where the protection container is located.
+
+        :return: The UID of the FROM busbar of the branch the protection container lies upon.
+        :rtype: int
+        """
+        pass    
+
+    def GetToBusbarUID(self) -> int:
+        """
+        Get the UID of the TO busbar of the branch where the protection container is located.
+
+        :return: The UID of the TO busbar of the branch the protection container lies upon.
+        :rtype: int
+        """
+        pass        
+
+    def GetNearBusbarUID(self) -> int:
+        """
+        Get the UID of the busbar nearest to the protection container.
+
+        :return: The UID of the busbar nearest to the protection container.
+        :rtype: int
+        """
+        pass
+
+    def AddCTToContainer(self, nPrimaryTurns: int, nSecondaryTurns: int, bIsEarth: bool, strName: str) -> int:
+        """
+        Create a new CT in this container, and set the parameters as given.
+
+        :param nPrimaryTurns: Primary turn number. Default to 100.
+        :type nPrimaryTurns: int
+        :param nSecondaryTurns: Secondary turn number. Default to 1.
+        :type nSecondaryTurns: int
+        :param bIsEarth: Whether the CT is monitoring Earth. Default to False (monitoring Phase).
+        :type bIsEarth: bool
+        :param strName: The selected string name. Default to empty string.
+        :type strName: str
+        :return: The UID of the CT created. Return 0 if it is not created successfully.
+        :rtype: int
+        """
+        pass
+
+    def AddFuseToContainer(self, strDatabaseDevice: str, strName: str) -> int:
+        """
+        Create a new Fuse in this container, and set the parameters as given.
+
+        :param strDatabaseDevice: Device name from the protection database.
+        :type strDatabaseDevice: str
+        :param strName: The selected string name. Default to empty string.
+        :type strName: str
+        :return: The UID of the Fuse created. Return 0 if it is not created successfully. If the given strDatabaseDevice name is not found in the currently opened protection database or is not a Fuse, the Fuse cannot be created.
+        :rtype: int
+        """
+        pass
+    
+    def AddCurveToContainer(self, strDatabaseDevice: str, strName: str) -> int:
+        """
+        Create a new Curve in this container, and set the parameters as given.
+
+        :param strDatabaseDevice: Device name from the protection database.
+        :type strDatabaseDevice: str
+        :param strName: The selected string name. Default to empty string.
+        :type strName: str
+        :return: The UID of the Curve created. Return 0 if it is not created successfully. If the given strDatabaseDevice name is not found in the currently opened protection database or is not a Curve, the Curve cannot be created.
+        :rtype: int
+        """
+        pass
+
+    def AddRelayToCT(self, nCTUID: int, trDatabaseDevice: str, strName: str) -> int:
+        """
+        Create a new Relay and add it to the CT with the given UID, and set the Relay name.
+
+        :param nCTUID: UID of the CT this Relay should be added to.
+        :type nCTUID: int
+        :param strDatabaseDevice: Device name from the protection database.
+        :type strDatabaseDevice: str
+        :param strName: The selected string name. Default to empty string.
+        :type strName: str
+        :return: The UID of the Relay created. Return 0 if it is not created successfully. If the given strDatabaseDevice name is not found in the currently opened protection database or is not a Relay, the Relay cannot be created. For other reasons of failure, please check scripting messages.
+        :rtype: int
+        """
+        pass    
+
+    def DeleteContainerCT(self, nCTUID: int) -> bool:
+        """
+        Delete the CT of the given UID.
+
+        :param nCTUID: UID of the CT to delete.
+        :type nCTUID: int       
+        :return: True if deleted, False if failed.
+        :rtype: bool
+        """
+        pass    
+
+    def DeleteContainerFuse(self, nFuseUID: int) -> bool:
+        """
+        Delete the Fuse of the given UID.
+
+        :param nFuseUID: UID of the Fuse to delete.
+        :type nFuseUID: int       
+        :return: True if deleted, False if failed.
+        :rtype: bool
+        """
+        pass    
+
+    def DeleteContainerCurve(self, nCurveUID: int) -> bool:
+        """
+        Delete the Curve of the given UID.
+
+        :param nCurveUID: UID of the Curve to delete.
+        :type nCurveUID: int       
+        :return: True if deleted, False if failed.
+        :rtype: bool
+        """
+        pass    
+
+    def DeleteContainerRelay(self, nRelayUID: int) -> bool:
+        """
+        Delete the Relay of the given UID.
+
+        :param nRelayUID: UID of the CT to delete.
+        :type nRelayUID: int       
+        :return: True if deleted, False if failed.
+        :rtype: bool
+        """
+        pass    
+
+    def GetContainerDeviceUIDs(self) -> List[int]:
+        """
+        Return the UIDs of the protection devices in this protection container.
+        
+        :return: List of device UIDs.
+        :rtype: list[int]
+        """
+        pass 
+
+    def GetContainerCTUIDs(self) -> List[int]:
+        """
+        Return the UIDs of the CTs in this protection container.
+        
+        :return: List of CT UIDs.
+        :rtype: list[int]
+        """
+        pass 
+
+    def GetContainerFuseUIDs(self) -> List[int]:
+        """
+        Return the UIDs of the Fuses in this protection container.
+        
+        :return: List of Fuse UIDs.
+        :rtype: list[int]
+        """
+        pass 
+
+    def GetContainerCurveUIDs(self) -> List[int]:
+        """
+        Return the UIDs of the Curves in this protection container.
+        
+        :return: List of Curve UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    @overload
+    def GetContainerRelayUIDs(self) -> List[int]:
+        """
+        Return the UIDs of the Relays in this protection container.        
+
+        :return: List of Relay UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    @overload
+    def GetContainerRelayUIDs(self, nCTUID: int) -> List[int]:
+        """
+        Return the UIDs of the Relays connected to the CT with the given UID. 
+
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :return: List of Relay UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def GetCTPrimaryTurns(self, nCTUID: int) -> int:
+        """
+        Return the number of the primary turns on the specified CT.
+        
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :return: The number of the primary turns.
+        :rtype: int
+        """
+        pass
+
+    def GetCTSecondaryTurns(self, nCTUID: int) -> int:
+        """
+        Return the number of the secondary turns on the specified CT.
+        
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :return: The number of the secondary turns.
+        :rtype: int
+        """
+        pass
+
+    def GetCTIsEarth(self, nCTUID: int) -> bool:
+        """
+        Get whether the CT is monitoring Earth or Phase.
+        
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :return: True if the CT is monitoring Earth, False if monitoring Phase.
+        :rtype: bool
+        """
+        pass
+
+    def GetCTName(self, nCTUID: int) -> str:
+        """
+        Get CT name.
+        
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :return: The name of the CT.
+        :rtype: str
+        """
+        pass
+
+    def SetCTPrimaryTurns(self, nCTUID: int, nPrimaryTurns: int) -> bool:
+        """
+        Set the number of the primary turns on the specified CT. Can only be set to one of the following values: 5, 10, 50, 100, 200, 400, 500, 600. 
+        
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :param nPrimaryTurns: The number of primary turns.
+        :type nPrimaryTurns: int
+        :return: True if set, False if failed.
+        :rtype: bool
+        """
+        pass
+
+    def SetCTSecondaryTurns(self, nCTUID: int, nSecondaryTurns: int) -> bool:
+        """
+        Set the number of the secondary turns on the specified CT. Can only be set to one of the following values: 1, 5. 
+                
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :param nSecondaryTurns: The number of secondary turns.
+        :type nSecondaryTurns: int
+        :return: True if set, False if failed.
+        :rtype: bool
+        """
+        pass
+
+    def SetCTIsEarth(self, nCTUID: int, bIsEarth: bool) -> bool:
+        """
+        Set whether the CT is monitoring Earth or Phase.
+        
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :param bIsEarth: Whether the CT is monitoring Earth.
+        :type bIsEarth: bool
+        :return: True if set, False if failed.
+        :rtype: bool
+        """
+        pass
+
+    def SetCTName(self, nCTUID: int, strName: str) -> bool:
+        """
+        Set CT name to the specified CT.
+        
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :param strName: The name of the CT.
+        :type strName: str
+        :return: True if set, False if failed.
+        :rtype: bool
+        """
+        pass
+
+
 class IscProtectionDevice:
     """
     Provides access to a single protection device, such as a relay.
@@ -23951,28 +24355,273 @@ class IscProtectionDevice:
 
     def GetNearBusbarUID(self) -> int:
         """
-        Get the UID of the busbar nearest to the protection device/container.
+        Get the UID of the busbar nearest to the protection device.
 
-        :return: The UID of the busbar nearest to the protection device/container.
+        :return: The UID of the busbar nearest to the protection device.
         :rtype: int
         """
         pass
 
     def GetNearBusbarName(self) -> str:
         """
-        Get the name of the busbar nearest to the protection device/container.
+        Get the name of the busbar nearest to the protection device.
 
-        :return: The name of the busbar nearest to the protection device/container.
+        :return: The name of the busbar nearest to the protection device.
         :rtype: str
         """
         pass
 
     def GetBranchUID(self) -> int:
         """
-        Get the UID of the branch the protection device/container lies upon.
+        Get the UID of the branch the protection device lies upon.
 
-        :return: The UID of the branch the protection device/container lies upon.
+        :return: The UID of the branch the protection device lies upon.
         :rtype: int
+        """
+        pass
+
+    def IsRelay(self) -> bool:
+        """
+        Get whether this protection device is a relay.
+
+        :return: True if this device is a relay, False if not.
+        :rtype: bool
+        """
+        pass
+    
+    def IsCurve(self) -> bool:
+        """
+        Get whether this protection device is a curve.
+
+        :return: True if this device is a curve, False if not.
+        :rtype: bool
+        """
+        pass
+
+    def IsFuse(self) -> bool:
+        """
+        Get whether this protection device is a fuse.
+
+        :return: True if this device is a fuse, False if not.
+        :rtype: bool
+        """
+        pass
+
+    def GetBreakersForDevice(self) -> List[int]:
+        """
+        Returns a list of int, which are UIDs of breakers this device is mapped with.
+       
+        :return: The list of UIDs.
+        :rtype: list[int]
+        """
+        pass
+
+    def SetBreakersForDevice(self, lBreakerUIDs: List[int]) -> None:
+        """
+        Sets the breakers this device is mapped with, using a list of breaker UIDs.
+        
+        :param lBreakerUIDs: The list of breaker UIDs.
+        :type lBreakerUIDs: list[int]
+        """
+        pass
+
+    def GetBlockNames(self) -> Dict[int, str]:
+        """
+        Get the device block indices and the matching names.
+        
+        :return: The dict of block indices and names.
+        :rtype: dict[int, str]
+        """
+        pass
+
+    def GetBlockTypes(self) -> Dict[int, int]:
+        """
+        Get the device block indices and the matching block types.
+
+        A protection device block can be one of the following types:
+            - IscProtectionDevice.ProtBlockConstantCurrent
+            - IscProtectionDevice.ProtBlockConstantTime
+            - IscProtectionDevice.ProtBlockGivenPoints
+            - IscProtectionDevice.ProtBlockGivenPointsAdjust
+            - IscProtectionDevice.ProtBlockIDMT
+            - IscProtectionDevice.ProtBlockPickAndDelay
+            - IscProtectionDevice.ProtBlockTransientDisc
+        
+        :return: The dict of block indices and types.
+        :rtype: dict[int, int]
+        """
+        pass
+
+    def GetBlockName(self, nBlockID: int) -> str:
+        """
+        Get the device block name at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :return: The name of the block at the given index.
+        :rtype: str
+        """
+        pass
+
+    def GetBlockType(self, nBlockID: int) -> int:
+        """
+        Get the device block type at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :return: The type enum of the block at the given index.
+        :rtype: int
+        """
+        pass
+
+    def GetBlockStatus(self, nBlockID: int) -> int:
+        """
+        Get the device block status at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :return: The status enum of the block at the given index.
+        :rtype: int
+        """
+        pass
+
+    def GetBlockIValue(self, nBlockID: int, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer field value.
+        :rtype: int
+        """
+        pass
+
+    def GetBlockDValue(self, nBlockID: int, nFieldIndex: int) -> float:
+        """
+        Returns a float value for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The float field value.
+        :rtype: float
+        """
+        pass
+
+    def GetBlockSValue(self, nBlockID: int, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string field value.
+        :rtype: string
+        """
+        pass
+
+    def GetBlockBValue(self, nBlockID: int, nFieldIndex: int) -> bool:
+        """
+        Returns a bool value for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The bool field value.
+        :rtype: bool
+        """
+        pass
+
+    def GetBlockListSValue(self, nBlockID: int, nFieldIndex: int) -> bool:
+        """
+        Returns a list of string values for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of strings as the field value.
+        :rtype: list[str]
+        """
+        pass
+
+    def SetBlockIValue(self, nBlockID: int, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets an integer value to the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param nValue: The integer field value.
+        :type nValue: int
+        :return: True if field value is set successfully, False if not.
+        :rtype: bool
+        """
+        pass
+
+    def SetBlockDValue(self, nBlockID: int, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets a float value for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param dValue: The float field value.
+        :type: float
+        :return: True if field value is set successfully, False if not.
+        :rtype: bool
+        """
+        pass
+
+    def SetBlockSValue(self, nBlockID: int, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Sets a string value for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param strValue: The string field value.
+        :type: str
+        :return: True if field value is set successfully, False if not.
+        :rtype: bool
+        """
+        pass
+
+    def SetBlockBValue(self, nBlockID: int, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets a bool value for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param bValue: The bool field value.
+        :type: bool
+        :return: True if field value is set successfully, False if not.
+        :rtype: bool
+        """
+        pass
+
+    def SetBlockListSValue(self, nBlockID: int, nFieldIndex: int, lStrValue: List[str]) -> bool:
+        """
+        Sets a list of string values for the field index, for the block at the given block index.
+
+        :param nBlockID: The block index.
+        :type nBlockID: int
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lStrValue: The list of strings as the field value.
+        :type: list[str]
+        :return: True if field value is set successfully, False if not.
+        :rtype: bool
         """
         pass
 
@@ -24061,7 +24710,7 @@ class IscStaticVC:
         """
         pass
 
-    def SetSValue(self, nFieldIndex: int, strValue: int) -> bool:
+    def SetSValue(self, nFieldIndex: int, strValue: str) -> bool:
         """
         Sets the value for the enumerated field from a string.
 
