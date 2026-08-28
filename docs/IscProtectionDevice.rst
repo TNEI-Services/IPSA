@@ -51,10 +51,10 @@ Field Values
    * - Float
      - CurrentMultiplier
      - Gets the status of a block. Use with the `GetBlockIValue` or `SetBlockIValue` function. This field is only avaiable for a block of type ProtBlockConstantCurrent, ProtBlockGivenPointsAdjust, or ProtBlockIDMT.
-   * - List of strings
+   * - List[String]
      - CurrentMultiplierRange
      - Current multiplier range of a block. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockConstantCurrent, ProtBlockGivenPointsAdjust, or ProtBlockIDMT.
-   * - List of strings
+   * - List[String]
      - CurrentOperatingRangePC
      - Current operating range percentage of a block. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockConstantCurrent, ProtBlockGivenPointsAdjust, or ProtBlockPickAndDelay.
    * - Float
@@ -66,7 +66,7 @@ Field Values
    * - Float
      - TimeMultiplier
      - Time multiplier. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockGivenPointsAdjust or ProtBlockIDMT.
-   * - List of strings
+   * - List[String]
      - TimeMultiplierRange
      - Time multiplier range of a block. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockGivenPointsAdjust, or ProtBlockIDMT.
    * - Integer
@@ -94,13 +94,13 @@ Field Values
    * - Float
      - PickUpCurrent
      - Pick up current for a PickAndDelay block. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockPickAndDelay.
-   * - List of strings
+   * - List[String]
      - PickUpCurrentRange
      - Pick up current range. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockPickAndDelay.
    * - Float
      - TimeDelayS
      - Time delay in seconds. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockPickAndDelay.
-   * - List of strings
+   * - List[String]
      - TimeDelayRangeS
      - Time delay range in seconds. Use with the `GetBlockListSValue` or `SetBlockListSValue` function. This field is only avaiable for a block of type ProtBlockPickAndDelay.
    * - Float

@@ -1529,6 +1529,153 @@ class IscAnalysisNR:
         """
         pass
 
+class IscCIMModelConfiguration:
+    """
+    CIM model configuration class, for managing settings used in CIM import/export.
+    """
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The integer value for the field.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a float value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The float value for the field.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The string value for the field.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The boolean value for the field.
+        :rtype: bool
+        """
+        pass
+
+    def GetListIValue(self, nFieldIndex: int) -> List[int]:
+        """
+        Returns a list of integer values for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The list of values.
+        :rtype: list[int]
+        """
+        pass
+
+    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
+        """
+        Sets the integer value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param nValue: The integer value that will be set.
+        :type nValue: int
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
+        """
+        Sets the float value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param dValue: The float value that will be set.
+        :type dValue: float
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetSValue(self, nFieldIndex: int, strValue: str) -> bool:
+        """
+        Sets the string value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param strValue: The string value that will be set.
+        :type strValue: str
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
+        """
+        Sets the boolean value for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :param bValue: The boolean value that will be set.
+        :type bValue: bool
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def SetListIValue(self, nFieldIndex: int, lIValue: List[int]) -> bool:
+        """
+        Sets the value for the enumerated field from a list of integers.
+        
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :param lIValue: The given list of values.
+        :type lIValue:  list[int]
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+    
+    def GetFieldType(self, nFieldIndex: int) -> str:
+        """
+        Returns the field type as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The field type.
+        :rtype: str
+        """
+        pass
+
+    def GetFieldName(self, nFieldIndex: int) -> str:
+        """
+        Returns the field name as a string for the enumerated field.
+
+        :param nFieldIndex: The given enumerated field.
+        :type nFieldIndex: int
+        :return: The field name.
+        :rtype: str
+        """
+        pass
+
+
 class IscAnnotation:
     """
     Provides access to a diagram annotation allowing annotation text to be set and cleared.
@@ -20566,6 +20713,25 @@ class IscNetwork:
         :rtype: IscAnalysisNR
         """
         pass
+
+    def GetCIMImportConfiguration(self):
+        """
+        Returns an IscCIMModelConfiguration object which can be used to get and set the CIM model configuration parameters used for import.
+
+        :return: IscCIMModelConfiguration object.
+        :rtype: IscCIMModelConfiguration
+        """
+        pass
+
+    def GetCIMExportConfiguration(self):
+        """
+        Returns an IscCIMModelConfiguration object which can be used to get and set the CIM model configuration parameters used for export.
+
+        :return: IscCIMModelConfiguration object.
+        :rtype: IscCIMModelConfiguration
+        """
+        pass
+
 
     def RunNetworkReduction(self) -> bool:
         """
