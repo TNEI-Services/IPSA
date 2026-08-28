@@ -71,9 +71,11 @@ The following actions are possible:
    IscUnbalancedLoad
    IscUnbalancedTransformer
    IscAnnotation
+   IscProtectionContainer
    IscProtectionDevice
    IscNetworkCapacity
    IscDrawTools
    IscBoundary
    IscEquivalentBranch
    IscEquivalentRadial
+   IscCIMModelConfiguration

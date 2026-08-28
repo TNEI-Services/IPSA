@@ -2,6 +2,25 @@
 Key features of the IPSA 3 Series
 *************************************
 
+Key Features of IPSA 3.4
+=============================
+Protection
+------------
+Extended functionalities for managing Protection Devices through PyIPSA IscProtectionDevice class, and new addition of IscProtectionContainer class to access Protection Containers and manage devices inside protection containers.
+
+
+CIM Model Configuration
+------------
+Manage CIM import/export configuration through IscCIMModelConfiguration class.
+
+
+Additional features
+---------------------
+    - Prohibit adding extended data field name which contains whitespace.
+    - Prohibit adding more than one breaker/protection container to one end of a branch.
+
+
+
 Key Features of IPSA 3.3
 =============================
 Scenarios
