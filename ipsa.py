@@ -24602,9 +24602,8 @@ class IscProtectionDevice:
 
     def GetBlockTypes(self) -> Dict[int, int]:
         """
-        Get the device block indices and the matching block types.
+        Get the device block indices and the matching block types. A protection device block can be one of the following types:
 
-        A protection device block can be one of the following types:
             - IscProtectionDevice.ProtBlockConstantCurrent
             - IscProtectionDevice.ProtBlockConstantTime
             - IscProtectionDevice.ProtBlockGivenPoints
@@ -24740,7 +24739,7 @@ class IscProtectionDevice:
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param dValue: The float field value.
-        :type: float
+        :type dValue: float
         :return: True if field value is set successfully, False if not.
         :rtype: bool
         """
@@ -24755,7 +24754,7 @@ class IscProtectionDevice:
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param strValue: The string field value.
-        :type: str
+        :type strValue: str
         :return: True if field value is set successfully, False if not.
         :rtype: bool
         """
@@ -24770,7 +24769,7 @@ class IscProtectionDevice:
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param bValue: The bool field value.
-        :type: bool
+        :type bValue: bool
         :return: True if field value is set successfully, False if not.
         :rtype: bool
         """
@@ -24785,7 +24784,7 @@ class IscProtectionDevice:
         :param nFieldIndex: The field index.
         :type nFieldIndex: int
         :param lStrValue: The list of strings as the field value.
-        :type: list[str]
+        :type lStrValue: list[str]
         :return: True if field value is set successfully, False if not.
         :rtype: bool
         """

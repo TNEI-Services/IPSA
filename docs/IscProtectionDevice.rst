@@ -24,6 +24,7 @@ Field Values
 
         - 0 = Switched in
         - -1 = Switched out
+
    * - String
      - DeviceManufacturer
      - Gets the name of the manufacturer for the relay assigned to the protection device. Cannot be set.
@@ -71,8 +72,8 @@ Field Values
      - Time multiplier range of a block. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockGivenPointsAdjust, or ProtBlockIDMT.
    * - Integer
      - IDMTCurveType
-     - Curve type of an IDMT Block. Use with the `GetBlockIValue` or `SetBlockIValue` function. This field is only avaiable for a block of type ProtBlockIDMT.
-     The curve type enum value and name are mapped as follows:
+     - Curve type of an IDMT Block. Use with the `GetBlockIValue` or `SetBlockIValue` function. This field is only avaiable for a block of type ProtBlockIDMT. The curve type enum value and name are mapped as follows:
+     
        - 1 - IEC standard
        - 2 - IEC Very
        - 3 - IEC Extremely

@@ -6,11 +6,11 @@ Key Features of IPSA 3.4
 =============================
 Protection
 ------------
-Extended functionalities for managing Protection Devices through PyIPSA IscProtectionDevice class, and new addition of IscProtectionContainer class to access Protection Containers and manage devices inside protection containers.
+Extended functionalities for managing protection devices through PyIPSA IscProtectionDevice class, and new addition of IscProtectionContainer class to access protection containers and manage devices inside protection containers.
 
 
 CIM Model Configuration
-------------
+-------------------------
 Manage CIM import/export configuration through IscCIMModelConfiguration class.
 
 
