@@ -6,7 +6,7 @@ Welcome to PyIPSA's documentation!
 This guide provides a full reference to all the IPSA objects and their callable functions exposed through Python.
 This reference guide refers to 
 
-      - IPSA version 3.3.0
+      - IPSA version 3.4.0
       - Sentinel EMS v9.0
       - Python 3.11
 
@@ -71,9 +71,12 @@ The following actions are possible:
    IscUnbalancedLoad
    IscUnbalancedTransformer
    IscAnnotation
+   IscProtectionContainer
    IscProtectionDevice
    IscNetworkCapacity
    IscDrawTools
    IscBoundary
    IscEquivalentBranch
    IscEquivalentRadial
+   IscFaultFlow
+

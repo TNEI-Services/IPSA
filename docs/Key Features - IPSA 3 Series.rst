@@ -2,6 +2,37 @@
 Key features of the IPSA 3 Series
 *************************************
 
+Key Features of IPSA 3.4
+=============================
+Protection
+------------
+Extend functionalities for managing protection devices through PyIPSA IscProtectionDevice class, and new addition of IscProtectionContainer class to access protection containers and manage devices inside protection containers.
+
+Scenarios
+------------
+Add support for scenario partial load.
+
+Graphics
+------------
+Add support for three-winding transformer kneepoints drawing.
+
+
+Fault Level
+------------
+Add support for running and retrieving results for a new study type, fault level on all busbars with flows.
+
+CIM
+------------
+Access to current and legacy CIM converter versions.
+
+
+Additional features
+---------------------
+    - Prohibit adding extended data field name which contains whitespace.
+    - Prohibit adding more than one breaker/protection container to one end of a branch.
+
+
+
 Key Features of IPSA 3.3
 =============================
 Scenarios

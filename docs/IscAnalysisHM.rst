@@ -17,9 +17,11 @@ Field Values
      - HarmonicStudyType
      - Type of harmonic study. Should be one of:
 
-        - 0 = Harmonic voltage penetration
-        - 1 = Harmonic voltage waveform
-        - 2 = Harmonic impedance scan
+        - 1 = Harmonic voltage penetration
+        - 2 = Harmonic voltage waveform
+        - 3 = Harmonic impedance scan
+
+        Note that setting to any value not listed above will fail and the field value will not be changed.
    * - Integer
      - FundamentalTHD
      - Use fundamental voltage for THD calculation.
