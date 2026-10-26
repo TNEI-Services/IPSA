@@ -979,6 +979,53 @@ class IscAnalysisLF:
         """
         pass
 
+class IscFaultFlow:
+    def GetIValue(self, nFieldIndex: int) -> int:
+        """
+        Returns an integer value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The integer value.
+        :rtype: int
+        """
+        pass
+
+    def GetDValue(self, nFieldIndex: int) -> float:
+        """
+        Returns a double value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The double value.
+        :rtype: float
+        """
+        pass
+
+    def GetSValue(self, nFieldIndex: int) -> str:
+        """
+        Returns a string value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The string value.
+        :rtype: str
+        """
+        pass
+
+    def GetBValue(self, nFieldIndex: int) -> bool:
+        """
+        Returns a boolean value for the enumerated field.
+
+        :param nFieldIndex: The field index.
+        :type nFieldIndex: int
+        :return: The boolean value.
+        :rtype: bool
+        """
+        pass
+
+
+
 class IscAnalysisFL:
     """
     Analysis class for the fault level analysis.
@@ -1528,153 +1575,6 @@ class IscAnalysisNR:
         :rtype: str
         """
         pass
-
-class IscCIMModelConfiguration:
-    """
-    CIM model configuration class, for managing settings used in CIM import/export.
-    """
-    def GetIValue(self, nFieldIndex: int) -> int:
-        """
-        Returns an integer value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :return: The integer value for the field.
-        :rtype: int
-        """
-        pass
-
-    def GetDValue(self, nFieldIndex: int) -> float:
-        """
-        Returns a float value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :return: The float value for the field.
-        :rtype: float
-        """
-        pass
-
-    def GetSValue(self, nFieldIndex: int) -> str:
-        """
-        Returns a string value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :return: The string value for the field.
-        :rtype: str
-        """
-        pass
-
-    def GetBValue(self, nFieldIndex: int) -> bool:
-        """
-        Returns a boolean value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :return: The boolean value for the field.
-        :rtype: bool
-        """
-        pass
-
-    def GetListIValue(self, nFieldIndex: int) -> List[int]:
-        """
-        Returns a list of integer values for the enumerated field.
-
-        :param nFieldIndex: The field index.
-        :type nFieldIndex: int
-        :return: The list of values.
-        :rtype: list[int]
-        """
-        pass
-
-    def SetIValue(self, nFieldIndex: int, nValue: int) -> bool:
-        """
-        Sets the integer value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :param nValue: The integer value that will be set.
-        :type nValue: int
-        :return: True if successful.
-        :rtype: bool
-        """
-        pass
-
-    def SetDValue(self, nFieldIndex: int, dValue: float) -> bool:
-        """
-        Sets the float value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :param dValue: The float value that will be set.
-        :type dValue: float
-        :return: True if successful.
-        :rtype: bool
-        """
-        pass
-
-    def SetSValue(self, nFieldIndex: int, strValue: str) -> bool:
-        """
-        Sets the string value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :param strValue: The string value that will be set.
-        :type strValue: str
-        :return: True if successful.
-        :rtype: bool
-        """
-        pass
-
-    def SetBValue(self, nFieldIndex: int, bValue: bool) -> bool:
-        """
-        Sets the boolean value for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :param bValue: The boolean value that will be set.
-        :type bValue: bool
-        :return: True if successful.
-        :rtype: bool
-        """
-        pass
-
-    def SetListIValue(self, nFieldIndex: int, lIValue: List[int]) -> bool:
-        """
-        Sets the value for the enumerated field from a list of integers.
-        
-        :param nFieldIndex: The field index.
-        :type nFieldIndex: int
-        :param lIValue: The given list of values.
-        :type lIValue:  list[int]
-        :return: True if successful.
-        :rtype: bool
-        """
-        pass
-    
-    def GetFieldType(self, nFieldIndex: int) -> str:
-        """
-        Returns the field type as a string for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :return: The field type.
-        :rtype: str
-        """
-        pass
-
-    def GetFieldName(self, nFieldIndex: int) -> str:
-        """
-        Returns the field name as a string for the enumerated field.
-
-        :param nFieldIndex: The given enumerated field.
-        :type nFieldIndex: int
-        :return: The field name.
-        :rtype: str
-        """
-        pass
-
 
 class IscAnnotation:
     """
@@ -6396,7 +6296,7 @@ class IscDiagram:
         """
         pass
 
-    def AddPointToLine(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
+    def AddPointToLine(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool = True) -> bool:
         """
         Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
         the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
@@ -6421,7 +6321,7 @@ class IscDiagram:
         """
         pass
 
-    def AddKneepoint(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool) -> bool:
+    def AddKneepoint(self, nLineUID: int, dX: float, dY: float, bFromEnd: bool, bRefreshLine: bool = True) -> bool:
         """
         Adds a knee point to the line identified by the unique ID. By default, this function will fully redraw the line
         the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
@@ -6445,7 +6345,7 @@ class IscDiagram:
         pass
 
     def AddKneepoints(self, nLineUID: int, listX: List[float], listY: List[float], bFromEnd: bool, 
-                      bRefreshLine: bool) -> bool:
+                      bRefreshLine: bool = True) -> bool:
         """
         Adds multiple knee points to the line identified by the unique ID. By default, this function will fully redraw
         the line the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
@@ -6470,6 +6370,55 @@ class IscDiagram:
         """
         pass
 
+    def AddKneepoint3Port(self, n3PortUID: int, dX: float, dY: float, nWinding: int, bRefreshLine: bool = True) -> bool:
+        """
+        Adds a knee point to the 3-port item identified by the unique ID. By default, this function will fully redraw the item
+        the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
+        
+        The kneepoint will be added on the connector line of the 3-port item specified by nWinding as the new nearest kneepoint 
+        to the centre icon of the item.
+
+        :param n3PortUID: The 3-port item UID.
+        :type n3PortUID: int
+        :param dX: The knee point x coordinate.
+        :type dX: float
+        :param dY: The knee point y coordinate.
+        :type dY: float
+        :param nWinding: 1, 2 or 3, for the primary, secondary or tertiary port.
+        :type nWinding: int
+        :param bRefreshLine: Defaults to True. If True, the item is fully redrawn when the knee point is added.
+        :type bRefreshLine: bool
+        :return: Boolean denoting whether the knee point was added.
+        :rtype: bool
+        """
+        pass
+    
+    def AddKneepoints3Port(self, n3PortUID: int, listX: List[float], listY: List[float], nWinding: int, bRefreshLine: bool = True) -> bool:
+        """
+        Adds multiple knee points to the 3-port item identified by the unique ID. By default, this function will fully redraw
+        the line the knee point has been added to. This can be disabled by setting bRefreshLine to False. 
+        The kneepoints will be added in order of from end to to end.
+
+        All the kneepoints will be added to the *same side* of the line as specified by bFromEnd.
+
+        If listX and listY are not of the same length, no kneepoints will be added.
+
+        :param n3PortUID: The line UID.
+        :type n3PortUID: int
+        :param listX: A list of x coordinates for each knee point to be added.
+        :type listX: list(float)
+        :param listY: A corresponding list of y coordinates for each knee point to be added.
+        :type listY: list(float)
+        :param nWinding: 1, 2 or 3, for the primary, secondary or tertiary port.
+        :type nWinding: int
+        :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
+        :type bRefreshLine: bool
+        :return: Boolean denoting whether the knee points were added.
+        :rtype: bool
+        """
+        pass
+
+    
     def DeleteKneepoint(self, nLineUID: int, dX: float, dY: float) -> bool:
         """
         Deletes a specific knee point from the line identified by the unique ID. If no kneepoint is found at the
@@ -6486,12 +6435,12 @@ class IscDiagram:
         """
         pass
 
-    def DeleteAllKneepoints(self, nLineUID: int) -> bool:
+    def DeleteAllKneepoints(self, nItemUID: int) -> bool:
         """
-        Deletes all the knee points from the line identified by the unique ID. 
+        Deletes all the knee points from the item identified by the unique ID. This works on 2-port or 3-port items alike.
 
-        :param nLineUID: The line UID.
-        :type nLineUID: int
+        :param nItemUID: The line UID.
+        :type nItemUID: int
         :return: Boolean denoting whether all the knee points were deleted.
         :rtype: bool
         """
@@ -7123,7 +7072,7 @@ class IscDiagram:
         """
         Returns a list of floats for the diagram X coordinates of the edge of the FROM busbar, the middle point of the
         line or the edge of the central graphic and all knee points lying on the branch item between these two points.
-        The coordinates are for the FROM end of the line.
+        The coordinates are for the FROM end of the line. The points are ordered from the busbar to the central graphic.
 
         :param nUID: The line UID.
         :type nUID: int
@@ -7136,7 +7085,7 @@ class IscDiagram:
         """
         Returns a list of floats for the diagram Y coordinates of the edge of the FROM busbar, the middle point of the
         line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
-        The coordinates are for the FROM end of the line.
+        The coordinates are for the FROM end of the line. The points are ordered from the busbar to the central graphic.
 
         :param nUID: The line UID.
         :type nUID: int
@@ -7148,8 +7097,8 @@ class IscDiagram:
     def GetItemToXPoints(self, nUID: int) -> List[float]:
         """
         Returns a list of floats for the diagram X coordinates of the edge of the TO busbar, the middle point of the
-        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
-        The coordinates are for the TO end of the line.
+        line or the edge of the central graphic and all knee points lying on the branch item between these two points.
+        The coordinates are for the TO end of the line. The points are ordered from the central graphic to the end busbar.
 
         :param nUID: The line UID.
         :type nUID: int
@@ -7161,10 +7110,36 @@ class IscDiagram:
     def GetItemToYPoints(self, nUID: int) -> List[float]:
         """
         Returns a list of floats for the diagram Y coordinates of the edge of the TO busbar,the middle point of the
-        line or the edge of the central graphic and all knee points lying on the branch item  between these two points.
-        The coordinates are for the TO end of the line.
+        line or the edge of the central graphic and all knee points lying on the branch item between these two points.
+        The coordinates are for the TO end of the line. The points are ordered from the central graphic to the end busbar.
 
         :param nUID: The line UID.
+        :type nUID: int
+        :return: The diagram Y coordinates.
+        :rtype: float
+        """
+        pass
+    
+    def GetItemThreeXPoints(self, nUID: int) -> List[float]:
+        """
+        Returns a list of floats for the diagram X coordinates of the edge of the Three busbar, the central graphic,
+        and all knee points lying on the connector line between these two points.
+        The coordinates are for the Three end of the item. The points are ordered from the central graphic to the end busbar.
+
+        :param nUID: The 3-port item UID.
+        :type nUID: int
+        :return: The diagram X coordinates.
+        :rtype: float
+        """
+        pass
+
+    def GetItemThreeYPoints(self, nUID: int) -> List[float]:
+        """
+        Returns a list of floats for the diagram X coordinates of the edge of the Three busbar, the central graphic,
+        and all knee points lying on the connector line between these two points.
+        The coordinates are for the Three end of the item. The points are ordered from the central graphic to the end busbar.
+
+        :param nUID: The 3-port item UID.
         :type nUID: int
         :return: The diagram Y coordinates.
         :rtype: float
@@ -8953,8 +8928,6 @@ class IscGridInfeed:
         :rtype: float
         """
         pass
-
-from typing import List
 
 
 class IscGroup:
@@ -11680,6 +11653,53 @@ class IscInterface:
         """Stop logging of all analysis engine calls."""
         pass
 
+    def OpenPDB(self, strProtDatabase: str) -> bool:
+        """
+        Opens the protection database from file.
+
+        :param strProtDatabase: The path name of the file to be opened.
+        :type strProtDatabase: str
+        :return: Returns True if the database is opened successfully.
+        :rtype: bool
+        """
+        pass
+
+    def CloseRecentPDB(self) -> bool:
+        """
+        Closes the recently opened protection database.
+       
+        :return: Returns True if the database is closed successfully.
+        :rtype: bool
+        """
+        pass
+
+    def GetPDBRelays(self) -> List[str]:
+        """
+        Gets the relays from the currently opened protection database.
+       
+        :return: Returns a list of relay names.
+        :rtype: List[str]
+        """
+        pass
+
+    def GetPDBFuses(self) -> List[str]:
+        """
+        Gets the fuses from the currently opened protection database.
+       
+        :return: Returns a list of fuse names.
+        :rtype: List[str]
+        """
+        pass
+
+    def GetPDBCurves(self) -> List[str]:
+        """
+        Gets the curves from the currently opened protection database.
+       
+        :return: Returns a list of curve names.
+        :rtype: List[str]
+        """
+        pass
+    
     def OpenDBFromFile(self, strFilename: str) -> bool:
         """
         Opens the database from file.
@@ -11951,7 +11971,7 @@ class IscInterface:
         """
         pass
 
-    def ImportFromCIM(self, nVersion: int = 0, strExePath: str = "", strLogPath: str = "") -> int:
+    def ImportFromCIM(self, nVersion: int = 0, strExePath: str = "", strLogPath: str = "", nExeVersion: int = 1) -> int:
         """
         Imports a CIM Network into IPSA. This will prompt the user for information as required and 
         return a code to indicate whether the action was successful:
@@ -11975,12 +11995,17 @@ class IscInterface:
         :param strLogPath: The path to the directory where the log file should be generated. If left blank the log
                             will only be generated in the users temp directory.
         :type strLogPath: str
+        :param nExeVersion: enumeration of current and legacy CIM converter exe to be used for this conversion.
+        
+            - 1 : The current version
+            - 2 : The legacy version "LTDSv2.1.1-Patch-0", released with IPSA 3.2.2.
+        :type nExeVersion: int
         :return: A return code specified above.
         :rtype: int
         """
         pass
 
-    def ExportToCIM(self, nVersion: int = 0, strExePath: str = "", strLogPath: str = "") -> int:
+    def ExportToCIM(self, nVersion: int = 0, strExePath: str = "", strLogPath: str = "", nExeVersion: int = 1) -> int:
         """
         Exports an IPSA network to CIM. This will prompt the user for information as required and 
         return a code to indicate whether the action was successful:
@@ -12004,12 +12029,17 @@ class IscInterface:
         :param strLogPath: The path to the directory where the log file should be generated. If left blank the log
                             will only be generated in the users temp directory.
         :type strLogPath: str
+        :param nExeVersion: enumeration of current and legacy CIM converter exe to be used for this conversion.
+
+            - 1 : The current version
+            - 2 : The legacy version "LTDSv2.1.1-Patch-0", released with IPSA 3.2.2.
+        :type nExeVersion: int
         :return: A return code specified above.
         :rtype: int
         """
         pass
 
-    def GenerateMRIDs(self, nVersion: int = 0, strExePath: str = "", bForceSave: bool = True) -> int:
+    def GenerateMRIDs(self, nVersion: int = 0, strExePath: str = "", bForceSave: bool = True, nExeVersion: int = 1) -> int:
         """
         Populates a mapping of generated mRIDs for CIM for objects that either currently do not have assigned mRIDs, 
         or have no-longer-valid mRIDs assigned.
@@ -12035,9 +12065,28 @@ class IscInterface:
         :param bForceSave: If True, saves the current network before generating the mRIDs. Note this function will 
                             close and reopen the current IPSA file.
         :type bForceSave: bool
+        :param nExeVersion: enumeration of current and legacy CIM converter exe to be used for this conversion.
+
+            - 1 : The current version
+            - 2 : The legacy version "LTDSv2.1.1-Patch-0", released with IPSA 3.2.2.
+        :type nExeVersion: int
         :return: A return code specified above.
         :rtype: int
         """    
+        pass
+
+    def GetCIMConverterVersionInfo(nCIMConverterVersion: int = 1) -> str:
+        """
+        Returns the complete version number and build number info for the cim converter version enum.
+
+        :param nCIMConverterVersion: enumeration of current and legacy CIM converter exe to be used for this conversion.
+
+            - 1 : The current version
+            - 2 : The legacy version "LTDSv2.1.1-Patch-0", released with IPSA 3.2.2
+        :type nExeVersion: int
+        :return: CIM Converter version info in text
+        :rtype: str
+        """   
         pass
     
     def GetAddedMRIDMap(self) -> Dict[int,Dict[str,str]]:
@@ -14002,6 +14051,19 @@ class IscNetwork:
         """
         pass
 
+    def GetProtectionContainers(self, bFetchFromSystem: bool = True):
+        """
+        Returns a dictionary of IscProtectionContainer instances.
+        Keys (sPyName) are the Python names and the associated values are IscProtectionContainer instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of protection devices.
+        :rtype: dict(str,IscProtectionContainer)
+        """
+        pass
+
     def GetUnbalancedLoads(self, bFetchFromSystem: bool = True):
         """
         Returns a dictionary of IscUnbalancedLoad instances.
@@ -15003,6 +15065,45 @@ class IscNetwork:
         :type strPythonName: str
         :return: The protection device instance or None if such is not found.
         :rtype: IscProtectionDevice
+        """
+        pass
+
+    @overload
+    def GetProtectionContainer(self, nUID: int):
+        """
+        Returns an IscProtectionContainer instance for the protection container identified by the UID.
+
+        :param nUID: The selected protection container UID.
+        :type nUID: int
+        :return: The protection container instance or None if such is not found.
+        :rtype: IscProtectionContainer
+        """
+        pass
+
+    @overload
+    def GetProtectionContainer(self, strPythonName: str):
+        """
+        Returns an IscProtectionContainer instance for the protection container identified by the Python name.
+
+        :param strPythonName: The selected protection container name.
+        :type strPythonName: str
+        :return: The protection container instance or None if such is not found.
+        :rtype: IscProtectioncontainer
+        """
+        pass
+
+    def GetProtectionContainer(self, strPythonName: str):
+        """
+        Returns an IscProtectionContainer instance for the protection container identified by the UID or the Python name.
+
+        You can use either nUID specifying the protection container UID, or strPythonName specifying its name.
+
+        :param nUID: The selected protection container UID.
+        :type nUID: int
+        :param strPythonName: The selected protection container name.
+        :type strPythonName: str
+        :return: The protection container instance or None if such is not found.
+        :rtype: IscProtectionContainer
         """
         pass
 
@@ -16287,6 +16388,44 @@ class IscNetwork:
         """
         pass
 
+    def GetProtectionContainerUID(self, nBranchOrTxID: int, nClosestBusbarUID: int) -> int:
+        """
+        Returns the UID of the protection container on the specified branch at the specified end, if it exists.
+
+        :param nBranchOrTxID: The UID of the branch item the protection container is located on.
+        :type nBranchOrTxID: int
+        :param nClosestBusbarUID: The UID of the busbar nearest to the protection container.
+        :type nClosestBusbarUID: int
+        :return: UID of the protection container.
+        :rtype: int
+        """
+        pass
+
+    def GetFromProtectionContainerUID(self, nBranchOrTxID: int) -> int:
+        """
+        Returns the UID of a protection container located on the "From" end of the branch or transformer
+        specified by its UID.
+
+        :param nBranchOrTxID: The UID of the branch or the transformer.
+        :type nBranchOrTxID: int
+        :return: The protection container UID; 0 if no matches.
+        :rtype: int
+        """
+        pass
+
+    def GetToProtectionContainerUID(self, nBranchOrTxID: int) -> int:
+        """
+        Returns the UID of a protection container located on the "To" end of the branch or transformer
+        specified by its UID.
+
+        :param nBranchOrTxID: The UID of the branch or the transformer.
+        :type nBranchOrTxID: int
+        :return: The protection container UID; 0 if no matches.
+        :rtype: int
+        """
+        pass
+
+
     def GetBatteryUID(self, nBusID: int, strName: str) -> int:
         """
         Returns the UID of a battery with specified name at busbar specified by its UID.
@@ -17012,6 +17151,19 @@ class IscNetwork:
         :type bFetchFromSystem: bool
         :return: Dictionary of all protection devices UIDs.
         :rtype: dict(int,IscProtectionDevice)
+        """
+        pass
+    
+    def GetProtectionContainerUIDs(self, bFetchFromSystem: bool = True) :
+        """
+        Returns a dictionary of all protection container UIDs in the network.
+        The keys are the integer UIDs and the values are the IscProtectionContainer instances.
+
+        :param bFetchFromSystem: If set to True, IPSA rebuilds the data maps.
+            If set to False, it only rebuilds if a new component has been built since last Get() function.
+        :type bFetchFromSystem: bool
+        :return: Dictionary of all protection devices UIDs.
+        :rtype: dict(int,IscProtectionContainer)
         """
         pass
 
@@ -18105,6 +18257,51 @@ class IscNetwork:
         pass
 
     @overload
+    def CreateProtectionContainer(self, nBranchUID: int, strName: str) -> int:
+        """
+        Returns the UID for the newly created protection container.
+
+        :param nBranchUID: The branch the protection container is upon. This UID can be of an IscBranch or an IscTransformer.
+        :type nBranchUID: int
+        :param strName: The protection container name string if required.
+        :type strName: str
+        :return: The UID for the newly created protection container, 0 on failure.
+        :rtype: int
+        """
+        pass
+
+    @overload
+    def CreateProtectionContainer(self, pBranch, strName: str):
+        """
+        Returns an IscProtectionContainer object for the newly created protection container.
+
+        :param pBranch: The branch item the protection container is upon.
+        :type pBranch: IscBranch or IscTransformer
+        :param strName: The protection container name string if required.
+        :type strName: str
+        :return: The IscProtectionContainer object for the newly created protection container.
+        :rtype: IscProtectionContainer
+        """
+        pass
+
+    def CreateProtectionContainer(self, pBranch, strName: str):
+        """
+        Returns the UID or an IscProtectionContainer object for the newly created protection container.
+
+        :param nBranchUID: The branch item the protection container is upon. This UID can be of an IscBranch or an IscTransformer.
+        :type nBranchUID: int
+        :param pBranch: The branch item the protection container is upon.
+        :type pBranch: IscBranch or IscTransformer
+        :param strName: The protection container name string if required.
+        :type strName: str
+        :return: The UID for the newly created protection container, 0 on failure.
+        :rtype: int
+        :return: The IscProtectionContainer object for the newly created protection container.
+        :rtype: IscProtectionContainer
+        """
+        pass
+
+    @overload
     def CreateUnbalancedLoad(self, nAtBusbarUID: int, strName: str) -> int:
         """
         Returns the UID for the newly created unbalanced load.
@@ -18792,6 +18989,17 @@ class IscNetwork:
 
         :param pVoltageRegulator: The IscVoltageRegulator object for deletion.
         :type pVoltageRegulator: IscVoltageRegulator
+        :return: True if successful.
+        :rtype: bool
+        """
+        pass
+
+    def DeleteProtectionContainer(self, pProtectionContainer) -> bool:
+        """
+        Deletes a protection container by passing the IscProtectionContainer object for deletion.
+
+        :param pProtectionContainer: The IscProtectionContainer object for deletion.
+        :type pProtectionContainer: IscProtectionContainer
         :return: True if successful.
         :rtype: bool
         """
@@ -20204,6 +20412,30 @@ class IscNetwork:
         """
         pass
 
+    def GetFaultFlowResults(self) -> list[IscFaultFlow]:
+        """
+        Gets the results after running a fault level with flows on all busbars.
+
+        :return: list of all fault flow results.
+        :rtype: list[IscFaultFlow]
+        """
+        pass
+
+    def WriteFaultFlowsCSV(self, strFilePath: str = "", bOpen: bool = True) -> str:
+        """
+        Writes the results after running a fault level with flows on all busbars to a file, and have an option to open the file after writing.
+
+        :param strFilePath: Name of the file to write the results to. Default empty. If the filename is invalid, IPSA will attempt to write to a temp file.
+        :type strFilePath: str
+        :param bOpen: Option to automatically open the results file after finishing writing. Default to True.
+        :type bOpen: bool
+        :return: Name of the file that the results have been written to.
+        :rtype: str
+        """
+        pass
+    
+    
+    
     def GetAnalysisHM(self):
         """
         Returns an IscAnlaysisHM object which can be used to get and set the load flow analysis parameters.
@@ -20714,25 +20946,6 @@ class IscNetwork:
         """
         pass
 
-    def GetCIMImportConfiguration(self):
-        """
-        Returns an IscCIMModelConfiguration object which can be used to get and set the CIM model configuration parameters used for import.
-
-        :return: IscCIMModelConfiguration object.
-        :rtype: IscCIMModelConfiguration
-        """
-        pass
-
-    def GetCIMExportConfiguration(self):
-        """
-        Returns an IscCIMModelConfiguration object which can be used to get and set the CIM model configuration parameters used for export.
-
-        :return: IscCIMModelConfiguration object.
-        :rtype: IscCIMModelConfiguration
-        """
-        pass
-
-
     def RunNetworkReduction(self) -> bool:
         """
         Performs a network reduction based on the current IscAnalysisNR settings.
@@ -21124,6 +21337,28 @@ class IscNetwork:
         :param nScenarioID: The selected scenario.
         :type nScenarioID: int
         :return: Denoting whether the scenario is successfully set or whether it does not exist.
+        :rtype: bool
+        """
+        pass
+
+    def UnloadScenario(self, nScenarioID: int) -> bool:
+        """
+        Unloads the specified scenario from the current session.
+
+        :param nScenarioID: The scenario to unload.
+        :type nScenarioID: int
+        :return: Denoting whether the scenario is successfully unloaded.
+        :rtype: bool
+        """
+        pass
+
+    def IsScenarioLoaded(self, nScenarioID: int) -> bool:
+        """
+        Check whether the specified scenario is currently loaded.
+
+        :param nScenarioID: The scenario to check.
+        :type nScenarioID: int
+        :return: Denoting whether the scenario is currently loaded.
         :rtype: bool
         """
         pass

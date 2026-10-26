@@ -32,6 +32,7 @@ Field Values
         - ``FaultWaveformBranch``
         - ``FaultBreakerDuty``
         - ``FaultMotorStart``
+        - ``FaultAllBusbarsWithFlows``
    * - Float
      - FaultTime
      - Time of fault in seconds.
