@@ -6384,7 +6384,7 @@ class IscDiagram:
         :type dX: float
         :param dY: The knee point y coordinate.
         :type dY: float
-        :param nWinding: 1, 2 or 3, for the primary, secondary or tertiary port.
+        :param nWinding: 0, 1 or 2, for the primary, secondary or tertiary port.
         :type nWinding: int
         :param bRefreshLine: Defaults to True. If True, the item is fully redrawn when the knee point is added.
         :type bRefreshLine: bool
@@ -6409,7 +6409,7 @@ class IscDiagram:
         :type listX: list(float)
         :param listY: A corresponding list of y coordinates for each knee point to be added.
         :type listY: list(float)
-        :param nWinding: 1, 2 or 3, for the primary, secondary or tertiary port.
+        :param nWinding: 0, 1 or 2, for the primary, secondary or tertiary port.
         :type nWinding: int
         :param bRefreshLine: Defaults to True. If True, the line is fully redrawn when the knee point is added.
         :type bRefreshLine: bool
@@ -18257,12 +18257,14 @@ class IscNetwork:
         pass
 
     @overload
-    def CreateProtectionContainer(self, nBranchUID: int, strName: str) -> int:
+    def CreateProtectionContainer(self, nBranchUID: int, bAtFromEnd: bool, strName: str) -> int:
         """
         Returns the UID for the newly created protection container.
 
         :param nBranchUID: The branch the protection container is upon. This UID can be of an IscBranch or an IscTransformer.
         :type nBranchUID: int
+        :param bAtFromEnd: Adds the protection container to the “From” end of the component, if True.
+        :type bAtFromEnd: bool
         :param strName: The protection container name string if required.
         :type strName: str
         :return: The UID for the newly created protection container, 0 on failure.
@@ -18271,12 +18273,14 @@ class IscNetwork:
         pass
 
     @overload
-    def CreateProtectionContainer(self, pBranch, strName: str):
+    def CreateProtectionContainer(self, pBranch, bAtFromEnd: bool, strName: str):
         """
         Returns an IscProtectionContainer object for the newly created protection container.
 
         :param pBranch: The branch item the protection container is upon.
         :type pBranch: IscBranch or IscTransformer
+        :param bAtFromEnd: Adds the protection container to the “From” end of the component, if True.
+        :type bAtFromEnd: bool
         :param strName: The protection container name string if required.
         :type strName: str
         :return: The IscProtectionContainer object for the newly created protection container.
@@ -18284,7 +18288,7 @@ class IscNetwork:
         """
         pass
 
-    def CreateProtectionContainer(self, pBranch, strName: str):
+    def CreateProtectionContainer(self, pBranch, bAtFromEnd: bool, strName: str):
         """
         Returns the UID or an IscProtectionContainer object for the newly created protection container.
 
@@ -18292,6 +18296,8 @@ class IscNetwork:
         :type nBranchUID: int
         :param pBranch: The branch item the protection container is upon.
         :type pBranch: IscBranch or IscTransformer
+        :param bAtFromEnd: Adds the protection container to the “From” end of the component, if True.
+        :type bAtFromEnd: bool
         :param strName: The protection container name string if required.
         :type strName: str
         :return: The UID for the newly created protection container, 0 on failure.
