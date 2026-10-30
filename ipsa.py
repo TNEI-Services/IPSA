@@ -5231,7 +5231,7 @@ class IscCircuitBreaker:
     """
     def GetBranchUID(self) -> int:
         """
-        Returns the UID of the branch which the breaker is located on.
+        Returns the UID of the branch item which the breaker is located on. The branch item can be an IscBranch or an IscTransformer.
 
         :return: The UID of the branch which the breaker is located on.
         :rtype: int
@@ -6532,7 +6532,8 @@ class IscDiagram:
 
     def DrawInline(self, nInlineUID: int, dX: float, dY: float) -> bool:
         """
-        Draws the symbol for the inline object (i.e., an object that sits upon a branch item) identified by the
+        Draws the symbol for the inline object (an object that sits upon a branch item, 
+        such as a circuit breaker, a voltge regulator, or a protection container) identified by the
         unique ID nInlineUID. The inline symbol will be drawn on its branch at the nearest point to the location dx,dY.
 
         Note this function will return false if the provided UID is not an inline or is already drawn.
@@ -24309,9 +24310,9 @@ class IscProtectionContainer:
 
     def GetBranchUID(self) -> int:
         """
-        Get the UID of the branch the protection container lies upon.
+        Get the UID of the branch item the protection container lies upon. The branch item can be an IscBranch or an IscTransformer.
 
-        :return: The UID of the branch the protection container lies upon.
+        :return: The UID of the branch item the protection container lies upon.
         :rtype: int
         """
         pass
@@ -24502,6 +24503,18 @@ class IscProtectionContainer:
         :rtype: list[int]
         """
         pass
+
+    def GetContainerRelayUIDs(self, nCTUID: int) -> List[int]:
+        """
+        Return the UIDs of the Relays connected to the CT with the given UID. If no CT UID is given, it returns all relays in this container.
+
+        :param nCTUID: The UID of the CT.
+        :type nCTUID: int
+        :return: List of Relay UIDs.
+        :rtype: list[int]
+        """
+        pass
+
 
     def GetCTPrimaryTurns(self, nCTUID: int) -> int:
         """
@@ -24780,7 +24793,7 @@ class IscProtectionDevice:
 
     def GetBranchUID(self) -> int:
         """
-        Get the UID of the branch the protection device lies upon.
+        Get the UID of the branch the protection device lies upon. The branch item can be an IscBranch or an IscTransformer.
 
         :return: The UID of the branch the protection device lies upon.
         :rtype: int
