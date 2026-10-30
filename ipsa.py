@@ -24404,7 +24404,7 @@ class IscProtectionContainer:
 
     def DeleteContainerCT(self, nCTUID: int) -> bool:
         """
-        Delete the CT of the given UID.
+        Delete the CT of the given UID. The CT cannot be deleted if there is a relay attached to it.
 
         :param nCTUID: UID of the CT to delete.
         :type nCTUID: int       
