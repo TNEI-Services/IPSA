@@ -24439,7 +24439,7 @@ class IscProtectionContainer:
         """
         Delete the Relay of the given UID.
 
-        :param nRelayUID: UID of the relay to delete.
+        :param nRelayUID: UID of the Relay to delete.
         :type nRelayUID: int       
         :return: True if deleted, False if failed.
         :rtype: bool
