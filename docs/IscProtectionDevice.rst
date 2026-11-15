@@ -49,9 +49,13 @@ Field Values
    * - Integer
      - BlockStatus
      - Gets the status of a block. Use with the `GetBlockIValue` or `SetBlockIValue` function.
+
+         - 0 = Switched in
+         - -1 = Switched out
+
    * - Float
      - CurrentMultiplier
-     - Gets the status of a block. Use with the `GetBlockIValue` or `SetBlockIValue` function. This field is only avaiable for a block of type ProtBlockConstantCurrent, ProtBlockGivenPointsAdjust, or ProtBlockIDMT.
+     - Gets the current multiplier value of the block. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockConstantCurrent, ProtBlockGivenPointsAdjust, or ProtBlockIDMT.
    * - List[String]
      - CurrentMultiplierRange
      - Current multiplier range of a block. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockConstantCurrent, ProtBlockGivenPointsAdjust, or ProtBlockIDMT.
@@ -61,9 +65,9 @@ Field Values
    * - Float
      - TimeSettingS
      - Time setting in seconds. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockConstantTime.
-   * - Float
+   * - List[String]
      - TimeRangeS
-     - Time range in seconds. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockConstantTime.
+     - Time range in seconds. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockConstantTime.
    * - Float
      - TimeMultiplier
      - Time multiplier. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockGivenPointsAdjust or ProtBlockIDMT.
@@ -103,7 +107,7 @@ Field Values
      - Time delay in seconds. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockPickAndDelay.
    * - List[String]
      - TimeDelayRangeS
-     - Time delay range in seconds. Use with the `GetBlockListSValue` or `SetBlockListSValue` function. This field is only avaiable for a block of type ProtBlockPickAndDelay.
+     - Time delay range in seconds. Use with the `GetBlockListSValue` function. Cannot be set. This field is only avaiable for a block of type ProtBlockPickAndDelay.
    * - Float
      - TimeDelayCurrentMultiplier
      - Time delay current multipler. Use with the `GetBlockDValue` or `SetBlockDValue` function. This field is only avaiable for a block of type ProtBlockPickAndDelay.     

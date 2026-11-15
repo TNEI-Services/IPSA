@@ -8611,7 +8611,7 @@ class IscGridInfeed:
 
     def SetHarmonicR(self, dictHarmonicData: Dict[float, float]) -> None:
         """
-        Sets the values for the harmonic resistance of the grid infeed.
+        Sets the values for the harmonic resistance of the grid infeed. SetHarmonicX() must also be called together to set the corresponding harmonic resistance values.
 
         :param dictHarmonicData: Dictionary in the following format:
             **{double dHarmonicOrder:double dHarmonicImpedance, …}** where dHarmonicImpedance is a value specifying the
@@ -8623,7 +8623,7 @@ class IscGridInfeed:
 
     def SetHarmonicX(self, dictHarmonicData: Dict[float, float]) -> None:
         """
-        Sets the values for the harmonic reactance of the grid infeed.
+        Sets the values for the harmonic reactance of the grid infeed.SetHarmonicR() must also be called together to set the corresponding harmonic reactance values.
 
         :param dictHarmonicData: Dictionary in the following format:
             **{double dHarmonicOrder:double dHarmonicImpedance, …}** where dHarmonicImpedance is a value specifying the
@@ -24365,7 +24365,7 @@ class IscProtectionContainer:
         """
         Create a new Fuse in this container, and set the parameters as given.
 
-        :param strDatabaseDevice: Device name from the protection database.
+        :param strDatabaseDevice: Device name from the protection database, obtained from the list of fuse names returned by GetPDBFuses()
         :type strDatabaseDevice: str
         :param strName: The selected string name. Default to empty string.
         :type strName: str
@@ -24378,7 +24378,7 @@ class IscProtectionContainer:
         """
         Create a new Curve in this container, and set the parameters as given.
 
-        :param strDatabaseDevice: Device name from the protection database.
+        :param strDatabaseDevice: Device name from the protection database, obtained from the list of curve names returned by GetPDBCurves()
         :type strDatabaseDevice: str
         :param strName: The selected string name. Default to empty string.
         :type strName: str
@@ -24387,13 +24387,13 @@ class IscProtectionContainer:
         """
         pass
 
-    def AddRelayToCT(self, nCTUID: int, trDatabaseDevice: str, strName: str) -> int:
+    def AddRelayToCT(self, nCTUID: int, strDatabaseDevice: str, strName: str) -> int:
         """
         Create a new Relay and add it to the CT with the given UID, and set the Relay name.
 
         :param nCTUID: UID of the CT this Relay should be added to.
         :type nCTUID: int
-        :param strDatabaseDevice: Device name from the protection database.
+        :param strDatabaseDevice: Device name from the protection database,obtained from the list of relay names returned by GetPDBRelays().
         :type strDatabaseDevice: str
         :param strName: The selected string name. Default to empty string.
         :type strName: str
@@ -24858,13 +24858,13 @@ class IscProtectionDevice:
         """
         Get the device block indices and the matching block types. A protection device block can be one of the following types:
 
-            - IscProtectionDevice.ProtBlockConstantCurrent
-            - IscProtectionDevice.ProtBlockConstantTime
-            - IscProtectionDevice.ProtBlockGivenPoints
-            - IscProtectionDevice.ProtBlockGivenPointsAdjust
-            - IscProtectionDevice.ProtBlockIDMT
-            - IscProtectionDevice.ProtBlockPickAndDelay
-            - IscProtectionDevice.ProtBlockTransientDisc
+            - 51 = IscProtectionDevice.ProtBlockGivenPoints
+            - 52 = IscProtectionDevice.ProtBlockGivenPointsAdjust
+            - 53 = IscProtectionDevice.ProtBlockConstantCurrent
+            - 54 = IscProtectionDevice.ProtBlockConstantTime           
+            - 55 = IscProtectionDevice.ProtBlockIDMT
+            - 56 = IscProtectionDevice.ProtBlockPickAndDelay
+            - 57 = IscProtectionDevice.ProtBlockTransientDisc
         
         :return: The dict of block indices and types.
         :rtype: dict[int, int]
