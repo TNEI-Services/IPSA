@@ -276,7 +276,7 @@ Field Values
 
           .. raw:: latex
 
-             BusG74CDP\-ContributionsIncluded
+             BusG74CDP\-Contributions\-Included
 
      - Indicates whether CDP contribution is included.
 
