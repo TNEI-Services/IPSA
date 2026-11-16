@@ -268,7 +268,16 @@ Field Values
      - BusAngBlueCompDeg
      - Fault flow angle in degrees of a result busbar on the Blue phase.
    * - Boolean
-     - BusG74CDPContributionsIncluded
+     - .. only:: html
+
+          BusG74CDPContributionsIncluded
+
+       .. only:: latex
+
+          .. raw:: latex
+
+             BusG74CDP\-ContributionsIncluded
+
      - Indicates whether CDP contribution is included.
 
 

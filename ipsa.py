@@ -24393,7 +24393,7 @@ class IscProtectionContainer:
 
         :param nCTUID: UID of the CT this Relay should be added to.
         :type nCTUID: int
-        :param strDatabaseDevice: Device name from the protection database,obtained from the list of relay names returned by GetPDBRelays().
+        :param strDatabaseDevice: Device name from the protection database, obtained from the list of relay names returned by GetPDBRelays().
         :type strDatabaseDevice: str
         :param strName: The selected string name. Default to empty string.
         :type strName: str
