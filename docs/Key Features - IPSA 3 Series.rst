@@ -23,7 +23,8 @@ Add support for running and retrieving results for a new study type, fault level
 
 CIM
 ------------
-Access to current and legacy CIM converter versions.
+    - Access to current and legacy CIM converter versions.
+    - Add CIM Model Configuration: manage CIM import/export configuration through IscCIMModelConfiguration class.
 
 
 Additional features

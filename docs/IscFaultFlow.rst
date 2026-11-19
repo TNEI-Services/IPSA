@@ -202,7 +202,15 @@ Field Values
      - BusI2harCompA
      - Fault flow A second harmonics component of a result busbar.
    * - Float
-     - BusI2harCompPUMVA
+     - .. only:: html
+            
+          BusI2harCompPUMVA
+
+       .. only:: latex
+
+          .. raw:: latex
+
+             BusI2harComp\-PUMVA
      - Fault flow MVA in per-unit second harmonics component of a result busbar.
    * - Float
      - BusDCTheveninXoverR
@@ -268,7 +276,16 @@ Field Values
      - BusAngBlueCompDeg
      - Fault flow angle in degrees of a result busbar on the Blue phase.
    * - Boolean
-     - BusG74CDPContributionsIncluded
+     - .. only:: html
+
+          BusG74CDPContributionsIncluded
+
+       .. only:: latex
+
+          .. raw:: latex
+
+             BusG74CDP\-Contributions\-Included
+
      - Indicates whether CDP contribution is included.
 
 
