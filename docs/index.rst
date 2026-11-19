@@ -79,4 +79,5 @@ The following actions are possible:
    IscEquivalentBranch
    IscEquivalentRadial
    IscFaultFlow
+   IscCIMModelConfiguration
 
