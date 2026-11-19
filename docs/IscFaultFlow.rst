@@ -202,7 +202,15 @@ Field Values
      - BusI2harCompA
      - Fault flow A second harmonics component of a result busbar.
    * - Float
-     - BusI2harCompPUMVA
+     - .. only:: html
+            
+          BusI2harCompPUMVA
+
+       .. only:: latex
+
+          .. raw:: latex
+
+             BusI2harComp\-PUMVA
      - Fault flow MVA in per-unit second harmonics component of a result busbar.
    * - Float
      - BusDCTheveninXoverR

@@ -8623,7 +8623,7 @@ class IscGridInfeed:
 
     def SetHarmonicX(self, dictHarmonicData: Dict[float, float]) -> None:
         """
-        Sets the values for the harmonic reactance of the grid infeed.SetHarmonicR() must also be called together to set the corresponding harmonic reactance values.
+        Sets the values for the harmonic reactance of the grid infeed. SetHarmonicR() must also be called together to set the corresponding harmonic reactance values.
 
         :param dictHarmonicData: Dictionary in the following format:
             **{double dHarmonicOrder:double dHarmonicImpedance, …}** where dHarmonicImpedance is a value specifying the
@@ -24864,7 +24864,7 @@ class IscProtectionDevice:
             - 54 = IscProtectionDevice.ProtBlockConstantTime           
             - 55 = IscProtectionDevice.ProtBlockIDMT
             - 56 = IscProtectionDevice.ProtBlockPickAndDelay
-            - 57 = IscProtectionDevice.ProtBlockTransientDisc
+            - 60 = IscProtectionDevice.ProtBlockTransientDisc
         
         :return: The dict of block indices and types.
         :rtype: dict[int, int]
