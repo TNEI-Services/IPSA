@@ -9418,7 +9418,7 @@ class IscGroup:
         :type strDefault: str
         :param bDefault: The bool default value.
         :type bDefault: bool
-        :return: The new field index.
+        :return: The field index of the new extended data field, or 0 if the field could not be created. This happens if the name contains whitespace, a field with the same name already exists for this group type, or a field with the same name but a different data type exists in another scenario. Always check the return value before using it to set values.
         :rtype: int
         """
         pass
@@ -13088,7 +13088,7 @@ class IscNetComponent:
         :type strDefault: str
         :param bDefault: The bool default value.
         :type bDefault: bool
-        :return: The new field index.
+        :return: The field index of the new extended data field, or 0 if the field could not be created. This happens if the name contains whitespace, a field with the same name already exists for this component type, or a field with the same name but a different data type exists in another scenario. Always check the return value before using it to set values.
         :rtype: int
         """
         pass
